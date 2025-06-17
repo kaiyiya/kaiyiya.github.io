@@ -1,0 +1,759 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>React进阶实践指南4-认识Props | 飞向月球的猫</title><meta name="keywords" content="React进阶实践指南"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="React进阶实践指南4-认识Props"><meta name="application-name" content="React进阶实践指南4-认识Props"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="React进阶实践指南4-认识Props"><meta property="og:url" content="http://kaiyiya.github.io/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="React进阶实践指南-认识Props"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/06/16/684f70a04f5f7.png"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/06/16/684f70a04f5f7.png"><meta name="description" content="React进阶实践指南-认识Props"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: 'React进阶实践指南4-认识Props',
+  postAI: '',
+  pageFillDescription: '一 前言, 二 理解props, 1 props是什么？, 2 React如何定义的props？, 3 监听props改变, 4 props children模式, 5 操作 props 小技巧, 抽象 props, 注入props, 三 进阶实践-实现一个简单的 ltFormgt ltFormItemgt嵌套组件, 四 总结一前言中的想必大家并不陌生如果从的组件设计思想出发组件的作用是什么呢一方面它可以作为渲染视图的容器另一方面组件之间就像发动机的各个零件想要让这台机器运作起来就要处理好各个零件也就是各个组件之间的联系而担任的角色就是将每个组件联系起来是组件通信最重要的手段有一点必须明确就是通过第二章节的学习弄清楚一次的过程就是调用形成新的过程新的上就会有新的属性这个新就是重新渲染视图的关键所在所以学好有助于打通组件脉络本章节将介绍中学好可以使组件间通信更加灵活同时文中会介绍一些的操作技巧和学会如何编写嵌套组件二理解是什么首先应该明确一下什么是对于在应用中写的子组件无论是函数组件还是类组件父组件绑定在它们标签里的属性方法最终会变成传递给它们但是这也不是绝对的对于一些特殊的属性比如说或者会在底层做一些额外的处理首先来看一下中可以是些什么东西中的还是很灵活的接下来先来看一个组件接受处理对于子组件不同的是怎么被处理定义绑定作为一个渲染数据源作为一个回调函数作为一个组件作为渲染函数效果如上看一下可以是什么作为一个子组件渲染数据源作为一个通知父组件的回调函数作为一个单纯的组件传递作为渲染函数和的区别是放在了属性上插槽组件那么如上在组件实例上是什么样子如果是一个类组件那么可以直接通过访问到它在标签内部的属性和方法会直接绑定在对象的属性上对于组件的插槽会被绑定在的属性中如何定义的接下来一起总结一下究竟能做些什么在组件层级充当的角色一方面父组件可以把数据层传递给子组件去渲染消费另一方面子组件可以通过中的来向父组件传递信息还有一种可以将视图容器作为进行渲染从更新机制中充当的角色在中在组件更新中充当了重要的角色在调和阶段中可以说是更新的驱动器熟悉的同学都知道中基于响应式数据的变化就会颗粒化到组件层级通知其更新但是在中无法直接检测出数据更新波及到的范围可以作为组件是否更新的重要准则变化即更新于是有了等性能优化方案从插槽层面充当的角色可以把组件的闭合标签里的插槽转化成属性一会将详细介绍这个模式监听改变类组件中可以作为监听的生命周期但是已经不推荐使用未来版本可能会被废弃因为这个生命周期超越了的可控制的范围内可能引起多次执行等情况发生于是出现了这个生命周期的替代方案在下一章节会详细介绍生命周期函数组件中函数组件中同理可以用来作为改变后的监听函数不过有一点值得注意初始化会默认执行一次中改变执行这个副作用改变模式模式在中非常常用尤其对一些优秀开源组件库比如中的和中的和首先来看看的几个基本情况插槽组件上述可以在组件中通过属性访问到组件为对象作用可以根据需要控制是否渲染像上一节所说的可以用强化混入新的或者修改的子元素模式这种情况在中属性访问到是函数并不是对象针对这种情况像下面这种情况下是不能直接渲染的直接渲染会报错改成如下方式就可以了这种方式作用是根据需要控制渲染与否可以将需要传给的直接通过函数参数的方式传递给执行函数混合模式如果的既有函数也有组件这种情况应该怎么处理呢首先在里打印看看是什么判断是混入这种情况需要先遍历判断元素类型针对节点通过混入针对函数直接传递参数执行函数操作小技巧抽象抽象一般用于跨层级传递一般不需要具体指出中某个属性而是将直接传入或者是抽离到子组件中混入组件一方面直接将组件抽象传递给一方面混入抽离有的时候想要做的恰恰和上面相反比如想要从父组件中抽离某个属性再传递给子组件那么应该怎么做呢打印成功的将中的属性抽离出来注入显式注入显式注入就是能够直观看见标签中绑定的如上向组件绑定的和是能直观被看见的隐式注入这种方式一般通过对克隆再混入新的如上所示将属性隐式混入到了的中三进阶实践实现一个简单的嵌套组件接下来到实践环节了需要编写一个实践用于表单状态管理的和组件用于管理表单状态用于管理输入框组件编写的组件能够实现的功能是组件可以被获取实例然后可以调用实例方法获取表单内容用于提交表单方法用于重置表单组件自动过滤掉除了之外的其他元素中属性作为表单提交时候的还有展示的可以自动收集表单的值目的希望通过这实践让大家学习到基本使用学会操作隐式注入掌握表单嵌套原理现实情况要比这个复杂组件使用表单提交表单重置我是我想对大家说不需要的提交重置编写用于提交表单数据获取重置表单数据设置表单数据层克隆节点混入改变表单单元项的方法加入提升渲染效果用于改变值增加组件类型设计思想首先考虑到在不使用前提下最好是类组件因为只有类组件才能获取实例创建一个下的属性用于收集表单状态要封装重置表单提交表单改变表单单元项的方法要过滤掉除了元素之外的其他元素那么怎么样知道它是不是这里教大家一种方法可以给函数组件或者类组件绑定静态属性来证明它的身份然后在遍历的时候就可以在的属性类或函数组件本身上验证这个身份在这个项目给函数绑定的属性证明组件身份要克隆节点将改变表单单元项的方法和表单的值混入中编写通知上一次已经改变设计思想一定要绑定属性用于让识别声明方法通过提供给作为改变的回调函数过滤掉除了以外的其他元素编写组件负责回传值给增加标签设计思想绑定标识元素绑定方法用于传递四总结通过本章节系统学习了总结一下这节课的内容系统学习是什么的作用操作小技巧掌握了插槽组件的使用与编写实践一个嵌套插槽组件协调管理表单状态',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-16 09:24:34',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>React进阶实践指南</span></a></span></div></div><h1 class="post-title" itemprop="name headline">React进阶实践指南4-认识Props</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-06-11T02:34:41.000Z" title="发表于 2025-06-11 10:34:41">2025-06-11</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-06-16T01:24:34.000Z" title="更新于 2025-06-16 09:24:34">2025-06-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="React进阶实践指南4-认识Props"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/06/16/684f70a04f5f7.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/"><header><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a><a href="/tags/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" tabindex="-1" itemprop="url">React进阶实践指南</a><h1 id="CrawlerTitle" itemprop="name headline">React进阶实践指南4-认识Props</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-06-11T02:34:41.000Z" title="发表于 2025-06-11 10:34:41">2025-06-11</time><time itemprop="dateCreated datePublished" datetime="2025-06-16T01:24:34.000Z" title="更新于 2025-06-16 09:24:34">2025-06-16</time></header><h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一 前言"></a>一 前言</h2><p>React 中的 props 想必大家并不陌生。如果从 React 的组件设计思想出发，组件的作用是什么呢？</p>
+<p>一方面，它可以作为渲染UI视图的容器。</p>
+<p>另一方面，组件之间就像发动机的各个零件，想要让 React 这台机器运作起来，就要处理好各个零件，也就是各个组件之间的联系，而props 担任的角色就是将每个组件联系起来。</p>
+<p>props 是 React 组件通信最重要的手段。有一点必须明确，就是通过第二章节的学习，弄清楚一次 render 的过程，就是调用React.createElement 形成新的 element 过程，新的 element 上就会有新的 props 属性，这个新 props就是重新渲染视图的关键所在。所以学好 props，有助于打通 React 组件脉络。</p>
+<p>本章节将介绍 React 中 props，学好 props 可以使组件间通信更加灵活，同时文中会介绍一些 props 的操作技巧，和学会如何编写嵌套组件。</p>
+<h2 id="二-理解props"><a href="#二-理解props" class="headerlink" title="二 理解props"></a>二 理解props</h2><h3 id="1-props是什么？"><a href="#1-props是什么？" class="headerlink" title="1 props是什么？"></a>1 props是什么？</h3><p>首先应该明确一下什么是 props ，对于在 React 应用中写的子组件，无论是函数组件 <code>FunComponent</code> ，还是类组件 <code>ClassComponent</code> ，父组件绑定在它们标签里的属性&#x2F;方法，最终会变成 props 传递给它们。但是这也不是绝对的，对于一些特殊的属性，比如说 ref 或者 key ，React 会在底层做一些额外的处理。首先来看一下 React 中 props 可以是些什么东西？</p>
+<p>React 中的 props ，还是很灵活的，接下来先来看一个 demo ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* children 组件 */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ChidrenComponent</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> In this chapter, let&#x27;s learn about react props ! <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* props 接受处理 */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PropsComponent</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">    <span class="title function_">componentDidMount</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>,<span class="string">&#x27;_this&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> &#123;  children , mes , renderName , say ,<span class="title class_">Component</span> &#125; = <span class="variable language_">this</span>.<span class="property">props</span></span><br><span class="line">        <span class="keyword">const</span> renderFunction = children[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">const</span> renderComponent = children[<span class="number">1</span>]</span><br><span class="line">        <span class="comment">/* 对于子组件，不同的props是怎么被处理 */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            &#123; renderFunction() &#125;</span></span><br><span class="line"><span class="language-xml">            &#123; mes &#125;</span></span><br><span class="line"><span class="language-xml">            &#123; renderName() &#125;</span></span><br><span class="line"><span class="language-xml">            &#123; renderComponent &#125;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Component</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;</span> () =&gt;</span> say() &#125; &gt; change content <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* props 定义绑定 */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Index</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">    state=&#123;  </span><br><span class="line">        <span class="attr">mes</span>: <span class="string">&quot;hello,React&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    node = <span class="literal">null</span></span><br><span class="line">    say= <span class="function">() =&gt;</span>  <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; <span class="attr">mes</span>:<span class="string">&#x27;let us learn React!&#x27;</span> &#125;)</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">PropsComponent</span>  </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">               <span class="attr">mes</span>=<span class="string">&#123;this.state.mes&#125;</span>  // ① <span class="attr">props</span> <span class="attr">作为一个渲染数据源</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">               <span class="attr">say</span>=<span class="string">&#123;</span> <span class="attr">this.say</span>  &#125;     // ② <span class="attr">props</span> <span class="attr">作为一个回调函数</span> <span class="attr">callback</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">               <span class="attr">Component</span>=<span class="string">&#123;</span> <span class="attr">ChidrenComponent</span> &#125; // ③ <span class="attr">props</span> <span class="attr">作为一个组件</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">               <span class="attr">renderName</span>=<span class="string">&#123;</span> ()=&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span> my name is alien <span class="tag">&lt;/<span class="name">div</span>&gt;</span> &#125; // ④ props 作为渲染函数</span></span><br><span class="line"><span class="language-xml">            &gt;</span></span><br><span class="line"><span class="language-xml">                &#123; ()=&gt; <span class="tag">&lt;<span class="name">div</span>&gt;</span>hello,world<span class="tag">&lt;/<span class="name">div</span>&gt;</span>  &#125; &#123; /* ⑤render props */ &#125;</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">ChidrenComponent</span> /&gt;</span>             &#123; /* ⑥render component */ &#125;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">PropsComponent</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>效果</strong></p>
+<p>如上看一下 props 可以是什么？</p>
+<ul>
+<li>① props 作为一个子组件渲染数据源。</li>
+<li>② props 作为一个通知父组件的回调函数。</li>
+<li>③ props 作为一个单纯的组件传递。</li>
+<li>④ props 作为渲染函数。</li>
+<li>⑤ render props ， 和④的区别是放在了 children 属性上。</li>
+<li>⑥ render component 插槽组件。</li>
+</ul>
+<p>那么如上 props 在组件实例上是什么样子：</p>
+<p>PropsComponent 如果是一个类组件，那么可以直接通过 this.props 访问到它：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/1749717740776.png"></p>
+<p>在标签内部的属性和方法会直接绑定在 props 对象的属性上，对于组件的插槽会被绑定在 props 的 Children 属性中。</p>
+<h3 id="2-React如何定义的props？"><a href="#2-React如何定义的props？" class="headerlink" title="2 React如何定义的props？"></a>2 React如何定义的props？</h3><p>接下来一起总结一下 props 究竟能做些什么？</p>
+<p><strong>在 React 组件层级 props 充当的角色</strong></p>
+<p>一方面父组件 props 可以把数据层传递给子组件去渲染消费。另一方面子组件可以通过 props 中的 callback ，来向父组件传递信息。还有一种可以将视图容器作为 props 进行渲染。</p>
+<p><strong>从 React 更新机制中 props 充当的角色</strong></p>
+<p>在 React 中，props 在组件更新中充当了重要的角色，在 fiber 调和阶段中，diff 可以说是 React更新的驱动器，熟悉 vue 的同学都知道 vue 中基于响应式，数据的变化，就会颗粒化到组件层级，通知其更新，但是在 React中，无法直接检测出数据更新波及到的范围，props 可以作为组件是否更新的重要准则，变化即更新，于是有了 PureComponent ，memo等性能优化方案。</p>
+<p><strong>从React插槽层面props充当的角色</strong><br>React 可以把组件的闭合标签里的插槽，转化成 Children 属性，一会将详细介绍这个模式。</p>
+<h3 id="3-监听props改变"><a href="#3-监听props改变" class="headerlink" title="3 监听props改变"></a>3 监听props改变</h3><p><strong>类组件中</strong></p>
+<p>① componentWillReceiveProps 可以作为监听props的生命周期，但是 React 已经不推荐使用componentWillReceiveProps ，未来版本可能会被废弃，因为这个生命周期超越了 React的可控制的范围内，可能引起多次执行等情况发生。于是出现了这个生命周期的替代方案 getDerivedStateFromProps，在下一章节，会详细介绍 React 生命周期。</p>
+<p><strong>函数组件中</strong></p>
+<p>② 函数组件中同理可以用 useEffect 来作为 props 改变后的监听函数。(不过有一点值得注意, useEffect 初始化会默认执行一次)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// props 中number 改变，执行这个副作用。</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;props改变：&#x27;</span> ，props.<span class="property">number</span>  )</span><br><span class="line">&#125;,[ props.<span class="property">number</span> ])</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-props-children模式"><a href="#4-props-children模式" class="headerlink" title="4 props children模式"></a>4 props children模式</h3><p>props + children 模式 在 React 中非常常用，尤其对一些优秀开源组件库。比如 react-router 中的 Switch 和  Route ，  antd  中的 Form  和  FormItem。</p>
+<p>首先来看看 prop + children 的几个基本情况。</p>
+<p><strong>① props 插槽组件</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Container</span>&gt;</span><br><span class="line">    &lt;<span class="title class_">Children</span>&gt;</span><br><span class="line">&lt;/<span class="title class_">Container</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上述可以在 Container 组件中，通过 props.children 属性访问到 Children 组件，为 React element 对象。</p>
+<p>作用：</p>
+<ul>
+<li>1 可以根据需要控制 Children 是否渲染。</li>
+<li>2 像上一节所说的， Container 可以用 React.cloneElement 强化 props (混入新的 props )，或者修改 Children 的子元素。</li>
+</ul>
+<p><strong>② render props模式</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Container</span>&gt;</span><br><span class="line">   &#123; <span class="function">(<span class="params">ContainerProps</span>)=&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Children</span> &#123;<span class="attr">...ContainerProps</span>&#125;  /&gt;</span></span> &#125;</span><br><span class="line">&lt;/<span class="title class_">Container</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这种情况，在 Container 中， props.children 属性访问到是函数，并不是 React element 对象，针对这种情况，像下面这种情况下 children 是不能直接渲染的，直接渲染会报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>  <span class="title function_">Container</span>(<span class="params">props</span>) &#123;</span><br><span class="line">     <span class="keyword">return</span>  props.<span class="property">children</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>改成如下方式，就可以了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>  <span class="title function_">Container</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span>  <span class="title class_">ContainerProps</span> = &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;alien&#x27;</span>,</span><br><span class="line">        <span class="attr">mes</span>:<span class="string">&#x27;let us learn react&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">return</span>  props.<span class="title function_">children</span>(<span class="title class_">ContainerProps</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式作用是：</p>
+<ul>
+<li>1 根据需要控制 Children 渲染与否。</li>
+<li>2 可以将需要传给 Children 的 props 直接通过函数参数的方式传递给执行函数 children 。</li>
+</ul>
+<p><strong>混合模式</strong></p>
+<p>如果 Container 的 Children  既有函数也有组件，这种情况应该怎么处理呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Container</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Children</span> /&gt;</span></span></span><br><span class="line">    &#123; <span class="function">(<span class="params">ContainerProps</span>)=&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Children</span> &#123;<span class="attr">...ContainerProps</span>&#125; <span class="attr">name</span>=<span class="string">&#123;</span>&#x27;<span class="attr">haha</span>&#x27;&#125;  /&gt;</span></span>  &#125;</span><br><span class="line">&lt;/<span class="title class_">Container</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>首先在 Container 里打印 Children 看看是什么？</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/1749718147177.png"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Children</span> = (<span class="params">props</span>)=&gt; (<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>hello, my name is &#123;  props.name &#125; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span>&gt;</span> &#123; props.mes &#125; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span>  <span class="title function_">Container</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">ContainerProps</span> = &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;alien&#x27;</span>,</span><br><span class="line">        <span class="attr">mes</span>:<span class="string">&#x27;let us learn react&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">return</span> props.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title class_">React</span>.<span class="title function_">isValidElement</span>(item))&#123; <span class="comment">// 判断是 react elment  混入 props</span></span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">React</span>.<span class="title function_">cloneElement</span>(item,&#123; ...<span class="title class_">ContainerProps</span> &#125;,item.<span class="property">props</span>.<span class="property">children</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> item === <span class="string">&#x27;function&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">item</span>(<span class="title class_">ContainerProps</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">     &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Index</span> = (<span class="params"></span>)=&gt;&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Container</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Children</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123; (ContainerProps)=&gt; <span class="tag">&lt;<span class="name">Children</span> &#123;<span class="attr">...ContainerProps</span>&#125; <span class="attr">name</span>=<span class="string">&#123;</span>&#x27;<span class="attr">haha</span>&#x27;&#125;  /&gt;</span>  &#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这种情况需要先遍历 children ，判断 children 元素类型：</p>
+<ul>
+<li>针对 element 节点，通过 cloneElement 混入 props ；</li>
+<li>针对函数，直接传递参数，执行函数。</li>
+</ul>
+<h3 id="5-操作-props-小技巧"><a href="#5-操作-props-小技巧" class="headerlink" title="5 操作 props 小技巧"></a>5 操作 props 小技巧</h3><h4 id="抽象-props"><a href="#抽象-props" class="headerlink" title="抽象 props"></a>抽象 props</h4><p>抽象 props 一般用于跨层级传递 props ，一般不需要具体指出 props 中某个属性，而是将 props 直接传入或者是抽离到子组件中。</p>
+<p><strong>混入 props</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params">props</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(props)</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> hello,world <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">props</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> fatherProps=&#123;</span><br><span class="line">        <span class="attr">mes</span>:<span class="string">&#x27;let us learn React !&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Son</span> &#123;<span class="attr">...props</span>&#125; &#123; <span class="attr">...fatherProps</span> &#125;  /&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Index</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> indexProps = &#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&#x27;alien&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>:<span class="string">&#x27;28&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Father</span> &#123; <span class="attr">...indexProps</span> &#125;  /&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/1749718570269.png"></p>
+<p>Father 组件一方面直接将 Index 组件 indexProps 抽象传递给 Son，一方面混入 fatherProps 。</p>
+<p><strong>抽离props</strong></p>
+<p>有的时候想要做的恰恰和上面相反，比如想要从父组件 props 中抽离某个属性，再传递给子组件，那么应该怎么做呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params">props</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(props)</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> hello,world <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">props</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; age,...fatherProps  &#125; = props</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Son</span>  &#123; <span class="attr">...fatherProps</span> &#125;  /&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Index</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> indexProps = &#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&#x27;alien&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>:<span class="string">&#x27;28&#x27;</span>,</span><br><span class="line">        <span class="attr">mes</span>:<span class="string">&#x27;let us learn React !&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Father</span> &#123; <span class="attr">...indexProps</span> &#125;  /&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打印</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/1749720228877.png"></p>
+<p>成功的将 indexProps 中的 age 属性抽离出来。</p>
+<h4 id="注入props"><a href="#注入props" class="headerlink" title="注入props"></a>注入props</h4><p><strong>显式注入props</strong></p>
+<p>显式注入 props ，就是能够直观看见标签中绑定的 props 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params">props</span>)&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(props) <span class="comment">// &#123;name: &quot;alien&quot;, age: &quot;28&quot;&#125;</span></span><br><span class="line">     <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> hello,world <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">prop</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> prop.<span class="property">children</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Index</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Father</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Son</span>  <span class="attr">name</span>=<span class="string">&quot;alien&quot;</span>  <span class="attr">age</span>=<span class="string">&quot;28&quot;</span>  /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Father</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上向 Son 组件绑定的 name 和 age 是能直观被看见的。</p>
+<p><strong>隐式注入 props</strong></p>
+<p>这种方式，一般通过 <code>React.cloneElement</code> 对 props.chidren 克隆再混入新的 props 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params">props</span>)&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(props) <span class="comment">// &#123;name: &quot;alien&quot;, age: &quot;28&quot;, mes: &quot;let us learn React !&quot;&#125;</span></span><br><span class="line">     <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> hello,world <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">prop</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">React</span>.<span class="title function_">cloneElement</span>(prop.<span class="property">children</span>,&#123;  <span class="attr">mes</span>:<span class="string">&#x27;let us learn React !&#x27;</span> &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Index</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Father</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Son</span>  <span class="attr">name</span>=<span class="string">&quot;alien&quot;</span>  <span class="attr">age</span>=<span class="string">&quot;28&quot;</span>  /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Father</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上所示，将 mes 属性，隐式混入到了 Son 的 props 中。</p>
+<h2 id="三-进阶实践-实现一个简单的-嵌套组件"><a href="#三-进阶实践-实现一个简单的-嵌套组件" class="headerlink" title="三 进阶实践-实现一个简单的 &lt;Form&gt; &lt;FormItem&gt;嵌套组件"></a>三 进阶实践-实现一个简单的 <code>&lt;Form&gt; &lt;FormItem&gt;</code>嵌套组件</h2><p>接下来到实践环节了。需要编写一个实践 demo ，<strong>用于表单状态管理的 <code>&lt;Form&gt;</code> 和 <code>&lt;FormItem&gt;</code> 组件</strong></p>
+<ul>
+<li><code>&lt;Form&gt;</code>用于管理表单状态；</li>
+<li><code>&lt;FormItem&gt;</code>用于管理 <code>&lt;Input&gt;</code>输入框组件。,</li>
+</ul>
+<p>编写的组件能够实现的功能是：</p>
+<ul>
+<li>①<code>Form</code> 组件可以被 ref 获取实例。然后可以调用实例方法 <code>submitForm</code> 获取表单内容，用于提交表单，<code>resetForm</code> 方法用于重置表单。</li>
+<li>②<code>Form</code>组件自动过滤掉除了 <code>FormItem</code>之外的其他React元素</li>
+<li>③<code>FormItem</code> 中 name 属性作为表单提交时候的 key ，还有展示的 label 。</li>
+<li>④ <code>FormItem</code> 可以自动收集 <code>&lt;Input/&gt;</code> 表单的值。</li>
+</ul>
+<p>目的：</p>
+<p>希望通过这实践 demo 让大家学习到：</p>
+<ul>
+<li><strong>① props 基本使用</strong></li>
+<li><strong>② 学会操作 props.children ，隐式注入 props</strong></li>
+<li><strong>③ 掌握表单嵌套原理(现实情况要比这个复杂)</strong></li>
+</ul>
+<p><strong>组件使用</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="title function_">default</span>  () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> form =  <span class="title class_">React</span>.<span class="title function_">useRef</span>(<span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">submit</span> =(<span class="params"></span>)=&gt;&#123;</span><br><span class="line">        <span class="comment">/* 表单提交 */</span></span><br><span class="line">        form.<span class="property">current</span>.<span class="title function_">submitForm</span>(<span class="function">(<span class="params">formValue</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(formValue)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">reset</span> = (<span class="params"></span>)=&gt;&#123;</span><br><span class="line">        <span class="comment">/* 表单重置 */</span></span><br><span class="line">        form.<span class="property">current</span>.<span class="title function_">resetForm</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;box&#x27;</span> &gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Form</span> <span class="attr">ref</span>=<span class="string">&#123;</span> <span class="attr">form</span> &#125; &gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">FormItem</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">label</span>=<span class="string">&quot;我是&quot;</span>  &gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Input</span>   /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">FormItem</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">FormItem</span> <span class="attr">name</span>=<span class="string">&quot;mes&quot;</span> <span class="attr">label</span>=<span class="string">&quot;我想对大家说&quot;</span>  &gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Input</span>   /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">FormItem</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span>  <span class="attr">placeholder</span>=<span class="string">&quot;不需要的input&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Input</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Form</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;btns&quot;</span> &gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&quot;searchbtn&quot;</span>  <span class="attr">onClick</span>=<span class="string">&#123;</span> <span class="attr">submit</span> &#125; &gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&quot;concellbtn&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;</span> <span class="attr">reset</span> &#125; &gt;</span>重置<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>1 编写 <code>&lt;Form&gt;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Form</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">    state=&#123;</span><br><span class="line">        <span class="attr">formData</span>:&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 用于提交表单数据 */</span></span><br><span class="line">    submitForm=<span class="function">(<span class="params">cb</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="title function_">cb</span>(&#123; ...<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">formData</span> &#125;)</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">/* 获取重置表单数据 */</span></span><br><span class="line">    resetForm=<span class="function">()=&gt;</span>&#123;</span><br><span class="line">       <span class="keyword">const</span> &#123; formData &#125; = <span class="variable language_">this</span>.<span class="property">state</span></span><br><span class="line">       <span class="title class_">Object</span>.<span class="title function_">keys</span>(formData).<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">           formData[item] = <span class="string">&#x27;&#x27;</span></span><br><span class="line">       &#125;)</span><br><span class="line">       <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">           formData</span><br><span class="line">       &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 设置表单数据层 */</span></span><br><span class="line">    setValue=<span class="function">(<span class="params">name,value</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">            <span class="attr">formData</span>:&#123;</span><br><span class="line">                ...<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">formData</span>,</span><br><span class="line">                [name]:value</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; children &#125; = <span class="variable language_">this</span>.<span class="property">props</span></span><br><span class="line">        <span class="keyword">const</span> renderChildren = []</span><br><span class="line">        <span class="title class_">React</span>.<span class="property">Children</span>.<span class="title function_">forEach</span>(children,<span class="function">(<span class="params">child</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(child.<span class="property">type</span>.<span class="property">displayName</span> === <span class="string">&#x27;formItem&#x27;</span>)&#123;</span><br><span class="line">                <span class="keyword">const</span> &#123; name &#125; = child.<span class="property">props</span></span><br><span class="line">                <span class="comment">/* 克隆`FormItem`节点，混入改变表单单元项的方法 */</span></span><br><span class="line">                <span class="keyword">const</span> <span class="title class_">Children</span> = <span class="title class_">React</span>.<span class="title function_">cloneElement</span>(child,&#123; </span><br><span class="line">                    <span class="attr">key</span>:name ,                             <span class="comment">/* 加入key 提升渲染效果 */</span></span><br><span class="line">                    <span class="attr">handleChange</span>:<span class="variable language_">this</span>.<span class="property">setValue</span> ,           <span class="comment">/* 用于改变 value */</span></span><br><span class="line">                    <span class="attr">value</span>:<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">formData</span>[name] ||  <span class="string">&#x27;&#x27;</span> <span class="comment">/* value 值 */</span></span><br><span class="line">                &#125;,child.<span class="property">props</span>.<span class="property">children</span>)</span><br><span class="line">                renderChildren.<span class="title function_">push</span>(<span class="title class_">Children</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> renderChildren</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 增加组件类型type  */</span></span><br><span class="line"><span class="title class_">Form</span>.<span class="property">displayName</span> = <span class="string">&#x27;form&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>设计思想：</p>
+<ul>
+<li>首先考虑到 <code>&lt;Form&gt;</code> 在不使用 <code>forwardRef</code> 前提下，最好是类组件，因为只有类组件才能获取实例。</li>
+<li>创建一个 state 下的 formData属性，用于收集表单状态。</li>
+<li>要封装  <strong>重置表单</strong> ， <strong>提交表单</strong> ，<strong>改变表单单元项</strong>的方法。</li>
+<li>要过滤掉除了 <code>FormItem</code> 元素之外的其他元素，那么怎么样知道它是不是 <code>FormItem</code>，这里教大家一种方法，可以给函数组件或者类组件绑定静态属性来证明它的身份，然后在遍历<br>props.children 的时候就可以在 React element 的 type 属性(类或函数组件本身)上，验证这个身份，在这个<br>demo 项目，给函数绑定的 displayName 属性，证明组件身份。</li>
+<li>要克隆 <code>FormItem</code> 节点，将改变表单单元项的方法 handleChange 和表单的值 value 混入 props 中。</li>
+</ul>
+<p>2 编写 <code>&lt;FormItem&gt;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">FormItem</span>(<span class="params">props</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; children , name  , handleChange , value , label  &#125; = props</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">onChange</span> = (<span class="params">value</span>) =&gt; &#123;</span><br><span class="line">        <span class="comment">/* 通知上一次value 已经改变 */</span></span><br><span class="line">        <span class="title function_">handleChange</span>(name,value)</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;form&#x27;</span> &gt;</span></span></span><br><span class="line"><span class="language-xml">       <span class="tag">&lt;<span class="name">span</span> <span class="attr">className</span>=<span class="string">&quot;label&quot;</span> &gt;</span>&#123; label &#125;:<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">       &#123;</span></span><br><span class="line"><span class="language-xml">            React.isValidElement(children) &amp;&amp; children.type.displayName === &#x27;input&#x27; </span></span><br><span class="line"><span class="language-xml">            ? React.cloneElement(children,&#123; onChange , value &#125;)</span></span><br><span class="line"><span class="language-xml">            : null</span></span><br><span class="line"><span class="language-xml">       &#125;</span></span><br><span class="line"><span class="language-xml">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>  </span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">FormItem</span>.<span class="property">displayName</span> = <span class="string">&#x27;formItem&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>设计思想：</p>
+<ul>
+<li><code>FormItem</code>一定要绑定 displayName 属性，用于让 <code>&lt;Form&gt;</code> 识别 <code>&lt;FormItem /&gt;</code></li>
+<li>声明 <code>onChange</code> 方法，通过 props 提供给 <code>&lt;Input&gt;</code>，作为改变 value 的回调函数。</li>
+<li><code>FormItem</code>过滤掉除了 <code>input</code> 以外的其他元素。</li>
+</ul>
+<p>3 编写 <code>&lt;Input /&gt;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Input 组件, 负责回传value值 */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Input</span>(<span class="params">&#123; onChange , value &#125;</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span>  <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">className</span>=<span class="string">&quot;input&quot;</span>  <span class="attr">onChange</span>=<span class="string">&#123;</span> (<span class="attr">e</span>)=&gt;</span>( onChange &amp;&amp; onChange(e.target.value) ) &#125; value=&#123;value&#125;  /&gt;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 给Component 增加标签 */</span></span><br><span class="line"><span class="title class_">Input</span>.<span class="property">displayName</span> = <span class="string">&#x27;input&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>设计思想：</p>
+<ul>
+<li>绑定 displayName 标识 <code>input</code>。</li>
+<li><code>input</code> DOM 元素，绑定 onChange 方法，用于传递 value 。</li>
+</ul>
+<h2 id="四-总结"><a href="#四-总结" class="headerlink" title="四 总结"></a>四 总结</h2><p>通过本章节，系统学习了 props ，总结一下这节课的内容：</p>
+<ul>
+<li>系统学习 props ，props是什么，props的作用。</li>
+<li>操作 props 小技巧。</li>
+<li>掌握了插槽组件的使用与编写。</li>
+<li>实践一个 demo ，<code>&lt;Form&gt; &lt;FormItem&gt;</code> 嵌套插槽组件协调管理表单状态。</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/')">React进阶实践指南4-认识Props</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=React进阶实践指南4-认识Props&amp;url=http://kaiyiya.github.io/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/&amp;pic=https://bu.dusays.com/2025/06/16/684f70a04f5f7.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>React进阶实践指南<span class="tagsPageCount">5</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/06/16/684f7116dc528.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/06/11/%E7%AE%97%E6%B3%95/%E9%9A%BE%E5%BA%A6I/%E5%8A%A0%E4%B8%80/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/11/6848dbdc3843b.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">66.加一</div></div></a></div><div class="next-post pull-right"><a href="/2025/06/16/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E7%90%86%E8%A7%A3lifeCycle/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f7116dc528.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">React进阶实践指南5-理解lifeCycle</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/06/16/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E7%90%86%E8%A7%A3lifeCycle/" title="React进阶实践指南5-理解lifeCycle"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f7116dc528.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-16</div><div class="title">React进阶实践指南5-理解lifeCycle</div></div></a></div><div><a href="/2025/06/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Component/" title="React进阶实践指南2-认识ComponentX"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/10/68478ab8d190e.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-10</div><div class="title">React进阶实践指南2-认识ComponentX</div></div></a></div><div><a href="/2025/06/09/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86JSX/" title="React进阶实践指南1-认识JSX"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/09/684698e47a6cb.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-09</div><div class="title">React进阶实践指南1-认识JSX</div></div></a></div><div><a href="/2025/06/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86State/" title="React进阶实践指南3-认识State"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/10/68478b7371395.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-10</div><div class="title">React进阶实践指南3-认识State</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">一 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%90%86%E8%A7%A3props"><span class="toc-number">2.</span> <span class="toc-text">二 理解props</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-props%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">1 props是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-React%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E7%9A%84props%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2 React如何定义的props？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%9B%91%E5%90%ACprops%E6%94%B9%E5%8F%98"><span class="toc-number">2.3.</span> <span class="toc-text">3 监听props改变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-props-children%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">4 props children模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%93%8D%E4%BD%9C-props-%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">2.5.</span> <span class="toc-text">5 操作 props 小技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1-props"><span class="toc-number">2.5.1.</span> <span class="toc-text">抽象 props</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5props"><span class="toc-number">2.5.2.</span> <span class="toc-text">注入props</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84-%E5%B5%8C%E5%A5%97%E7%BB%84%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">三 进阶实践-实现一个简单的 &lt;Form&gt; &lt;FormItem&gt;嵌套组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">四 总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/16/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E7%90%86%E8%A7%A3lifeCycle/" title="React进阶实践指南5-理解lifeCycle"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f7116dc528.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React进阶实践指南5-理解lifeCycle"/></a><div class="content"><a class="title" href="/2025/06/16/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E7%90%86%E8%A7%A3lifeCycle/" title="React进阶实践指南5-理解lifeCycle">React进阶实践指南5-理解lifeCycle</a><time datetime="2025-06-16T01:13:30.000Z" title="发表于 2025-06-16 09:13:30">2025-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/" title="React进阶实践指南4-认识Props"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/16/684f70a04f5f7.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React进阶实践指南4-认识Props"/></a><div class="content"><a class="title" href="/2025/06/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Props/" title="React进阶实践指南4-认识Props">React进阶实践指南4-认识Props</a><time datetime="2025-06-11T02:34:41.000Z" title="发表于 2025-06-11 10:34:41">2025-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/11/%E7%AE%97%E6%B3%95/%E9%9A%BE%E5%BA%A6I/%E5%8A%A0%E4%B8%80/" title="66.加一"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/11/6848dbdc3843b.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="66.加一"/></a><div class="content"><a class="title" href="/2025/06/11/%E7%AE%97%E6%B3%95/%E9%9A%BE%E5%BA%A6I/%E5%8A%A0%E4%B8%80/" title="66.加一">66.加一</a><time datetime="2025-06-11T00:53:31.000Z" title="发表于 2025-06-11 08:53:31">2025-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86State/" title="React进阶实践指南3-认识State"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/10/68478b7371395.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React进阶实践指南3-认识State"/></a><div class="content"><a class="title" href="/2025/06/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86State/" title="React进阶实践指南3-认识State">React进阶实践指南3-认识State</a><time datetime="2025-06-10T01:20:00.000Z" title="发表于 2025-06-10 09:20:00">2025-06-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Component/" title="React进阶实践指南2-认识ComponentX"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/10/68478ab8d190e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React进阶实践指南2-认识ComponentX"/></a><div class="content"><a class="title" href="/2025/06/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97-%E8%AE%A4%E8%AF%86Component/" title="React进阶实践指南2-认识ComponentX">React进阶实践指南2-认识ComponentX</a><time datetime="2025-06-10T00:21:47.000Z" title="发表于 2025-06-10 08:21:47">2025-06-10</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/React%E8%BF%9B%E9%98%B6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" style="font-size: 0.88rem;">React进阶实践指南<sup>5</sup></a><a href="/tags/%E6%89%8B%E5%86%99linux/" style="font-size: 0.88rem;">手写linux<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95%EF%BC%88%E9%9A%BE%E5%BA%A6II%EF%BC%89/" style="font-size: 0.88rem;">算法（难度II）<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95%EF%BC%88%E9%9A%BE%E5%BA%A6I%EF%BC%89/" style="font-size: 0.88rem;">算法（难度I）<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
