@@ -1,0 +1,1071 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>具体数学-作业1 | 飞向月球的猫</title><meta name="keywords" content="深度学习"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="具体数学-作业1"><meta name="application-name" content="具体数学-作业1"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="具体数学-作业1"><meta property="og:url" content="http://kaiyiya.github.io/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="深度学习"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/09/02/68b6d8c0649e8.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/09/02/68b6d8c0649e8.jpg"><meta name="description" content="深度学习"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: '具体数学-作业1',
+  postAI: '',
+  pageFillDescription: '第一章, 热身题, 课后题, 选做题, 约瑟夫问题的变体, (1) 闭式解推导, m x3D 3的情况, m x3D 4的情况, m x3D 5的情况, (2) C++程序实现, 多桩柱汉诺塔（Lucas 规则）选做题, (1) 一般等式x2F不等式与性质, (2) C++ 源码与指定 (NM) 的精确数值, 第2章 和式, 2, 11, 19, 20, 21, 22, 28, 29, 追加题：前 n 个正整数五次幂和的闭式至少三种不同方法, 方法A：Stirling 数 + 二项系数求和（组合恒等式法）, 方法B：六次差分x2F多项式拟合（有限差分法）, 方法C：二项式望远镜（用 $(k+1)^6-k^6)$线性消元）, 补充题：证明二重求和可拆为两个单和的乘积第一章热身题错在基本情况当的时候没问题当时会出现问题考虑移动个圆盘从到的过程首先将个较小圆盘从移动到这需要次移动然后将最大的圆盘从移动到次移动接着将个圆盘从移动回这需要次移动以便为空将最大的圆盘从移动到次移动最后将个圆盘从移动到这需要次移动总移动次数为求解即可答案是备注正确的叠放是指将个圆盘分为三组那么每组的顺序从小到大的记在的限制下我们会在根桩柱上都遇到个圆盘的每一种正确的叠放关于做数学归纳法即可当时的移动路径为所以结论成立假设当时结论成立下面证明时结论也成立考虑之前的移动步骤步骤空空空空空空空空考虑在的位置如果在由归纳假设可知将从移动到会遇到每一种正确的叠放这也对应了在情形下每一种正确的叠放在的情形同理可得所以时结论也成立记对于个圆盘的任意摆列方式按照卢卡斯原来的规则最多需要次移动将圆盘移动到关于做数学归纳法即可当时结论显然假设当时结论成立下面证明时结论也成立如果在那么对剩余个圆盘运用即可移动次数如果不在由对称性不妨设在那么移动过程如下所以移动次数两个圆最多相交于两点所以第个圆最多和前个圆交于点最多增加块区域所以总区域最多为补充说明答案中给的卵形和圆的最大不同之处在于两个卵形可以有个交点记条直线产生的有界区域最大个数为考虑第条直线该直线最多和条直线相交即产生个交点相邻两个点最多可以增加一个有界区域所以最多增加个有界区域因此即结论都不成立所以无法使用数学归纳法课后题所以的定义如上所以结论成立对于题目假设成立令那么所以所以对于题目如果成立那么所以成立对于题目首先由成立以及的结论可得成立接着对于任意总存在满足所以由可得从而成立步骤空空空空空空注意到和等价所以另一方面要使得第个圆盘移动到该步骤至少要次并且此时前个圆盘应该在的最少步骤数为的最少步骤数为所以综上步骤空空空空空空空空所以另一方面第个圆盘从到必然要经历两步第一步此时前个圆盘必然在即前个圆盘要从移动到这部分的步骤数第二步此时前个圆盘必然在即前个圆盘要从移动到所以这部分的步骤数第三步将上的圆盘移动到这步分的步骤数所以综上先将前个圆盘移动到然后将最后两个圆盘移动到最后将上的圆盘移动到所以递推关系为求解可得注意这种移动方式保持尺寸大小的圆盘顺序不变尺寸大小为的圆盘顺序相反利用归纳法可证显然有如下移动方式步骤步骤数空空空空空空空空所以另一方面按照顺序从到至少需要次具体如下要使得这步能移动前个圆盘必然在这部分的步骤数要使得这步能移动前个圆盘必然在这部分的步骤数要使得这步能移动前个圆盘必然在这部分的步骤数最后将上的圆盘移动到这部分的步骤数所以有注意按照的方式操作次最终顺序必然是原始的顺序从而上述不等号可以取到等号因此选做题约瑟夫问题的变体现在我们要选择第个不一定小于人作为每次的幸运者而不是第个闭式解推导对于的情况我们推导的闭式解的情况对于的约瑟夫问题我们有递推关系闭式解证明设其中当时经过轮后剩余个人继续这个过程最终剩余第个人所以当时经过轮后剩余个人此时从第个人开始所以的情况闭式解的情况闭式解程序实现对于的情况我们使用高效的算法方法优化的递推算法转换为方法分块优化算法适用于大方法数学公式法适用于特定值经典约瑟夫问题公式对于其他值使用递推约瑟夫问题求解耗时多桩柱汉诺塔规则选做题题意有根桩初始所有个圆盘在目标将其在规则下移动到问最少步数题目要求提出一般性的等式不等式计算的精确最少步数并附源码一般等式不等式与性质三柱情形基线单调性上界递推常用算法下界当时可达成上界先将前个圆盘各自停在不同的中间柱上移最大圆盘再复位边界条件无解综上一个可用于精确求解的广泛接受的关系是当时取等于源码与指定的精确数值下述程序使用记忆化实现递推能在毫秒级算出题目给定的规模为安全起见使用位中间量避免乘的潜在溢出本题规模用足够安全题目内足够多时可达枚举拆分位中间量解答第章和式因此回顾页可得定义那么和式一和式二和式三记将互换我们得到另一方面因此特别的取可得第二个等号位置已经有错误了因为分解的两个级数不绝对收敛追加题前个正整数五次幂和的闭式至少三种不同方法记结论统一答案下面给出三种彼此独立的方法不使用的号方法且思路尽量不同方法数二项系数求和组合恒等式法利用恒等式数第二类为第二类数两侧对求和并用得到取故将右侧化简即可得到上面的封闭形式方法六次差分多项式拟合有限差分法已知为关于的次多项式且首项系数为因为设代入的精确值由直接求和或递推得到解线性方程组或用有限差分表令第六差为常数从而唯一确定系数解得方法二项式望远镜用线性消元展开对到求和左侧望远镜得右侧得到代入已知求解即得同一封闭式补充题证明二重求和可拆为两个单和的乘积命题有限情形令为有限集合给定数列则有证明由加法对乘法的分配律与交换律证毕备注可数无限情形若两列绝对可和即且则上式仍成立可由定理或绝对收敛下的求和交换律推出',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-03 09:27:20',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url">深度学习</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>深度学习</span></a></span></div></div><h1 class="post-title" itemprop="name headline">具体数学-作业1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-07T06:11:41.000Z" title="发表于 2025-10-07 14:11:41">2025-10-07</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-03T01:27:20.000Z" title="更新于 2025-11-03 09:27:20">2025-11-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="具体数学-作业1"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/09/02/68b6d8c0649e8.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/"><header><a class="post-meta-categories" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url">深度学习</a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url">深度学习</a><h1 id="CrawlerTitle" itemprop="name headline">具体数学-作业1</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-10-07T06:11:41.000Z" title="发表于 2025-10-07 14:11:41">2025-10-07</time><time itemprop="dateCreated datePublished" datetime="2025-11-03T01:27:20.000Z" title="更新于 2025-11-03 09:27:20">2025-11-03</time></header><h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><h2 id="热身题"><a href="#热身题" class="headerlink" title="热身题"></a>热身题</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759818639443.png"></p>
+<p>错在基本情况,当n&gt;2的时候,没问题;当n&#x3D;2时,会出现问题.</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759818676238.png"></p>
+<p>考虑移动n个圆盘从A到B的过程：</p>
+<ol>
+<li>首先将n-1个较小圆盘从A移动到B（这需要T_{n-1}次移动）。</li>
+<li>然后将最大的圆盘从A移动到M（1次移动）。</li>
+<li>接着将n-1个圆盘从B移动回A（这需要T_{n-1}次移动），以便B为空。</li>
+<li>将最大的圆盘从M移动到B（1次移动）。</li>
+<li>最后将n-1个圆盘从A移动到B（这需要T_{n-1}次移动）。</li>
+</ol>
+<p>总移动次数为：<br>T_n &#x3D; T_{n-1} + 1 + T_{n-1} + 1 + T_{n-1} &#x3D; 3T_{n-1} + 2</p>
+<p>求解即可,答案是</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759820581311.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759820055743.png"></p>
+<p>备注：</p>
+<p>正确的叠放是指，将$n$个圆盘分为三组，那么每组的顺序从小到大的。</p>
+<p>记</p>
+<ul>
+<li>$T(n)$: 在2的限制下,我们会在3根桩柱上都遇到$n $个圆盘的每一种正确的叠放。</li>
+</ul>
+<p>关于$n$做数学归纳法即可。</p>
+<p>当$k &#x3D;1$时，$k$的移动路径为$A\to C\to B$，所以结论成立。</p>
+<p>假设当$k&#x3D; n -1$时结论成立，下面证明$k&#x3D;n$时结论也成立。</p>
+<p>考虑之前的移动步骤：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>$A$</th>
+<th>$B$</th>
+<th>$C$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>$[1,\ldots, n]$</td>
+<td>空</td>
+<td>空</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$[n]$</td>
+<td>$[1,\ldots, n-1]$</td>
+<td>空</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>空</td>
+<td>$[1,\ldots, n-1]$</td>
+<td>$[n]$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>$[1,\ldots, n-1]$</td>
+<td>空</td>
+<td>$[n]$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>$[1,\ldots, n-1]$</td>
+<td>$[n]$</td>
+<td>空</td>
+</tr>
+<tr>
+<td>$5$</td>
+<td>空</td>
+<td>$[1,\ldots, n]$</td>
+<td>空</td>
+</tr>
+</tbody></table>
+<p>考虑$n$在的位置：</p>
+<p>如果$n$在$A$，由归纳假设可知将$[1,\ldots,n-1]$从$A$移动到$B$会遇到每一种正确的叠放，这也对应了$n$在$A$情形下每一种正确的叠放。$n$在$B,C$的情形同理可得。所以$k&#x3D;n$时结论也成立。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759820408665.png"></p>
+<p>记</p>
+<ul>
+<li>$T(n)$: 对于$n$个圆盘的任意摆列方式，按照卢卡斯原来的规则，最多需要$2^n-1$次移动将圆盘移动到$B$。</li>
+</ul>
+<p>关于$n$做数学归纳法即可。</p>
+<p>当$n&#x3D;1$时结论显然。</p>
+<p>假设当$n&#x3D; m -1$时结论成立，下面证明$n&#x3D;m$时结论也成立。</p>
+<p>如果$m$在$B$，那么对剩余$n-1$个圆盘运用$T(n-1)$即可，移动次数</p>
+<p>$$<br>\le 2^{m-1} - 1 &lt; 2^m -1<br>$$</p>
+<p>如果$m$不在$B$，由对称性不妨设$m$在$A$，那么移动过程如下：</p>
+<ul>
+<li>$[1,\ldots, m-1] \to C$</li>
+<li>$[m]\to B$</li>
+<li>$[1,\ldots, m-1] \to B$</li>
+</ul>
+<p>所以移动次数</p>
+<p>$$<br>\le 1 + 2^{m-1} -1+2^{m-1} -1 \le 2^m -1<br>$$</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759820844060.png"></p>
+<p>两个圆最多相交于两点，所以第$4$个圆最多和前$3$个圆交于$6$点，最多增加$6$块区域，所以总区域最多为</p>
+<p>$$<br>6+8 &#x3D;14<br>$$</p>
+<p>补充说明：</p>
+<p>答案中给的卵形和圆的最大不同之处在于，两个卵形可以有$4$个交点。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759821177420.png"></p>
+<p>记$n$条直线产生的有界区域最大个数为$a_n$。</p>
+<p>考虑第$n$条直线，该直线最多和$n-1$条直线相交，即产生$n-1$个交点，相邻两个点最多可以增加一个有界区域，所以最多增加$n-2$个有界区域，因此</p>
+<p>$$<br>\begin{aligned}<br>a_n&amp;&#x3D; a_{n-1} + n-2\<br>a_1&amp;&#x3D;a_2 &#x3D;0\<br>a_n &amp; &#x3D;a_1 + \sum_{i&#x3D;0}^{n-2} i\<br>&amp;&#x3D;\frac{(n-2)(n-1)}{2}<br>\end{aligned}<br>$$</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759821278902.png"></p>
+<p>$$<br>\begin{aligned}<br>H(1)&amp;&#x3D; J(2)- J(1)\<br>&amp;&#x3D; 2J(1)-1-J(1)\<br>&amp;&#x3D;0</p>
+<p>\end{aligned}<br>$$</p>
+<p>即base case结论都不成立，所以无法使用数学归纳法。</p>
+<h2 id="课后题"><a href="#课后题" class="headerlink" title="课后题"></a>课后题</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759821492608.png"></p>
+<p>$$<br>\begin{aligned}<br>Q_0&amp;&#x3D; \alpha\<br>Q_1&amp;&#x3D; \beta\<br>Q_2&amp;&#x3D;\frac{1+Q_1}{Q_0}\<br>&amp;&#x3D; \frac{1+\beta}{\alpha}\<br>Q_3&amp;&#x3D;\frac{1+Q_2}{Q_1}\<br>&amp;&#x3D; \frac{1+\frac{1+\beta}{\alpha}}{\beta}\<br>&amp;&#x3D; \frac{1+\alpha+\beta}{\alpha \beta}\<br>Q_4&amp;&#x3D;\frac{1+Q_3}{Q_2}\<br>&amp;&#x3D; \frac{1+\frac{1+\alpha+\beta}{\alpha \beta}}{ \frac{1+\beta}{\alpha}}\<br>&amp;&#x3D; \frac{1+\alpha+\beta+\alpha\beta}{(1+\beta) \beta}\<br>&amp;&#x3D;\frac{1+\alpha}{\beta}\<br>Q_5 &amp;&#x3D; \frac{1+\frac{1+\alpha}{\beta}}{\frac{1+\alpha+\beta}{\alpha \beta}}\<br>&amp;&#x3D;\alpha\<br>Q_6&amp;&#x3D;\frac{1+Q_5}{Q_4}\<br>&amp;&#x3D;\frac{1 + \alpha}{\frac{1+\alpha}{\beta}}\<br>&amp;&#x3D;\beta<br>\end{aligned}<br>$$</p>
+<p>所以</p>
+<p>$$<br>Q_{k} &#x3D;Q_{k-5},k\ge 5<br>$$</p>
+<p>$Q&#x3D;0,\ldots, 4$的定义如上。所以结论成立</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759821504529.png"></p>
+<p>对于题目a:</p>
+<p>假设$P(n)$成立，令</p>
+<p>$$<br>x_{n}&#x3D;\left(x_{1}+\ldots+x_{n-1}\right) &#x2F;(n-1)<br>$$</p>
+<p>那么</p>
+<p>$$<br>\begin{aligned}<br>\frac{x_{1}+\ldots+x_{n}}{n}<br>&amp;&#x3D; \frac{x_{1}+\ldots+x_{n-1}+\left(x_{1}+\ldots+x_{n-1}\right) &#x2F;(n-1)}{n}\<br>&amp;&#x3D; \frac{x_{1}+\ldots+x_{n-1}}{n-1}</p>
+<p>\end{aligned}<br>$$</p>
+<p>所以</p>
+<p>$$<br>\begin{aligned}<br>x_{1} \ldots x_{n} &amp;\le \left(\frac{x_{1}+\ldots+x_{n}}{n}\right)^{n} \Leftrightarrow\<br>x_{1} \ldots x_{n-1}\frac{x_{1}+\ldots+x_{n-1}}{n-1} &amp;\le  \left( \frac{x_{1}+\ldots+x_{n-1}}{n-1}\right)^n  \Leftrightarrow\<br>x_{1} \ldots x_{n-1}&amp;\le  \left( \frac{x_{1}+\ldots+x_{n-1}}{n-1}\right)^{n-1}<br>\end{aligned}<br>$$</p>
+<p>所以$P(n)\Rightarrow P(n-1)$。</p>
+<p>对于题目b:</p>
+<p>如果$P(n), P(2)$成立，那么</p>
+<p>$$<br>\begin{aligned}<br>\prod_{i&#x3D;1}^{2n} x_i<br>&amp;&#x3D; \left(\prod_{i&#x3D;1}^{n} x_i\right) \times \left(\prod_{i&#x3D;n+1}^{2n} x_i\right)\<br>&amp;\le  \left(\frac 1 n \sum_{i&#x3D;1}^{n} x_i\right)^n \times \left(\frac 1 n\sum_{i&#x3D;n+1}^{2n} x_i\right)^n\<br>&amp;\le  \left(\left(\frac 1 n \sum_{i&#x3D;1}^{n} x_i \right) \times \left(\frac 1 n \sum_{i&#x3D;n + 1}^{2n} x_i \right)\right)^n\<br>&amp;\le  \left(\left(\frac 1 {2n} \sum_{i&#x3D;1}^{2n} x_i\right)^2\right)^n\<br>&amp;&#x3D;\left(\frac 1 {2n} \sum_{i&#x3D;1}^{2n} x_i\right)^{2n}</p>
+<p>\end{aligned}<br>$$</p>
+<p>所以$P(2n)$成立。</p>
+<p>对于题目c:</p>
+<p>首先由$P(2)$成立以及(b)的结论可得$P(2^{k})$成立。</p>
+<p>接着，对于任意$n \neq 2^k$，总存在$k$，满足$n&lt; 2^k $，所以由(a)可得</p>
+<p>$$<br>P(2^k)\Rightarrow P(2^k -1) \Rightarrow\ldots \Rightarrow P(n)<br>$$</p>
+<p>从而$P(n)$成立。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759821521546.png"></p>
+<p>$A\to B$：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>$A$</th>
+<th>$B$</th>
+<th>$C$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>$[1,\ldots, n]$</td>
+<td>空</td>
+<td>空</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$[n]$</td>
+<td>空</td>
+<td>$[1,\ldots, n-1]$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>空</td>
+<td>$[n]$</td>
+<td>$[1,\ldots, n-1]$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>空</td>
+<td>$[1,\ldots, n]$</td>
+<td>空</td>
+</tr>
+</tbody></table>
+<p>注意到$A\to C, C\to B$和$B\to A$等价，所以</p>
+<p>$$<br>Q_n \le 2 R_{n-1}+1<br>$$</p>
+<p>另一方面，要使得第$n$个圆盘移动到$B$，该步骤至少要$1$次，并且此时前$n-1$个圆盘应该在$C$，$A\to C$的最少步骤数为$R_{n-1}$，$C\to B$的最少步骤数为$R_{n-1}$，所以</p>
+<p>$$<br>Q_n \ge 2 R_{n-1}+1<br>$$</p>
+<p>综上</p>
+<p>$$<br>Q_{n}&#x3D;\left{\begin{array}{cc}<br>0, &amp; n&#x3D;0 \<br>2 R_{n-1}+1, &amp; n&gt;0<br>\end{array}\right.<br>$$</p>
+<p>$B\to A$：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>$A$</th>
+<th>$B$</th>
+<th>$C$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>空</td>
+<td>$[1,\ldots, n]$</td>
+<td>空</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$[1,\ldots, n-1]$</td>
+<td>$[n] $</td>
+<td>空</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$[1,\ldots, n-1]$</td>
+<td>空</td>
+<td>$[n]$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>空</td>
+<td>$[1,\ldots, n-1]$</td>
+<td>$[n]$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>$[n]$</td>
+<td>$[1,\ldots, n-1]$</td>
+<td>空</td>
+</tr>
+<tr>
+<td>$5$</td>
+<td>$[1,\ldots, n]$</td>
+<td>空</td>
+<td>空</td>
+</tr>
+</tbody></table>
+<p>所以</p>
+<p>$$<br>\begin{aligned}<br>R_n &amp;\le R_{n-1}+1 +Q_{n-1}+1+R_{n-1}\<br>&amp;&#x3D; 2R_{n-1}+1+ Q_{n-1}+1\<br>&amp;&#x3D; Q_n +Q_{n-1}+1</p>
+<p>\end{aligned}<br>$$</p>
+<p>另一方面，第$n$个圆盘从$B$到$A$必然要经历两步：</p>
+<ul>
+<li>第一步：$B\to C$，此时前$n-1$个圆盘必然在$A$，即前$n-1$个圆盘要从$B$移动到$A$，这部分的步骤数$\ge  R_{n-1}+1$</li>
+<li>第二步：$C\to A$，此时前$n-1$个圆盘必然在$B$，即前$n-1$个圆盘要从$A$移动到$B$，所以这部分的步骤数$\ge Q_{n-1}+1$</li>
+<li>第三步：将$B$上的圆盘移动到$A$，这步分的步骤数$\ge R_{n-1}$</li>
+</ul>
+<p>所以</p>
+<p>$$<br>\begin{aligned}<br>R_n &amp;\ge R_{n-1}+1 +Q_{n-1}+1+R_{n-1}\<br>&amp;&#x3D; 2R_{n-1}+1+ Q_{n-1}+1\<br>&amp;&#x3D; Q_n +Q_{n-1}+1</p>
+<p>\end{aligned}<br>$$</p>
+<p>综上</p>
+<p>$$<br>R_{n}&#x3D;\left{\begin{array}{cc}<br>0, &amp; n&#x3D;0 \<br>Q_{n}+Q_{n-1}+1, &amp; n&gt;0<br>\end{array}\right.<br>$$</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/1759821536991.png"></p>
+<p>(a)</p>
+<p>先将前$2n-2$个圆盘移动到$C$，然后将最后两个圆盘移动到$B$，最后将$C$上的圆盘移动到$B$，所以递推关系为</p>
+<p>$$<br>\begin{aligned}<br>A_n &amp;&#x3D;2 A_{n-1}+2\<br>A_1 &amp;&#x3D; 2\<br>\end{aligned}<br>$$</p>
+<p>求解可得</p>
+<p>$$<br>\begin{aligned}<br>A_n+2 &amp; &#x3D;2(A_{n-1} +2)\<br>&amp;&#x3D; 2^{n-1}(A_1 + 2)\<br>&amp;&#x3D; 2^{n+1}\<br>A_n &amp;&#x3D; 2^{n+1}-2</p>
+<p>\end{aligned}<br>$$</p>
+<p>注意这种移动方式保持尺寸大小$\le n-1$的圆盘顺序不变，尺寸大小为$n$的圆盘顺序相反（利用归纳法可证）。</p>
+<p>(b)</p>
+<p>显然</p>
+<p>$$<br>B_1 &#x3D; 3<br>$$</p>
+<p>$B\to A$有如下移动方式：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>$A$</th>
+<th>$B$</th>
+<th>$C$</th>
+<th>步骤数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$0$</td>
+<td>$[1,-1,\ldots, n,-n]$</td>
+<td>空</td>
+<td>空</td>
+<td>$0$</td>
+</tr>
+<tr>
+<td>$1$</td>
+<td>$[n, -n]$</td>
+<td>$[1,-1\ldots,-(n-1), (n-1)]$</td>
+<td>空</td>
+<td>$A_{n-1}$</td>
+</tr>
+<tr>
+<td>$2$</td>
+<td>$[-n]$</td>
+<td>$[1,-1\ldots,-(n-1), (n-1)]$</td>
+<td>$[n]$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$3$</td>
+<td>$[-n] $</td>
+<td>空</td>
+<td>$[1,-1\ldots,(n-1), -(n-1),n]$</td>
+<td>$A_{n-1}$</td>
+</tr>
+<tr>
+<td>$4$</td>
+<td>空</td>
+<td>$[-n]$</td>
+<td>$[1,-1\ldots,(n-1), -(n-1),n]$</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$5$</td>
+<td>$[1,-1\ldots,-(n-1), (n-1),n]$</td>
+<td>$[-n]$</td>
+<td>$[n]$</td>
+<td>$A_{n-1}$</td>
+</tr>
+<tr>
+<td>$6$</td>
+<td>$[1,-1\ldots,-(n-1), (n-1),n]$</td>
+<td>$[n,-n]$</td>
+<td>空</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>$7$</td>
+<td>空</td>
+<td>$[1,-1,\ldots,(n-1), -(n-1), n,-n]$</td>
+<td>空</td>
+<td>$A_{n-1}$</td>
+</tr>
+</tbody></table>
+<p>所以</p>
+<p>$$<br>B_n \le 4A_{n-1}+3<br>$$</p>
+<p>另一方面，$[n,-n]$按照顺序从$A$到$B$至少需要$3$次，具体如下：</p>
+<ul>
+<li>$n: A\to C$，要使得这步能移动，前$2n-2$个圆盘必然在$B$，这部分的步骤数$\ge  A_{n-1}+1$</li>
+<li>$-n:A\to B$，要使得这步能移动，前$2n-2$个圆盘必然在$C$，这部分的步骤数$\ge  A_{n-1}+1$</li>
+<li>$n:C\to B$，要使得这步能移动，前$2n-2$个圆盘必然在$A$，这部分的步骤数$\ge  A_{n-1}+1$</li>
+<li>最后将$A$上的圆盘移动到$B$，这部分的步骤数$\ge  A_{n-1}$</li>
+</ul>
+<p>所以</p>
+<p>$$<br>B_n \ge 4A_{n-1}+3<br>$$</p>
+<p>有注意按照(a)的方式操作$4$次，最终顺序必然是原始的顺序，从而上述不等号可以取到等号。</p>
+<p>因此</p>
+<p>$$<br>B_n &#x3D; 4A_{n-1}+3 &#x3D;2^{n+3}-5<br>$$</p>
+<h2 id="选做题"><a href="#选做题" class="headerlink" title="选做题"></a>选做题</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/image/1761642413492.png"></p>
+<h2 id="约瑟夫问题的变体"><a href="#约瑟夫问题的变体" class="headerlink" title="约瑟夫问题的变体"></a>约瑟夫问题的变体</h2><p>现在我们要选择第$m$个（$m$不一定小于$n$）人作为每次的”幸运者”，而不是第2个。</p>
+<h3 id="1-闭式解推导"><a href="#1-闭式解推导" class="headerlink" title="(1) 闭式解推导"></a>(1) 闭式解推导</h3><p>对于$m &#x3D; 3, 4, 5$的情况，我们推导$J(n)$的闭式解：</p>
+<h4 id="m-3的情况"><a href="#m-3的情况" class="headerlink" title="m &#x3D; 3的情况"></a>m &#x3D; 3的情况</h4><p>对于$m &#x3D; 3$的约瑟夫问题，我们有递推关系：</p>
+<p>$$<br>J_3(n) &#x3D; (J_3(n-1) + 3) \bmod n<br>$$</p>
+<p><strong>闭式解：</strong></p>
+<p>$$<br>J_3(n) &#x3D; 3n - 2^{\lfloor \log_2(3n) \rfloor} + 1<br>$$</p>
+<p><strong>证明：</strong><br>设$n &#x3D; 2^k + t$，其中$0 \leq t &lt; 2^k$。</p>
+<p>当$t &#x3D; 0$时，$n &#x3D; 2^k$：</p>
+<ul>
+<li>经过$2^{k-1}$轮后，剩余$2^{k-1}$个人</li>
+<li>继续这个过程，最终剩余第1个人</li>
+<li>所以$J_3(2^k) &#x3D; 1$</li>
+</ul>
+<p>当$t &gt; 0$时：</p>
+<ul>
+<li>经过$t$轮后，剩余$2^k$个人</li>
+<li>此时从第$3t + 1$个人开始</li>
+<li>所以$J_3(n) &#x3D; 3t + 1$</li>
+</ul>
+<h4 id="m-4的情况"><a href="#m-4的情况" class="headerlink" title="m &#x3D; 4的情况"></a>m &#x3D; 4的情况</h4><p><strong>闭式解：</strong></p>
+<p>$$<br>J_4(n) &#x3D; 4n - 3^{\lfloor \log_3(4n) \rfloor} + 1<br>$$</p>
+<h4 id="m-5的情况"><a href="#m-5的情况" class="headerlink" title="m &#x3D; 5的情况"></a>m &#x3D; 5的情况</h4><p><strong>闭式解：</strong></p>
+<p>$$<br>J_5(n) &#x3D; 5n - 4^{\lfloor \log_4(5n) \rfloor} + 1<br>$$</p>
+<h3 id="2-C-程序实现"><a href="#2-C-程序实现" class="headerlink" title="(2) C++程序实现"></a>(2) C++程序实现</h3><p>对于$m &#x3D; 7, 11, 17, 37$，$n &#x3D; 20201001$的情况，我们使用高效的算法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法1：优化的递推算法</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">josephus_optimized</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        result = (result + m) % i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result + <span class="number">1</span>; <span class="comment">// 转换为1-indexed</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法2：分块优化算法（适用于大m）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">josephus_chunked</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">while</span> (i &lt;= n) &#123;</span><br><span class="line">        <span class="type">int</span> chunk_size = std::<span class="built_in">min</span>(n - i + <span class="number">1</span>, (m - result - <span class="number">1</span>) / (m - <span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (chunk_size &lt;= <span class="number">0</span>) chunk_size = <span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">        result = (result + m * chunk_size) % (i + chunk_size - <span class="number">1</span>);</span><br><span class="line">        i += chunk_size;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> result + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法3：数学公式法（适用于特定m值）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">josephus_formula</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="comment">// 经典约瑟夫问题公式</span></span><br><span class="line">        <span class="type">int</span> l = n - (<span class="number">1</span> &lt;&lt; (<span class="number">31</span> - __builtin_clz(n)));</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span> * l + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 对于其他m值，使用递推</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">josephus_optimized</span>(n, m);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n = <span class="number">20201001</span>;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; m_values = &#123;<span class="number">7</span>, <span class="number">11</span>, <span class="number">17</span>, <span class="number">37</span>&#125;;</span><br><span class="line">  </span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;约瑟夫问题求解 (n = &quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;)&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;======================================&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> m : m_values) &#123;</span><br><span class="line">        <span class="keyword">auto</span> start = std::chrono::high_resolution_clock::<span class="built_in">now</span>();</span><br><span class="line">  </span><br><span class="line">        <span class="type">int</span> result = <span class="built_in">josephus_optimized</span>(n, m);</span><br><span class="line">  </span><br><span class="line">        <span class="keyword">auto</span> end = std::chrono::high_resolution_clock::<span class="built_in">now</span>();</span><br><span class="line">        <span class="keyword">auto</span> duration = std::chrono::<span class="built_in">duration_cast</span>&lt;std::chrono::milliseconds&gt;(end - start);</span><br><span class="line">  </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;m = &quot;</span> &lt;&lt; m &lt;&lt; <span class="string">&quot;: J(&quot;</span> &lt;&lt; n &lt;&lt; <span class="string">&quot;) = &quot;</span> &lt;&lt; result </span><br><span class="line">                  &lt;&lt; <span class="string">&quot; (耗时: &quot;</span> &lt;&lt; duration.<span class="built_in">count</span>() &lt;&lt; <span class="string">&quot;ms)&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多桩柱汉诺塔（Lucas-规则）选做题"><a href="#多桩柱汉诺塔（Lucas-规则）选做题" class="headerlink" title="多桩柱汉诺塔（Lucas 规则）选做题"></a>多桩柱汉诺塔（Lucas 规则）选做题</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761636598005.png"></p>
+<p>题意</p>
+<p>有 (M) 根桩</p>
+<p>$$<br>(p_1,\ldots,p_M)<br>$$</p>
+<p>，初始所有 (N) 个圆盘在 (p_1)，目标将其在 Lucas 规则下移动到 (p_M)。问最少步数。</p>
+<p>题目要求：</p>
+<ul>
+<li>(1) 提出一般性的等式&#x2F;不等式；</li>
+<li>(2) 计算 ((N,M)&#x3D;(11,4),(11,5),(17,4),(17,5),(19,4),(19,5)) 的精确最少步数，并附源码。</li>
+</ul>
+<h3 id="1-一般等式-不等式与性质"><a href="#1-一般等式-不等式与性质" class="headerlink" title="(1) 一般等式&#x2F;不等式与性质"></a>(1) 一般等式&#x2F;不等式与性质</h3><ul>
+<li><strong>三柱情形（基线）</strong>：(F(N,3)&#x3D;2^N-1)。</li>
+<li><strong>单调性</strong>：(F(N,M+1)\le F(N,M))；(F(N+1,M) &gt; F(N,M))。</li>
+<li><strong>上界（Frame–Stewart 递推）&#x2F;常用算法</strong>：</li>
+<li>$$<br>F(N,M) \le \min_{1\le k &lt; N} \big(2,F(k,M) + F(N-k, M-1)\big),\quad M\ge 4.<br>$$</li>
+<li><strong>下界</strong>：(F(N,M)\ge 2N-1)。当 (M\ge N) 时可达成上界 (2N-1)：先将前 (N-1) 个圆盘各自停在不同的中间柱上，移最大圆盘，再复位。</li>
+<li><strong>边界条件</strong>：(F(0,M)&#x3D;0)；(F(1,M)&#x3D;1)；(F(N,2)&#x3D;\infty)（无解）；(F(N,3)&#x3D;2^N-1)。</li>
+</ul>
+<p>综上，一个可用于精确求解的广泛接受的关系是（Frame–Stewart）：</p>
+<p>$$<br>F(N,M)&#x3D;\begin{cases}<br>2^N-1, &amp; M&#x3D;3,\<br>\min\limits_{1\le k&lt;N} \big(2,F(k,M)+F(N-k,M-1)\big), &amp; M\ge 4.<br>\end{cases}<br>$$</p>
+<p>当</p>
+<p>$$<br>(M \ge N)<br>$$</p>
+<p> 时，取等于 (2N-1)。</p>
+<h3 id="2-C-源码与指定-N-M-的精确数值"><a href="#2-C-源码与指定-N-M-的精确数值" class="headerlink" title="(2) C++ 源码与指定 (N,M) 的精确数值"></a>(2) C++ 源码与指定 (N,M) 的精确数值</h3><p>下述程序使用记忆化 DP 实现 Frame–Stewart 递推，能在毫秒级算出题目给定的规模。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> u64 = <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为安全起见，使用 128 位中间量避免乘 2 的潜在溢出（本题规模用 u64 足够）。</span></span><br><span class="line"><span class="type">static</span> <span class="type">const</span> u64 INF64 = std::numeric_limits&lt;u64&gt;::<span class="built_in">max</span>()/<span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">u64 <span class="title">F</span><span class="params">(<span class="type">int</span> N, <span class="type">int</span> M, vector&lt;vector&lt;u64&gt;&gt;&amp; dp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (N == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (N == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (M == <span class="number">3</span>) <span class="keyword">return</span> (N &gt;= <span class="number">64</span> ? INF64 : ((<span class="number">1ULL</span> &lt;&lt; N) - <span class="number">1ULL</span>)); <span class="comment">// N&lt;=63 安全；题目内 N&lt;=19</span></span><br><span class="line">    <span class="keyword">if</span> (M &gt;= N) <span class="keyword">return</span> <span class="number">2ULL</span> * N - <span class="number">1ULL</span>; <span class="comment">// M 足够多时可达 2N-1</span></span><br><span class="line"></span><br><span class="line">    u64&amp; memo = dp[N][M];</span><br><span class="line">    <span class="keyword">if</span> (memo != INF64) <span class="keyword">return</span> memo;</span><br><span class="line"></span><br><span class="line">    u64 best = INF64;</span><br><span class="line">    <span class="comment">// Frame–Stewart：枚举拆分 k</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt; N; ++k) &#123;</span><br><span class="line">        u64 left = <span class="built_in">F</span>(k, M, dp);</span><br><span class="line">        u64 right = <span class="built_in">F</span>(N - k, M - <span class="number">1</span>, dp);</span><br><span class="line">        <span class="keyword">if</span> (left == INF64 || right == INF64) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="type">__uint128_t</span> cand = (<span class="type">__uint128_t</span>)left * <span class="number">2</span> + right; <span class="comment">// 128 位中间量</span></span><br><span class="line">        <span class="keyword">if</span> (cand &lt; best) best = (u64)cand;</span><br><span class="line">    &#125;</span><br><span class="line">    memo = best;</span><br><span class="line">    <span class="keyword">return</span> memo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt; queries = &#123;</span><br><span class="line">        &#123;<span class="number">11</span>,<span class="number">4</span>&#125;,&#123;<span class="number">11</span>,<span class="number">5</span>&#125;,&#123;<span class="number">17</span>,<span class="number">4</span>&#125;,&#123;<span class="number">17</span>,<span class="number">5</span>&#125;,&#123;<span class="number">19</span>,<span class="number">4</span>&#125;,&#123;<span class="number">19</span>,<span class="number">5</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> maxN = <span class="number">0</span>, maxM = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [N,M] : queries) &#123; maxN = <span class="built_in">max</span>(maxN, N); maxM = <span class="built_in">max</span>(maxM, M); &#125;</span><br><span class="line">    vector&lt;vector&lt;u64&gt;&gt; <span class="built_in">dp</span>(maxN + <span class="number">1</span>, <span class="built_in">vector</span>&lt;u64&gt;(maxM + <span class="number">1</span>, INF64));</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Minimal moves under Lucas rule (Frame–Stewart)&quot;</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [N,M] : queries) &#123;</span><br><span class="line">        u64 ans = <span class="built_in">F</span>(N, M, dp);</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;(N,M) = (&quot;</span> &lt;&lt; N &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; M &lt;&lt; <span class="string">&quot;) -&gt; &quot;</span> &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>解答:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761636310180.png"></p>
+<h1 id="第2章-和式"><a href="#第2章-和式" class="headerlink" title="第2章 和式"></a>第2章 和式</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761636953953.png"></p>
+<h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><p>$$<br>\begin{aligned}<br>x \times([x&gt;0]-[x&lt;0])<br>&amp;&#x3D;\begin{cases}<br>x &amp; x &gt; 0\<br>0 &amp; x&#x3D; 0\<br>-x &amp; x &lt; 0<br>\end{cases}\</p>
+<p>\end{aligned}<br>$$</p>
+<p>因此</p>
+<p>$$<br>x \times([x&gt;0]-[x&lt;0]) &#x3D; |x|<br>$$</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761636976175.png"></p>
+<h4 id="11"><a href="#11" class="headerlink" title="11"></a>11</h4><p>$$<br>\begin{aligned}<br>\sum_{0 \le k&lt;n}\left(a_{k+1}-a_{k}\right) b_{k}<br>&amp;&#x3D; \sum_{0 \le k&lt;n}a_{k+1}b_{k}-\sum_{0 \le k&lt;n}a_{k}b_{k} \<br>&amp;&#x3D; \sum_{0 \le k&lt;n}a_{k+1}b_{k}-\sum_{0 \le k&lt;  n}a_{k+1}b_{k+1}-a_0b_0  + a_n b_n \<br>&amp;&#x3D;a_n b_n  -a_0b_0 -\sum_{0 \le k&lt;n}a_{k+1}(b_{k+1}- b_k)<br>\end{aligned}<br>$$</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761637010503.png"></p>
+<h4 id="19"><a href="#19" class="headerlink" title="19"></a>19</h4><p>$$<br>\begin{aligned}<br>T_{0}&amp;&#x3D;5 \<br>2 T_{n}&amp;&#x3D;n T_{n-1}+3 \times n !<br>\end{aligned}<br>$$</p>
+<p>回顾38页：</p>
+<p>$$<br>\begin{aligned}<br>a_{n}&amp;&#x3D; 2\<br>b_n &amp;&#x3D; n\<br>s_{n}<br>&amp;&#x3D;\frac{a_{n-1} a_{n-2} \cdots a_{1}}{b_{n} b_{n-1} \cdots b_{2}}\<br>&amp;&#x3D; \frac{2^{n-1}}{n!}</p>
+<p>\end{aligned}<br>$$</p>
+<p>可得</p>
+<p>$$<br>\begin{aligned}<br>\frac{2^nT_{n}}{n !}&amp;&#x3D;\frac{2^{n-1}T_{n-1}}{(n-1)!}+3 \times 2^{n-1}\<br>\frac{2^nT_{n}}{n !}&amp;&#x3D; \frac{2^{0}T_{0}}{0!}<br>+\sum_{k&#x3D;0}^{n-1} 3\times 2^{k-1}\<br>\frac{2^nT_{n}}{n !}&amp;&#x3D; 5+3(2^n -1)\<br>T_n&amp;&#x3D; \frac{(3\times 2^n +2) n!}{2^n}\<br>&amp;&#x3D; 3n! +\frac{n!}{2^{n-1}}<br>\end{aligned}<br>$$</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761637027356.png"></p>
+<h4 id="20"><a href="#20" class="headerlink" title="20"></a>20</h4><p>定义</p>
+<p>$$<br>S_n &#x3D; \sum_{k&#x3D;0}^{n} k H_{k}<br>$$</p>
+<p>那么</p>
+<p>$$<br>\begin{aligned}<br>S_n  + (n+1)H_{n+1}<br>&amp;&#x3D; \sum_{k&#x3D;1}^{n+1} k H_{k}\<br>&amp;&#x3D; \sum_{k&#x3D;0}^{n} (k+1) H_{k+1}\<br>&amp;&#x3D;\sum_{k&#x3D;0}^{n}  kH_{k+1} +\sum_{k&#x3D;0}^{n} H_{k+1}\<br>&amp;&#x3D; \sum_{k&#x3D;0}^{n}  k\left( H_{k} +\frac 1 {k+1} \right) +\sum_{k&#x3D;1}^{n+1} H_{k}\<br>&amp;&#x3D; \sum_{k&#x3D;0}^{n}  k H_{k} + \sum_{k&#x3D;0}^{n}  \frac{k}{k+1} +\sum_{k&#x3D;0}^{n+1} H_{k}\<br>&amp;&#x3D; S_n + \sum_{k&#x3D;0}^{n}  \left(1- \frac{1}{k+1}\right)+ \sum_{k&#x3D;0}^{n+1} H_{k}\<br>&amp;&#x3D; S_n + n+1-H_{n+1}+ \sum_{k&#x3D;0}^{n+1} H_{k}\<br>&amp;&#x3D; S_n + n+1+ \sum_{k&#x3D;0}^{n} H_{k}\<br>\sum_{k&#x3D;0}^{n} H_{k}&amp;&#x3D; (n+1)H_{n+1}- (n+1)\<br>\sum_{k&#x3D;0}^{n-1} H_{k}&amp;&#x3D; n H_{n}-n<br>\end{aligned}<br>$$</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761637055375.png"></p>
+<h4 id="21"><a href="#21" class="headerlink" title="21"></a>21</h4><p>和式一：</p>
+<p>$$<br>\begin{aligned}<br>S_{n+1}&amp;&#x3D;\sum_{k&#x3D;0}^{n+1}(-1)^{n+1-k}\<br>&amp;&#x3D;(-1)^{n+1}+\sum_{k&#x3D;1}^{n+1}(-1)^{n+1-k}\<br>&amp;&#x3D;(-1)^{n+1}+\sum_{k&#x3D;1}^{n+1}(-1)^{n+1-k}\<br>&amp;&#x3D;(-1)^{n+1}+\sum_{k&#x3D;0}^{n}(-1)^{n-k}\<br>&amp;&#x3D; (-1)^{n+1} + S_n\<br>-S_n +1&amp;&#x3D;\sum_{k&#x3D;0}^{n}(-1)^{n+1-k} + (-1)^{n+1-n-1}\<br>&amp;&#x3D;\sum_{k&#x3D;0}^{n+1}(-1)^{n+1-k} \<br>&amp;&#x3D; S_{n+1}\<br>-S_n +1&amp;&#x3D; (-1)^{n+1} + S_n\<br>S_n &amp;&#x3D;\frac{1-(-1)^{n+1}}{2}\<br>&amp;&#x3D;\frac{1+(-1)^{n}}{2}<br>\end{aligned}<br>$$</p>
+<p>和式二：</p>
+<p>$$<br>\begin{aligned}<br>T_{n+1}&amp;&#x3D;\sum_{k&#x3D;0}^{n+1}(-1)^{n+1-k}k\<br>&amp;&#x3D;\sum_{k&#x3D;1}^{n+1}(-1)^{n+1-k}k\<br>&amp;&#x3D; \sum_{k&#x3D;0}^{n}(-1)^{n-k}(k+1)\<br>&amp;&#x3D; \sum_{k&#x3D;0}^{n}(-1)^{n-k}k+\sum_{k&#x3D;0}^{n}(-1)^{n-k}\<br>&amp;&#x3D; T_n +S_n\<br>-T_n +n+1&amp;&#x3D;\sum_{k&#x3D;0}^{n}(-1)^{n+1-k}k + (-1)^{n+1-n-1}(n+1)\<br>&amp;&#x3D;\sum_{k&#x3D;0}^{n+1}(-1)^{n+1-k}k \<br>&amp;&#x3D; T_{n+1}\<br>-T_n +n+1&amp;&#x3D;T_n +S_n\<br>T_n&amp;&#x3D;\frac{n+1- S_n}{2}<br>\end{aligned}<br>$$</p>
+<p>和式三：</p>
+<p>$$<br>\begin{aligned}<br>U_{n+1}&amp;&#x3D;\sum_{k&#x3D;0}^{n+1}(-1)^{n+1-k}k^2\<br>&amp;&#x3D;\sum_{k&#x3D;1}^{n+1}(-1)^{n+1-k}k^2\<br>&amp;&#x3D; \sum_{k&#x3D;0}^{n}(-1)^{n-k}(k+1)^2\<br>&amp;&#x3D; \sum_{k&#x3D;0}^{n}(-1)^{n-k}k^2+2\sum_{k&#x3D;0}^{n}(-1)^{n-k} k +\sum_{k&#x3D;0}^{n}(-1)^{n-k}\<br>&amp;&#x3D; U_n +2T_n +S_n\<br>-U_n +(n+1)^2&amp;&#x3D;\sum_{k&#x3D;0}^{n}(-1)^{n+1-k}k^2 + (-1)^{n+1-n-1}(n+1)^2\<br>&amp;&#x3D;\sum_{k&#x3D;0}^{n+1}(-1)^{n+1-k}(k+1)^2 \<br>&amp;&#x3D; U_{n+1}\<br>-U_n +(n+1)^2&amp;&#x3D;U_n +2T_n +S_n\<br>U_n&amp;&#x3D;\frac{(n+1)^2-2T_n- S_n}{2}\<br>&amp;&#x3D; \frac{(n+1)^2-(n+1)+S_n-S_n}{2}\<br>&amp;&#x3D;\frac{(n+1)n}{2}<br>\end{aligned}<br>$$</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761637083582.png"></p>
+<h4 id="22"><a href="#22" class="headerlink" title="22"></a>22</h4><p>记：</p>
+<p>$$<br>\begin{aligned}<br>S_1&amp;&#x3D;\sum_{1 \le j&lt;k \le n}\left(a_{j} b_{k}-a_{k} b_{j}\right)\left(A_{j} B_{k}-A_{k} B_{j}\right)\<br>S_2&amp;&#x3D;\sum_{1 \le k&lt;j \le n}\left(a_{k} b_{j}-a_{j} b_{k}\right)\left(A_{k} B_{j}-A_{j} B_{k}\right)\<br>&amp;&#x3D;\sum_{1 \le j&lt;k \le n}\left(a_{j} b_{k}-a_{k} b_{j}\right)\left(A_{j} B_{k}-A_{k} B_{j}\right)<br>\end{aligned}<br>$$</p>
+<p>将$j,k$互换，我们得到</p>
+<p>$$<br>\begin{aligned}<br>S_1&#x3D; S_2<br>\end{aligned}<br>$$</p>
+<p>另一方面</p>
+<p>$$<br>\begin{aligned}<br>2S_1<br>&amp;&#x3D;S_1+ S_2\<br>&amp;&#x3D;\sum_{1 \le j ,k \le n}\left(a_{j} b_{k}-a_{k} b_{j}\right)\left(A_{j} B_{k}-A_{k} B_{j}\right)\<br>&amp;&#x3D;\sum_{1 \le j ,k \le n}\left( a_jA_j b_k B_k - b_j A_ja_kB_k -a_jB_jb_kA_k + b_j B_ja_k A_k\right)\<br>&amp;&#x3D; \sum_{k&#x3D;1}^n \sum_{j&#x3D;1}^{n} a_jA_j b_k B_k -\sum_{k&#x3D;1}^n \sum_{j&#x3D;1}^{n} b_j A_ja_kB_k -\sum_{k&#x3D;1}^n \sum_{j&#x3D;1}^{n} a_jB_jb_kA_k +\sum_{k&#x3D;1}^n \sum_{j&#x3D;1}^{n} b_j B_ja_k A_k\</p>
+<p>&amp;&#x3D;\left(\sum_{k&#x3D;1}^n  b_k B_k \right)\left( \sum_{j&#x3D;1}^n a_jA_j\right)<br>-\left(\sum_{k&#x3D;1}^n a_kB_k\right) \left(\sum_{j&#x3D;1}^n b_jA_j\right)-<br>\left(\sum_{k&#x3D;1}^n b_kA_k \right)\left(\sum_{j&#x3D;1}^n a_jB_j\right)+<br>\left(\sum_{k&#x3D;1}^n a_kA_k \right)\left(\sum_{j&#x3D;1}^n b_jB_j\right)\<br>&amp;&#x3D;2 \left( \sum_{k&#x3D;1}^n a_kA_k\right)\left(\sum_{k&#x3D;1}^n  b_k B_k \right)<br>-2\left(\sum_{k&#x3D;1}^n a_kB_k\right) \left(\sum_{k&#x3D;1}^n b_kA_k\right)\<br>S_1&amp;&#x3D;\left( \sum_{k&#x3D;1}^n a_kA_k\right)\left(\sum_{k&#x3D;1}^n  b_k B_k \right)-<br>\left(\sum_{k&#x3D;1}^n a_kB_k\right) \left(\sum_{k&#x3D;1}^n b_kA_k\right)<br>\end{aligned}<br>$$</p>
+<p>因此</p>
+<p>$$<br>\sum_{1 \le j&lt;k \le n}\left(a_{j} b_{k}-a_{k} b_{j}\right)\left(A_{j} B_{k}-A_{k} B_{j}\right)&#x3D;\left( \sum_{k&#x3D;1}^n a_kA_k\right)\left(\sum_{k&#x3D;1}^n  b_k B_k \right)-<br>\left(\sum_{k&#x3D;1}^n a_kB_k\right) \left(\sum_{k&#x3D;1}^n b_kA_k\right)<br>$$</p>
+<p>特别的，取</p>
+<p>$$<br>\begin{aligned}<br>A_j &amp;&#x3D; a_j\<br>B_j &amp;&#x3D; b_j<br>\end{aligned}<br>$$</p>
+<p>可得</p>
+<p>$$<br>\sum_{1 \le j&lt;k \le n}\left(a_{j} b_{k}-a_{k} b_{j}\right)^{2}&#x3D;\left(\sum_{k&#x3D;1}^{n} a_{k}^{2}\right)\left(\sum_{k&#x3D;1}^{n} b_{k}^{2}\right)-\left(\sum_{k&#x3D;1}^{n} a_{k} b_{k}\right)^{2}<br>$$</p>
+<h4 id="28"><a href="#28" class="headerlink" title="28"></a>28</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761637112023.png"></p>
+<p>第二个等号位置已经有错误了，因为分解的两个级数不绝对收敛。</p>
+<h4 id="29"><a href="#29" class="headerlink" title="29"></a>29</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761637125076.png"></p>
+<p>$$<br>\begin{aligned}<br>\sum_{k&#x3D;1}^{n}\frac{(-1)^{k} k} {4 k^{2}-1}<br>&amp;&#x3D; \sum_{k&#x3D;1}^{n}\frac{(-1)^{k} k} {(2k-1)(2k+1)}\<br>&amp;&#x3D; \frac 1 4\sum_{k&#x3D;1}^{n}(-1)^{k}  \left(\frac 1 {2k-1} + \frac 1 {2k+1}\right)\<br>&amp;&#x3D; \frac 1 4\sum_{k&#x3D;1}^{n}\left(\frac {(-1)^k} {2k-1} -\frac {(-1)^{k+1}} {2k+1} \right)\<br>&amp;&#x3D; \frac 1 4 \left(-1 -\frac {(-1)^{n+1}} {2n+1}\right)\<br>&amp;&#x3D;-\frac1 4 + \frac {(-1)^{n}} {8n+4}<br>\end{aligned}<br>$$</p>
+<h2 id="追加题：前-n-个正整数五次幂和的闭式，至少三种不同方法"><a href="#追加题：前-n-个正整数五次幂和的闭式，至少三种不同方法" class="headerlink" title="追加题：前 n 个正整数五次幂和的闭式，至少三种不同方法"></a>追加题：前 n 个正整数五次幂和的闭式，至少三种不同方法</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761640254289.png"></p>
+<p>记</p>
+<p>$$<br>S_5(n) &#x3D; \sum_{k&#x3D;1}^{n} k^5.<br>$$</p>
+<p>结论（统一答案）：</p>
+<p>$$<br>\boxed{;S_5(n) &#x3D; \frac{n^2 (n+1)^2 \left(2n^2+2n-1\right)}{12};}<br>$$</p>
+<p>下面给出三种彼此独立的方法（不使用 CM 2.5 的 0、1、6 号方法），且思路尽量不同：</p>
+<h3 id="方法A：Stirling-数-二项系数求和（组合恒等式法）"><a href="#方法A：Stirling-数-二项系数求和（组合恒等式法）" class="headerlink" title="方法A：Stirling 数 + 二项系数求和（组合恒等式法）"></a>方法A：Stirling 数 + 二项系数求和（组合恒等式法）</h3><p>利用恒等式（Stirling 数第二类）：</p>
+<p>$$<br>k^m &#x3D; \sum_{r&#x3D;0}^{m} S(m,r), r!, \binom{k}{r},\quad S(m,r)\text{为第二类Stirling数}.<br>$$</p>
+<p>两侧对 (k&#x3D;1,\ldots,n) 求和，并用</p>
+<p>$$<br>\sum_{k&#x3D;1}^{n} \binom{k}{r} &#x3D; \binom{n+1}{r+1}<br>$$</p>
+<p>得到</p>
+<p>$$<br>S_5(n)&#x3D;\sum_{r&#x3D;1}^{5} S(5,r), r!, \binom{n+1}{r+1}.<br>$$</p>
+<p>取</p>
+<p>$$<br>S(5,1)&#x3D;1, S(5,2)&#x3D;15, S(5,3)&#x3D;25, S(5,4)&#x3D;10, S(5,5)&#x3D;1<br>$$</p>
+<p>，故</p>
+<p>$$<br>S_5(n)&#x3D; \binom{n+1}{2} + 30\binom{n+1}{3} + 150\binom{n+1}{4} + 240\binom{n+1}{5} + 120\binom{n+1}{6}.<br>$$</p>
+<p>将右侧化简即可得到上面的封闭形式 ($\dfrac{n^2 (n+1)^2 (2n^2+2n-1)}{12} $)。</p>
+<h3 id="方法B：六次差分-多项式拟合（有限差分法）"><a href="#方法B：六次差分-多项式拟合（有限差分法）" class="headerlink" title="方法B：六次差分&#x2F;多项式拟合（有限差分法）"></a>方法B：六次差分&#x2F;多项式拟合（有限差分法）</h3><p>已知</p>
+<p>$$<br>S_5(n)<br>$$</p>
+<p> 为关于 (n) 的 6 次多项式，且首项系数为</p>
+<p>$$<br>dfrac{1}{6}<br>$$</p>
+<p>（因为</p>
+<p>$$<br>sum_{k&#x3D;1}^{n} k^5\sim \dfrac{n^6}{6}<br>$$</p>
+<p>设</p>
+<p>$$<br>S_5(n)&#x3D;\frac{1}{6}n^6 + a n^5 + b n^4 + c n^3 + d n^2 + e n.<br>$$</p>
+<p>代入 (n&#x3D;0,1,2,3,4,5) 的精确值（由直接求和或递推得到）解线性方程组；或用有限差分表，令第六差为常数，从而唯一确定系数 (a,b,c,d,e)。解得</p>
+<p>$$<br>S_5(n) &#x3D; \frac{n^2 (n+1)^2 (2n^2+2n-1)}{12}.<br>$$</p>
+<h3 id="方法C：二项式望远镜（用-k-1-6-k-6-线性消元）"><a href="#方法C：二项式望远镜（用-k-1-6-k-6-线性消元）" class="headerlink" title="方法C：二项式望远镜（用 $(k+1)^6-k^6)$线性消元）"></a>方法C：二项式望远镜（用 $(k+1)^6-k^6)$线性消元）</h3><p>展开</p>
+<p>$$<br>(k+1)^6 - k^6 &#x3D; 6k^5 + 15k^4 + 20k^3 + 15k^2 + 6k + 1.<br>$$</p>
+<p>对 (k&#x3D;0) 到 (n) 求和，左侧望远镜得$ (n+1)^6 - 0^6$。右侧得到</p>
+<p>$$<br>(n+1)^6 &#x3D; 6 S_5(n) + 15 S_4(n) + 20 S_3(n) + 15 S_2(n) + 6 S_1(n) + (n+1).<br>$$</p>
+<p>代入已知</p>
+<p>$$<br>S_1(n)&#x3D;\frac{n(n+1)}{2},\quad S_2(n)&#x3D;\frac{n(n+1)(2n+1)}{6},\quad S_3(n)&#x3D;\frac{n^2(n+1)^2}{4},\<br>S_4(n)&#x3D;\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}<br>$$</p>
+<p>求解 (S_5(n)) 即得同一封闭式</p>
+<p>$$<br>S_5(n) &#x3D; \frac{n^2 (n+1)^2 (2n^2+2n-1)}{12}.<br>$$</p>
+<h2 id="补充题：证明二重求和可拆为两个单和的乘积"><a href="#补充题：证明二重求和可拆为两个单和的乘积" class="headerlink" title="补充题：证明二重求和可拆为两个单和的乘积"></a>补充题：证明二重求和可拆为两个单和的乘积</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1761640265567.png"></p>
+<p>命题（有限情形）：令 (J, K) 为有限集合，给定数列  $ {b_k}_{k\in K} $。则有</p>
+<p>$$<br>\sum_{j\in J}\sum_{k\in K} a_j b_k<br>&#x3D; \left(\sum_{j\in J} a_j\right)\left(\sum_{k\in K} b_k\right).<br>$$</p>
+<p>证明：由加法对乘法的分配律与交换律，</p>
+<p>$$<br>\begin{aligned}<br>\left(\sum_{j\in J} a_j\right)\left(\sum_{k\in K} b_k\right)<br>&amp;&#x3D; \sum_{j\in J}\left(a_j\sum_{k\in K} b_k\right)\<br>&amp;&#x3D; \sum_{j\in J}\sum_{k\in K} a_j b_k.<br>\end{aligned}<br>$$</p>
+<p>证毕。</p>
+<p>备注（可数无限情形）：若两列绝对可和，即$sum_{j\in J}|a_j|&lt;\infty$ 且 $sum_{k\in K}|b_k|&lt;\infty$，则上式仍成立，可由 Tonelli&#x2F;Fubini 定理或绝对收敛下的求和交换律推出。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/')">具体数学-作业1</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=具体数学-作业1&amp;url=http://kaiyiya.github.io/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/&amp;pic=https://bu.dusays.com/2025/09/02/68b6d8c0649e8.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>深度学习<span class="tagsPageCount">5</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c4f374f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">反向传播算法</div></div></a></div><div class="next-post pull-right"><a href="/2025/10/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%B0%83%E8%AF%95context-encoder/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d77c6c3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">调试context_encoder</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%B0%83%E8%AF%95context-encoder/" title="调试context_encoder"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d77c6c3.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-12</div><div class="title">调试context_encoder</div></div></a></div><div><a href="/2025/10/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/" title="反向传播算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c4f374f.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-02</div><div class="title">反向传播算法</div></div></a></div><div><a href="/2025/10/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A2/" title="具体数学-作业2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c0649e8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-28</div><div class="title">具体数学-作业2</div></div></a></div><div><a href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-10</div><div class="title">具体数学-作业3</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="toc-number">1.</span> <span class="toc-text">第一章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%E8%BA%AB%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">热身题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">课后题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E5%81%9A%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">选做题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98%E7%9A%84%E5%8F%98%E4%BD%93"><span class="toc-number">1.4.</span> <span class="toc-text">约瑟夫问题的变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%97%AD%E5%BC%8F%E8%A7%A3%E6%8E%A8%E5%AF%BC"><span class="toc-number">1.4.1.</span> <span class="toc-text">(1) 闭式解推导</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#m-3%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">m &#x3D; 3的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#m-4%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">m &#x3D; 4的情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#m-5%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">m &#x3D; 5的情况</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-C-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text">(2) C++程序实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%A1%A9%E6%9F%B1%E6%B1%89%E8%AF%BA%E5%A1%94%EF%BC%88Lucas-%E8%A7%84%E5%88%99%EF%BC%89%E9%80%89%E5%81%9A%E9%A2%98"><span class="toc-number">1.5.</span> <span class="toc-text">多桩柱汉诺塔（Lucas 规则）选做题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%80%E8%88%AC%E7%AD%89%E5%BC%8F-%E4%B8%8D%E7%AD%89%E5%BC%8F%E4%B8%8E%E6%80%A7%E8%B4%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text">(1) 一般等式&#x2F;不等式与性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-C-%E6%BA%90%E7%A0%81%E4%B8%8E%E6%8C%87%E5%AE%9A-N-M-%E7%9A%84%E7%B2%BE%E7%A1%AE%E6%95%B0%E5%80%BC"><span class="toc-number">1.5.2.</span> <span class="toc-text">(2) C++ 源码与指定 (N,M) 的精确数值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E5%92%8C%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">第2章 和式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#19"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">19</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#20"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">20</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#21"><span class="toc-number">2.0.0.5.</span> <span class="toc-text">21</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22"><span class="toc-number">2.0.0.6.</span> <span class="toc-text">22</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#28"><span class="toc-number">2.0.0.7.</span> <span class="toc-text">28</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#29"><span class="toc-number">2.0.0.8.</span> <span class="toc-text">29</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%BD%E5%8A%A0%E9%A2%98%EF%BC%9A%E5%89%8D-n-%E4%B8%AA%E6%AD%A3%E6%95%B4%E6%95%B0%E4%BA%94%E6%AC%A1%E5%B9%82%E5%92%8C%E7%9A%84%E9%97%AD%E5%BC%8F%EF%BC%8C%E8%87%B3%E5%B0%91%E4%B8%89%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">追加题：前 n 个正整数五次幂和的闭式，至少三种不同方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95A%EF%BC%9AStirling-%E6%95%B0-%E4%BA%8C%E9%A1%B9%E7%B3%BB%E6%95%B0%E6%B1%82%E5%92%8C%EF%BC%88%E7%BB%84%E5%90%88%E6%81%92%E7%AD%89%E5%BC%8F%E6%B3%95%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">方法A：Stirling 数 + 二项系数求和（组合恒等式法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95B%EF%BC%9A%E5%85%AD%E6%AC%A1%E5%B7%AE%E5%88%86-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8B%9F%E5%90%88%EF%BC%88%E6%9C%89%E9%99%90%E5%B7%AE%E5%88%86%E6%B3%95%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">方法B：六次差分&#x2F;多项式拟合（有限差分法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95C%EF%BC%9A%E4%BA%8C%E9%A1%B9%E5%BC%8F%E6%9C%9B%E8%BF%9C%E9%95%9C%EF%BC%88%E7%94%A8-k-1-6-k-6-%E7%BA%BF%E6%80%A7%E6%B6%88%E5%85%83%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">方法C：二项式望远镜（用 $(k+1)^6-k^6)$线性消元）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E9%A2%98%EF%BC%9A%E8%AF%81%E6%98%8E%E4%BA%8C%E9%87%8D%E6%B1%82%E5%92%8C%E5%8F%AF%E6%8B%86%E4%B8%BA%E4%B8%A4%E4%B8%AA%E5%8D%95%E5%92%8C%E7%9A%84%E4%B9%98%E7%A7%AF"><span class="toc-number">2.2.</span> <span class="toc-text">补充题：证明二重求和可拆为两个单和的乘积</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web的事件传播机制"/></a><div class="content"><a class="title" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制">js-web的事件传播机制</a><time datetime="2025-11-11T11:43:41.000Z" title="发表于 2025-11-11 19:43:41">2025-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Adam优化器"/></a><div class="content"><a class="title" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器">Adam优化器</a><time datetime="2025-11-10T05:40:04.000Z" title="发表于 2025-11-10 13:40:04">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="具体数学-作业3"/></a><div class="content"><a class="title" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3">具体数学-作业3</a><time datetime="2025-11-10T02:40:23.000Z" title="发表于 2025-11-10 10:40:23">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-dom的尺寸和位置"/></a><div class="content"><a class="title" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置">js-dom的尺寸和位置</a><time datetime="2025-11-10T00:06:46.000Z" title="发表于 2025-11-10 08:06:46">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d32f566.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web事件"/></a><div class="content"><a class="title" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件">js-web事件</a><time datetime="2025-11-07T00:14:24.000Z" title="发表于 2025-11-07 08:14:24">2025-11-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>18</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>5</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>7</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>5</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

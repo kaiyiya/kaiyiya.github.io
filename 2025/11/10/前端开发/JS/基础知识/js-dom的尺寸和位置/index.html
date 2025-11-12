@@ -1,0 +1,892 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>js-dom的尺寸和位置 | 飞向月球的猫</title><meta name="keywords" content="js-dom的尺寸和位置"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="js-dom的尺寸和位置"><meta name="application-name" content="js-dom的尺寸和位置"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="js-dom的尺寸和位置"><meta property="og:url" content="http://kaiyiya.github.io/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="js-dom的尺寸和位置"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg"><meta name="description" content="js-dom的尺寸和位置"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: 'js-dom的尺寸和位置',
+  postAI: '',
+  pageFillDescription: '一、DOM尺寸和位置 ﻿0002, 1. 获取屏幕尺寸 ﻿0058, 2. 获取元素尺寸 ﻿0233, 3. 元素滚动控制, 4. 元素位置获取, 5. 获取元素位置 ﻿0710, 1）getBoundingClientRect方法 ﻿0717, 2）矩形对象的信息 ﻿0924, 3）相对于视口的位置 ﻿0939, 4）相对于父元素的位置 ﻿1020, 6. 应用案例 ﻿1106, 1）例题可拖动的便签, 2）例题自行运动的小球 ﻿3338, 二、知识小结一尺寸和位置获取屏幕尺寸屏幕尺寸获取获取整个屏幕的高度获取整个屏幕的宽度浏览器窗口尺寸获取获取包含浏览器边框和工具栏的完整高度获取包含浏览器边框和工具栏的完整宽度视口尺寸获取获取浏览器内部高度包含滚动条获取浏览器内部宽度包含滚动条获取视口高度不包含滚动条获取视口宽度不包含滚动条获取元素尺寸系列获取元素内容的宽度不包含边框和滚动条获取元素内容的高度不包含边框和滚动条系列获取元素内容边框的宽度包含滚动条获取元素内容边框的高度包含滚动条系列获取元素实际内容的宽度包含不可见部分获取元素实际内容的高度包含不可见部分获取元素垂直滚动条滚动的距离获取元素水平滚动条滚动的距离元素滚动控制滚动位置设置设置元素的滚动位置表示水平滚动距离表示垂直滚动距离将元素滚动到顶部最左侧滚动事件监听监听事件可以获取元素的滚动状态使用添加滚动监听元素位置获取返回元素相对于视口的位置信息对象包含等属性所有位置值都是相对于视口的坐标获取元素位置方法方法调用通过元素对象的方法获取元素边界矩形边界定义包含元素整个盒模型在内的矩形区域翻译说明意为边界指客户端视口是矩形的缩写矩形对象的信息基本属性元素的完整宽度和高度含边框矩形左上角相对于视口的坐标等同于位置属性元素左边界到视口左边的距离单位像素元素上边界到视口顶部的距离元素右下边界到视口左顶边的距离使用频率较低相对于视口的位置视口概念当前浏览器窗口可见区域与固定定位的参照系相同实际应用通过京东购物车示例表示元素左边界距离视口左边像素注意事项宽高信息通常使用其他专门方法获取不推荐通过此方式相对于父元素的位置计算原理获取元素离视口左边距离获取父元素离视口左边距离两者相减得到相对位置数学表达相对位置实现建议需要时查阅文档即可不必死记硬背方法应用案例例题可拖动的便签功能实现分析基本功能顶部移动条可拖动整个便签内容区域可编辑文字鼠标悬停在移动条时显示移动光标样式实现原理内容可编辑通过设置属性实现移动条样式使用设置拖动限制不能超出浏览器视口范围结构关键元素便签容器设置为拖动控制条可编辑内容区域拖动实现逻辑事件监听流程在移动条上按下鼠标开始监听整个窗口的鼠标移动鼠标抬起时取消所有监听核心代码结构处理拖动坐标计算原理关键坐标鼠标按下时的初始坐标元素初始位置鼠标移动时的位移位置计算公式元素初始鼠标当前鼠标初始元素初始鼠标当前鼠标初始边界限制处理视口尺寸获取元素尺寸获取边界值计算最大最大最小完整实现代码初始坐标记录视口和元素尺寸边界值计算计算位移计算新位置边界限制应用新位置实现要点使用窗口级事件监听提高容错性在时一次性获取所有初始值通过边界检查确保不超出视口及时清除事件监听防止内存泄漏例题自行运动的小球小球运动实现原理基本结构使用固定定位的小球元素通过设置宽高圆形边框和初始位置运动机制通过每隔毫秒改变小球的和值实现运动效果方向控制通过正负值控制运动方向正值表示右下运动负值表示左上运动核心代码实现定时器设置使用函数设置毫秒的间隔时间元素获取在外部通过获取小球元素避免重复获取坐标计算通过获取当前坐标加上位移值得到新坐标边界检测与反弹屏幕尺寸获取使用获取可视区域尺寸小球尺寸获取通过获取小球自身尺寸最大坐标计算最大屏幕宽度小球宽度最大屏幕高度小球高度反弹逻辑当坐标超过边界时将位移值取反碰撞效果增强随机数生成使用生成之间的随机值颜色改变碰撞时调用函数设置为新值颜色优化可将随机范围限制在之间避免颜色过淡看不清完整实现代码变量定义包含位移值屏幕尺寸小球尺寸核心循环定时器中计算新坐标检测边界处理反弹和颜色变化性能优化所有不变的元素和尺寸都在循环外获取避免重复计算扩展思考运动速度可通过调整的值改变运动速度运动方向初始值可设为负数实现不同方向的初始运动碰撞检测可扩展为多个小球之间的碰撞检测和反弹重力模拟可加入加速度模拟重力效果二知识小结知识点核心内容考试重点易混淆点难度系数尺寸获取通过获取浏览器尺寸获取包含滚动条的视口尺寸获取不包含滚动条的视口尺寸区分浏览器尺寸和视口尺寸注意滚动条是否包含在内元素尺寸获取获取内容不含边框和滚动条获取包含边框和滚动条的尺寸滚动条和边框的包含关系不同场景选择合适滚动位置控制获取滚动距离设置滚动位置通过事件监听滚动理解坐标系原点左上角为横向纵向滚动差异元素位置获取获取元素相对于视口的矩形信息含相对视口而非父元素需手动计算与父元素距离拖拽实现原理鼠标按下记录初始坐标移动时计算偏移量限制边界防止超出视口事件监听顺序坐标转换计算碰撞反弹效果定时更新元素位置边界检测时反转移动方向碰撞时触发附加效果如变色运动方向向量控制边界条件判断逻辑性能优化要点避免在频繁触发的事件中查询提前缓存不变的值如视口尺寸使用硬件加速重排重绘代价的性能影响',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-10 09:31:24',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/JS/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>JS</span></a></span></div></div><h1 class="post-title" itemprop="name headline">js-dom的尺寸和位置</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-10T00:06:46.000Z" title="发表于 2025-11-10 08:06:46">2025-11-10</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-10T01:31:24.000Z" title="更新于 2025-11-10 09:31:24">2025-11-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="js-dom的尺寸和位置"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/"><header><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a><a href="/tags/JS/" tabindex="-1" itemprop="url">JS</a><h1 id="CrawlerTitle" itemprop="name headline">js-dom的尺寸和位置</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-11-10T00:06:46.000Z" title="发表于 2025-11-10 08:06:46">2025-11-10</time><time itemprop="dateCreated datePublished" datetime="2025-11-10T01:31:24.000Z" title="更新于 2025-11-10 09:31:24">2025-11-10</time></header><h4 id="一、DOM尺寸和位置-00-02"><a href="#一、DOM尺寸和位置-00-02" class="headerlink" title="一、DOM尺寸和位置 ﻿00:02"></a>一、DOM尺寸和位置 ﻿<strong>00:02</strong></h4><h5 id="1-获取屏幕尺寸-00-58"><a href="#1-获取屏幕尺寸-00-58" class="headerlink" title="1. 获取屏幕尺寸 ﻿00:58"></a>1. 获取屏幕尺寸 ﻿<strong>00:58</strong></h5><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-1?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733122&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-pARXXfamXDauBb0295ul41r5LsY=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-050e8c84d8a52b076c5098e8b5561d16ca770fb9a5547f8b7f9f34f8c77dcdc87e0edc001637300b6fb5c8989b2ce91d9531be660cd8d7a7305a5e1275657320&expires=8h&r=614103867&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-1&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-1&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=4d291be9b9421959f77ac7c27968e41f454e72ca0d872ff8&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>屏幕尺寸获取</strong>：<ul>
+<li>window.screen.height：获取整个屏幕的高度</li>
+<li>window.screen.width：获取整个屏幕的宽度</li>
+</ul>
+</li>
+<li><strong>浏览器窗口尺寸获取</strong>：<ul>
+<li>window.outerHeight：获取包含浏览器边框和工具栏的完整高度</li>
+<li>window.outerWidth：获取包含浏览器边框和工具栏的完整宽度</li>
+</ul>
+</li>
+<li><strong>视口尺寸获取</strong>：<ul>
+<li>window.innerHeight：获取浏览器内部高度（包含滚动条）</li>
+<li>window.innerWidth：获取浏览器内部宽度（包含滚动条）</li>
+<li>document.documentElement.clientHeight：获取视口高度（不包含滚动条）</li>
+<li>document.documentElement.clientWidth：获取视口宽度（不包含滚动条）</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-获取元素尺寸-02-33"><a href="#2-获取元素尺寸-02-33" class="headerlink" title="2. 获取元素尺寸 ﻿02:33"></a>2. 获取元素尺寸 ﻿<strong>02:33</strong></h5><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-2?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733122&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-KZtnOBWsX3KOriG9sSobgpPd/+A=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-386eca82a2280fbef9905b46a9cbb01daeb030854c6f86ff9b502f8b606e59e5ab6fa04a4edac3daac8f7e5ba8905f3fdb7a44e110165dea305a5e1275657320&expires=8h&r=183843294&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-2&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-2&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=12146e4ffd7df3c9bc45b0a9363017652e809ee5ebdd7cf1305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>client系列</strong>：<ul>
+<li>element.clientWidth：获取元素内容+padding的宽度（不包含边框和滚动条）</li>
+<li>element.clientHeight：获取元素内容+padding的高度（不包含边框和滚动条）</li>
+</ul>
+</li>
+<li><strong>offset系列</strong>：<ul>
+<li>element.offsetWidth：获取元素内容+padding+边框的宽度（包含滚动条）</li>
+<li>element.offsetHeight：获取元素内容+padding+边框的高度（包含滚动条）</li>
+</ul>
+</li>
+<li><strong>scroll系列</strong>：<ul>
+<li>element.scrollWidth：获取元素实际内容的宽度（包含不可见部分）</li>
+<li>element.scrollHeight：获取元素实际内容的高度（包含不可见部分）</li>
+<li>element.scrollTop：获取元素垂直滚动条滚动的距离</li>
+<li>element.scrollLeft：获取元素水平滚动条滚动的距离</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-元素滚动控制"><a href="#3-元素滚动控制" class="headerlink" title="3. 元素滚动控制"></a>3. 元素滚动控制</h5><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-3?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-ZwngEkIj7BrEraiItBK3bGPjuWA=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-8e587ae3eb597da7fa884e64a908157b41bcb085156ed6ddda3b13a17195e8dd2f9780753c1ff518af9cbd40b5a062f501e938c651539572305a5e1275657320&expires=8h&r=947448744&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-3&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-3&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=cf87eda222dfadb734d40a75587cb70b454e72ca0d872ff8&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>滚动位置设置</strong>：<ul>
+<li>element.scrollTo(x, y)：设置元素的滚动位置，x表示水平滚动距离，y表示垂直滚动距离</li>
+<li>element.scrollTo(0, 0)：将元素滚动到顶部最左侧</li>
+</ul>
+</li>
+<li><strong>滚动事件监听</strong>：<ul>
+<li>监听scroll事件可以获取元素的滚动状态</li>
+<li>使用addEventListener(‘scroll’, callback)添加滚动监听</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-元素位置获取"><a href="#4-元素位置获取" class="headerlink" title="4. 元素位置获取"></a>4. 元素位置获取</h5><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-4?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-z9xHH2QTA4upzlMpkz8FiBNys18=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-49d510d3544a7944e16823672aa332d1648d15de91d804d146856db27c59d3dbc7975b941ea024f4308ecccb43a7d727a128be695d5c132b305a5e1275657320&expires=8h&r=294916698&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-4&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-4&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e80686faf624695b8f8f86ef177d5700b6477c48031c257b32a4e&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>getBoundingClientRect()</strong>：<ul>
+<li>返回元素相对于视口的位置信息对象</li>
+<li>包含top、left、right、bottom等属性</li>
+<li>所有位置值都是相对于视口的坐标</li>
+</ul>
+</li>
+</ul>
+<h5 id="5-获取元素位置-07-10"><a href="#5-获取元素位置-07-10" class="headerlink" title="5. 获取元素位置 ﻿07:10"></a>5. 获取元素位置 ﻿<strong>07:10</strong></h5><p>﻿</p>
+<h6 id="1）getBoundingClientRect方法-07-17"><a href="#1）getBoundingClientRect方法-07-17" class="headerlink" title="1）getBoundingClientRect方法 ﻿07:17"></a>1）getBoundingClientRect方法 ﻿<strong>07:17</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-5?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-dFdsq7UvC9qmYRXHwRT+Fm4c/Vs=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Xian,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-a00adef36c81e25cc36ae9ff2fe75a5300728ce5050fafe0ad0b88cd0e39ba341b513ab2befa67fcc33c94cf719079289d00cddc79176619305a5e1275657320&expires=8h&r=820377933&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-5&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-5&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=875e0ff32ac7bd89ec8b61f085efb7e4f220db61c3edcabe&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>方法调用</strong>：通过元素对象的getBoundingClientRect()方法获取元素边界矩形</li>
+<li><strong>边界定义</strong>：包含元素整个盒模型（content+padding+border）在内的矩形区域</li>
+<li><strong>翻译说明</strong>：bounding意为”边界”，client指”客户端&#x2F;视口”，rect是”矩形”的缩写</li>
+</ul>
+<h6 id="2）矩形对象的信息-09-24"><a href="#2）矩形对象的信息-09-24" class="headerlink" title="2）矩形对象的信息 ﻿09:24"></a>2）矩形对象的信息 ﻿<strong>09:24</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-6?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-cRoTlfm6ByWuupyZA7bYMcUbuqg=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-a286780394d5df4adaff12e683ddfb77c669a453c6805775a604ca35a5707362ae5c421e497a2d9347e549864a757d9fd43722dcca9438a2305a5e1275657320&expires=8h&r=611169197&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-6&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-6&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068c32f23017ea016b06ef177d5700b6477c48031c257b32a4e&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>基本属性</strong>：<ul>
+<li>width&#x2F;height：元素的完整宽度和高度（含边框）</li>
+<li>x&#x2F;y：矩形左上角相对于视口的坐标（等同于left&#x2F;top）</li>
+</ul>
+</li>
+<li><strong>位置属性</strong>：<ul>
+<li>left：元素左边界到视口左边的距离（单位：像素）</li>
+<li>top：元素上边界到视口顶部的距离</li>
+<li>right&#x2F;bottom：元素右&#x2F;下边界到视口左&#x2F;顶边的距离（使用频率较低）</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）相对于视口的位置-09-39"><a href="#3）相对于视口的位置-09-39" class="headerlink" title="3）相对于视口的位置 ﻿09:39"></a>3）相对于视口的位置 ﻿<strong>09:39</strong></h6><p>﻿</p>
+<ul>
+<li><strong>视口概念</strong>：当前浏览器窗口可见区域（与固定定位的参照系相同）</li>
+<li><strong>实际应用</strong>：通过京东购物车示例，left&#x3D;993.5表示元素左边界距离视口左边993.5像素</li>
+<li><strong>注意事项</strong>：宽高信息通常使用其他专门方法获取，不推荐通过此方式</li>
+</ul>
+<h6 id="4）相对于父元素的位置-10-20"><a href="#4）相对于父元素的位置-10-20" class="headerlink" title="4）相对于父元素的位置 ﻿10:20"></a>4）相对于父元素的位置 ﻿<strong>10:20</strong></h6><p>﻿</p>
+<ul>
+<li><strong>计算原理</strong>：<ul>
+<li>获取元素离视口左边距离（elementRect.left）</li>
+<li>获取父元素离视口左边距离（parentRect.left）</li>
+<li>两者相减得到相对位置</li>
+</ul>
+</li>
+<li><strong>数学表达</strong>：相对位置 &#x3D;<br>﻿elementRect.left−parentRect.leftelementRect.left - parentRect.left<strong>e</strong>l<strong>e</strong>m<strong>e</strong>n<strong>tR</strong>ec<strong>t</strong>.<strong>l</strong>e<strong>f</strong>t**−<strong>p</strong>a<strong>re</strong>n<strong>tR</strong>ec<strong>t</strong>.<strong>l</strong>e<strong>f</strong>t**﻿</li>
+<li><strong>实现建议</strong>：需要时查阅API文档即可，不必死记硬背方法</li>
+</ul>
+<h5 id="6-应用案例-11-06"><a href="#6-应用案例-11-06" class="headerlink" title="6. 应用案例 ﻿11:06"></a>6. 应用案例 ﻿<strong>11:06</strong></h5><p>﻿</p>
+<h6 id="1）例题-可拖动的便签"><a href="#1）例题-可拖动的便签" class="headerlink" title="1）例题:可拖动的便签"></a>1）例题:可拖动的便签</h6><ul>
+<li>功能实现分析<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-7?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-oeHleEli9XLBfHcvmlHKUU++kKk=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-2eb85333bad75c8c2535dac21f447071b2454ac4e65503bd65c2f67650bba50b126b98c36e69c07e27f8e7940aa433444b3613640aa27cec305a5e1275657320&expires=8h&r=292449717&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-7&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-7&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=875e0ff32ac7bd8947990d12e1e064b71fbc65c434795e40305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>基本功能</strong>：<ul>
+<li>顶部移动条可拖动整个便签</li>
+<li>内容区域可编辑文字</li>
+<li>鼠标悬停在移动条时显示移动光标样式</li>
+</ul>
+</li>
+<li><strong>实现原理</strong>：<ul>
+<li>内容可编辑：通过设置contenteditable属性实现</li>
+<li>移动条样式：使用CSS设置cursor: move</li>
+<li>拖动限制：不能超出浏览器视口范围</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>HTML结构<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-8?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-5QUjHWeTa2kwlbt1vAhpP/5z2VM=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-672f3f731191ab56ace39f93321788a3ba9d7643153b1ef7c62d929920fb01826b80198523caac5f51e87bc84f81df212a2f13577bfb9bcf305a5e1275657320&expires=8h&r=495009650&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-8&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-8&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e80684cf9f0f2313dbfba1fbc65c434795e40305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;note&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;move-bar&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;content&quot; contenteditable&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>关键元素</strong>：<ul>
+<li>.note：便签容器，设置为position: fixed</li>
+<li>.move-bar：拖动控制条</li>
+<li>.content：可编辑内容区域</li>
+</ul>
+</li>
+<li>拖动实现逻辑<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-9?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-wY0xP8tyj3DSGjSCoVsBpMRCOqU=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-b7305c3ed611b1e0f7b04386452fbea1098084f16bfbe0931cca2bed5a498291cce7e034439f16c55e176497b3eb35735d8361064fdd29ea305a5e1275657320&expires=8h&r=324076586&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-9&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-9&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=b3434a369726e9249598d5fd593929896ef177d5700b6477c48031c257b32a4e&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>事件监听流程</strong>：<ul>
+<li>在移动条上按下鼠标（mousedown）</li>
+<li>开始监听整个窗口的鼠标移动（mousemove）</li>
+<li>鼠标抬起时（mouseup）取消所有监听</li>
+</ul>
+</li>
+<li><strong>核心代码结构</strong>：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">moveBar.onmousedown = function()&#123;</span><br><span class="line">  window.onmousemove = function()&#123; /* 处理拖动 */ &#125;;</span><br><span class="line">  window.onmouseup = function()&#123; </span><br><span class="line">    window.onmousemove = null;</span><br><span class="line">    window.onmouseup = null;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>坐标计算原理<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-10?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-3F0UYmH8CVkD6BcnG9I9dbqpsJg=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-ca9bb51fa6fe92cf309cd3d9e16325ea593acd38b70f4daba527862ad54abb241e7c8345993c9b31bcfca33f80fbcfb4c7f6908b95560695305a5e1275657320&expires=8h&r=457853273&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-10&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-10&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068b85158c4a6b083511fbc65c434795e40305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>关键坐标</strong>：<ul>
+<li>鼠标按下时的初始坐标（e.clientX&#x2F;Y）</li>
+<li>元素初始位置（getBoundingClientRect()）</li>
+<li>鼠标移动时的位移（currentPos - initialPos）</li>
+</ul>
+</li>
+<li><strong>位置计算公式</strong>：<ul>
+<li>left &#x3D; 元素初始left + (鼠标当前X - 鼠标初始X)</li>
+<li>top &#x3D; 元素初始top + (鼠标当前Y - 鼠标初始Y)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边界限制处理<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-11?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-+y19YmW2c39eKqx2FetbDuBFe/Q=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-adea3cac580c422b47dca2eea4ebf92187ccf09c293f4dbf2e1a7df51cdb3a1aa1d113e8c8b1d45a5c04ba579208067ed8d606ae818865a4305a5e1275657320&expires=8h&r=677403307&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-11&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-11&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068ffbe007f2b50d09d6ef177d5700b6477c48031c257b32a4e&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>视口尺寸获取</strong>：</li>
+<li><strong>元素尺寸获取</strong>：</li>
+<li><strong>边界值计算</strong>：<ul>
+<li>最大left：w - ew</li>
+<li>最大top：h - eh</li>
+<li>最小left&#x2F;top：0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>完整实现代码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">var moveBar = document.querySelector(&#x27;.move-bar&#x27;);</span><br><span class="line">var note = document.querySelector(&#x27;.note&#x27;);</span><br><span class="line">moveBar.onmousedown = function(e)&#123;</span><br><span class="line">  // 初始坐标记录</span><br><span class="line">  var x = e.clientX, y = e.clientY;</span><br><span class="line">  var rect = moveBar.getBoundingClientRect();</span><br><span class="line">  var ex = rect.left, ey = rect.top;</span><br><span class="line">  // 视口和元素尺寸</span><br><span class="line">  var w = document.documentElement.clientWidth;</span><br><span class="line">  var h = document.documentElement.clientHeight;</span><br><span class="line">  var ew = note.offsetWidth, eh = note.offsetHeight;</span><br><span class="line">  // 边界值计算</span><br><span class="line">  var maxLeft = w - ew, maxTop = h - eh;</span><br><span class="line">  window.onmousemove = function(e)&#123;</span><br><span class="line">    // 计算位移</span><br><span class="line">    var disX = e.clientX - x;</span><br><span class="line">    var disY = e.clientY - y;</span><br><span class="line">    // 计算新位置</span><br><span class="line">    var left = ex + disX;</span><br><span class="line">    var top = ey + disY;</span><br><span class="line">    // 边界限制</span><br><span class="line">    if(left &lt; 0) left = 0;</span><br><span class="line">    if(left &gt; maxLeft) left = maxLeft;</span><br><span class="line">    if(top &lt; 0) top = 0;</span><br><span class="line">    if(top &gt; maxTop) top = maxTop;</span><br><span class="line">    // 应用新位置</span><br><span class="line">    note.style.left = left + &#x27;px&#x27;;</span><br><span class="line">    note.style.top = top + &#x27;px&#x27;;</span><br><span class="line">  &#125;;</span><br><span class="line">  window.onmouseup = function()&#123;</span><br><span class="line">    window.onmousemove = null;</span><br><span class="line">    window.onmouseup = null;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>实现要点</strong>：<ul>
+<li>使用窗口级事件监听提高容错性</li>
+<li>在mousedown时一次性获取所有初始值</li>
+<li>通过边界检查确保不超出视口</li>
+<li>及时清除事件监听防止内存泄漏</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）例题-自行运动的小球-33-38"><a href="#2）例题-自行运动的小球-33-38" class="headerlink" title="2）例题:自行运动的小球 ﻿33:38"></a>2）例题:自行运动的小球 ﻿<strong>33:38</strong></h6><p>﻿</p>
+<ul>
+<li>小球运动实现原理<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-12?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733123&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-gwn13VZ43ezok92/NnpSgpEP8Pg=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-806766ba19acfd66d6857e8be7edb10587e98db57cd97e826e46bc29faf980a4b9b817ac2765a306dbba5e58e64d98b434cb5f8950cfe361305a5e1275657320&expires=8h&r=235088338&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-12&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-12&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068bdc017a35020f9966ef177d5700b6477c48031c257b32a4e&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>基本结构</strong>：使用固定定位的小球元素，通过CSS设置宽高50px、圆形边框和初始位置</li>
+<li><strong>运动机制</strong>：通过JavaScript每隔20毫秒改变小球的left和top值实现运动效果</li>
+<li><strong>方向控制</strong>：通过正负值控制运动方向，正值表示右下运动，负值表示左上运动</li>
+</ul>
+</li>
+<li>核心代码实现<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-13?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733124&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-BL0OeIPtCOVE0QV+SuAnX+fhALc=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-2381583ab64595511d3d346fd9cadbea72f5b29960baa755e8df0fa752152906872f3633b3e6669422e2aec8f385289449cce0615299c286305a5e1275657320&expires=8h&r=904086150&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-13&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-13&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068fca2b103d063e44c1fbc65c434795e40305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>定时器设置</strong>：使用setInterval函数，设置20毫秒的间隔时间</li>
+<li><strong>元素获取</strong>：在外部通过document.querySelector获取小球元素，避免重复获取</li>
+<li><strong>坐标计算</strong>：通过getBoundingClientRect()获取当前坐标，加上位移值得到新坐标</li>
+</ul>
+</li>
+<li>边界检测与反弹<ul>
+<li><strong>屏幕尺寸获取</strong>：使用document.documentElement.clientWidth&#x2F;Height获取可视区域尺寸</li>
+<li><strong>小球尺寸获取</strong>：通过ball.clientWidth&#x2F;Height获取小球自身尺寸</li>
+<li><strong>最大坐标计算</strong>：最大left&#x3D;屏幕宽度-小球宽度，最大top&#x3D;屏幕高度-小球高度</li>
+<li><strong>反弹逻辑</strong>：当坐标超过边界时，将位移值取反(disX &#x3D; -disX)</li>
+</ul>
+</li>
+<li>碰撞效果增强<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-14?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733124&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-M2F8YWBXULQYSVWlQOEeyTrrU9M=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-8f1cdb3c0dfafc1f60a5d8a05261604f544f5f4515a025a8ef556dfb1c2df8ddd80e15d17648d99bce6fffd585ef9bc75a8c342cfc7faff2305a5e1275657320&expires=8h&r=995206181&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-14&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-14&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068cc232489c2074365bbed1727fa87239f305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>随机数生成</strong>：使用Math.random()生成0-255之间的随机RGB值</li>
+<li><strong>颜色改变</strong>：碰撞时调用changeBg()函数，设置ball.style.background为新RGB值</li>
+<li><strong>颜色优化</strong>：可将随机范围限制在0-200之间，避免颜色过淡看不清</li>
+</ul>
+</li>
+<li>完整实现代码<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-15?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762733124&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-SjIRnksnl54+YCHjLGfuNH4yjhI=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-44df9872ad8d79593dd021fc891ecc720ed7a44cdebc8a1087aeea990604c21620901863844119008a8fc5f94ebc873aea5743bf296a783a305a5e1275657320&expires=8h&r=193152739&vbdid=-&fin=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-15&fn=p-dedcfe6d01ada011949c1ba32a08b108-40-2025042100-15&rtype=1&dp-logid=349642260017778068&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068230408e99c62dfffbbed1727fa87239f305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>变量定义</strong>：包含位移值(disX&#x2F;disY)、屏幕尺寸(w&#x2F;h)、小球尺寸(ew&#x2F;eh)</li>
+<li><strong>核心循环</strong>：定时器中计算新坐标、检测边界、处理反弹和颜色变化</li>
+<li><strong>性能优化</strong>：所有不变的元素和尺寸都在循环外获取，避免重复计算</li>
+</ul>
+</li>
+<li>扩展思考<ul>
+<li><strong>运动速度</strong>：可通过调整disX&#x2F;disY的值改变运动速度</li>
+<li><strong>运动方向</strong>：初始值可设为负数实现不同方向的初始运动</li>
+<li><strong>碰撞检测</strong>：可扩展为多个小球之间的碰撞检测和反弹</li>
+<li><strong>重力模拟</strong>：可加入加速度模拟重力效果</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、知识小结"><a href="#二、知识小结" class="headerlink" title="二、知识小结"></a>二、知识小结</h4><table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>核心内容</th>
+<th>考试重点&#x2F;易混淆点</th>
+<th>难度系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DOM尺寸获取</td>
+<td>通过window.outerWidth&#x2F;Height获取浏览器尺寸，window.innerWidth&#x2F;Height获取包含滚动条的视口尺寸，document.documentElement.clientWidth&#x2F;Height获取不包含滚动条的视口尺寸</td>
+<td><strong>区分浏览器尺寸和视口尺寸</strong>，注意滚动条是否包含在内</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>元素尺寸获取</td>
+<td>clientWidth&#x2F;Height获取内容+padding（不含边框和滚动条），offsetWidth&#x2F;Height获取包含边框和滚动条的尺寸</td>
+<td><strong>滚动条和边框的包含关系</strong>，不同场景选择合适API</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>滚动位置控制</td>
+<td>scrollTop&#x2F;Left获取滚动距离，scrollTo(x,y)设置滚动位置，通过scroll事件监听滚动</td>
+<td><strong>理解坐标系原点</strong>（左上角为0,0），横向&#x2F;纵向滚动差异</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>元素位置获取</td>
+<td>getBoundingClientRect()获取元素相对于视口的矩形信息（含left&#x2F;top&#x2F;right&#x2F;bottom）</td>
+<td><strong>相对视口而非父元素</strong>，需手动计算与父元素距离</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>拖拽实现原理</td>
+<td>1. 鼠标按下记录初始坐标; 2. 移动时计算偏移量; 3. 限制边界防止超出视口</td>
+<td><strong>事件监听顺序</strong>（mousedown→mousemove→mouseup），<strong>坐标转换计算</strong></td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>碰撞反弹效果</td>
+<td>1. 定时更新元素位置; 2. 边界检测时反转移动方向; 3. 碰撞时触发附加效果（如变色）</td>
+<td><strong>运动方向向量控制</strong>，边界条件判断逻辑</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>性能优化要点</td>
+<td>1. 避免在频繁触发的事件中查询DOM; 2. 提前缓存不变的值（如视口尺寸）; 3. 使用CSS硬件加速</td>
+<td><strong>重排&#x2F;重绘代价</strong>，getBoundingClientRect的性能影响</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/')">js-dom的尺寸和位置</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=js-dom的尺寸和位置&amp;url=http://kaiyiya.github.io/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/&amp;pic=https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/JS/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>JS<span class="tagsPageCount">18</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d32f566.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">js-web事件</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">具体数学-作业3</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/07/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5%E5%B0%8F%E6%97%B6%E5%AD%A6%E4%B9%A0js%E9%87%8D%E9%9A%BE%E7%82%B9/" title="5小时学习js重难点"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68537d0f023a9.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-03</div><div class="title">5小时学习js重难点</div></div></a></div><div><a href="/2025/06/30/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JS-%E9%9B%86%E5%90%88%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="JS-集合引用类型"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/30/6861d52d7bef7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-30</div><div class="title">JS-集合引用类型</div></div></a></div><div><a href="/2025/07/06/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JS%E9%87%8D%E9%9A%BE%E7%82%B9%E5%AE%9E%E4%BE%8B%E7%B2%BE%E8%AE%B2/" title="JS重难点实例精讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/30/6861d52e11a1b.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-06</div><div class="title">JS重难点实例精讲</div></div></a></div><div><a href="/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/" title="js-dom对象"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-03</div><div class="title">js-dom对象</div></div></a></div><div><a href="/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/" title="js-this"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d5e0d09.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-31</div><div class="title">js-this</div></div></a></div><div><a href="/2025/07/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%B0%84/" title="js-代理与反射"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/08/25/68ac6ddd41dac.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-26</div><div class="title">js-代理与反射</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81DOM%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE-00-02"><span class="toc-number">1.</span> <span class="toc-text">一、DOM尺寸和位置 ﻿00:02</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96%E5%B1%8F%E5%B9%95%E5%B0%BA%E5%AF%B8-00-58"><span class="toc-number">1.1.</span> <span class="toc-text">1. 获取屏幕尺寸 ﻿00:58</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E5%B0%BA%E5%AF%B8-02-33"><span class="toc-number">1.2.</span> <span class="toc-text">2. 获取元素尺寸 ﻿02:33</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%85%83%E7%B4%A0%E6%BB%9A%E5%8A%A8%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.</span> <span class="toc-text">3. 元素滚动控制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%85%83%E7%B4%A0%E4%BD%8D%E7%BD%AE%E8%8E%B7%E5%8F%96"><span class="toc-number">1.4.</span> <span class="toc-text">4. 元素位置获取</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E4%BD%8D%E7%BD%AE-07-10"><span class="toc-number">1.5.</span> <span class="toc-text">5. 获取元素位置 ﻿07:10</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89getBoundingClientRect%E6%96%B9%E6%B3%95-07-17"><span class="toc-number">1.5.1.</span> <span class="toc-text">1）getBoundingClientRect方法 ﻿07:17</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E7%9F%A9%E5%BD%A2%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BF%A1%E6%81%AF-09-24"><span class="toc-number">1.5.2.</span> <span class="toc-text">2）矩形对象的信息 ﻿09:24</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E7%9B%B8%E5%AF%B9%E4%BA%8E%E8%A7%86%E5%8F%A3%E7%9A%84%E4%BD%8D%E7%BD%AE-09-39"><span class="toc-number">1.5.3.</span> <span class="toc-text">3）相对于视口的位置 ﻿09:39</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89%E7%9B%B8%E5%AF%B9%E4%BA%8E%E7%88%B6%E5%85%83%E7%B4%A0%E7%9A%84%E4%BD%8D%E7%BD%AE-10-20"><span class="toc-number">1.5.4.</span> <span class="toc-text">4）相对于父元素的位置 ﻿10:20</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B-11-06"><span class="toc-number">1.6.</span> <span class="toc-text">6. 应用案例 ﻿11:06</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E4%BE%8B%E9%A2%98-%E5%8F%AF%E6%8B%96%E5%8A%A8%E7%9A%84%E4%BE%BF%E7%AD%BE"><span class="toc-number">1.6.1.</span> <span class="toc-text">1）例题:可拖动的便签</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E4%BE%8B%E9%A2%98-%E8%87%AA%E8%A1%8C%E8%BF%90%E5%8A%A8%E7%9A%84%E5%B0%8F%E7%90%83-33-38"><span class="toc-number">1.6.2.</span> <span class="toc-text">2）例题:自行运动的小球 ﻿33:38</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">二、知识小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web的事件传播机制"/></a><div class="content"><a class="title" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制">js-web的事件传播机制</a><time datetime="2025-11-11T11:43:41.000Z" title="发表于 2025-11-11 19:43:41">2025-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Adam优化器"/></a><div class="content"><a class="title" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器">Adam优化器</a><time datetime="2025-11-10T05:40:04.000Z" title="发表于 2025-11-10 13:40:04">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="具体数学-作业3"/></a><div class="content"><a class="title" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3">具体数学-作业3</a><time datetime="2025-11-10T02:40:23.000Z" title="发表于 2025-11-10 10:40:23">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-dom的尺寸和位置"/></a><div class="content"><a class="title" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置">js-dom的尺寸和位置</a><time datetime="2025-11-10T00:06:46.000Z" title="发表于 2025-11-10 08:06:46">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d32f566.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web事件"/></a><div class="content"><a class="title" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件">js-web事件</a><time datetime="2025-11-07T00:14:24.000Z" title="发表于 2025-11-07 08:14:24">2025-11-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>18</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>5</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>7</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>5</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

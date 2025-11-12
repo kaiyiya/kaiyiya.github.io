@@ -1,0 +1,850 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>js-web的事件传播机制 | 飞向月球的猫</title><meta name="keywords" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="js-web的事件传播机制"><meta name="application-name" content="js-web的事件传播机制"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="js-web的事件传播机制"><meta property="og:url" content="http://kaiyiya.github.io/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="一、事件传播机制 ﻿00:001. 事件传播机制   1）事件传播的基本原理 DOM层级关系: 页面元素是层层嵌套的结构，从最外层的window开始，依次是document → html → body → container → button 事件触发本质: 点击某个元素时，实际上同时触发了其所有祖"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://kaiyiya.github.io/img/default_cover.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://kaiyiya.github.io/img/default_cover.jpg"><meta name="description" content="一、事件传播机制 ﻿00:001. 事件传播机制   1）事件传播的基本原理 DOM层级关系: 页面元素是层层嵌套的结构，从最外层的window开始，依次是document → html → body → container → button 事件触发本质: 点击某个元素时，实际上同时触发了其所有祖"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: 'js-web的事件传播机制',
+  postAI: '',
+  pageFillDescription: '一、事件传播机制 ﻿0000, 1. 事件传播机制, 1）事件传播的基本原理, 2）事件传播三阶段, 3）代码实现方式, 2. 事件传播机制 ﻿0216, 1）监听DOM事件 ﻿0414, 2）例题：事件委托方式代码 ﻿1848, 3）例题鼠标移入事件不冒泡 ﻿2526, 二、知识小结一事件传播机制事件传播机制事件传播的基本原理层级关系页面元素是层层嵌套的结构从最外层的开始依次是事件触发本质点击某个元素时实际上同时触发了其所有祖先元素的事件例如点击等同于点击了事件传播三阶段捕获阶段事件从开始向下传递经过直到目标元素目标阶段事件到达实际被操作的元素如被点击的冒泡阶段事件从目标元素向上冒泡依次经过代码实现方式冒泡阶段监听捕获阶段监听实际应用特点传播机制始终存在与是否注册处理函数无关日常开发中较少主动使用但特定场景下如事件委托能发挥关键作用理解该机制可以避免事件处理中的意外行为事件传播机制监听事件事件传播机制三个阶段事件捕获阶段目标阶段事件冒泡阶段默认监听阶段使用或不传第三个参数时默认监听冒泡阶段示例监听的是的冒泡阶段捕获阶段监听通过的第三个参数设为实现示例会在捕获阶段触发执行顺序点击按钮时按钮目标阶段父元素冒泡阶段若在捕获阶段监听按钮捕获阶段优先执行事件对象属性与区别始终指向触发事件的原始元素目标阶段元素指向当前正在处理事件的元素注册事件的元素示例给注册事件时点击按钮是是阻止事件传播阻止事件继续向上冒泡应用场景在按钮事件中调用后父元素将不会收到该事件事件委托原理利用冒泡机制只需在父元素注册一个事件处理函数通过判断实际触发事件的子元素事件委托示例传统方式缺点需要为每个按钮单独绑定事件产生大量函数对象动态新增元素时需要重新绑定事件委托实现步骤在父容器如注册点击事件通过判断点击的是否为元素使用获取按钮文本优势体现无论页面有多少按钮只需一个事件处理函数动态添加按钮无需额外绑定自动继承事件处理例题事件委托方式代码事件委托的基本概念核心思想将事件监听器绑定在父元素上利用事件冒泡机制处理子元素的事件适用场景子元素数量多时避免性能浪费动态生成的子元素需要事件处理优势只需注册一次事件监听代码更简洁高效待办事项案例实现传统方式为每个动态创建的单独添加事件代码冗余且效率低事件委托改进实现要点通过判断实际点击元素使用获取需要操作的元素事件委托的代码优化优化方法使用直接拼接字符串创建元素无需单独创建节点和绑定事件示例代码注意事项确保拼接的字符串格式正确特殊字符需要转义处理事件传播机制详解事件类型区别不冒泡会冒泡实际应用需要事件委托时选择冒泡类型事件需要精确控制时选择不冒泡事件事件委托的两种典型应用场景性能优化当子元素数量特别多时避免为每个子元素单独绑定事件动态元素处理对动态创建的元素无需在创建时单独绑定事件判断技巧通过的特征判断实际交互元素常用判断条件包括等例题鼠标移入事件不冒泡事件特性不冒泡特性事件不会向上冒泡当鼠标移入元素时只会触发当前元素的事件处理函数不会触发父元素的同类事件示例现象当鼠标移入元素时控制台只输出不会输出说明事件没有冒泡到父容器区域概念和事件关注的是进入离开整个区域的行为而不是具体的冒泡过程与的区别冒泡行为差异会冒泡当鼠标移入子元素时会触发父元素的同类事件容易造成事件反复触发不会冒泡只在进入离开元素边界时触发一次实际应用建议大多数情况下推荐使用避免不必要的重复触发需要事件冒泡的特殊场景才使用事件传播机制总结三阶段模型捕获阶段从向下传播到目标元素目标阶段到达事件触发的元素冒泡阶段从目标元素向上传播回特殊事件类型不是所有事件都会冒泡如等事件就不参与冒泡过程可以通过方法手动阻止事件继续传播二知识小结知识点核心内容易混淆点难度系数事件传播机制事件从开始捕获到目标元素后冒泡回捕获阶段与冒泡阶段的触发顺序差异事件委托原理利用冒泡机制在父元素统一处理子元素事件与的指向区别事件源注册元素方法阻止事件继续冒泡传播在捕获冒泡阶段调用的效果差异特性不冒泡的鼠标事件与的冒泡行为对比动态元素事件处理通过父元素代理解决动态内容事件绑定难题字符串拼接与对象创建的选择策略',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-11 19:44:20',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">js-web的事件传播机制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-11T11:43:41.000Z" title="发表于 2025-11-11 19:43:41">2025-11-11</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-11T11:44:20.000Z" title="更新于 2025-11-11 19:44:20">2025-11-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="js-web的事件传播机制"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/img/default_cover.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/"><header><h1 id="CrawlerTitle" itemprop="name headline">js-web的事件传播机制</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-11-11T11:43:41.000Z" title="发表于 2025-11-11 19:43:41">2025-11-11</time><time itemprop="dateCreated datePublished" datetime="2025-11-11T11:44:20.000Z" title="更新于 2025-11-11 19:44:20">2025-11-11</time></header><h4 id="一、事件传播机制-00-00"><a href="#一、事件传播机制-00-00" class="headerlink" title="一、事件传播机制 ﻿00:00"></a>一、事件传播机制 ﻿<strong>00:00</strong></h4><h5 id="1-事件传播机制"><a href="#1-事件传播机制" class="headerlink" title="1. 事件传播机制"></a>1. 事件传播机制</h5><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-1?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861369&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-YOjwKFGCZah4Dtwp2EUWq9WkLvA=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-83982c740d784b4ab89ee33dad57619f4f362c01c658e8ee9a74d10300f1e6896d1e9194b9a9e173ff208455e44eb11b4c3325623317cb8a305a5e1275657320&expires=8h&r=329030043&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-1&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-1&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e80689ceadc16fe651140d8d8fefe3edf1a47a6c2ad6eeb587c84&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+</ul>
+<h6 id="1）事件传播的基本原理"><a href="#1）事件传播的基本原理" class="headerlink" title="1）事件传播的基本原理"></a>1）事件传播的基本原理</h6><ul>
+<li><strong>DOM层级关系</strong>: 页面元素是层层嵌套的结构，从最外层的window开始，依次是document → html → body → container → button</li>
+<li><strong>事件触发本质</strong>: 点击某个元素时，实际上同时触发了其所有祖先元素的事件（例如点击button等同于点击了container&#x2F;body&#x2F;html&#x2F;document&#x2F;window）</li>
+</ul>
+<h6 id="2）事件传播三阶段"><a href="#2）事件传播三阶段" class="headerlink" title="2）事件传播三阶段"></a>2）事件传播三阶段</h6><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-2?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861369&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-tnI8+Feb+TVLMFpv6Vrc0qNWYCs=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-917a4f82c5ccff9e68566cb906512845f1d2ea35f27750f0e137d266f5df37d185d9f7bddbbfe00dd5774cb62587cda24ad2cd707a62690a305a5e1275657320&expires=8h&r=799069291&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-2&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-2&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=6a9088c7620f7a17628d4364da4e7bb1a1d561c1751d2fb5&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>捕获阶段</strong>：事件从window开始向下传递，经过document → html → body → div，直到目标元素（button）</li>
+<li><strong>目标阶段</strong>：事件到达实际被操作的元素（如被点击的button）</li>
+<li><strong>冒泡阶段</strong>：事件从目标元素向上冒泡，依次经过div → body → html → document → window</li>
+</ul>
+<h6 id="3）代码实现方式"><a href="#3）代码实现方式" class="headerlink" title="3）代码实现方式"></a>3）代码实现方式</h6><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-3?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-QGCGxP5OZgb4/3d/TlTYrr3m6lE=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Xian,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-a7c6c6db3620912926d3df5987411fe04a5a597a3b92c70fdb621ff6f24aa14bc80bd51ea5db46a11058a8d6ae7ff8f6c3c50991a1a81846305a5e1275657320&expires=8h&r=815468493&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-3&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-3&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=6a9088c7620f7a175f792afb72ae205ba1d561c1751d2fb5&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>冒泡阶段监听</strong>：</li>
+<li><strong>捕获阶段监听</strong>：</li>
+<li><strong>实际应用特点</strong>：<ul>
+<li>传播机制始终存在，与是否注册处理函数无关</li>
+<li>日常开发中较少主动使用，但特定场景下（如事件委托）能发挥关键作用</li>
+<li>理解该机制可以避免事件处理中的意外行为</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-事件传播机制-02-16"><a href="#2-事件传播机制-02-16" class="headerlink" title="2. 事件传播机制 ﻿02:16"></a>2. 事件传播机制 ﻿<strong>02:16</strong></h5><h6 id="1）监听DOM事件-04-14"><a href="#1）监听DOM事件-04-14" class="headerlink" title="1）监听DOM事件 ﻿04:14"></a>1）监听DOM事件 ﻿<strong>04:14</strong></h6><ul>
+<li><p>事件传播机制</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-4?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-LeHDP9uBUV/IN9//88x96r9ZKS0=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-b77a7262051538ce6e7f46f252b6979420e1a86e2e38eb5ccd219a4f7ef7664c14f58ef863841ea4c6873823cb8b3954f7af854e224b49a3305a5e1275657320&expires=8h&r=648223542&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-4&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-4&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=c77a2290e27174be3d66e1a7460e33c3e1a037a9335774a0305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>三个阶段</strong>：事件捕获阶段 → 目标阶段 → 事件冒泡阶段</li>
+<li><strong>默认监听阶段</strong>：<ul>
+<li>使用onclick或addEventListener不传第三个参数时，默认监听冒泡阶段</li>
+<li>示例：document.body.onclick &#x3D; function(){} 监听的是body的冒泡阶段</li>
+</ul>
+</li>
+<li><strong>捕获阶段监听</strong>：<ul>
+<li>通过addEventListener的第三个参数设为true实现</li>
+<li>示例：div.addEventListener(‘click’, function(){}, true)会在捕获阶段触发</li>
+</ul>
+</li>
+<li><strong>执行顺序</strong>：<ul>
+<li>点击按钮时：按钮(目标阶段) → 父元素div → body（冒泡阶段）</li>
+<li>若在捕获阶段监听：body → 按钮 → div（捕获阶段优先执行）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>事件对象属性<br>﻿<strong>06:23</strong></p>
+<p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-5?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-7G9z/OUJX9X0CsSzs2FrzZ4+0/M=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-e801f6978de7bdb8f35f941eb6d3e1f905146ac47de8ad7019d679f51b5f3d4bff096232ccd2f6e73cf994ceb293cb1ee304a8106f903c68305a5e1275657320&expires=8h&r=956849734&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-5&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-5&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=f85402de02783127f018890cbc93942fe1a037a9335774a0305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>target与this区别</strong>：<ul>
+<li>e.target：始终指向触发事件的原始元素（目标阶段元素）</li>
+<li>this：指向当前正在处理事件的元素（注册事件的元素）</li>
+<li>示例：给body注册事件时点击按钮，this是body，e.target是button</li>
+</ul>
+</li>
+<li><strong>阻止事件传播</strong>：<ul>
+<li>e.stopPropagation()：阻止事件继续向上冒泡</li>
+<li>应用场景：在按钮事件中调用后，父元素将不会收到该事件</li>
+</ul>
+</li>
+<li><strong>事件委托原理</strong>：<ul>
+<li>利用冒泡机制，只需在父元素注册一个事件处理函数</li>
+<li>通过e.target判断实际触发事件的子元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>事件委托示例<br>﻿<strong>08:17</strong></p>
+<p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-6?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-tNgalOlrn3VnpzekMInI8LdFROk=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-75f93364abbd0c3e89ccbbd870202c21a5ed677992504eb44c42f25dafb3981d23738cb57a380e696b27dde4b18f94fc497fe15f63c66d0c305a5e1275657320&expires=8h&r=242664667&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-6&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-6&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=0eed3e784e3f8cde3a4ab4a628756547252c51ca94d93fe8&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>传统方式缺点</strong>：<ul>
+<li>需要为每个按钮单独绑定事件，产生大量函数对象</li>
+<li>动态新增元素时需要重新绑定事件</li>
+</ul>
+</li>
+<li><strong>委托实现步骤</strong>：<ul>
+<li>在父容器（如div.container）注册点击事件</li>
+<li>通过e.target.tagName判断点击的是否为BUTTON元素</li>
+<li>使用e.target.innerText获取按钮文本</li>
+</ul>
+</li>
+<li><strong>优势体现</strong>：<ul>
+<li>无论页面有多少按钮，只需一个事件处理函数</li>
+<li>动态添加按钮无需额外绑定，自动继承事件处理</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）例题：事件委托方式代码-18-48"><a href="#2）例题：事件委托方式代码-18-48" class="headerlink" title="2）例题：事件委托方式代码 ﻿18:48"></a>2）例题：事件委托方式代码 ﻿<strong>18:48</strong></h6><p>﻿</p>
+<ul>
+<li>事件委托的基本概念<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-7?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-cNLML9Q9wUozlPqHZI7qpkBiIvg=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-9283529c608373ad00f4a23f58149f9e21af2b40acf809868e3a63cf2beeb395f526435cc39691a225f1e1720c021bf2b963dfad91033e58305a5e1275657320&expires=8h&r=939858464&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-7&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-7&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=0cce998314b34a67903534785df66d60150d9a20860a8a4a&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>核心思想</strong>：将事件监听器绑定在父元素上，利用事件冒泡机制处理子元素的事件。</li>
+<li><strong>适用场景</strong>：<ul>
+<li>子元素数量多时避免性能浪费</li>
+<li>动态生成的子元素需要事件处理</li>
+</ul>
+</li>
+<li><strong>优势</strong>：只需注册一次事件监听，代码更简洁高效。</li>
+</ul>
+</li>
+<li>待办事项案例实现<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-8?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-xr6MXPR48tgAMzgEhNs3JQhS42M=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-1931f5bac083c67d2d5a9684925827b5f2b1a36204045fd397c368debb655a21dec3e50e5b53beff21250b57a7ba2efa9666ceeadb34b43c305a5e1275657320&expires=8h&r=969273686&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-8&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-8&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=f85402de027831277034fd2a49d41590e1a037a9335774a0305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>传统方式</strong>：<ul>
+<li>为每个动态创建的button单独添加click事件</li>
+<li>代码冗余且效率低</li>
+</ul>
+</li>
+<li><strong>事件委托改进</strong>：</li>
+<li><strong>实现要点</strong>：<ul>
+<li>通过e.target判断实际点击元素</li>
+<li>使用parentElement获取需要操作的li元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件委托的代码优化<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-9?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-DXIYIcU7s8CExkbaluxu92IbeZE=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-2e1413daf6912b8530ae95f08c853bfe076945bbbd072409eea19bfa5fcf421bae51149d2557b76a6e46d5a2ad8e160e71720bcf0b2ea080305a5e1275657320&expires=8h&r=155052811&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-9&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-9&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=5eee304bbb22b9c2c1a821c30eda9f7cb49dc706ff83f4f736d137a8fa615318&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>优化方法</strong>：<ul>
+<li>使用innerHTML直接拼接字符串创建元素</li>
+<li>无需单独创建DOM节点和绑定事件</li>
+</ul>
+</li>
+<li><strong>示例代码</strong>：</li>
+<li><strong>注意事项</strong>：<ul>
+<li>确保拼接的HTML字符串格式正确</li>
+<li>特殊字符需要转义处理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件传播机制详解<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-10?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-WGuj4PXvnSNxkBwdZBiLKubcOTg=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-660f579e07867944c89c91975bc4bab2c6121e988258b4a55cfa39a28344a0e8a7d0b472b62ffafb949101603e87b6933767164cff103654305a5e1275657320&expires=8h&r=912392499&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-10&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-10&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=e83ff6a139489830f86b48b6506bb92c252c51ca94d93fe8&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>事件类型区别</strong>：<ul>
+<li>mouseenter&#x2F;mouseleave：不冒泡</li>
+<li>mouseover&#x2F;mouseout：会冒泡</li>
+</ul>
+</li>
+<li><strong>实际应用</strong>：<ul>
+<li>需要事件委托时选择冒泡类型事件</li>
+<li>需要精确控制时选择不冒泡事件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件委托的两种典型应用场景<ul>
+<li><strong>性能优化</strong>：<ul>
+<li>当子元素数量特别多时，避免为每个子元素单独绑定事件</li>
+</ul>
+</li>
+<li><strong>动态元素处理</strong>：<ul>
+<li>对动态创建的元素，无需在创建时单独绑定事件</li>
+</ul>
+</li>
+<li><strong>判断技巧</strong>：<ul>
+<li>通过e.target的特征判断实际交互元素</li>
+<li>常用判断条件包括tagName、className等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）例题-鼠标移入事件不冒泡-25-26"><a href="#3）例题-鼠标移入事件不冒泡-25-26" class="headerlink" title="3）例题:鼠标移入事件不冒泡 ﻿25:26"></a>3）例题:鼠标移入事件不冒泡 ﻿<strong>25:26</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-11?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-uTJ4DEEVQnvdvgEvFMlSVfxNDAw=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-6bd54dd02783399dff65441b0e11432f701a62c97a65507976dbcecdb3ec3b4b7a75dcadd77db002f192075da4afecd70c1e227c2f107a6d305a5e1275657320&expires=8h&r=988597133&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-11&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-11&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=e83ff6a1394898306176db7106b117e5252c51ca94d93fe8&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li>mouseenter事件特性<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-12?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-eTz92Rk/zJ+Wsp34wJzhkfUuim4=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Xian,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-d60454194d7be1f895b09789f6fd7aa610b68ae6bb4b14e5018d63f4f7fc533d6927749b1fa114058b6f66d040e861e457f3e8ab470becb2305a5e1275657320&expires=8h&r=657783147&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-12&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-12&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=7717645f262844ca9d4d4231d88b56a5252c51ca94d93fe8&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>不冒泡特性</strong>: mouseenter事件不会向上冒泡，当鼠标移入元素时，只会触发当前元素的事件处理函数，不会触发父元素的同类事件。</li>
+<li><strong>示例现象</strong>: 当鼠标移入inner元素时，控制台只输出”inner mouseenter!”，不会输出”container mouseenter!”，说明事件没有冒泡到父容器。</li>
+<li><strong>区域概念</strong>: mouseenter和mouseleave事件关注的是”进入&#x2F;离开整个区域”的行为，而不是具体的冒泡过程。</li>
+</ul>
+</li>
+<li>mouseover与mouseenter的区别<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-13?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-zQKpjDHytubcS8bEdAU4IlHLfe4=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-784d48b19ee71452adb4d310752e0903a48ff9b7ad26cf42172ef188d609ef5853fb558dffec85b044f7f81d23e69a33111b79f42fef19ce305a5e1275657320&expires=8h&r=492465844&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-13&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-13&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=7717645f262844ca627e1d822ff1263b252c51ca94d93fe8&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>冒泡行为差异</strong>:<ul>
+<li><strong>mouseover&#x2F;mouseout</strong>: 会冒泡，当鼠标移入子元素时会触发父元素的同类事件，容易造成事件反复触发。</li>
+<li><strong>mouseenter&#x2F;mouseleave</strong>: 不会冒泡，只在进入&#x2F;离开元素边界时触发一次。</li>
+</ul>
+</li>
+<li><strong>实际应用建议</strong>:<ul>
+<li>大多数情况下推荐使用mouseenter&#x2F;mouseleave，避免不必要的重复触发。</li>
+<li>需要事件冒泡的特殊场景才使用mouseover&#x2F;mouseout。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件传播机制总结<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-14?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762861370&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-OfSz6l8WAyyW/vyyd4nTw1yOdCs=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-b42bd842e5089c5e273cb29a1463501c06687f87e66844e028364262aabe694e0d800bcf834377999a8a5f501b9c58156a2e5357f593db3f305a5e1275657320&expires=8h&r=655369962&vbdid=-&fin=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-14&fn=p-72ad853efaed6f5401ebc051b83af22b-40-2025042100-14&rtype=1&dp-logid=384068287985884383&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=7717645f262844ca78c1c5cc459b5ec4150d9a20860a8a4a&hflag=30&from_type=&adg=n&reqlabel=250528_n_6f537671b483da19aa8ae7deefc6217e_0_f8723ff0a039c0c808f05d8f48622bbb&chkv=5&bid=250528&by=themis"></li>
+<li><strong>三阶段模型</strong>:<ul>
+<li>捕获阶段：从document向下传播到目标元素</li>
+<li>目标阶段：到达事件触发的元素</li>
+<li>冒泡阶段：从目标元素向上传播回document</li>
+</ul>
+</li>
+<li><strong>特殊事件类型</strong>:<ul>
+<li>不是所有事件都会冒泡，如mouseenter&#x2F;mouseleave、focus&#x2F;blur等事件就不参与冒泡过程。</li>
+<li>可以通过event.stopPropagation()方法手动阻止事件继续传播。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、知识小结"><a href="#二、知识小结" class="headerlink" title="二、知识小结"></a>二、知识小结</h4><table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>核心内容</th>
+<th>易混淆点</th>
+<th>难度系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>事件传播机制</strong></td>
+<td>事件从window开始捕获，到目标元素后冒泡回window</td>
+<td>捕获阶段与冒泡阶段的触发顺序差异</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td><strong>事件委托原理</strong></td>
+<td>利用冒泡机制在父元素统一处理子元素事件</td>
+<td><strong>target</strong>与<strong>this</strong>的指向区别（事件源vs注册元素）</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>stopPropagation方法</strong></td>
+<td>阻止事件继续冒泡传播</td>
+<td>在捕获&#x2F;冒泡阶段调用的效果差异</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td><strong>mouseenter&#x2F;mouseleave特性</strong></td>
+<td><strong>不冒泡</strong>的鼠标事件</td>
+<td>与mouseover&#x2F;mouseout的冒泡行为对比</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>动态元素事件处理</strong></td>
+<td>通过父元素代理解决动态内容事件绑定难题</td>
+<td>字符串拼接与DOM对象创建的选择策略</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/')">js-web的事件传播机制</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=js-web的事件传播机制&amp;url=http://kaiyiya.github.io/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/&amp;pic=/img/default_cover.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Adam优化器</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6-00-00"><span class="toc-number">1.</span> <span class="toc-text">一、事件传播机制 ﻿00:00</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.</span> <span class="toc-text">1. 事件传播机制</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">1）事件传播的基本原理</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E4%B8%89%E9%98%B6%E6%AE%B5"><span class="toc-number">1.1.2.</span> <span class="toc-text">2）事件传播三阶段</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">3）代码实现方式</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6-02-16"><span class="toc-number">1.2.</span> <span class="toc-text">2. 事件传播机制 ﻿02:16</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E7%9B%91%E5%90%ACDOM%E4%BA%8B%E4%BB%B6-04-14"><span class="toc-number">1.2.1.</span> <span class="toc-text">1）监听DOM事件 ﻿04:14</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E4%BE%8B%E9%A2%98%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E6%96%B9%E5%BC%8F%E4%BB%A3%E7%A0%81-18-48"><span class="toc-number">1.2.2.</span> <span class="toc-text">2）例题：事件委托方式代码 ﻿18:48</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E4%BE%8B%E9%A2%98-%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%85%A5%E4%BA%8B%E4%BB%B6%E4%B8%8D%E5%86%92%E6%B3%A1-25-26"><span class="toc-number">1.2.3.</span> <span class="toc-text">3）例题:鼠标移入事件不冒泡 ﻿25:26</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">二、知识小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web的事件传播机制"/></a><div class="content"><a class="title" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制">js-web的事件传播机制</a><time datetime="2025-11-11T11:43:41.000Z" title="发表于 2025-11-11 19:43:41">2025-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Adam优化器"/></a><div class="content"><a class="title" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器">Adam优化器</a><time datetime="2025-11-10T05:40:04.000Z" title="发表于 2025-11-10 13:40:04">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="具体数学-作业3"/></a><div class="content"><a class="title" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3">具体数学-作业3</a><time datetime="2025-11-10T02:40:23.000Z" title="发表于 2025-11-10 10:40:23">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-dom的尺寸和位置"/></a><div class="content"><a class="title" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置">js-dom的尺寸和位置</a><time datetime="2025-11-10T00:06:46.000Z" title="发表于 2025-11-10 08:06:46">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d32f566.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web事件"/></a><div class="content"><a class="title" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件">js-web事件</a><time datetime="2025-11-07T00:14:24.000Z" title="发表于 2025-11-07 08:14:24">2025-11-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>18</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>5</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>7</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>5</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

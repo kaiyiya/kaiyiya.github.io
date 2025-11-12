@@ -1,0 +1,844 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>js-this | 飞向月球的猫</title><meta name="keywords" content="js-原型链"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="js-this"><meta name="application-name" content="js-this"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="js-this"><meta property="og:url" content="http://kaiyiya.github.io/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="js-原型链"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/09/02/68b6d8d5e0d09.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/09/02/68b6d8d5e0d09.jpg"><meta name="description" content="js-原型链"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: 'js-this',
+  postAI: '',
+  pageFillDescription: '一、这是啥 ﻿0002, 1. 不同的场景指代的含义不同 ﻿0032, 2. JS中的this关键字 ﻿0134, 1）全局代码使用this ﻿0138, 2）函数中this的指向 ﻿0235, 3. 总结与记忆要点, 4. this指向总结 ﻿1809, 5. 应用案例 ﻿1848, 1）例题this的作用, 2）例题为所有对象添加方法print ﻿2254, 3）例题this的应用 ﻿3454, 二、知识小结一这是啥不同的场景指代的含义不同多义性原理同一个词在不同环境中含义可能不同中的关键字也遵循这一原理生活类比就像糖粉一词在不同语境下可能指代不同事物的指向也随调用环境变化中的关键字全局代码使用指向对象在全局代码中使用时指向全局对象浏览器环境开发实践实际开发中很少在全局代码使用直接使用更明确环境差异环境下全局指向与浏览器不同需要注意环境差异函数中的指向核心原则函数内的指向完全取决于函数的调用方式而非定义位置不确定性函数定义时无法确定指向只有在调用时才能确定通过方式调用指向对象指向新创建的实例对象底层机制相当于执行了的操作构造函数示例指向新对象指向新创建的实例直接调用指向对象指向全局对象非严格模式风险提示设计为直接调用的函数应避免使用防止意外指向全局对象示例通过对象调用指向规则指向调用该方法的对象嵌套对象指向对象引用陷阱将方法赋值给变量后调用会导致丢失原指向指向而非函数功能显式指定函数调用时的值和参数参数传递第一个参数为指向后续参数逐个传递示例指向数组函数功能与相同但参数以数组形式传递使用场景参数数量不确定或需要动态传递时更适用示例对比方式方式总结与记忆要点调用方式决定论牢记指向完全由调用方式决定五种调用模式调用新对象直接调用对象方法调用对象第一个参数第一个参数开发建议按照预期调用方式设计函数避免指向混乱指向总结全局环境中的在全局代码中使用时它指向全局对象浏览器中为但在实际开发中应避免这种用法函数中的指向规则通过调用指向新创建的对象实例直接调用指向全局对象严格模式下为通过对象调用指向调用该方法的对象使用调用指向第一个参数指定的上下文对象动态绑定特性的指向完全取决于函数被调用的方式编写函数时无法预知其指向需依赖调用者的正确使用应用案例例题的作用题目解析错误做法直接使用变量名访问对象属性会导致代码耦合度高且存在变量被修改的风险正确解决方案使用访问属性确保无论对象被赋值给哪个变量都能正确工作隐患演示当对象被赋值给新变量后原变量被修改为其他类型时直接引用变量名的方式会失效最佳实践在对象方法中访问对象属性时应始终使用的方式例题为所有对象添加方法题目解析原型继承原理通过添加方法所有对象实例都能继承该方法实现步骤在上定义方法方法内使用循环遍历对象属性通过访问属性值属性过滤技巧使用方法判断属性是否为对象自身属性与操作符的区别只检查自身属性而操作符会检查原型链输出格式使用同时输出键值对例题的应用题目解析常规调用方式使用关键字创建实例邓旭明替代方案创建空对象使用调用构造函数邓旭明原理分析方法第一个参数指定的指向后续参数作为构造函数的参数传递构造函数内的属性赋值会作用于指定的对象注意事项这种方式与调用的区别在于不会自动设置原型链实际开发中更推荐使用关键字二知识小结知识点核心内容易混淆点重点难度系数基本概念指向取决于函数调用方式而非定义位置初学者常误以为在定义时就确定指向全局环境中的在全局代码中使用指向对象环境与浏览器环境表现不同函数中的函数内指向取决于调用方式直接调用指向对象方法调用指向调用对象调用指向新创建对象直接调用易导致意外指向方法可手动指定指向参数逐个传递参数以数组传递两种方法功能相同仅参数传递方式不同原型方法中的原型方法中的指向调用该方法的实例对象需注意原型链查找机制对的影响对象方法中的对象方法内应指向调用者对象方法被赋值给变量后调用会导致丢失构造函数中的操作时指向新创建的空对象忘记使用会导致指向全局对象方法检查属性是否在对象自身非原型链上与操作符检查整个原型链的区别实际应用场景对象方法内访问对象属性应使用直接使用变量名会导致代码脆弱性实际应用场景为所有对象添加共享方法应放在上需注意避免枚举到原型方法用过滤特殊调用技巧不使用通过创建对象实例与调用在原型链处理上的差异',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-03 09:21:26',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/JS/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>JS</span></a></span></div></div><h1 class="post-title" itemprop="name headline">js-this</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-31T02:11:51.000Z" title="发表于 2025-10-31 10:11:51">2025-10-31</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-03T01:21:26.000Z" title="更新于 2025-11-03 09:21:26">2025-11-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="js-this"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/09/02/68b6d8d5e0d09.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/"><header><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a><a href="/tags/JS/" tabindex="-1" itemprop="url">JS</a><h1 id="CrawlerTitle" itemprop="name headline">js-this</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-10-31T02:11:51.000Z" title="发表于 2025-10-31 10:11:51">2025-10-31</time><time itemprop="dateCreated datePublished" datetime="2025-11-03T01:21:26.000Z" title="更新于 2025-11-03 09:21:26">2025-11-03</time></header><h4 id="一、这是啥-00-02"><a href="#一、这是啥-00-02" class="headerlink" title="一、这是啥 ﻿00:02"></a>一、这是啥 ﻿<strong>00:02</strong></h4><p>﻿</p>
+<h5 id="1-不同的场景指代的含义不同-00-32"><a href="#1-不同的场景指代的含义不同-00-32" class="headerlink" title="1. 不同的场景指代的含义不同 ﻿00:32"></a>1. 不同的场景指代的含义不同 ﻿<strong>00:32</strong></h5><p>﻿</p>
+<ul>
+<li><strong>多义性原理</strong>: 同一个词在不同环境中含义可能不同，JS中的this关键字也遵循这一原理</li>
+<li><strong>生活类比</strong>: 就像”糖粉”一词在不同语境下可能指代不同事物，this的指向也随调用环境变化</li>
+</ul>
+<h5 id="2-JS中的this关键字-01-34"><a href="#2-JS中的this关键字-01-34" class="headerlink" title="2. JS中的this关键字 ﻿01:34"></a>2. JS中的this关键字 ﻿<strong>01:34</strong></h5><p>﻿</p>
+<h6 id="1）全局代码使用this-01-38"><a href="#1）全局代码使用this-01-38" class="headerlink" title="1）全局代码使用this ﻿01:38"></a>1）全局代码使用this ﻿<strong>01:38</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://allall02.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-1?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876617&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-82Vc3hgbreRkQwbdX4d5686U1Zc=&to=80&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Xian,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-97a19e15edd3bc541491495fed4ed7897ec8aea03e5814f09128bb525ead3854849df999a5f6c8c8d185e85e7461c604270f2ef7b4005588305a5e1275657320&expires=8h&r=847156935&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-1&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-1&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=e83ff6a139489830f86b48b6506bb92ccdc2df886bb659cb&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>指向对象</strong>: 在全局代码中使用this时，指向全局对象window（浏览器环境）</li>
+<li><strong>开发实践</strong>: 实际开发中很少在全局代码使用this，直接使用window更明确</li>
+<li><strong>环境差异</strong>: Node环境下全局this指向与浏览器不同，需要注意环境差异</li>
+</ul>
+<h6 id="2）函数中this的指向-02-35"><a href="#2）函数中this的指向-02-35" class="headerlink" title="2）函数中this的指向 ﻿02:35"></a>2）函数中this的指向 ﻿<strong>02:35</strong></h6><ul>
+<li><p><strong>核心原则</strong>: 函数内this的指向完全取决于函数的调用方式，而非定义位置</p>
+</li>
+<li><p><strong>不确定性</strong>: 函数定义时无法确定this指向，只有在调用时才能确定</p>
+</li>
+<li><p>通过new方式调用<br>﻿<strong>05:20</strong></p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://allall02.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-2?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876617&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-WGl35raMBcs7HcZWieKjDw7o12I=&to=80&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-c7ec8fb2dc4be6f0874ae26dca40a019f57067fc461840933d601274588e3fa44ddea91417c4c0362e8836fc12fad97b220279a89fef27d6305a5e1275657320&expires=8h&r=567326811&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-2&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-2&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=5eee304bbb22b9c2b6e12d2bd14114dd11c390b717d1c7af3639323619ab123a&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis" alt="img"></li>
+<li><strong>指向对象</strong>: this指向新创建的实例对象</li>
+<li><strong>底层机制</strong>: 相当于执行了this &#x3D; {}的操作</li>
+<li><strong>构造函数示例</strong>:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function User(name, age) &#123;</span><br><span class="line">    this.name = name; // this指向新对象</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br><span class="line">new User(); // this指向新创建的User实例</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>直接调用<br>﻿<strong>05:54</strong></p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://allall02.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-3?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876617&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-swcXBypUr7jwXqK0BWzKGGyp7iw=&to=80&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-75c881d0c21d0c0807f530190b06dc8c307e6577f57432e7b676daa244b51799d12605debd105e380782aa64b77ad407148e6d7b1b852f95305a5e1275657320&expires=8h&r=576338405&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-3&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-3&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=e83ff6a1394898306176db7106b117e5cdc2df886bb659cb&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis" alt="img"></li>
+<li><strong>指向对象</strong>: this指向全局对象window（非严格模式）</li>
+<li><strong>风险提示</strong>: 设计为直接调用的函数应避免使用this，防止意外指向全局对象</li>
+<li><strong>示例</strong>:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function test() &#123;</span><br><span class="line">    console.log(this); // window</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>通过对象调用<br>﻿<strong>06:31</strong></p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-4?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876617&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-e+gxC8M3saoEtwL3AQ3jydXwfTI=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-763c70e0b15f8337fde62e41478875878018801eea9afba70491640c006391c1954c744bb0b20d15b6107fc81025bc6fa7cf5ab026be6d59305a5e1275657320&expires=8h&r=245463253&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-4&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-4&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=5eee304bbb22b9c2b94d4c3788c069c511c390b717d1c7af3639323619ab123a&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis" alt="img"></li>
+<li><strong>指向规则</strong>: this指向调用该方法的对象</li>
+<li><strong>嵌套对象</strong>:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">    c: &#123;</span><br><span class="line">        m: function() &#123;</span><br><span class="line">            console.log(this); // 指向c对象</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.c.m();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>引用陷阱</strong>: 将方法赋值给变量后调用会导致this丢失原指向</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const test = obj.method;</span><br><span class="line">test(); // this指向window而非obj</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>call函数<br>﻿<strong>11:30</strong></p>
+<p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://allall02.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-5?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876617&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-mhcK5jRYbWGntudf2+no2OS3Ph4=&to=80&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-f5eb46f62764c09b129078844e940f79782b01a22a7e19b9fb9d736a6007b82309ff2f41e60ce3bae1ceeb0ec78f1ac8448025a96ac5ad2d305a5e1275657320&expires=8h&r=370771293&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-5&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-5&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=7717645f262844ca9d4d4231d88b56a5cdc2df886bb659cb&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>功能</strong>: 显式指定函数调用时的this值和参数</li>
+<li><strong>参数传递</strong>: 第一个参数为this指向，后续参数逐个传递</li>
+<li><strong>示例</strong>:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function m(a, b) &#123;</span><br><span class="line">    console.log(this, a, b);</span><br><span class="line">&#125;</span><br><span class="line">m.call([1,2,3], 1, 2); // this指向数组[1,2,3]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>apply函数<br>﻿<strong>14:49</strong></p>
+<p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://allall02.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-6?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876618&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-mUDzj62RXXblvsH6E/B0IqQNNv4=&to=80&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-27129364f2fcc61b6edddd5024c9c40c4347c83d6cb7f73eb17b005cac0ab71624b9853ddf7d4c6715c05b28b3b897284cd800cca62cf1ed305a5e1275657320&expires=8h&r=909509768&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-6&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-6&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=718800a01e5121ca8395a30becffee92cdc2df886bb659cb&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>功能</strong>: 与call相同，但参数以数组形式传递</li>
+<li><strong>使用场景</strong>: 参数数量不确定或需要动态传递时更适用</li>
+<li><strong>示例对比</strong>:</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// call方式</span><br><span class="line">m.call(obj, 1, 2);</span><br><span class="line">// apply方式</span><br><span class="line">m.apply(obj, [1, 2]);</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-总结与记忆要点"><a href="#3-总结与记忆要点" class="headerlink" title="3. 总结与记忆要点"></a>3. 总结与记忆要点</h5><ul>
+<li><strong>调用方式决定论</strong>: 牢记this指向完全由调用方式决定</li>
+<li><strong>五种调用模式</strong>:<ul>
+<li>new调用 → 新对象</li>
+<li>直接调用 → window</li>
+<li>对象方法 → 调用对象</li>
+<li>call → 第一个参数</li>
+<li>apply → 第一个参数</li>
+</ul>
+</li>
+<li><strong>开发建议</strong>: 按照预期调用方式设计函数，避免this指向混乱</li>
+</ul>
+<h5 id="4-this指向总结-18-09"><a href="#4-this指向总结-18-09" class="headerlink" title="4. this指向总结 ﻿18:09"></a>4. this指向总结 ﻿<strong>18:09</strong></h5><p>﻿</p>
+<ul>
+<li><strong>全局环境中的this</strong>: 在全局代码中使用this时，它指向全局对象（浏览器中为window），但在实际开发中应避免这种用法</li>
+<li><strong>函数中的this指向规则</strong>:<ul>
+<li><strong>通过new调用</strong>: 指向新创建的对象实例</li>
+<li><strong>直接调用</strong>: 指向全局对象（严格模式下为undefined）</li>
+<li><strong>通过对象调用</strong>: 指向调用该方法的对象</li>
+<li><strong>使用call&#x2F;apply调用</strong>: 指向第一个参数指定的上下文对象</li>
+</ul>
+</li>
+<li><strong>动态绑定特性</strong>: this的指向完全取决于函数被调用的方式，编写函数时无法预知其指向，需依赖调用者的正确使用</li>
+</ul>
+<h5 id="5-应用案例-18-48"><a href="#5-应用案例-18-48" class="headerlink" title="5. 应用案例 ﻿18:48"></a>5. 应用案例 ﻿<strong>18:48</strong></h5><p>﻿</p>
+<h6 id="1）例题-this的作用"><a href="#1）例题-this的作用" class="headerlink" title="1）例题:this的作用"></a>1）例题:this的作用</h6><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://allall02.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-7?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876618&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-shT8QYyPf1Fm1UXWE6Nczs/8qss=&to=80&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-e94bfef9c2b4839bdcfd8e29ca35b10036c14c545b31988279fa8dd09a6247d56ab31ae4f294ea578d682391d2b3fe487d43970ed4844f06305a5e1275657320&expires=8h&r=976426244&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-7&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-7&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=7717645f262844ca627e1d822ff1263b6abd3111ffa6a6e5&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>题目解析</strong>:<ul>
+<li><strong>错误做法</strong>: 直接使用变量名访问对象属性(person.name)，会导致代码耦合度高且存在变量被修改的风险</li>
+<li><strong>正确解决方案</strong>: 使用this.name访问属性，确保无论对象被赋值给哪个变量都能正确工作</li>
+<li><strong>隐患演示</strong>: 当对象被赋值给新变量(person2)后，原变量(person1)被修改为其他类型时，直接引用变量名的方式会失效</li>
+</ul>
+</li>
+<li><strong>最佳实践</strong>: 在对象方法中访问对象属性时，应始终使用this.propertyName的方式</li>
+</ul>
+<h6 id="2）例题-为所有对象添加方法print-22-54"><a href="#2）例题-为所有对象添加方法print-22-54" class="headerlink" title="2）例题:为所有对象添加方法print ﻿22:54"></a>2）例题:为所有对象添加方法print ﻿<strong>22:54</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://allall02.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-8?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876618&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-BC5wW0OrbEAtRQM63f/5VUIrZVI=&to=80&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Xian,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-a89b885ab6375b33a4a2a03489cda616cf08b739244f141eb12126747ad33db0f556c84ed1d054b0c7227d428add771eb2bf3806b65dfb7a305a5e1275657320&expires=8h&r=743249528&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-8&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-8&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=718800a01e5121ca44342240fa99746feba494ccf9199964305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>题目解析</strong>:<ul>
+<li><strong>原型继承原理</strong>: 通过Object.prototype添加方法，所有对象实例都能继承该方法</li>
+<li><strong>实现步骤</strong>:<ul>
+<li>在Object.prototype上定义print方法</li>
+<li>方法内使用for…in循环遍历对象属性</li>
+<li>通过this[key]访问属性值</li>
+</ul>
+</li>
+<li><strong>属性过滤技巧</strong>:<ul>
+<li>使用hasOwnProperty()方法判断属性是否为对象自身属性</li>
+<li>与in操作符的区别：hasOwnProperty()只检查自身属性，而in操作符会检查原型链</li>
+</ul>
+</li>
+<li><strong>输出格式</strong>: 使用console.log(key, value)同时输出键值对</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）例题-this的应用-34-54"><a href="#3）例题-this的应用-34-54" class="headerlink" title="3）例题:this的应用 ﻿34:54"></a>3）例题:this的应用 ﻿<strong>34:54</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://allall02.baidupcs.com/file/p-98cb456ecb30f185b56539b68557f989-40-2025042100-9?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1761876618&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-xVv738ImkchgbmQP+3LEsyKZ0fc=&to=80&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-a5ee95e61f6990f75641ad3e525d76aa1773f6ec5e1e447cc132791d8104ee9d37759473609cdd79a3f673273664053fa4a80080e9c7f1af305a5e1275657320&expires=8h&r=762782314&vbdid=-&fin=p-98cb456ecb30f185b56539b68557f989-40-2025042100-9&fn=p-98cb456ecb30f185b56539b68557f989-40-2025042100-9&rtype=1&dp-logid=119725834194249600&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=a5f92b9aebde11e5087dfa87c1b8a815f2979491ee028ad7&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>题目解析</strong>:<ul>
+<li><strong>常规调用方式</strong>: 使用new关键字创建实例(new User(‘邓’,’旭明’))</li>
+<li><strong>替代方案</strong>:<ul>
+<li>创建空对象var u &#x3D; {}</li>
+<li>使用call&#x2F;apply调用构造函数(User.call(u, ‘邓’, ‘旭明’))</li>
+</ul>
+</li>
+<li><strong>原理分析</strong>:<ul>
+<li>call方法第一个参数指定this的指向</li>
+<li>后续参数作为构造函数的参数传递</li>
+<li>构造函数内的this.属性赋值会作用于指定的对象</li>
+</ul>
+</li>
+<li><strong>注意事项</strong>:<ul>
+<li>这种方式与new调用的区别在于不会自动设置原型链</li>
+<li>实际开发中更推荐使用new关键字</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、知识小结"><a href="#二、知识小结" class="headerlink" title="二、知识小结"></a>二、知识小结</h4><table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>核心内容</th>
+<th>易混淆点&#x2F;重点</th>
+<th>难度系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>this基本概念</strong></td>
+<td>this指向取决于函数调用方式，而非定义位置</td>
+<td>初学者常误以为this在定义时就确定指向</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td><strong>全局环境中的this</strong></td>
+<td>在全局代码中使用this指向window对象</td>
+<td>Node.js环境与浏览器环境表现不同</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td><strong>函数中的this</strong></td>
+<td>函数内this指向取决于调用方式： - 直接调用：指向window; - 对象方法调用：指向调用对象; - new调用：指向新创建对象</td>
+<td><strong>直接调用易导致this意外指向window</strong></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>call&#x2F;apply方法</strong></td>
+<td>可手动指定this指向： - call: 参数逐个传递; - apply: 参数以数组传递</td>
+<td>两种方法功能相同，仅参数传递方式不同</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>原型方法中的this</strong></td>
+<td>原型方法中的this指向调用该方法的实例对象</td>
+<td>需注意原型链查找机制对this的影响</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>对象方法中的this</strong></td>
+<td>对象方法内this应指向调用者对象</td>
+<td><strong>方法被赋值给变量后调用会导致this丢失</strong></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>构造函数中的this</strong></td>
+<td>new操作时this指向新创建的空对象</td>
+<td>忘记使用new会导致this指向全局对象</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>hasOwnProperty方法</strong></td>
+<td>检查属性是否在对象自身(非原型链上)</td>
+<td>与in操作符(检查整个原型链)的区别</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td><strong>实际应用场景1</strong></td>
+<td>对象方法内访问对象属性应使用this</td>
+<td>直接使用变量名会导致代码脆弱性</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>实际应用场景2</strong></td>
+<td>为所有对象添加共享方法应放在Object.prototype上</td>
+<td>需注意避免枚举到原型方法(用hasOwnProperty过滤)</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>特殊调用技巧</strong></td>
+<td>不使用new通过call&#x2F;apply创建对象实例</td>
+<td>与new调用在原型链处理上的差异</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/')">js-this</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=js-this&amp;url=http://kaiyiya.github.io/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/&amp;pic=https://bu.dusays.com/2025/09/02/68b6d8d5e0d09.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/JS/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>JS<span class="tagsPageCount">18</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c14b597.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">js-构造函数</div></div></a></div><div class="next-post pull-right"><a href="/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E5%8E%9F%E5%9E%8B%E9%93%BE/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c533904.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">js-原型链</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/07/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5%E5%B0%8F%E6%97%B6%E5%AD%A6%E4%B9%A0js%E9%87%8D%E9%9A%BE%E7%82%B9/" title="5小时学习js重难点"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68537d0f023a9.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-03</div><div class="title">5小时学习js重难点</div></div></a></div><div><a href="/2025/06/30/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JS-%E9%9B%86%E5%90%88%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="JS-集合引用类型"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/30/6861d52d7bef7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-30</div><div class="title">JS-集合引用类型</div></div></a></div><div><a href="/2025/07/06/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JS%E9%87%8D%E9%9A%BE%E7%82%B9%E5%AE%9E%E4%BE%8B%E7%B2%BE%E8%AE%B2/" title="JS重难点实例精讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/30/6861d52e11a1b.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-06</div><div class="title">JS重难点实例精讲</div></div></a></div><div><a href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-10</div><div class="title">js-dom的尺寸和位置</div></div></a></div><div><a href="/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/" title="js-dom对象"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-03</div><div class="title">js-dom对象</div></div></a></div><div><a href="/2025/07/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%B0%84/" title="js-代理与反射"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/08/25/68ac6ddd41dac.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-26</div><div class="title">js-代理与反射</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%99%E6%98%AF%E5%95%A5-00-02"><span class="toc-number">1.</span> <span class="toc-text">一、这是啥 ﻿00:02</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9C%BA%E6%99%AF%E6%8C%87%E4%BB%A3%E7%9A%84%E5%90%AB%E4%B9%89%E4%B8%8D%E5%90%8C-00-32"><span class="toc-number">1.1.</span> <span class="toc-text">1. 不同的场景指代的含义不同 ﻿00:32</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-JS%E4%B8%AD%E7%9A%84this%E5%85%B3%E9%94%AE%E5%AD%97-01-34"><span class="toc-number">1.2.</span> <span class="toc-text">2. JS中的this关键字 ﻿01:34</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E5%85%A8%E5%B1%80%E4%BB%A3%E7%A0%81%E4%BD%BF%E7%94%A8this-01-38"><span class="toc-number">1.2.1.</span> <span class="toc-text">1）全局代码使用this ﻿01:38</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E5%87%BD%E6%95%B0%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91-02-35"><span class="toc-number">1.2.2.</span> <span class="toc-text">2）函数中this的指向 ﻿02:35</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%80%BB%E7%BB%93%E4%B8%8E%E8%AE%B0%E5%BF%86%E8%A6%81%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">3. 总结与记忆要点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-this%E6%8C%87%E5%90%91%E6%80%BB%E7%BB%93-18-09"><span class="toc-number">1.4.</span> <span class="toc-text">4. this指向总结 ﻿18:09</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B-18-48"><span class="toc-number">1.5.</span> <span class="toc-text">5. 应用案例 ﻿18:48</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E4%BE%8B%E9%A2%98-this%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text">1）例题:this的作用</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E4%BE%8B%E9%A2%98-%E4%B8%BA%E6%89%80%E6%9C%89%E5%AF%B9%E8%B1%A1%E6%B7%BB%E5%8A%A0%E6%96%B9%E6%B3%95print-22-54"><span class="toc-number">1.5.2.</span> <span class="toc-text">2）例题:为所有对象添加方法print ﻿22:54</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E4%BE%8B%E9%A2%98-this%E7%9A%84%E5%BA%94%E7%94%A8-34-54"><span class="toc-number">1.5.3.</span> <span class="toc-text">3）例题:this的应用 ﻿34:54</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">二、知识小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web的事件传播机制"/></a><div class="content"><a class="title" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制">js-web的事件传播机制</a><time datetime="2025-11-11T11:43:41.000Z" title="发表于 2025-11-11 19:43:41">2025-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Adam优化器"/></a><div class="content"><a class="title" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器">Adam优化器</a><time datetime="2025-11-10T05:40:04.000Z" title="发表于 2025-11-10 13:40:04">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="具体数学-作业3"/></a><div class="content"><a class="title" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3">具体数学-作业3</a><time datetime="2025-11-10T02:40:23.000Z" title="发表于 2025-11-10 10:40:23">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-dom的尺寸和位置"/></a><div class="content"><a class="title" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置">js-dom的尺寸和位置</a><time datetime="2025-11-10T00:06:46.000Z" title="发表于 2025-11-10 08:06:46">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d32f566.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web事件"/></a><div class="content"><a class="title" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件">js-web事件</a><time datetime="2025-11-07T00:14:24.000Z" title="发表于 2025-11-07 08:14:24">2025-11-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>18</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>5</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>7</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>5</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

@@ -1,0 +1,1231 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>js-dom对象 | 飞向月球的猫</title><meta name="keywords" content="js-dom对象"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="js-dom对象"><meta name="application-name" content="js-dom对象"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="js-dom对象"><meta property="og:url" content="http://kaiyiya.github.io/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="js-dom对象"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg"><meta name="description" content="js-dom对象"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: 'js-dom对象',
+  postAI: '',
+  pageFillDescription: '一、DOM ﻿0005, 1. 获取dom ﻿0353, 1）根据元素id获取dom ﻿0457, 2）根据元素名称获取DOM ﻿0827, 3）根据元素类样式获取DOM ﻿1016, 4）根据CSS选择器获取DOM ﻿1257, 5）根据HTML元素获取DOM ﻿1548, 6）DOM元素关系操作 ﻿1608, 7）应用案例 ﻿1736, 2. 创建DOM ﻿2407, 3. 更改DOM结构 ﻿2530, 1）根据元素对象删除DOM ﻿2615, 2）根据元素对象删除子节点 ﻿2721, 3）在子节点末尾添加DOM ﻿3102, 4）应用案例 ﻿3225, 4. DOM内容 ﻿4056, 5. DOM样式 ﻿4238, 1）样式类型, 2）样式操作, 6. 内容总结 ﻿4915, 二、英雄展示 ﻿5210, 1. 英雄元素结构, 2. 动态生成实现, 3. 代码实现要点, 4. 实现效果, 三、英雄图片切换 ﻿010023, 1. 实现原理, 2. 实现方法, 四、英雄向右移动 ﻿010626, 1. 实现原理, 2. 实现方法, 五、立即注册按钮状态设置 ﻿010856, 1. 功能实现原理, 2. 代码实现技巧, 六、发送验证码按钮状态设置 ﻿011301, 1. 功能实现原理, 2. 注意事项, 七、根据选中的爱好设置文本 ﻿011743, 1. 功能实现原理, 2. 代码优化技巧, 3. 综合应用要点, 八、知识小结一获取根据元素获取方法特点通过元素唯一获取单个对象是对象的方法返回值返回匹配的单个元素节点语法示例元素对象对象来源是对象的属性可直接通过访问本质代表整个文档的对象调试技巧控制台默认显示为文档结构视图使用可查看完整对象结构包含文档所有节点等方法方法原理根据元素的属性进行精确匹配使用场景适用于需要精确获取特定元素的场景注意事项在文档中必须唯一返回单个对象非数组未找到时返回调试技巧获取的对象在控制台会高亮显示对应页面元素可通过方法查看完整属性结构示例代码根据元素名称获取方法功能根据标签名称获取页面元素集合返回值特点返回的是伪数组类数组对象不是真正的数组示例中获取所有标签时返回了个元素的集合注意事项伪数组不具备标准数组的全部方法如方法不可用可以通过转换为真数组转换后可以使用所有数组方法如验证为实际应用获取页面所有特定标签元素如获取所有示例中演示了获取淘宝页面所有元素的过程元素获取方式对比与其他方法的区别与相比后者通过获取单个元素而前者获取元素集合与相比后者使用选择器语法功能更强大链式调用可以在元素上调用这样只会在该元素的子节点中查找伪数组特性本质说明集合就是普通对象与界面元素一一对应没有特殊性质遵循对象的基本规则转换技巧使用数组原型方法转换转换后可获得完整数组功能如等方法根据元素类样式获取基本获取方法作用范围获取方法分为文档级和元素级文档级从整个网页查找元素级只在指定内部查找获取通过元素获取单个节点标签名获取通过标签名获取伪数组类名获取通过类样式获取伪数组作用范围示例局部查找在特定内查找时如只在当前内部查找示例中仅找到个远少于全局查找结果全局查找使用对象调用方法时查找范围是整个网页文档特殊元素获取选择器获取第一个匹配的获取所有匹配的伪数组文档结构获取元素获取元素获取元素关系获取子元素伪数组获取子节点伪数组获取前一个兄弟元素方法比较历史演变传统方法等功能有限曾作为补充方案出现现代方案新增的系列方法功能更强大已逐渐取代的操作功能选择建议根据实际需求选择方法没有唯一标准方案根据选择器获取方法根据选择器获取返回第一个匹配的元素如通过选择器获取元素若未找到则返回方法根据选择器获取所有匹配的返回伪数组如获取所有元素与传统方法对比完全替代和因这两个方法的出现而逐渐退出历史舞台支持在指定内查询如选择器示例通过井号前缀获取指定元素类选择器示例通过点前缀获取指定类名元素层级选择器示例可获取嵌套结构的元素伪数组特性返回的具有数组特性但不是真数组元素数量验证通过淘宝页面实测可获取个元素属性通过获取根元素非方法调用其他常用属性获取元素获取元素这些属性都是直接访问而非方法调用根据元素获取获取文档的根元素即元素与效果完全相同获取文档的元素返回的是一个对象获取文档的元素同样返回对象元素关系操作子元素获取属性获取当前元素的所有子元素返回伪数组例如可以获取下的个子元素每个子元素本身也是对象可以继续访问其属性属性与的区别获取所有子节点包括文本节点注释节点等举例对于元素只获取元素而会获取个节点文本元素文本兄弟元素获取获取当前元素的前一个兄弟元素获取当前元素的后一个兄弟元素获取当前元素的父元素注意事项对象本质是中对应节点的对象模型伪数组特性和返回的都是类数组对象可以通过索引访问但非真正数组链式操作可以连续调用属性形成链式操作如应用案例获取对象并操作控制台快捷操作在控制台调试时可用替代如获取第一个元素用替代返回的是真数组而非伪数组节点类型区分只获取元素节点获取所有节点类型包括文本节点含换行符和空格元素节点注释节点等节点属性修改可通过直接修改文本内容如实际开发中更常用操作元素节点遍历方法兄弟元素获取获取后一个兄弟元素获取前一个兄弟元素父子关系获取获取父元素获取首尾子元素树结构通过连续调用可追溯至文档根节点核心要点获取的本质是从文档树结构中定位节点无需死记使用时查阅文档即可实际开发最常用系列和属性创建基本方法使用元素名创建元素如特性说明新创建的元素独立存在于内存中尚未加入文档树结构创建后返回的是一个标准的对象具有对象的所有属性和方法即使不在文档树中仍然可以像普通对象一样进行操作和属性设置更改结构根据元素对象删除方法作用将元素从文档树中移除示例重要特性仅从文档树移除对象仍然存在于内存中可以随时将移除的对象重新加入文档树实际开发中常用变量保存被移除的对象以便后续操作根据元素对象删除子节点方法作用删除指定父元素的某个子节点示例与区别是元素自身方法是父元素方法需要指定要删除的子节点返回值返回被删除的子节点对象在子节点末尾添加方法作用在指定父元素的子节点列表末尾添加新节点示例方法作用在指定参考节点前插入新节点示例实际应用动态加载内容列表项排序调整元素位置交换应用案例例题元素操作标准属性操作直接通过对象属性访问和修改示例自定义属性操作使用和方法示例属性类型区别标准属性始终存在且有默认值自定义属性需要显式设置布尔属性如通过属性访问返回通过返回实际设置值或内容操作方法获取设置元素的文本内容自动实体编码获取设置元素的内容可解析标签路径属性特性相对路径属性如通过属性访问会自动转为绝对路径通过获取的是原始设置的路径值内容操作获取修改元素内的纯文本内容特殊字符会被自动转义为普通文本如会显示为示例新文本会直接替换链接文本操作获取修改元素内的结构可以识别标签如设置会创建真实标题元素示例标题会生成可渲染的元素样式样式类型内联样式通过元素的属性直接设置的样式示例中的样式计算样式最终应用到元素上的所有样式计算结果包含继承层叠等规则处理后的值示例即使设置实际计算值可能是样式操作获取样式内联样式计算样式修改样式只能修改内联样式命名转换短横线命名驼峰命名特殊操作删除样式赋值为空字符串无效赋值不会报错但会被忽略操作使用而非避免关键字冲突内容总结操作核心获取对象后可以修改树结构改变元素属性等更新元素内容文本调整元素样式内联样式注意事项属性要使用访问样式赋值时注意命名转换规则和有本质区别计算样式是只读的只能通过修改内联样式间接影响开发实践所有操作本质都是操作工作多年仍在使用这些基础核心思路获取操作观察变化二英雄展示英雄元素结构基础结构每个英雄由元素构成内部包含图片和文本两个子元素静态与动态区别中写的是静态占位样式实际需要通过动态生成真实内容数据来源英雄数据存储在文件的数组中每个英雄对象包含编号和名字两个关键属性动态生成实现核心思路通过循环遍历英雄数组为每个对象创建对应的元素创建流程创建元素设置元素属性格式为英雄使用英雄的属性设置为在新窗口打开设置样式类名创建元素并设置属性图片路径格式为英雄创建元素并设置为英雄的属性将和依次添加到元素中将元素添加到页面容器中代码实现要点操作顺序必须先创建元素再设置属性最后才添加到文档树中属性设置注意属性需使用而非路径拼接需注意字符串格式性能考量虽然代码量较大但逻辑简单复杂度主要来自操作步骤替代方案可以使用字符串拼接方式简化代码但本示例采用标准操作方式实现效果最终结构每个英雄显示为可点击的卡片包含英雄图片和名称交互功能点击英雄卡片会跳转到对应英雄详情页王者荣耀官网样式表现通过实现不同英雄的样式区分三英雄图片切换实现原理引用位置所有引用都应写在页面最底部即结束标签之前引用位置文件一般写在标签内标签下方查询优化对于不变的元素如本例中的图片应在外部先获取元素引用避免重复查询实现方法基础实现优化实现数学原理利用取模运算实现循环当前索引图片总数确保索引在之间循环四英雄向右移动实现原理定位方式使用或使元素可以自由移动初始位置设置初始和单位要求的值必须带单位如除值外实现方法移动速度控制通过调整时间间隔如改为或每次增加的像素值如改为来改变移动速度边界问题当前实现会使元素移出视口需要后续学习窗口尺寸获取后才能处理边界情况五立即注册按钮状态设置功能实现原理元素获取通过获取协议多选框和提交按钮多选框选择器提交按钮选择器状态联动根据多选框的属性设置按钮的属性多选框选中按钮启用多选框未选中按钮禁用代码实现技巧简化写法调试建议初始阶段可通过验证元素是否正确获取事件监听后续可通过事件机制实现自动状态更新下节课内容六发送验证码按钮状态设置功能实现原理元素获取手机号输入框建议使用选择器验证码按钮验证逻辑根据输入框值的长度控制按钮状态按钮启用否则按钮禁用注意事项简化验证当前仅验证长度未验证数字格式后续可用正则表达式完善性能优化实际开发中可配合事件实现实时验证七根据选中的爱好设置文本功能实现原理元素获取下拉列表元素结果显示区域选中项收集遍历获取所有检查属性将选中项的存入数组结果显示使用将数组转为字符串显示代码优化技巧选择器简化可封装循环处理使用循环遍历伪数组字符串拼接推荐使用模板字符串已选择爱好综合应用要点操作四步法获取目标元素读取元素属性状态进行逻辑判断修改属性内容调试建议分阶段验证先确保元素获取正确再实现功能逻辑八知识小结知识点核心内容重点易混淆点难度系数概念是对象对应每个节点标签文本文本节点与元素节点区别获取元素多种使用选择器语法尾数组与真数组转换树结构文档形成树形结构每个节点都是对象节点操作会直接影响页面渲染创建元素创建游离节点新创建节点需通过等加入文档树修改结构删除节点添加节点参数顺序新节点参考节点元素属性操作标准属性直接访问如自定义属性用需用因关键字冲突内容操作纯文本解析标签会转义特殊字符样式操作属性修改内联样式获取最终样式仅能修改内联样式属性名转驼峰命名实战案例动态生成英雄列表创建元素并设置属性注意图片路径拼接和事件绑定时机实战案例轮播图实现定时修改并循环索引取模运算实现循环逻辑表单联动根据状态动态设置按钮属性状态同步的条件判断逻辑',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-07 08:21:22',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/JS/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>JS</span></a></span></div></div><h1 class="post-title" itemprop="name headline">js-dom对象</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-03T01:30:25.000Z" title="发表于 2025-11-03 09:30:25">2025-11-03</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-07T00:21:22.000Z" title="更新于 2025-11-07 08:21:22">2025-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="js-dom对象"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/"><header><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a><a href="/tags/JS/" tabindex="-1" itemprop="url">JS</a><h1 id="CrawlerTitle" itemprop="name headline">js-dom对象</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-11-03T01:30:25.000Z" title="发表于 2025-11-03 09:30:25">2025-11-03</time><time itemprop="dateCreated datePublished" datetime="2025-11-07T00:21:22.000Z" title="更新于 2025-11-07 08:21:22">2025-11-07</time></header><h4 id="一、DOM-00-05"><a href="#一、DOM-00-05" class="headerlink" title="一、DOM ﻿00:05"></a>一、DOM ﻿<strong>00:05</strong></h4><p>﻿</p>
+<h5 id="1-获取dom-03-53"><a href="#1-获取dom-03-53" class="headerlink" title="1. 获取dom ﻿03:53"></a>1. 获取dom ﻿<strong>03:53</strong></h5><h6 id="1）根据元素id获取dom-04-57"><a href="#1）根据元素id获取dom-04-57" class="headerlink" title="1）根据元素id获取dom ﻿04:57"></a>1）根据元素id获取dom ﻿<strong>04:57</strong></h6><ul>
+<li><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-1?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388904&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-V1O2sU9GRnZiAgEAD1A/r5kc5/8=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-85caf17ebb0a8b2fdd9069b4869d7e462ed5dbaff5dc89141b22e717bfed155962e7bbba537d633ed0a8b0487c41eebcaf6d313736222cc0305a5e1275657320&expires=8h&r=285455805&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-1&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-1&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=718800a01e5121ca44342240fa99746f9faf01599c58e2ff305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis" alt="img"></p>
+</li>
+<li><p><strong>方法特点</strong>：通过元素唯一id获取单个DOM对象，是document对象的方法</p>
+</li>
+<li><p><strong>返回值</strong>：返回匹配id的单个DOM元素节点</p>
+</li>
+<li><p><strong>语法示例</strong>：document.getElementById(‘元素id’)</p>
+</li>
+<li><p>document对象</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-2?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388904&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-JM3HN5TDBXkyPGDSwfvtj5wW4iA=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-096a729dd7f7d3bbcc44602ea74fdb12c56440684c8958194ef7706faa8db87e5815022e68af2e22f5730ffcc470fd3c0768e7ede41e8faa305a5e1275657320&expires=8h&r=672264019&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-2&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-2&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=718800a01e5121ca56afef5411c6cb259faf01599c58e2ff305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis" alt="img"></li>
+<li><strong>对象来源</strong>：是window对象的属性，可直接通过document访问</li>
+<li><strong>本质</strong>：代表整个HTML文档的DOM对象</li>
+<li><strong>调试技巧</strong>：<ul>
+<li>控制台默认显示为文档结构视图</li>
+<li>使用console.dir(document)可查看完整对象结构</li>
+<li>包含HTML文档所有节点（head&#x2F;body等）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>getElementById方法</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-3?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-JyEkHxtOVIvauCaCn7/b1M4DqTo=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-8a760e491c144f6e6e07e7f35e66090ac2b41031066273bd38534ea168c5ef71e02f362cc5276cc1e53a83ff1fc5052df1185db100d7ea4d305a5e1275657320&expires=8h&r=471820635&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-3&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-3&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=a7e1f23860a769ab1148f3c2dd3db24d1bd269c1fb459441&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis" alt="img"></li>
+<li><strong>方法原理</strong>：根据HTML元素的id属性进行精确匹配</li>
+<li><strong>使用场景</strong>：适用于需要精确获取特定元素的场景</li>
+<li><strong>注意事项</strong>：<ul>
+<li>ID在文档中必须唯一</li>
+<li>返回单个DOM对象（非数组）</li>
+<li>未找到时返回null</li>
+</ul>
+</li>
+<li><strong>调试技巧</strong>：<ul>
+<li>获取的DOM对象在控制台会高亮显示对应页面元素</li>
+<li>可通过dir()方法查看完整DOM属性结构</li>
+</ul>
+</li>
+<li><strong>示例代码</strong>：</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）根据元素名称获取DOM-08-27"><a href="#2）根据元素名称获取DOM-08-27" class="headerlink" title="2）根据元素名称获取DOM ﻿08:27"></a>2）根据元素名称获取DOM ﻿<strong>08:27</strong></h6><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-4?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-i2A4PrPhruBP+a6IwiGYuGbUm8U=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-9d8e767497760b96e41d305195ad862af15e21a3cab6b1dd4facd4e586501e8779cd315d6f1e641a89d7fad6d3c29f62e03e3bb796646d16305a5e1275657320&expires=8h&r=202100673&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-4&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-4&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=718800a01e5121cabf9c9f5b8bcce45121635edfb88ffcbd&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li>document.getElementsByTagName()<ul>
+<li><strong>方法功能</strong>: 根据HTML标签名称获取页面元素集合</li>
+<li><strong>返回值特点</strong>:<ul>
+<li>返回的是伪数组（类数组对象），不是真正的JavaScript数组</li>
+<li>示例中获取所有div标签时返回了219个元素的集合</li>
+</ul>
+</li>
+<li><strong>注意事项</strong>:<ul>
+<li>伪数组不具备标准数组的全部方法（如sort方法不可用）</li>
+<li>可以通过Array.prototype.slice.call(divs)转换为真数组</li>
+<li>转换后可以使用所有数组方法（如instanceof Array验证为true）</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-5?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-Z12SydE32w4zXW4nuHNeTdscH04=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-353fffd2da1237eaf608089d4c94010aee61f6cc868b4ec651abd712bf99e20effbc10da3ae3872e27ab2a5b4fad4c659b9860f264776c58305a5e1275657320&expires=8h&r=174403456&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-5&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-5&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=3612dd02eb4608abf77ac7c27968e41fc9cbdd0f68159bc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+<li><strong>实际应用</strong>:<ul>
+<li>获取页面所有特定标签元素（如获取所有 <code>&lt;div&gt;</code>）</li>
+<li>示例中演示了获取淘宝页面所有div元素的过程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DOM元素获取方式对比<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-6?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-BCkjnYxbE+77Qu2t55JuuThGJpI=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-745c52b99698d05eca84cf5094cbf3edd8e4a1f75bebb1ac8e6d19d11ceb9c63c5b0973f87019583c6732df8d045b003000bc6081119a2cc305a5e1275657320&expires=8h&r=243086727&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-6&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-6&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=12146e4ffd7df3c9d4ccd6c65ce2ef6ca6cb1a57af17663d305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>与其他方法的区别</strong>:<ul>
+<li>与getElementById()相比：后者通过id获取单个元素，而前者获取元素集合</li>
+<li>与querySelectorAll()相比：后者使用CSS选择器语法，功能更强大</li>
+</ul>
+</li>
+<li><strong>链式调用</strong>:<ul>
+<li>可以在DOM元素上调用：dom.getElementsByTagName()</li>
+<li>这样只会在该元素的子节点中查找</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>伪数组特性<ul>
+<li><strong>本质说明</strong>:<ul>
+<li>DOM集合就是普通对象，与界面元素一一对应</li>
+<li>没有特殊性质，遵循JavaScript对象的基本规则</li>
+</ul>
+</li>
+<li><strong>转换技巧</strong>:<ul>
+<li>使用数组原型方法转换：Array.prototype.slice.call(divs)</li>
+<li>转换后可获得完整数组功能（如map、filter等方法）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）根据元素类样式获取DOM-10-16"><a href="#3）根据元素类样式获取DOM-10-16" class="headerlink" title="3）根据元素类样式获取DOM ﻿10:16"></a>3）根据元素类样式获取DOM ﻿<strong>10:16</strong></h6><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-7?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-elq8dxgHBzlWcwc6zf8yGs9jt2Y=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-d643be14bd0d9a4dbd2c26259ec8500bbadd3f304699704c7ecd058b66136a64e79e47afcceab7277287f01538e1adf2f465d08f55787c48305a5e1275657320&expires=8h&r=814637036&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-7&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-7&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=3612dd02eb4608ab59444c8a05749ef9c9cbdd0f68159bc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li>基本获取方法<ul>
+<li><strong>作用范围</strong>：获取方法分为文档级和元素级，文档级从整个网页查找，元素级只在指定DOM内部查找</li>
+<li><strong>ID获取</strong>：document.getElementById()通过元素id获取单个DOM节点</li>
+<li><strong>标签名获取</strong>：document.getElementsByTagName()通过标签名获取DOM伪数组</li>
+<li><strong>类名获取</strong>：document.getElementsByClassName()通过类样式获取DOM伪数组</li>
+</ul>
+</li>
+<li>作用范围示例<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-8?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-8CUL+jxR5ZU/IftrWdsPgwPLmRk=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-5068f27bb8ee5afc15533645573fb1094b307f9683ae2f0e13601bbbb001aa16fc436e221f6ab8bc0fa4e9a13addf9a7b135878141eea5bc305a5e1275657320&expires=8h&r=898024706&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-8&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-8&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=12146e4ffd7df3c9b7d6c8393faaedc621635edfb88ffcbd&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>局部查找</strong>：在特定DOM内查找时，如dom.getElementsByTagName(‘div’)只在当前DOM内部查找，示例中仅找到25个div，远少于全局查找结果</li>
+<li><strong>全局查找</strong>：使用document对象调用方法时，查找范围是整个网页文档</li>
+</ul>
+</li>
+<li>特殊元素获取<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-9?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-eFKzLhG1aY/j+b6XiyEvYxPLp34=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-8b71f0125eb23c0ef525ae9228b7a90c248dbfaa35652ba7295af714549ba7b2eabcb6fe99daabaa16b14b7e83a625791b5d9c8aaaa144d7305a5e1275657320&expires=8h&r=846921191&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-9&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-9&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=2a0349c66f068e0f0ef78f7b7891c000c9cbdd0f68159bc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>CSS选择器</strong>：<ul>
+<li>document.querySelector()获取第一个匹配的DOM</li>
+<li>document.querySelectorAll()获取所有匹配的DOM伪数组</li>
+</ul>
+</li>
+<li><strong>文档结构</strong>：<ul>
+<li>document.documentElement获取html元素</li>
+<li>document.body获取body元素</li>
+<li>document.head获取head元素</li>
+</ul>
+</li>
+<li><strong>DOM关系</strong>：<ul>
+<li>dom.children获取子元素伪数组</li>
+<li>dom.childNodes获取子节点伪数组</li>
+<li>dom.previousElementSibling获取前一个兄弟元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>方法比较<ul>
+<li><strong>历史演变</strong>：传统方法（getElementById等）功能有限，jQuery曾作为补充方案出现</li>
+<li><strong>现代方案</strong>：Web API新增的querySelector系列方法功能更强大，已逐渐取代jQuery的DOM操作功能</li>
+<li><strong>选择建议</strong>：根据实际需求选择方法，没有唯一标准方案</li>
+</ul>
+</li>
+</ul>
+<h6 id="4）根据CSS选择器获取DOM-12-57"><a href="#4）根据CSS选择器获取DOM-12-57" class="headerlink" title="4）根据CSS选择器获取DOM ﻿12:57"></a>4）根据CSS选择器获取DOM ﻿<strong>12:57</strong></h6><ul>
+<li><strong>querySelector方法</strong>：根据CSS选择器获取DOM，返回第一个匹配的元素。如document.querySelector(‘#id’)通过ID选择器获取元素，若未找到则返回null。</li>
+<li><strong>querySelectorAll方法</strong>：根据CSS选择器获取所有匹配的DOM，返回NodeList伪数组。如document.querySelectorAll(‘div’)获取所有div元素。</li>
+<li><strong>与传统方法对比</strong>：<ul>
+<li>完全替代getElementById、getElementsByClassName和getElementsByTagName</li>
+<li>jQuery因这两个方法的出现而逐渐退出历史舞台</li>
+<li>支持在指定DOM内查询，如dom.querySelector()</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-10?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-uAN/lCPZSvqNy17FPiHEz2qZCpI=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-d59c389101488ebaf02a2787e5dc074516e27e4b16cf64002af4df99cd0987791075c142a02c3b4a6801775580c66f25474f554088f8543a305a5e1275657320&expires=8h&r=222334989&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-10&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-10&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=12146e4ffd7df3c9bc45b0a936301765a6cb1a57af17663d305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+<li><strong>ID选择器示例</strong>：document.querySelector(‘#J_SiteNavBd’)通过井号(#)前缀获取指定ID元素</li>
+<li><strong>类选择器示例</strong>：document.querySelector(‘.J_Cover’)通过点(.)前缀获取指定类名元素</li>
+<li><strong>层级选择器示例</strong>：document.querySelector(‘.J_Cover .site-nav’)可获取嵌套结构的元素</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-11?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-2cT+CWFaneTRLzMNDMzig74c7HQ=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-d0de30a5944b5ac75933c89b8792190eb630d0c582a76ecb425a07598fb7ecfb465da20ad61f78036afd1ece8c89c3b8e176334bcee46f4b305a5e1275657320&expires=8h&r=660583338&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-11&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-11&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=738aa28698fb94aa8f82bf1302816c2ac9cbdd0f68159bc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>伪数组特性</strong>：querySelectorAll返回的NodeList具有数组特性但不是真数组</li>
+<li><strong>元素数量验证</strong>：通过淘宝页面实测，document.querySelectorAll(‘div’)可获取219个div元素</li>
+<li><strong>documentElement属性</strong>：通过document.documentElement获取HTML根元素（非方法调用）</li>
+<li><strong>其他常用属性</strong>：<ul>
+<li>document.body获取body元素</li>
+<li>document.head获取head元素</li>
+<li>这些属性都是直接访问而非方法调用</li>
+</ul>
+</li>
+</ul>
+<h6 id="5）根据HTML元素获取DOM-15-48"><a href="#5）根据HTML元素获取DOM-15-48" class="headerlink" title="5）根据HTML元素获取DOM ﻿15:48"></a>5）根据HTML元素获取DOM ﻿<strong>15:48</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-12?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-QaMWe/dPwxEotpZKFdObRnr4utE=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-494d555551039257594195f1ac718c3afa6a1a0cad118fdffb2e60ad16e4919c29bdef292567eee1b40462657f5505f9a9354828e2675dea305a5e1275657320&expires=8h&r=815538077&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-12&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-12&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=12146e4ffd7df3c953f980a5d1af67a421635edfb88ffcbd&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>document.documentElement</strong>: 获取HTML文档的根元素（即 <code>&lt;html&gt;</code>元素），与document.querySelector(‘html’)效果完全相同。</li>
+<li><strong>document.body</strong>: 获取文档的 <code>&lt;body&gt;</code>元素，返回的是一个DOM对象。</li>
+<li><strong>document.head</strong>: 获取文档的 <code>&lt;head&gt;</code>元素，同样返回DOM对象。</li>
+</ul>
+<h6 id="6）DOM元素关系操作-16-08"><a href="#6）DOM元素关系操作-16-08" class="headerlink" title="6）DOM元素关系操作 ﻿16:08"></a>6）DOM元素关系操作 ﻿<strong>16:08</strong></h6><ul>
+<li>子元素获取<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-13?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-25Vaqy2o8bFyW3Vaq+cpkkUCogY=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-4f2ba39a99d20cea83f1ce5a73b71b3ccb6d29f9b0847596249130d2331d8f753d30d4522f70c23aa648471ab5897de463ab8509f1116567305a5e1275657320&expires=8h&r=243287016&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-13&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-13&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=4d291be9b9421959f77ac7c27968e41fc9cbdd0f68159bc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>children属性</strong>:<ul>
+<li>获取当前DOM元素的所有子元素，返回HTMLCollection伪数组</li>
+<li>例如document.body.children可以获取body下的33个子元素</li>
+<li>每个子元素本身也是DOM对象，可以继续访问其children属性</li>
+</ul>
+</li>
+<li><strong>childNodes属性</strong>:<ul>
+<li>与children的区别：childNodes获取所有子节点（包括文本节点、注释节点等）</li>
+<li>举例：对于 <code>&lt;p&gt;</code>元素，children只获取 <code>&lt;strong&gt;</code>元素，而childNodes会获取3个节点（文本+元素+文本）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>兄弟元素获取<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-14?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-cxHQwCEHDumEQgXdYttJcueWKFc=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Xian,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-a22af4ad66543a24ecf2d95f4901ecb59167698fe0a5295eb92bbfd8f4d496b2a3812b48cc86f35dfd077c2e14b5a93ae1ecc5ff355f6ff1305a5e1275657320&expires=8h&r=267238185&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-14&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-14&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=875e0ff32ac7bd89ec8b61f085efb7e421635edfb88ffcbd&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>previousElementSibling</strong>: 获取当前元素的前一个兄弟元素</li>
+<li><strong>nextElementSibling</strong>: 获取当前元素的后一个兄弟元素</li>
+<li><strong>parentElement</strong>: 获取当前元素的父元素</li>
+</ul>
+</li>
+<li>注意事项<ul>
+<li><strong>DOM对象本质</strong>: DOM是JavaScript中对应HTML节点的对象模型</li>
+<li><strong>伪数组特性</strong>: children和childNodes返回的都是类数组对象，可以通过索引访问但非真正数组</li>
+<li><strong>链式操作</strong>: 可以连续调用属性形成链式操作，如document.body.children[0].children</li>
+</ul>
+</li>
+</ul>
+<h6 id="7）应用案例-17-36"><a href="#7）应用案例-17-36" class="headerlink" title="7）应用案例 ﻿17:36"></a>7）应用案例 ﻿<strong>17:36</strong></h6><p>﻿</p>
+<ul>
+<li>获取DOM对象并操作<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-15?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388905&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-rGfPK9SzDenN6O5cCTj9TVazNXA=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-4016c6e00698103635a4d10f2b8e55dd4aab06128d158083f002f231af5cc3d6f099ae0d7bf6bf2090303110822573908921bda0e07cdf78305a5e1275657320&expires=8h&r=129113926&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-15&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-15&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=cf87eda222dfadb734d40a75587cb70bc9cbdd0f68159bc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>控制台快捷操作</strong>：<ul>
+<li>在控制台调试时可用$替代document.querySelector，如$(‘p’)获取第一个p元素</li>
+<li>用$替代document.querySelectorAll，返回的是真数组而非伪数组</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-16?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-E/Q0XB1Q7ZeYAdhLVYqxr2Or8Uo=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-8bc07c54ea7a6c132258fc9950dd49251a7a8ce5103868e475a6445e4ba92eeb685e4e90b904283bdd677c93a04a2dee8f8b2470a29424e4305a5e1275657320&expires=8h&r=651782484&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-16&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-16&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=b3434a369726e9249598d5fd59392989ac055d1f52e3584f54086130d5ff933c&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+<li><strong>节点类型区分</strong>：<ul>
+<li>children只获取元素节点（nodeType&#x3D;1）</li>
+<li>childNodes获取所有节点类型，包括：<ul>
+<li>文本节点（nodeType&#x3D;3，含换行符和空格）</li>
+<li>元素节点</li>
+<li>注释节点等</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-17?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-IX8TgPBuMR6B3NaZ7+7/QG/RGHQ=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-565d36bb39f4ddb15c092eeb164a0430115cdfc727f937f69302b3b3800f72db246ff1f290d0260a38081340d279cc50f2fa6005b5ff83d4305a5e1275657320&expires=8h&r=222585324&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-17&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-17&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e80686faf624695b8f8f8ac055d1f52e3584f54086130d5ff933c&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>节点属性修改</strong>：<ul>
+<li>可通过nodeValue直接修改文本内容，如：</li>
+<li>实际开发中更常用children操作元素节点</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-18?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-YlMCoOHcAP2tPcCQhf2OCKLEUf0=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-681c024006b6a958a5bb488cf77af444ab7d88a31857c0a5028e85f1366eee61285d4e78a201b4b7e2af6f591675fef275405430edb9b98b305a5e1275657320&expires=8h&r=952585983&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-18&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-18&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=1524a5cd531d02e570cc6f145497077881a3a3153bd77745305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+<li><strong>DOM遍历方法</strong>：<ul>
+<li>兄弟元素获取：<ul>
+<li>nextElementSibling获取后一个兄弟元素</li>
+<li>previousElementSibling获取前一个兄弟元素</li>
+</ul>
+</li>
+<li>父子关系获取：<ul>
+<li>parentElement获取父元素</li>
+<li>firstElementChild&#x2F;lastElementChild获取首尾子元素</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-19?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-U0yIQXs4EqnjM6DCcpbfCbObj4k=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-163f72dcc0e2111b0a5a6e461c150643e13236fdcb2e7434f78d24950d73af8f221150e9afdcd89e22aefa585b567b4eff2aa54aa66e3e17305a5e1275657320&expires=8h&r=150073546&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-19&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-19&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068c32f23017ea016b0ac055d1f52e3584f54086130d5ff933c&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>DOM树结构</strong>：<ul>
+<li>通过连续调用parentElement可追溯至文档根节点：</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-20?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-mJ8ttr39CnB4orttLQxPr8XrxLw=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-a2a3ec6e09e38e8aae203ea2192652901d6ef23d2fd1141b1179068f0a6746d0639c024ec3cb237e7781e1167a1b04b7f93b296392e41e6c305a5e1275657320&expires=8h&r=761700402&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-20&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-20&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=1524a5cd531d02e5d5c5445e5877de9e81a3a3153bd77745305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+<li><strong>核心要点</strong>：<ul>
+<li>获取DOM的本质是从文档树结构中定位节点</li>
+<li>无需死记API，使用时查阅文档即可</li>
+<li>实际开发最常用querySelector系列和children属性</li>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-21?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-FRKqiZXBy4qfvCQPfaIw7woz3fI=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-33833f1e1bda8dd2393440e3f8be6e55ef47b7ff21049733d38c822b8451b93d1ce651b558eb1c97d4e973486a50665d7989a7bc58071109305a5e1275657320&expires=8h&r=979781945&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-21&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-21&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068b85158c4a6b0835181a3a3153bd77745305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-创建DOM-24-07"><a href="#2-创建DOM-24-07" class="headerlink" title="2. 创建DOM ﻿24:07"></a>2. 创建DOM ﻿<strong>24:07</strong></h5><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-22?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-Wa9r9OoKja3zAgpeuGccP5O6J8c=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Xian,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-7af9a7d7f7e3c321a773e8f6cb202379b1c6af31ef7d66303595d8efe3602d19b222c37b4592eacccdc99caa232d71e410b1f1f5dbd512a8305a5e1275657320&expires=8h&r=425952115&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-22&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-22&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=4126a8bea2f5ff035413428d0e6a4fd4934327d2068d0cc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>基本方法</strong>：使用document.createElement(‘元素名’)创建DOM元素，如document.createElement(‘div’)</li>
+<li><strong>特性说明</strong>：<ul>
+<li>新创建的DOM元素独立存在于内存中，尚未加入文档树结构</li>
+<li>创建后返回的是一个标准的JavaScript对象，具有DOM对象的所有属性和方法</li>
+<li>即使不在文档树中，仍然可以像普通对象一样进行操作和属性设置</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-更改DOM结构-25-30"><a href="#3-更改DOM结构-25-30" class="headerlink" title="3. 更改DOM结构 ﻿25:30"></a>3. 更改DOM结构 ﻿<strong>25:30</strong></h5><p>﻿</p>
+<h6 id="1）根据元素对象删除DOM-26-15"><a href="#1）根据元素对象删除DOM-26-15" class="headerlink" title="1）根据元素对象删除DOM ﻿26:15"></a>1）根据元素对象删除DOM ﻿<strong>26:15</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-23?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-dPpsBp1XWtFfo+biV462+ANFUGc=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-5d5b6b948b2e47fd31450a0aa4738e54420ab6d9d4b5a1f39e5427cfdd4a60e9bdf3cb2881ece2ec033cdc2379c2d5b39d3cb1647f0ebdf1305a5e1275657320&expires=8h&r=862798527&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-23&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-23&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068ffbe007f2b50d09dac055d1f52e3584f54086130d5ff933c&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>remove()方法</strong>：<ul>
+<li>作用：将DOM元素从文档树中移除</li>
+<li>示例：document.querySelector(‘strong’).remove()</li>
+<li><strong>重要特性</strong>：<ul>
+<li>仅从文档树移除，DOM对象仍然存在于内存中</li>
+<li>可以随时将移除的对象重新加入文档树</li>
+<li>实际开发中常用变量保存被移除的DOM对象以便后续操作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）根据元素对象删除子节点-27-21"><a href="#2）根据元素对象删除子节点-27-21" class="headerlink" title="2）根据元素对象删除子节点 ﻿27:21"></a>2）根据元素对象删除子节点 ﻿<strong>27:21</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-24?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-x5SB/sYYmI5OR6U2ryBjN/aXcO8=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-ffce2aca865a531beefca5039a8c8735886eb4868c058e6c9318266241f6423f5e936b3cd8f1c9fa0204997df21bea4365a2dfdde5ab107c305a5e1275657320&expires=8h&r=392799695&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-24&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-24&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=4126a8bea2f5ff038834756cec92b672934327d2068d0cc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>removeChild()方法</strong>：<ul>
+<li>作用：删除指定父元素的某个子节点</li>
+<li>示例：</li>
+<li><strong>与remove()区别</strong>：<ul>
+<li>remove()是元素自身方法</li>
+<li>removeChild()是父元素方法，需要指定要删除的子节点</li>
+</ul>
+</li>
+<li><strong>返回值</strong>：返回被删除的子节点对象</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）在子节点末尾添加DOM-31-02"><a href="#3）在子节点末尾添加DOM-31-02" class="headerlink" title="3）在子节点末尾添加DOM ﻿31:02"></a>3）在子节点末尾添加DOM ﻿<strong>31:02</strong></h6><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-25?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-puuWX3oB6qyRIMdXpDw9pHXIjEs=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Xian,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-52f1881d9414e1cd187cabd38e4ad1764b1d02f4ad33b84fbb1fde254a627384f0578cacfb282291d622e71bcec56c5aa537509b6269c82d305a5e1275657320&expires=8h&r=467759884&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-25&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-25&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068fca2b103d063e44c81a3a3153bd77745305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>appendChild()方法</strong>：<ul>
+<li>作用：在指定父元素的子节点列表末尾添加新节点</li>
+<li>示例：</li>
+<li><strong>insertBefore()方法</strong>：<ul>
+<li>作用：在指定参考节点前插入新节点</li>
+<li>示例：</li>
+</ul>
+</li>
+<li><strong>实际应用</strong>：<ul>
+<li>动态加载内容</li>
+<li>列表项排序调整</li>
+<li>元素位置交换</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="4）应用案例-32-25"><a href="#4）应用案例-32-25" class="headerlink" title="4）应用案例 ﻿32:25"></a>4）应用案例 ﻿<strong>32:25</strong></h6><p>﻿</p>
+<ul>
+<li>例题：a元素操作<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-26?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-D6ipblbLqk/RAfdhjRkcFaMwJfA=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-e6afcf9f2d7e66d4a1841158b6824d526f2bdb9062dbacdb303757460e11a18dc1b82ddec7cb5c146cfc6c85a7556a3fa2599649089f64a7305a5e1275657320&expires=8h&r=283625378&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-26&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-26&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=24f48e7bb37b52f0db682556bef6b2ee934327d2068d0cc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>标准属性操作</strong>：<ul>
+<li>直接通过DOM对象属性访问和修改</li>
+<li>示例：</li>
+</ul>
+</li>
+<li><strong>自定义属性操作</strong>：<ul>
+<li>使用setAttribute()和getAttribute()方法</li>
+<li>示例：</li>
+</ul>
+</li>
+<li><strong>属性类型区别</strong>：<ul>
+<li>标准属性始终存在且有默认值</li>
+<li>自定义属性需要显式设置</li>
+<li>布尔属性（如checked）通过DOM属性访问返回true&#x2F;false，通过getAttribute()返回实际设置值或null</li>
+</ul>
+</li>
+<li><strong>内容操作方法</strong>：<ul>
+<li>innerText：获取&#x2F;设置元素的文本内容（自动HTML实体编码）</li>
+<li>innerHTML：获取&#x2F;设置元素的HTML内容（可解析HTML标签）</li>
+</ul>
+</li>
+<li><strong>路径属性特性</strong>：<ul>
+<li>相对路径属性（如href、src）通过DOM属性访问会自动转为绝对路径</li>
+<li>通过getAttribute()获取的是原始设置的路径值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-DOM内容-40-56"><a href="#4-DOM内容-40-56" class="headerlink" title="4. DOM内容 ﻿40:56"></a>4. DOM内容 ﻿<strong>40:56</strong></h5><p>﻿</p>
+<ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-27?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388906&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-YzWHBBmqsBuklYCID949PwVKwJc=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-f4fa649b9fabdf03c48ba576c13ee96a66071523e7ee47701c8cf32859a9a89ee43413cb8a4f2aeb2abf892e07087c3d5f1d2b38feab0ff8305a5e1275657320&expires=8h&r=738096352&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-27&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-27&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=66239664855e8068230408e99c62dfff81a3a3153bd77745305a5e1275657320&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>innerText操作</strong>：<ul>
+<li>获取&#x2F;修改元素内的纯文本内容</li>
+<li>特殊字符会被自动转义为普通文本（如 <code>&lt;h1&gt;</code>会显示为”<code>&lt;h1&gt;</code>“）</li>
+<li>示例：a.innerText &#x3D; ‘新文本’会直接替换链接文本</li>
+</ul>
+</li>
+<li><strong>innerHTML操作</strong>：<ul>
+<li>获取&#x2F;修改元素内的HTML结构</li>
+<li>可以识别HTML标签（如设置 <code>&lt;h1&gt;</code>会创建真实标题元素）</li>
+<li>示例：a.innerHTML &#x3D; ‘<code>&lt;h1&gt;</code>标题 <code>&lt;/h1&gt;</code>‘会生成可渲染的HTML元素</li>
+</ul>
+</li>
+</ul>
+<h5 id="5-DOM样式-42-38"><a href="#5-DOM样式-42-38" class="headerlink" title="5. DOM样式 ﻿42:38"></a>5. DOM样式 ﻿<strong>42:38</strong></h5><p>﻿</p>
+<h6 id="1）样式类型"><a href="#1）样式类型" class="headerlink" title="1）样式类型"></a>1）样式类型</h6><ul>
+<li><strong>内联样式</strong>：<ul>
+<li>通过元素的style属性直接设置的样式</li>
+<li>示例：<code>&lt;div style=&quot;color:red&quot;&gt;</code>中的样式</li>
+</ul>
+</li>
+<li><strong>计算样式</strong>：<ul>
+<li>最终应用到元素上的所有样式计算结果</li>
+<li>包含继承、层叠等CSS规则处理后的值</li>
+<li>示例：即使设置width:100%，实际计算值可能是744.5px</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）样式操作"><a href="#2）样式操作" class="headerlink" title="2）样式操作"></a>2）样式操作</h6><ul>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bjbgp01.baidupcs.com/file/p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-28?bkt=en-3de6f374fcad9f514a94920d227b7f50&fid=282335-250528-&time=1762388907&sign=FDTAXUVGEQlBHSKfWqij-GBWOGYTBgG0KqHy7wNbwoLTVMyJyK6xE-RVJX88l7LfeUTaqu7hxVrPXrtmc=&to=75&size=10&sta_dx=10&sta_cs=0&sta_ft=&sta_ct=7&sta_mt=7&fm2=MH,Baoding,Anywhere,,None,any&ctime=0&mtime=0&dt3=0&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=10&vuk=0&iv=2&vl=0&htype=&randtype=&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-7fbdd094af329e796835c86091b2ed0e5429bdcbcbd196a5013a0604d5806c6ffaaf1065553e93610395bad2a3384ac58a964d16c984fe0a305a5e1275657320&expires=8h&r=456489398&vbdid=-&fin=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-28&fn=p-bf20403c769a43a58ef8146791dbadaf-40-2025042100-28&rtype=1&dp-logid=257241905714056678&dp-callid=0.1&hps=1&tsl=0&csl=0&fsl=-1&csign=dmayhhcqdS1jXSxjkf6DN1P7N8o=&so=0&ut=1&uter=4&serv=-1&uc=1929673601&ti=24f48e7bb37b52f088024b6b3ae83df8934327d2068d0cc2&hflag=30&from_type=&adg=n&reqlabel=250528_n_3618024bbfd24355388738d30d72025e_0_71f3070537a1169c27cfd4a990426f1b&chkv=5&bid=250528&by=themis"></li>
+<li><strong>获取样式</strong>：<ul>
+<li>内联样式：element.style.property</li>
+<li>计算样式：getComputedStyle(element).property</li>
+</ul>
+</li>
+<li><strong>修改样式</strong>：<ul>
+<li>只能修改内联样式：element.style.color &#x3D; ‘blue’</li>
+<li>命名转换：CSS短横线命名→JS驼峰命名（font-size → fontSize）</li>
+</ul>
+</li>
+<li><strong>特殊操作</strong>：<ul>
+<li>删除样式：赋值为空字符串element.style.color &#x3D; ‘’</li>
+<li>无效赋值：不会报错但会被忽略</li>
+<li>class操作：使用className而非class（避免关键字冲突）</li>
+</ul>
+</li>
+</ul>
+<h5 id="6-内容总结-49-15"><a href="#6-内容总结-49-15" class="headerlink" title="6. 内容总结 ﻿49:15"></a>6. 内容总结 ﻿<strong>49:15</strong></h5><p>﻿</p>
+<ul>
+<li><strong>DOM操作核心</strong>：<ul>
+<li>获取DOM对象后可以：<ul>
+<li>修改DOM树结构</li>
+<li>改变元素属性（src&#x2F;href&#x2F;checked等）</li>
+<li>更新元素内容（文本&#x2F;HTML）</li>
+<li>调整元素样式（内联样式）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>注意事项</strong>：<ul>
+<li>class属性要使用className访问</li>
+<li>样式赋值时注意命名转换规则</li>
+<li>innerText和innerHTML有本质区别</li>
+<li>计算样式是只读的，只能通过修改内联样式间接影响</li>
+</ul>
+</li>
+<li><strong>开发实践</strong>：<ul>
+<li>所有UI操作本质都是DOM操作</li>
+<li>工作多年仍在使用这些基础API</li>
+<li>核心思路：获取DOM→操作DOM→观察UI变化</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、英雄展示-52-10"><a href="#二、英雄展示-52-10" class="headerlink" title="二、英雄展示 ﻿52:10"></a>二、英雄展示 ﻿<strong>52:10</strong></h4><p>﻿</p>
+<h5 id="1-英雄元素结构"><a href="#1-英雄元素结构" class="headerlink" title="1. 英雄元素结构"></a>1. 英雄元素结构</h5><ul>
+<li><strong>基础结构</strong>: 每个英雄由a元素构成，内部包含图片和文本两个子元素</li>
+<li><strong>静态与动态区别</strong>: HTML中写的是静态占位样式，实际需要通过JS动态生成真实内容</li>
+<li><strong>数据来源</strong>: 英雄数据存储在JS文件的数组中，每个英雄对象包含编号(id)和名字(name)两个关键属性</li>
+</ul>
+<h5 id="2-动态生成实现"><a href="#2-动态生成实现" class="headerlink" title="2. 动态生成实现"></a>2. 动态生成实现</h5><ul>
+<li><strong>核心思路</strong>: 通过循环遍历英雄数组，为每个对象创建对应的DOM元素</li>
+<li><strong>创建流程</strong>:<ul>
+<li>创建a元素：document.createElement(‘a’)</li>
+<li>设置a元素属性：<ul>
+<li>href: 格式为”英雄ID.html”（使用英雄的id属性）</li>
+<li>target: 设置为”_blank”在新窗口打开</li>
+<li>className: 设置样式类名</li>
+</ul>
+</li>
+<li>创建img元素并设置src属性：图片路径格式为”英雄ID.png”</li>
+<li>创建span元素并设置innerText为英雄的name属性</li>
+<li>将img和span依次添加到a元素中</li>
+<li>将a元素添加到页面容器(container)中</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-代码实现要点"><a href="#3-代码实现要点" class="headerlink" title="3. 代码实现要点"></a>3. 代码实现要点</h5><ul>
+<li><strong>DOM操作顺序</strong>: 必须先创建元素再设置属性，最后才添加到文档树中</li>
+<li><strong>属性设置注意</strong>:<ul>
+<li>class属性需使用className而非class</li>
+<li>路径拼接需注意字符串格式</li>
+</ul>
+</li>
+<li><strong>性能考量</strong>: 虽然代码量较大但逻辑简单，复杂度主要来自DOM操作步骤</li>
+<li><strong>替代方案</strong>: 可以使用字符串拼接+innerHTML方式简化代码（但本示例采用标准DOM操作方式）</li>
+</ul>
+<h5 id="4-实现效果"><a href="#4-实现效果" class="headerlink" title="4. 实现效果"></a>4. 实现效果</h5><ul>
+<li><strong>最终结构</strong>: 每个英雄显示为可点击的卡片，包含英雄图片和名称</li>
+<li><strong>交互功能</strong>: 点击英雄卡片会跳转到对应英雄详情页（王者荣耀官网）</li>
+<li><strong>样式表现</strong>: 通过className实现不同英雄的样式区分</li>
+</ul>
+<h4 id="三、英雄图片切换-01-00-23"><a href="#三、英雄图片切换-01-00-23" class="headerlink" title="三、英雄图片切换 ﻿01:00:23"></a>三、英雄图片切换 ﻿<strong>01:00:23</strong></h4><p>﻿</p>
+<h5 id="1-实现原理"><a href="#1-实现原理" class="headerlink" title="1. 实现原理"></a>1. 实现原理</h5><ul>
+<li><strong>JS引用位置</strong>: 所有JavaScript引用都应写在页面最底部，即body结束标签之前</li>
+<li><strong>CSS引用位置</strong>: CSS文件一般写在head标签内，title标签下方</li>
+<li><strong>DOM查询优化</strong>: 对于不变的DOM元素（如本例中的图片），应在setInterval外部先获取元素引用，避免重复查询</li>
+</ul>
+<h5 id="2-实现方法"><a href="#2-实现方法" class="headerlink" title="2. 实现方法"></a>2. 实现方法</h5><ul>
+<li><strong>基础实现</strong>:</li>
+<li><strong>优化实现</strong>:</li>
+<li><strong>数学原理</strong>: 利用取模运算实现循环，(当前索引 % 图片总数) + 1确保索引在1-4之间循环</li>
+</ul>
+<h4 id="四、英雄向右移动-01-06-26"><a href="#四、英雄向右移动-01-06-26" class="headerlink" title="四、英雄向右移动 ﻿01:06:26"></a>四、英雄向右移动 ﻿<strong>01:06:26</strong></h4><p>﻿</p>
+<h5 id="1-实现原理-1"><a href="#1-实现原理-1" class="headerlink" title="1. 实现原理"></a>1. 实现原理</h5><ul>
+<li><strong>定位方式</strong>: 使用position: absolute或position: fixed使元素可以自由移动</li>
+<li><strong>初始位置</strong>: 设置初始left: 0和top: 0</li>
+<li><strong>单位要求</strong>: CSS的left值必须带单位（如px），除0值外</li>
+</ul>
+<h5 id="2-实现方法-1"><a href="#2-实现方法-1" class="headerlink" title="2. 实现方法"></a>2. 实现方法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let x = 0;</span><br><span class="line">const img = document.querySelector(&#x27;img&#x27;);</span><br><span class="line">img.style.position = &#x27;absolute&#x27;;</span><br><span class="line">setInterval(() =&gt; &#123;</span><br><span class="line">  x += 2;</span><br><span class="line">  img.style.left = x + &#x27;px&#x27;;</span><br><span class="line">&#125;, 100);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>移动速度控制</strong>: 通过调整时间间隔（如改为50ms）或每次增加的像素值（如改为5px）来改变移动速度</li>
+<li><strong>边界问题</strong>: 当前实现会使元素移出视口，需要后续学习窗口尺寸获取后才能处理边界情况</li>
+</ul>
+<h4 id="五、立即注册按钮状态设置-01-08-56"><a href="#五、立即注册按钮状态设置-01-08-56" class="headerlink" title="五、立即注册按钮状态设置 ﻿01:08:56"></a>五、立即注册按钮状态设置 ﻿<strong>01:08:56</strong></h4><p>﻿</p>
+<h5 id="1-功能实现原理"><a href="#1-功能实现原理" class="headerlink" title="1. 功能实现原理"></a>1. 功能实现原理</h5><ul>
+<li><strong>元素获取</strong>：通过document.querySelector获取协议多选框和提交按钮<ul>
+<li>多选框选择器：.policy input</li>
+<li>提交按钮选择器：button[type&#x3D;submit]</li>
+</ul>
+</li>
+<li><strong>状态联动</strong>：根据多选框的checked属性设置按钮的disabled属性<ul>
+<li>多选框选中(checked&#x3D;true) → 按钮启用(disabled&#x3D;false)</li>
+<li>多选框未选中 → 按钮禁用(disabled&#x3D;true)</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-代码实现技巧"><a href="#2-代码实现技巧" class="headerlink" title="2. 代码实现技巧"></a>2. 代码实现技巧</h5><ul>
+<li><strong>简化写法</strong>：btn.disabled &#x3D; !agree.checked</li>
+<li><strong>调试建议</strong>：初始阶段可通过console.log验证DOM元素是否正确获取</li>
+<li><strong>事件监听</strong>：后续可通过事件机制实现自动状态更新（下节课内容）</li>
+</ul>
+<h4 id="六、发送验证码按钮状态设置-01-13-01"><a href="#六、发送验证码按钮状态设置-01-13-01" class="headerlink" title="六、发送验证码按钮状态设置 ﻿01:13:01"></a>六、发送验证码按钮状态设置 ﻿<strong>01:13:01</strong></h4><p>﻿</p>
+<h5 id="1-功能实现原理-1"><a href="#1-功能实现原理-1" class="headerlink" title="1. 功能实现原理"></a>1. 功能实现原理</h5><ul>
+<li><strong>元素获取</strong>：<ul>
+<li>手机号输入框：#txtPhone（建议使用ID选择器）</li>
+<li>验证码按钮：.captcha button</li>
+</ul>
+</li>
+<li><strong>验证逻辑</strong>：根据输入框值的长度控制按钮状态<ul>
+<li>value.length &#x3D;&#x3D;&#x3D; 11 → 按钮启用</li>
+<li>否则 → 按钮禁用</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2. 注意事项"></a>2. 注意事项</h5><ul>
+<li><strong>简化验证</strong>：当前仅验证长度，未验证数字格式（后续可用正则表达式完善）</li>
+<li><strong>性能优化</strong>：实际开发中可配合input事件实现实时验证</li>
+</ul>
+<h4 id="七、根据选中的爱好设置文本-01-17-43"><a href="#七、根据选中的爱好设置文本-01-17-43" class="headerlink" title="七、根据选中的爱好设置文本 ﻿01:17:43"></a>七、根据选中的爱好设置文本 ﻿<strong>01:17:43</strong></h4><p>﻿</p>
+<h5 id="1-功能实现原理-2"><a href="#1-功能实现原理-2" class="headerlink" title="1. 功能实现原理"></a>1. 功能实现原理</h5><ul>
+<li><strong>元素获取</strong>：<ul>
+<li>下拉列表：select元素</li>
+<li>结果显示区域：#selChoose</li>
+</ul>
+</li>
+<li><strong>选中项收集</strong>：<ul>
+<li>遍历select.children获取所有option</li>
+<li>检查option.selected属性</li>
+<li>将选中项的innerText存入数组</li>
+</ul>
+</li>
+<li><strong>结果显示</strong>：使用join(‘,’)将数组转为字符串显示</li>
+</ul>
+<h5 id="2-代码优化技巧"><a href="#2-代码优化技巧" class="headerlink" title="2. 代码优化技巧"></a>2. 代码优化技巧</h5><ul>
+<li><strong>选择器简化</strong>：可封装const$&#x3D; el &#x3D;&gt; document.querySelector(el)</li>
+<li><strong>循环处理</strong>：使用for循环遍历伪数组HTMLCollection</li>
+<li><strong>字符串拼接</strong>：推荐使用模板字符串已选择爱好：${str}</li>
+</ul>
+<h5 id="3-综合应用要点"><a href="#3-综合应用要点" class="headerlink" title="3. 综合应用要点"></a>3. 综合应用要点</h5><ul>
+<li><strong>DOM操作四步法</strong>：<ul>
+<li>获取目标元素</li>
+<li>读取元素属性&#x2F;状态</li>
+<li>进行逻辑判断</li>
+<li>修改DOM属性&#x2F;内容</li>
+</ul>
+</li>
+<li><strong>调试建议</strong>：分阶段验证，先确保元素获取正确再实现功能逻辑</li>
+</ul>
+<h4 id="八、知识小结"><a href="#八、知识小结" class="headerlink" title="八、知识小结"></a>八、知识小结</h4><table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>核心内容</th>
+<th>重点&#x2F;易混淆点</th>
+<th>难度系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DOM概念</td>
+<td>DOM是JavaScript对象，对应HTML每个节点(标签&#x2F;文本)</td>
+<td>文本节点(type&#x3D;3)与元素节点区别</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>获取DOM元素</td>
+<td>多种API：getElementById&#x2F;ClassName&#x2F;TagName，querySelector&#x2F;All</td>
+<td><strong>querySelector使用CSS选择器语法</strong>，尾数组与真数组转换</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>DOM树结构</td>
+<td>HTML文档形成树形结构，每个节点都是DOM对象</td>
+<td>节点操作会直接影响页面渲染</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>创建DOM元素</td>
+<td>document.createElement()创建游离DOM节点</td>
+<td>新创建节点需通过appendChild等加入文档树</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>修改DOM结构</td>
+<td>remove&#x2F;removeChild删除节点，insertBefore&#x2F;appendChild添加节点</td>
+<td><strong>insertBefore参数顺序</strong>(新节点, 参考节点)</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>元素属性操作</td>
+<td>标准属性直接访问(如a.href)，自定义属性用setAttribute&#x2F;getAttribute</td>
+<td><strong>class需用className</strong>因关键字冲突</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>内容操作</td>
+<td>innerText(纯文本) vs innerHTML(解析标签)</td>
+<td>innerText会转义特殊字符</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>样式操作</td>
+<td>style属性修改内联样式，getComputedStyle获取最终样式</td>
+<td><strong>仅能修改内联样式</strong>，CSS属性名转驼峰命名</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>实战案例1</td>
+<td>动态生成英雄列表：创建a&#x2F;img&#x2F;span元素并设置属性</td>
+<td>注意图片路径拼接和事件绑定时机</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>实战案例2</td>
+<td>轮播图实现：定时修改img.src并循环索引</td>
+<td><strong>取模运算</strong>实现循环逻辑(index+1)%4</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>表单联动</td>
+<td>根据checkbox&#x2F;input状态动态设置按钮disabled属性</td>
+<td>状态同步的<strong>条件判断逻辑</strong></td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/')">js-dom对象</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=js-dom对象&amp;url=http://kaiyiya.github.io/2025/11/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E5%AF%B9%E8%B1%A1/&amp;pic=https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/JS/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>JS<span class="tagsPageCount">18</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8c5e172d.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E5%8E%9F%E5%9E%8B%E9%93%BE/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c533904.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">js-原型链</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d32f566.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">js-web事件</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/07/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5%E5%B0%8F%E6%97%B6%E5%AD%A6%E4%B9%A0js%E9%87%8D%E9%9A%BE%E7%82%B9/" title="5小时学习js重难点"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68537d0f023a9.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-03</div><div class="title">5小时学习js重难点</div></div></a></div><div><a href="/2025/06/30/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JS-%E9%9B%86%E5%90%88%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="JS-集合引用类型"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/30/6861d52d7bef7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-30</div><div class="title">JS-集合引用类型</div></div></a></div><div><a href="/2025/07/06/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JS%E9%87%8D%E9%9A%BE%E7%82%B9%E5%AE%9E%E4%BE%8B%E7%B2%BE%E8%AE%B2/" title="JS重难点实例精讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/30/6861d52e11a1b.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-06</div><div class="title">JS重难点实例精讲</div></div></a></div><div><a href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-10</div><div class="title">js-dom的尺寸和位置</div></div></a></div><div><a href="/2025/10/31/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-this/" title="js-this"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d5e0d09.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-31</div><div class="title">js-this</div></div></a></div><div><a href="/2025/07/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%B0%84/" title="js-代理与反射"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/08/25/68ac6ddd41dac.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-26</div><div class="title">js-代理与反射</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81DOM-00-05"><span class="toc-number">1.</span> <span class="toc-text">一、DOM ﻿00:05</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96dom-03-53"><span class="toc-number">1.1.</span> <span class="toc-text">1. 获取dom ﻿03:53</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%A0%B9%E6%8D%AE%E5%85%83%E7%B4%A0id%E8%8E%B7%E5%8F%96dom-04-57"><span class="toc-number">1.1.1.</span> <span class="toc-text">1）根据元素id获取dom ﻿04:57</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E6%A0%B9%E6%8D%AE%E5%85%83%E7%B4%A0%E5%90%8D%E7%A7%B0%E8%8E%B7%E5%8F%96DOM-08-27"><span class="toc-number">1.1.2.</span> <span class="toc-text">2）根据元素名称获取DOM ﻿08:27</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E6%A0%B9%E6%8D%AE%E5%85%83%E7%B4%A0%E7%B1%BB%E6%A0%B7%E5%BC%8F%E8%8E%B7%E5%8F%96DOM-10-16"><span class="toc-number">1.1.3.</span> <span class="toc-text">3）根据元素类样式获取DOM ﻿10:16</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89%E6%A0%B9%E6%8D%AECSS%E9%80%89%E6%8B%A9%E5%99%A8%E8%8E%B7%E5%8F%96DOM-12-57"><span class="toc-number">1.1.4.</span> <span class="toc-text">4）根据CSS选择器获取DOM ﻿12:57</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%EF%BC%89%E6%A0%B9%E6%8D%AEHTML%E5%85%83%E7%B4%A0%E8%8E%B7%E5%8F%96DOM-15-48"><span class="toc-number">1.1.5.</span> <span class="toc-text">5）根据HTML元素获取DOM ﻿15:48</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6%EF%BC%89DOM%E5%85%83%E7%B4%A0%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C-16-08"><span class="toc-number">1.1.6.</span> <span class="toc-text">6）DOM元素关系操作 ﻿16:08</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7%EF%BC%89%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B-17-36"><span class="toc-number">1.1.7.</span> <span class="toc-text">7）应用案例 ﻿17:36</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BADOM-24-07"><span class="toc-number">1.2.</span> <span class="toc-text">2. 创建DOM ﻿24:07</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%9B%B4%E6%94%B9DOM%E7%BB%93%E6%9E%84-25-30"><span class="toc-number">1.3.</span> <span class="toc-text">3. 更改DOM结构 ﻿25:30</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%A0%B9%E6%8D%AE%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1%E5%88%A0%E9%99%A4DOM-26-15"><span class="toc-number">1.3.1.</span> <span class="toc-text">1）根据元素对象删除DOM ﻿26:15</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E6%A0%B9%E6%8D%AE%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1%E5%88%A0%E9%99%A4%E5%AD%90%E8%8A%82%E7%82%B9-27-21"><span class="toc-number">1.3.2.</span> <span class="toc-text">2）根据元素对象删除子节点 ﻿27:21</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E5%9C%A8%E5%AD%90%E8%8A%82%E7%82%B9%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0DOM-31-02"><span class="toc-number">1.3.3.</span> <span class="toc-text">3）在子节点末尾添加DOM ﻿31:02</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B-32-25"><span class="toc-number">1.3.4.</span> <span class="toc-text">4）应用案例 ﻿32:25</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-DOM%E5%86%85%E5%AE%B9-40-56"><span class="toc-number">1.4.</span> <span class="toc-text">4. DOM内容 ﻿40:56</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-DOM%E6%A0%B7%E5%BC%8F-42-38"><span class="toc-number">1.5.</span> <span class="toc-text">5. DOM样式 ﻿42:38</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%A0%B7%E5%BC%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text">1）样式类型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E6%A0%B7%E5%BC%8F%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.2.</span> <span class="toc-text">2）样式操作</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93-49-15"><span class="toc-number">1.6.</span> <span class="toc-text">6. 内容总结 ﻿49:15</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%8B%B1%E9%9B%84%E5%B1%95%E7%A4%BA-52-10"><span class="toc-number">2.</span> <span class="toc-text">二、英雄展示 ﻿52:10</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E8%8B%B1%E9%9B%84%E5%85%83%E7%B4%A0%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">1. 英雄元素结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.2.</span> <span class="toc-text">2. 动态生成实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E8%A6%81%E7%82%B9"><span class="toc-number">2.3.</span> <span class="toc-text">3. 代码实现要点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="toc-number">2.4.</span> <span class="toc-text">4. 实现效果</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%8B%B1%E9%9B%84%E5%9B%BE%E7%89%87%E5%88%87%E6%8D%A2-01-00-23"><span class="toc-number">3.</span> <span class="toc-text">三、英雄图片切换 ﻿01:00:23</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">1. 实现原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">2. 实现方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%8B%B1%E9%9B%84%E5%90%91%E5%8F%B3%E7%A7%BB%E5%8A%A8-01-06-26"><span class="toc-number">4.</span> <span class="toc-text">四、英雄向右移动 ﻿01:06:26</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-1"><span class="toc-number">4.1.</span> <span class="toc-text">1. 实现原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95-1"><span class="toc-number">4.2.</span> <span class="toc-text">2. 实现方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%AB%8B%E5%8D%B3%E6%B3%A8%E5%86%8C%E6%8C%89%E9%92%AE%E7%8A%B6%E6%80%81%E8%AE%BE%E7%BD%AE-01-08-56"><span class="toc-number">5.</span> <span class="toc-text">五、立即注册按钮状态设置 ﻿01:08:56</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">5.1.</span> <span class="toc-text">1. 功能实现原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E6%8A%80%E5%B7%A7"><span class="toc-number">5.2.</span> <span class="toc-text">2. 代码实现技巧</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%8F%91%E9%80%81%E9%AA%8C%E8%AF%81%E7%A0%81%E6%8C%89%E9%92%AE%E7%8A%B6%E6%80%81%E8%AE%BE%E7%BD%AE-01-13-01"><span class="toc-number">6.</span> <span class="toc-text">六、发送验证码按钮状态设置 ﻿01:13:01</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-1"><span class="toc-number">6.1.</span> <span class="toc-text">1. 功能实现原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">6.2.</span> <span class="toc-text">2. 注意事项</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%A0%B9%E6%8D%AE%E9%80%89%E4%B8%AD%E7%9A%84%E7%88%B1%E5%A5%BD%E8%AE%BE%E7%BD%AE%E6%96%87%E6%9C%AC-01-17-43"><span class="toc-number">7.</span> <span class="toc-text">七、根据选中的爱好设置文本 ﻿01:17:43</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-2"><span class="toc-number">7.1.</span> <span class="toc-text">1. 功能实现原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">7.2.</span> <span class="toc-text">2. 代码优化技巧</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8%E8%A6%81%E7%82%B9"><span class="toc-number">7.3.</span> <span class="toc-text">3. 综合应用要点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">八、知识小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web的事件传播机制"/></a><div class="content"><a class="title" href="/2025/11/11/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/" title="js-web的事件传播机制">js-web的事件传播机制</a><time datetime="2025-11-11T11:43:41.000Z" title="发表于 2025-11-11 19:43:41">2025-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Adam优化器"/></a><div class="content"><a class="title" href="/2025/11/10/Adam%E4%BC%98%E5%8C%96%E5%99%A8/" title="Adam优化器">Adam优化器</a><time datetime="2025-11-10T05:40:04.000Z" title="发表于 2025-11-10 13:40:04">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="具体数学-作业3"/></a><div class="content"><a class="title" href="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/" title="具体数学-作业3">具体数学-作业3</a><time datetime="2025-11-10T02:40:23.000Z" title="发表于 2025-11-10 10:40:23">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-dom的尺寸和位置"/></a><div class="content"><a class="title" href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/" title="js-dom的尺寸和位置">js-dom的尺寸和位置</a><time datetime="2025-11-10T00:06:46.000Z" title="发表于 2025-11-10 08:06:46">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d32f566.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-web事件"/></a><div class="content"><a class="title" href="/2025/11/07/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E4%BA%8B%E4%BB%B6/" title="js-web事件">js-web事件</a><time datetime="2025-11-07T00:14:24.000Z" title="发表于 2025-11-07 08:14:24">2025-11-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>18</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>5</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>7</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>5</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+  
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
