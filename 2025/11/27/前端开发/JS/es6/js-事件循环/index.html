@@ -1,0 +1,1198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>js-事件循环 | 飞向月球的猫</title><meta name="keywords" content="JS-事件循环"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="js-事件循环"><meta name="application-name" content="js-事件循环"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="js-事件循环"><meta property="og:url" content="http://kaiyiya.github.io/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="事件循环"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/09/02/68b6d8dc56c4c.png"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/09/02/68b6d8dc56c4c.png"><meta name="description" content="事件循环"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: 'js-事件循环',
+  postAI: '',
+  pageFillDescription: '一、事件循环, 1. 浏览器的进程模型, 1）何为进程, 2）何为线程, 3）浏览器有哪些进程和线程, 4）渲染主线程是如何工作的, 5）若干解释, 二、事件循环, 1. 例题：事件循环应用, 1）事件循环执行顺序分析, 2）代码执行过程详解, 2. 例题：事件循环应用变体, 1）代码修改后的执行差异, 3. 例题：阐述事件循环, 1）事件循环本质, 2）现代浏览器队列机制, 3）交互队列实验, 4. 例题：计时器是否精确, 1）不精确的四大原因, 2）浏览器源码验证, 三、浏览器进程模型与事件循环, 1. 浏览器进程架构, 2. 渲染进程详解, 1）渲染主线程, 2）任务管理机制, 3. 事件循环原理, 1）基本概念, 2）核心理论, 4. 队列优先级体系, 1）队列分类, 2）执行规则, 5. 机制优势, 四、知识小结一事件循环浏览器的进程模型何为进程本质定义进程是程序运行时分配的一块专属内存空间用于存储变量对象和函数等运行时数据隔离特性不同进程的内存空间相互独立如微信游戏进程互不影响这种设计能防止单个程序崩溃影响整个系统通信机制进程间通信需要双方明确同意类比邻居借酱油需要敲门获得许可后才能交互数据何为线程进程与线程的概念依存关系线程必须依附于进程存在没有进程分配的内存空间线程无法运行代码功能分工进程是资源分配单位提供内存空间线程是代码执行单位实际运行程序指令线程的作用与存在意义必要性每个进程至少包含个线程否则分配的内存空间无法被有效利用系统会回收闲置进程资源核心特性主线程结束时整个程序会立即终止这是操作系统的基本运行机制主线程与多线程主线程进程启动时自动创建的第一个线程负责执行主要程序逻辑如游戏中的渲染多线程扩展当需要并行处理任务时如游戏同时处理用户输入和网络通信主线程会创建辅助线程典型场景游戏线程处理操作响应网络线程处理数据传输各线程共享进程内存空间家庭类比用邓哥家庭分工比喻不同成员线程可同时进行洗衣追剧遛鸟等任务浏览器中的进程与线程设计原因浏览器采用多进程架构如渲染进程网络进程等主要为了稳定性避免单个页面崩溃影响整个浏览器安全性通过进程隔离防止恶意网站攻击线程实践每个浏览器进程内部又包含多个线程协同工作例如渲染主线程负责解析浏览器有哪些进程和线程基本概念浏览器是一个多进程多线程的应用程序内部工作极其复杂复杂度接近操作系统级别设计原因为了避免功能模块相互影响和减少连环崩溃的几率浏览器启动时会自动创建多个进程浏览器进程主要职责界面显示负责标签页样式导航栏按钮等浏览器的展示用户交互监听鼠标点击滚轮滚动键盘输入等用户操作子进程管理负责启动和管理其他进程如网络进程渲染进程线程组成界面展示线程负责浏览器皮肤地址栏等元素的渲染用户交互线程专门监听用户操作行为网络进程核心功能负责加载网络资源如文档图片等工作方式内部启动多个线程处理不同的网络任务隔离优势网络模块崩溃不会影响其他功能模块的正常运行渲染进程核心组件包含渲染主线程负责执行代码默认模式每个标签页对应一个独立的渲染进程可通过浏览器任务管理器查看进程隔离保证不同标签页互不影响如一个标签页崩溃不会影响其他标签页未来变化计划改为模式一个站点一个进程而非一个标签页一个进程工作负荷浏览器中最繁忙的线程需要处理解析执行代码其他前端相关任务历史模式当前默认一个标签页一个进程一个站点一个进程可能导致单个进程负载过重所有功能在单个进程中运行安全性差渲染主线程是如何工作的渲染主线程的任务核心职责浏览器中最繁忙的线程负责处理所有与页面渲染相关的任务具体任务解析将字符串转换为可理解的结构解析理解选择器和样式规则计算样式将百分比等单位转换为处理样式冲突布局计算确定元素几何信息宽高位置图层处理计算和绘制顺序页面重绘每秒次刷新保证流畅度执行代码处理事件回调点击计时器等解析与解析过程解析将字符串形式的尖括号标签转换为可理解的节点解析理解选择器语法如和样式声明工作特点解析是后续所有渲染操作的基础步骤必须优先完成计算样式与布局样式计算单位转换百分比等处理样式冲突应用层叠规则淘汰低优先级样式布局计算计算每个元素的精确几何信息宽高位置生成完整的页面布局树处理图层与绘图图层管理确定元素堆叠顺序规划绘制顺序背景内容等重绘机制每秒帧刷新类似游戏概念通过连续微小变化实现平滑动画效果执行代码与事件处理执行同步执行代码包括函数调用处理异步回调事件计时器等事件循环特点单线程执行模型所有任务排队处理无法真正并行处理多个任务任务调度难题典型冲突场景执行中用户点击按钮是否中断当前执行执行中计时器到期立即执行还是等待同时收到点击事件和计时器回调优先处理哪个设计约束无法采用多线程方案避免竞态条件和同步问题历史原因早期设计为单线程语言事件循环机制核心机制主线程启动无限循环源码中结构每次循环检查消息队列有任务取出第一个执行无任务进入休眠其他线程可添加任务到队列末尾关键特性任务先进先出处理休眠时可被新任务唤醒所有任务来源当前任务产生的新任务其他线程提交的任务如交互事件计时器术语说明事件循环消息循环消息队列事件队列若干解释何为异步异步的概念与实现机制无法立即执行的任务包括计时器如网络通信如请求事件监听如等需要等待外部条件触发的任务同步处理的问题若让渲染主线程等待这些任务完成如等待秒计时结束会导致主线程阻塞类比服务员等待厨师做菜而无法服务其他客人造成页面卡死交互无响应异步解决方案任务委托主线程将耗时任务如计时交给其他线程处理自身继续执行后续代码回调队列其他线程完成任务后将回调函数包装为任务加入消息队列末尾非阻塞调度主线程按顺序从消息队列中取出任务执行实现永不阻塞具体流程示例调用时主线程通知计时线程开始计时主线程立即继续执行后续代码如计时线程独立运行秒后将回调函数加入消息队列主线程执行完当前任务后从队列中取出回调函数执行例题异步理解题目解析核心要点单线程本质运行在浏览器唯一的渲染主线程上该线程还负责页面渲染样式计算等关键工作同步阻塞的危害会导致消息队列积压表现为主线程时间浪费如等待秒不做其他事页面无法及时更新渲染被打断用户交互延迟点击事件无法及时响应异步实现细节任务分包计时器网络请求等交给专用线程处理回调包装完成时将回调函数封装为任务对象不仅是函数指针队列调度任务加入消息队列末尾等待主线程轮询专业表述示例为何会阻碍渲染浏览器进程模型进程与线程区别进程操作系统资源分配的基本单位浏览器是多进程架构线程调度的基本单位一个进程包含多个线程浏览器主要进程浏览器进程负责界面显示用户交互等渲染进程每个标签页一个包含渲染主线程等进程处理图形渲染网络进程处理网络请求渲染主线程工作机制消息队列机制主线程通过消息队列处理任务交互线程监听到事件后将回调函数放入队列代码执行流程获取元素注册点击事件通知交互线程监听按钮点击阻碍渲染的代码示例死循环函数点击事件处理修改文本袁老师很帅执行死循环事件循环与渲染阻塞原理执行过程分析主线程执行完代码后进入休眠用户点击按钮交互线程将回调加入消息队列主线程取出回调执行先修改内容再执行秒死循环渲染任务必须等待执行完毕才能执行关键原因执行和渲染共用同一个渲染主线程长时间任务会阻塞后续渲染任务即使已修改也要等执行完才能显示实际影响与解决方案卡顿现象秒内页面无响应无法滚动点击等所有新任务都需要排队等待框架解决方案的架构将长任务拆分为小任务避免长时间占用主线程的操作核心结论和渲染都在同一个渲染主线程上执行两者是互斥关系不能同时进行这就是会阻碍渲染的根本原因任务有优先级吗消息队列的优先级队列基本规则任务本身没有优先级采用先进先出原则谁先来谁先执行最新标准抛弃过去宏任务微任务的双队列划分方式现在采用多队列系统每个队列对应特定任务类型同一类型的任务必须在同一个队列中不同类型的任务可以分配到不同队列浏览器实现谷歌浏览器源码显示有多种任务类型如计时器网络请求用户交互等浏览器可自行决定从哪个队列取任务执行不同浏览器实现可能不同微队列的特殊性强制要求必须存在微队列微队列中的任务具有最高优先级必须优先执行完所有微任务才能执行其他队列任务微任务执行期间会阻塞渲染等其他操作例题计时器和脚本执行顺序题目解析代码示例例题死循环任务执行顺序题目解析代码示例微队列的优先级验证题目解析代码示例二事件循环例题事件循环应用事件循环执行顺序分析执行流程全局代码微队列延时队列微队列循环处理关键原则微队列任务优先级最高即使后加入也会优先执行延时队列任务按计时顺序排队主线程必须执行完当前任务才能处理队列任务图示方法建议用三列图示主线程微队列延时队列分析执行顺序确保万无一失代码执行过程详解初始状态主线程定义和函数延时队列空微队列空执行步骤加入延时队列立即加入微队列加入输出主线程输出执行微队列任务输出执行延时队列输出同时将加入微队列执行微队列输出同时将加入微队列执行微队列输出最终输出顺序例题事件循环应用变体代码修改后的执行差异关键变化回调中直接添加微任务执行流程加入延时队列主线程将加入微队列主线程输出执行微队列输出将加入微队列执行微队列输出最后执行延时队列输出输出顺序核心规律微队列任务必须全部清空才会执行延时队列例题阐述事件循环事件循环本质官方名称事件循环或消息循环运行机制浏览器渲染主线程永不结束的循环每次循环从消息队列取一个任务执行其他线程如用户交互计时器在适当时机添加任务到队列现代浏览器队列机制队列类型微队列最高优先级交互队列用户操作相关延时队列计时器相关网络队列等优先级规则微队列任务必须优先执行交互任务优先级高于延时任务同类型任务必须在同一队列交互队列实验实验设计同时添加延时任务后执行和交互任务点击事件强制等待秒确保任务都进入队列实验结果即使延时任务先加入队列浏览器仍优先执行交互队列任务结论浏览器对交互任务有特殊优先级处理例题计时器是否精确不精确的四大原因硬件限制计算机没有原子钟依赖寄存器计时系统差异不同操作系统计时实现不同规范限制嵌套超过层时最小间隔强制早期版本直接限制事件循环机制回调执行需等待主线程空闲浏览器源码验证关键代码最大嵌套层级超过层级后最小间隔强制规范依据参考官方文档对计时器的特殊说明浏览器厂商必须遵守该规范实现三浏览器进程模型与事件循环浏览器进程架构多进程设计浏览器启动后会开启多个进程采用进程隔离机制防止单个功能崩溃影响整体运行崩溃防护当某个进程功能崩溃时由于进程隔离特性不会波及其他正常运行的进程渲染进程详解渲染主线程核心职责承担页面渲染脚本执行事件处理等核心功能是浏览器最繁忙的线程单线程限制采用单线程模型处理所有任务类似人类只能单线程处理事务的特性任务管理机制队列解决方案通过任务队列实现有序处理采用先进先出原则逐个执行任务执行流程每次从队列取出一个任务完整执行完成后才处理下一个任务事件循环原理基本概念实现本质通过无限循环结构持续检查并执行任务每次循环处理一个队列任务异步关系事件循环机制是实现异步编程的基础架构核心理论产生原因单线程是异步产生的原因由于主线程不能阻塞必须通过异步避免卡顿实现方式事件循环是异步的实现方式通过任务队列实现非阻塞执行队列优先级体系队列分类微任务队列包含回调等任务具有最高执行优先级交互队列处理用户交互事件当前实现中优先级高于延时队列延时队列管理等延时任务当前优先级最低执行规则不变原则微队列任务永远最先执行这是浏览器实现的强制规范可变规则交互队列与延时队列的优先级关系可能随浏览器版本调整执行流程每次事件循环先清空微队列再按优先级处理其他队列任务机制优势防阻塞特性通过异步任务队列确保主线程永不阻塞流畅体验合理的队列优先级设计保障浏览器运行流畅性复杂度控制虽然底层实现极其复杂但前端工程师只需掌握核心机制即可满足开发需求四知识小结知识点核心内容考试重点易混淆点难度系数浏览器进程模型浏览器是多进程应用程序主要包含浏览器进程网络进程和渲染进程每个标签页独立渲染进程进程间内存隔离线程共享内存空间渲染主线程工作机制单线程执行代码采用事件循环机制处理任务队列同步执行导致阻塞异步非阻塞特性事件循环原理无限循环从消息队列取任务执行包含微队列交互队列延时队列等多队列结构微队列优先级最高与旧版宏任务概念区别异步实现机制通过其他线程处理耗时操作回调函数包装成任务加入队列计时器精度问题嵌套超层最小任务优先级规则微任务交互任务延时任务浏览器自主调度不同类型队列执行顺序阻塞渲染案例长时间执行会延迟更新架构解决方案代码示例中与死循环的相互影响面试核心考点事件循环对计时器网络请求的执行顺序影响标准与浏览器实现差异',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-27 10:08:30',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">20</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/JS/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>JS</span></a></span></div></div><h1 class="post-title" itemprop="name headline">js-事件循环</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-26T23:26:05.000Z" title="发表于 2025-11-27 07:26:05">2025-11-27</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-27T02:08:30.000Z" title="更新于 2025-11-27 10:08:30">2025-11-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="js-事件循环"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/09/02/68b6d8dc56c4c.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"><header><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a><a href="/tags/JS/" tabindex="-1" itemprop="url">JS</a><h1 id="CrawlerTitle" itemprop="name headline">js-事件循环</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-11-26T23:26:05.000Z" title="发表于 2025-11-27 07:26:05">2025-11-27</time><time itemprop="dateCreated datePublished" datetime="2025-11-27T02:08:30.000Z" title="更新于 2025-11-27 10:08:30">2025-11-27</time></header><h4 id="一、事件循环"><a href="#一、事件循环" class="headerlink" title="一、事件循环"></a>一、事件循环</h4><h5 id="1-浏览器的进程模型"><a href="#1-浏览器的进程模型" class="headerlink" title="1. 浏览器的进程模型"></a>1. 浏览器的进程模型</h5><h6 id="1）何为进程"><a href="#1）何为进程" class="headerlink" title="1）何为进程"></a>1）何为进程</h6><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764206997117.png"></p>
+<ul>
+<li><strong>本质定义</strong>：进程是程序运行时分配的一块专属内存空间，用于存储变量、对象和函数等运行时数据。</li>
+<li><strong>隔离特性</strong>：不同进程的内存空间相互独立（如QQ、微信、游戏进程互不影响），这种设计能防止单个程序崩溃影响整个系统。</li>
+<li><strong>通信机制</strong>：进程间通信需要双方明确同意，类比邻居借酱油需要敲门获得许可后才能交互数据。</li>
+</ul>
+<h6 id="2）何为线程"><a href="#2）何为线程" class="headerlink" title="2）何为线程"></a>2）何为线程</h6><ul>
+<li><p>进程与线程的概念</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207033178.png"></p>
+<ul>
+<li><strong>依存关系</strong>：线程必须依附于进程存在，没有进程分配的内存空间，线程无法运行代码。</li>
+<li><strong>功能分工</strong>：进程是资源分配单位（提供内存空间），线程是代码执行单位（实际运行程序指令）。</li>
+</ul>
+</li>
+<li><p>线程的作用与存在意义</p>
+<ul>
+<li><strong>必要性</strong>：每个进程至少包含1个线程，否则分配的内存空间无法被有效利用，系统会回收闲置进程资源。</li>
+<li><strong>核心特性</strong>：主线程结束时，整个程序会立即终止，这是操作系统的基本运行机制。</li>
+</ul>
+</li>
+<li><p>主线程与多线程</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207040128.png"></p>
+<ul>
+<li><strong>主线程</strong>：进程启动时自动创建的第一个线程，负责执行主要程序逻辑（如游戏中的UI渲染）。</li>
+<li><strong>多线程扩展</strong>：当需要并行处理任务时（如游戏同时处理用户输入和网络通信），主线程会创建辅助线程：<ul>
+<li><strong>典型场景</strong>：游戏线程处理操作响应，网络线程处理数据传输，各线程共享进程内存空间。</li>
+<li><strong>家庭类比</strong>：用邓哥家庭分工比喻，不同成员（线程）可同时进行洗衣、追剧、遛鸟等任务。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>浏览器中的进程与线程</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207048224.png"></p>
+<ul>
+<li><strong>设计原因</strong>：浏览器采用多进程架构（如渲染进程、网络进程等）主要为了：<ul>
+<li><strong>稳定性</strong>：避免单个页面崩溃影响整个浏览器</li>
+<li><strong>安全性</strong>：通过进程隔离防止恶意网站攻击</li>
+</ul>
+</li>
+<li><strong>线程实践</strong>：每个浏览器进程内部又包含多个线程协同工作，例如渲染主线程负责解析HTML&#x2F;CSS&#x2F;JS。</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）浏览器有哪些进程和线程"><a href="#3）浏览器有哪些进程和线程" class="headerlink" title="3）浏览器有哪些进程和线程"></a>3）浏览器有哪些进程和线程</h6><p>* </p>
+<ul>
+<li><p><strong>基本概念</strong>：浏览器是一个多进程多线程的应用程序，内部工作极其复杂，复杂度接近操作系统级别</p>
+</li>
+<li><p><strong>设计原因</strong>：为了避免功能模块相互影响和减少连环崩溃的几率，浏览器启动时会自动创建多个进程</p>
+</li>
+<li><p>浏览器进程</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207125816.png"></p>
+<ul>
+<li><strong>主要职责</strong>：<ul>
+<li><strong>界面显示</strong>：负责标签页样式、导航栏、按钮等浏览器UI的展示</li>
+<li><strong>用户交互</strong>：监听鼠标点击、滚轮滚动、键盘输入等用户操作</li>
+<li><strong>子进程管理</strong>：负责启动和管理其他进程（如网络进程、渲染进程）</li>
+</ul>
+</li>
+<li><strong>线程组成</strong>：<ul>
+<li>界面展示线程：负责浏览器皮肤、地址栏等UI元素的渲染</li>
+<li>用户交互线程：专门监听用户操作行为</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>网络进程</p>
+<ul>
+<li><strong>核心功能</strong>：负责加载网络资源（如HTML文档、图片等）</li>
+<li><strong>工作方式</strong>：内部启动多个线程处理不同的网络任务</li>
+<li><strong>隔离优势</strong>：网络模块崩溃不会影响其他功能模块的正常运行</li>
+</ul>
+</li>
+<li><p>渲染进程</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207132858.png"></p>
+<ul>
+<li><strong>核心组件</strong>：包含渲染主线程，负责执行HTML、CSS、JS代码</li>
+<li><strong>默认模式</strong>：每个标签页对应一个独立的渲染进程（可通过浏览器任务管理器查看）</li>
+<li><strong>进程隔离</strong>：保证不同标签页互不影响（如一个标签页崩溃不会影响其他标签页）</li>
+<li><strong>未来变化</strong>：Chrome计划改为”site-per-process”模式（一个站点一个进程而非一个标签页一个进程）<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207141031.png"></li>
+<li><strong>工作负荷</strong>：浏览器中最繁忙的线程，需要处理：<ul>
+<li>解析HTML&#x2F;CSS</li>
+<li>执行JavaScript代码</li>
+<li>其他前端相关任务<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207152204.png"></li>
+</ul>
+</li>
+<li><strong>历史模式</strong>：<ul>
+<li>Process-per-tab（当前默认）：一个标签页一个进程</li>
+<li>Process-per-site：一个站点一个进程（可能导致单个进程负载过重）</li>
+<li>Single process：所有功能在单个进程中运行（安全性差）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="4）渲染主线程是如何工作的"><a href="#4）渲染主线程是如何工作的" class="headerlink" title="4）渲染主线程是如何工作的"></a>4）渲染主线程是如何工作的</h6><ul>
+<li><p>渲染主线程的任务</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207160454.png"></p>
+<ul>
+<li><strong>核心职责</strong>：浏览器中最繁忙的线程，负责处理所有与页面渲染相关的任务</li>
+<li><strong>具体任务</strong>：<ul>
+<li>解析HTML（将字符串转换为可理解的DOM结构）</li>
+<li>解析CSS（理解选择器和样式规则）</li>
+<li>计算样式（将em&#x2F;百分比等单位转换为px，处理样式冲突）</li>
+<li>布局计算（确定元素几何信息：宽&#x2F;高&#x2F;位置）</li>
+<li>图层处理（计算z-index和绘制顺序）</li>
+<li>页面重绘（每秒60次刷新保证流畅度）</li>
+<li>执行JS代码</li>
+<li>处理事件回调（点击&#x2F;计时器等）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>解析HTML与CSS</p>
+<ul>
+<li><strong>解析过程</strong>：<ul>
+<li>HTML解析：将字符串形式的尖括号标签转换为可理解的DOM节点</li>
+<li>CSS解析：理解选择器语法（如.classname）和样式声明</li>
+</ul>
+</li>
+<li><strong>工作特点</strong>：解析是后续所有渲染操作的基础步骤，必须优先完成</li>
+</ul>
+</li>
+<li><p>计算样式与布局</p>
+<ul>
+<li><strong>样式计算</strong>：<ul>
+<li>单位转换（em→px，百分比→px等）</li>
+<li>处理样式冲突（应用层叠规则，淘汰低优先级样式）</li>
+</ul>
+</li>
+<li><strong>布局计算</strong>：<ul>
+<li>计算每个元素的精确几何信息（宽&#x2F;高&#x2F;位置）</li>
+<li>生成完整的页面布局树（Layout Tree）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>处理图层与绘图</p>
+<ul>
+<li><strong>图层管理</strong>：<ul>
+<li>确定元素堆叠顺序（z-index）</li>
+<li>规划绘制顺序（背景→内容等）</li>
+</ul>
+</li>
+<li><strong>重绘机制</strong>：<ul>
+<li>每秒60帧刷新（类似游戏FPS概念）</li>
+<li>通过连续微小变化实现平滑动画效果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>执行JS代码与事件处理</p>
+<ul>
+<li><strong>JS执行</strong>：<ul>
+<li>同步执行JS代码（包括函数调用）</li>
+<li>处理异步回调（事件&#x2F;计时器等）</li>
+</ul>
+</li>
+<li><strong>事件循环特点</strong>：<ul>
+<li>单线程执行模型（所有任务排队处理）</li>
+<li>无法真正并行处理多个JS任务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>任务调度难题</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207169691.png"></p>
+<ul>
+<li><strong>典型冲突场景</strong>：<ul>
+<li>JS执行中用户点击按钮（是否中断当前执行？）</li>
+<li>JS执行中计时器到期（立即执行还是等待？）</li>
+<li>同时收到点击事件和计时器回调（优先处理哪个？）</li>
+</ul>
+</li>
+<li><strong>设计约束</strong>：<ul>
+<li>无法采用多线程方案（避免竞态条件和同步问题）</li>
+<li>历史原因：早期JS设计为单线程语言</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>事件循环机制</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207186522.png"></p>
+<ul>
+<li><strong>核心机制</strong>：<ul>
+<li>主线程启动无限循环（源码中for(;;)结构）</li>
+<li>每次循环检查消息队列：<ul>
+<li>有任务：取出第一个执行</li>
+<li>无任务：进入休眠</li>
+</ul>
+</li>
+<li>其他线程可添加任务到队列末尾</li>
+</ul>
+</li>
+<li><strong>关键特性</strong>：<ul>
+<li>任务先进先出（FIFO）处理</li>
+<li>休眠时可被新任务唤醒</li>
+<li>所有任务来源：<ul>
+<li>当前任务产生的新任务</li>
+<li>其他线程提交的任务（如交互事件&#x2F;计时器）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>术语说明</strong>：<ul>
+<li>事件循环&#x3D;消息循环（Message Loop）</li>
+<li>消息队列&#x3D;事件队列（Event Queue）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="5）若干解释"><a href="#5）若干解释" class="headerlink" title="5）若干解释"></a>5）若干解释</h6><ul>
+<li><p>何为异步</p>
+<ul>
+<li><p>异步的概念与实现机制</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207198956.png"></p>
+<ul>
+<li><strong>无法立即执行的任务</strong>：包括计时器（如setTimeout）、网络通信（如AJAX请求）、事件监听（如addEventListener）等需要等待外部条件触发的任务。</li>
+<li><strong>同步处理的问题</strong>：若让渲染主线程等待这些任务完成（如等待3秒计时结束），会导致主线程阻塞，类比服务员等待厨师做菜而无法服务其他客人，造成页面卡死、交互无响应。</li>
+<li><strong>异步解决方案</strong>：<ul>
+<li><strong>任务委托</strong>：主线程将耗时任务（如计时）交给其他线程处理，自身继续执行后续代码</li>
+<li><strong>回调队列</strong>：其他线程完成任务后，将回调函数包装为任务加入消息队列末尾</li>
+<li><strong>非阻塞调度</strong>：主线程按顺序从消息队列中取出任务执行，实现”永不阻塞”<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207235850.png"></li>
+</ul>
+</li>
+<li><strong>具体流程示例</strong>：<ul>
+<li>调用setTimeout(fn, 3000)时，主线程通知计时线程开始计时</li>
+<li>主线程立即继续执行后续代码（如console.log(2)）</li>
+<li>计时线程独立运行3秒后，将回调函数加入消息队列</li>
+<li>主线程执行完当前任务后，从队列中取出回调函数执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>例题：JS异步理解</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207243430.png"></p>
+<ul>
+<li>题目解析<ul>
+<li><strong>核心要点</strong>：<ul>
+<li><strong>单线程本质</strong>：JS运行在浏览器唯一的渲染主线程上，该线程还负责页面渲染、样式计算等关键工作</li>
+<li><strong>同步阻塞的危害</strong>：会导致消息队列积压，表现为：<ul>
+<li>主线程CPU时间浪费（如等待3秒不做其他事）</li>
+<li>页面无法及时更新（60FPS渲染被打断）</li>
+<li>用户交互延迟（点击事件无法及时响应）</li>
+</ul>
+</li>
+<li><strong>异步实现细节</strong>：<ul>
+<li><strong>任务分包</strong>：计时器&#x2F;网络请求等交给专用线程处理</li>
+<li><strong>回调包装</strong>：完成时将回调函数封装为任务对象（不仅是函数指针）</li>
+<li><strong>队列调度</strong>：任务加入消息队列末尾等待主线程轮询</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>专业表述示例</strong>：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>JS为何会阻碍渲染</p>
+<ul>
+<li>浏览器进程模型<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207249034.png"><ul>
+<li><strong>进程与线程区别</strong>：<ul>
+<li>进程：操作系统资源分配的基本单位，浏览器是多进程架构</li>
+<li>线程：CPU调度的基本单位，一个进程包含多个线程</li>
+</ul>
+</li>
+<li><strong>浏览器主要进程</strong>：<ul>
+<li>浏览器进程：负责界面显示、用户交互等</li>
+<li>渲染进程：每个标签页一个，包含渲染主线程等</li>
+<li>GPU进程：处理图形渲染</li>
+<li>网络进程：处理网络请求</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>渲染主线程工作机制<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207255882.png"><ul>
+<li><strong>消息队列机制</strong>：<ul>
+<li>主线程通过消息队列处理任务</li>
+<li>交互线程监听到事件后，将回调函数放入队列</li>
+</ul>
+</li>
+<li><strong>代码执行流程</strong>：<ul>
+<li>获取DOM元素：var h1 &#x3D; document.querySelector(‘h1’)</li>
+<li>注册点击事件：btn.onclick &#x3D; function() {…}</li>
+<li>通知交互线程监听按钮点击</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>阻碍渲染的代码示例<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207261041.png"><ul>
+<li><strong>死循环函数</strong>：</li>
+</ul>
+</li>
+<li><strong>点击事件处理</strong>：<ul>
+<li>修改DOM文本：h1.textContent&#x3D;’袁老师很帅！’</li>
+<li>执行死循环：delay(3000)</li>
+</ul>
+</li>
+<li>事件循环与渲染阻塞原理<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/1764207269938.png"><ul>
+<li><strong>执行过程分析</strong>：<ul>
+<li>主线程执行完JS代码后进入休眠</li>
+<li>用户点击按钮，交互线程将回调加入消息队列</li>
+<li>主线程取出回调执行：<ul>
+<li>先修改DOM内容</li>
+<li>再执行3秒死循环</li>
+</ul>
+</li>
+<li>渲染任务必须等待JS执行完毕才能执行</li>
+</ul>
+</li>
+<li><strong>关键原因</strong>：<ul>
+<li>JS执行和渲染共用同一个渲染主线程</li>
+<li>长时间JS任务会阻塞后续渲染任务</li>
+<li>即使DOM已修改，也要等JS执行完才能显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实际影响与解决方案<ul>
+<li><strong>卡顿现象</strong>：<ul>
+<li>3秒内页面无响应（无法滚动、点击等）</li>
+<li>所有新任务都需要排队等待</li>
+</ul>
+</li>
+<li><strong>框架解决方案</strong>：<ul>
+<li>React的Fiber架构：将长任务拆分为小任务</li>
+<li>避免长时间占用主线程的JS操作</li>
+</ul>
+</li>
+<li><strong>核心结论</strong>：<ul>
+<li>JS和渲染都在同一个渲染主线程上执行</li>
+<li>两者是互斥关系，不能同时进行</li>
+<li>这就是JS会阻碍渲染的根本原因</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>任务有优先级吗</p>
+<ul>
+<li><p>消息队列的优先级</p>
+<ul>
+<li><p><strong>队列基本规则</strong>：任务本身没有优先级，采用先进先出(FIFO)原则，谁先来谁先执行</p>
+</li>
+<li><p><strong>W3C最新标准</strong>：</p>
+<ul>
+<li>抛弃过去”宏任务&#x2F;微任务”的双队列划分方式</li>
+<li>现在采用多队列系统，每个队列对应特定任务类型</li>
+<li>同一类型的任务必须在同一个队列中</li>
+<li>不同类型的任务可以分配到不同队列</li>
+</ul>
+</li>
+<li><p><strong>浏览器实现</strong>：</p>
+<ul>
+<li>谷歌浏览器源码显示有多种任务类型（如计时器、网络请求、用户交互等）</li>
+<li>浏览器可自行决定从哪个队列取任务执行，不同浏览器实现可能不同</li>
+</ul>
+</li>
+<li><p><strong>微队列的特殊性</strong>：</p>
+<ul>
+<li>W3C强制要求必须存在微队列(micro task queue)</li>
+<li>微队列中的任务具有最高优先级，必须优先执行完所有微任务才能执行其他队列任务</li>
+<li>微任务执行期间会阻塞渲染等其他操作</li>
+</ul>
+</li>
+<li><p>例题:计时器和脚本执行顺序</p>
+</li>
+<li><p>题目解析</p>
+<ul>
+<li><strong>代码示例</strong>：</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>例题:死循环任务执行顺序</p>
+</li>
+<li><p>题目解析</p>
+<ul>
+<li><strong>代码示例</strong>：</li>
+</ul>
+</li>
+<li><p>微队列的优先级验证</p>
+<ul>
+<li>题目解析<ul>
+<li><strong>代码示例</strong>：</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、事件循环"><a href="#二、事件循环" class="headerlink" title="二、事件循环"></a>二、事件循环</h4><h5 id="1-例题：事件循环应用"><a href="#1-例题：事件循环应用" class="headerlink" title="1. 例题：事件循环应用"></a>1. 例题：事件循环应用</h5><h6 id="1）事件循环执行顺序分析"><a href="#1）事件循环执行顺序分析" class="headerlink" title="1）事件循环执行顺序分析"></a>1）事件循环执行顺序分析</h6><ul>
+<li><strong>执行流程</strong>：全局代码→微队列→延时队列→微队列（循环处理）</li>
+<li><strong>关键原则</strong>：<ul>
+<li>微队列任务优先级最高（VIP），即使后加入也会优先执行</li>
+<li>延时队列任务按计时顺序排队</li>
+<li>主线程必须执行完当前任务才能处理队列任务</li>
+</ul>
+</li>
+<li><strong>图示方法</strong>：建议用三列图示（主线程&#x2F;微队列&#x2F;延时队列）分析执行顺序，确保万无一失</li>
+</ul>
+<h6 id="2）代码执行过程详解"><a href="#2）代码执行过程详解" class="headerlink" title="2）代码执行过程详解"></a>2）代码执行过程详解</h6><ul>
+<li><strong>初始状态</strong>：<ul>
+<li>主线程：定义setTimeout(fn3,0)和函数a</li>
+<li>延时队列：空</li>
+<li>微队列：空</li>
+</ul>
+</li>
+<li><strong>执行步骤</strong>：<ul>
+<li>setTimeout(fn3,0)加入延时队列（0ms立即加入）</li>
+<li>微队列加入fn4（输出4）</li>
+<li>主线程输出5</li>
+<li>执行微队列任务fn4（输出4）</li>
+<li>执行延时队列fn3（输出3），同时将a加入微队列</li>
+<li>执行微队列a（输出1），同时将fn2加入微队列</li>
+<li>执行微队列fn2（输出2）</li>
+</ul>
+</li>
+<li><strong>最终输出顺序</strong>：5→4→3→1→2</li>
+</ul>
+<h5 id="2-例题：事件循环应用变体"><a href="#2-例题：事件循环应用变体" class="headerlink" title="2. 例题：事件循环应用变体"></a>2. 例题：事件循环应用变体</h5><h6 id="1）代码修改后的执行差异"><a href="#1）代码修改后的执行差异" class="headerlink" title="1）代码修改后的执行差异"></a>1）代码修改后的执行差异</h6><ul>
+<li><strong>关键变化</strong>：setTimeout回调中直接添加微任务</li>
+<li><strong>执行流程</strong>：<ul>
+<li>setTimeout(fn3,0)加入延时队列</li>
+<li>主线程将a加入微队列</li>
+<li>主线程输出5</li>
+<li>执行微队列a（输出1），将fn2加入微队列</li>
+<li>执行微队列fn2（输出2）</li>
+<li>最后执行延时队列fn3（输出3）</li>
+</ul>
+</li>
+<li><strong>输出顺序</strong>：5→1→2→3</li>
+<li><strong>核心规律</strong>：微队列任务必须全部清空才会执行延时队列</li>
+</ul>
+<h5 id="3-例题：阐述事件循环"><a href="#3-例题：阐述事件循环" class="headerlink" title="3. 例题：阐述事件循环"></a>3. 例题：阐述事件循环</h5><h6 id="1）事件循环本质"><a href="#1）事件循环本质" class="headerlink" title="1）事件循环本质"></a>1）事件循环本质</h6><ul>
+<li><strong>官方名称</strong>：Event Loop（事件循环）或Message Loop（消息循环）</li>
+<li><strong>运行机制</strong>：<ul>
+<li>浏览器渲染主线程永不结束的循环</li>
+<li>每次循环从消息队列取一个任务执行</li>
+<li>其他线程（如用户交互、计时器）在适当时机添加任务到队列</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）现代浏览器队列机制"><a href="#2）现代浏览器队列机制" class="headerlink" title="2）现代浏览器队列机制"></a>2）现代浏览器队列机制</h6><ul>
+<li><strong>队列类型</strong>：<ul>
+<li>微队列（最高优先级）</li>
+<li>交互队列（用户操作相关）</li>
+<li>延时队列（计时器相关）</li>
+<li>网络队列等</li>
+</ul>
+</li>
+<li><strong>优先级规则</strong>：<ul>
+<li>微队列任务必须优先执行</li>
+<li>交互任务优先级高于延时任务</li>
+<li>同类型任务必须在同一队列</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）交互队列实验"><a href="#3）交互队列实验" class="headerlink" title="3）交互队列实验"></a>3）交互队列实验</h6><ul>
+<li><strong>实验设计</strong>：<ul>
+<li>同时添加延时任务（100ms后执行）和交互任务（点击事件）</li>
+<li>强制等待2秒确保任务都进入队列</li>
+</ul>
+</li>
+<li><strong>实验结果</strong>：<ul>
+<li>即使延时任务先加入队列</li>
+<li>浏览器仍优先执行交互队列任务</li>
+</ul>
+</li>
+<li><strong>结论</strong>：浏览器对交互任务有特殊优先级处理</li>
+</ul>
+<h5 id="4-例题：计时器是否精确"><a href="#4-例题：计时器是否精确" class="headerlink" title="4. 例题：计时器是否精确"></a>4. 例题：计时器是否精确</h5><h6 id="1）不精确的四大原因"><a href="#1）不精确的四大原因" class="headerlink" title="1）不精确的四大原因"></a>1）不精确的四大原因</h6><ul>
+<li><strong>硬件限制</strong>：<ul>
+<li>计算机没有原子钟，依赖CPU寄存器计时</li>
+</ul>
+</li>
+<li><strong>系统差异</strong>：<ul>
+<li>不同操作系统（Windows&#x2F;macOS）计时API实现不同</li>
+</ul>
+</li>
+<li><strong>W3C规范限制</strong>：<ul>
+<li>嵌套超过5层时最小间隔强制4ms（早期版本直接限制4ms）</li>
+</ul>
+</li>
+<li><strong>事件循环机制</strong>：<ul>
+<li>回调执行需等待主线程空闲</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）浏览器源码验证"><a href="#2）浏览器源码验证" class="headerlink" title="2）浏览器源码验证"></a>2）浏览器源码验证</h6><ul>
+<li><strong>关键代码</strong>：<ul>
+<li>最大嵌套层级MAX_NESTING_LEVEL &#x3D; 5</li>
+<li>超过层级后最小间隔强制4ms</li>
+</ul>
+</li>
+<li><strong>规范依据</strong>：<ul>
+<li>参考W3C官方文档对计时器的特殊说明</li>
+<li>浏览器厂商必须遵守该规范实现</li>
+</ul>
+</li>
+</ul>
+<h4 id="三、浏览器进程模型与事件循环"><a href="#三、浏览器进程模型与事件循环" class="headerlink" title="三、浏览器进程模型与事件循环"></a>三、浏览器进程模型与事件循环</h4><h5 id="1-浏览器进程架构"><a href="#1-浏览器进程架构" class="headerlink" title="1. 浏览器进程架构"></a>1. 浏览器进程架构</h5><ul>
+<li><strong>多进程设计</strong>：浏览器启动后会开启多个进程，采用进程隔离机制防止单个功能崩溃影响整体运行</li>
+<li><strong>崩溃防护</strong>：当某个进程功能崩溃时，由于进程隔离特性，不会波及其他正常运行的进程</li>
+</ul>
+<h5 id="2-渲染进程详解"><a href="#2-渲染进程详解" class="headerlink" title="2. 渲染进程详解"></a>2. 渲染进程详解</h5><h6 id="1）渲染主线程"><a href="#1）渲染主线程" class="headerlink" title="1）渲染主线程"></a>1）渲染主线程</h6><ul>
+<li><strong>核心职责</strong>：承担页面渲染、脚本执行、事件处理等核心功能，是浏览器最繁忙的线程</li>
+<li><strong>单线程限制</strong>：采用单线程模型处理所有任务，类似人类只能单线程处理事务的特性</li>
+</ul>
+<h6 id="2）任务管理机制"><a href="#2）任务管理机制" class="headerlink" title="2）任务管理机制"></a>2）任务管理机制</h6><ul>
+<li><strong>队列解决方案</strong>：通过任务队列实现有序处理，采用先进先出(FIFO)原则逐个执行任务</li>
+<li><strong>执行流程</strong>：每次从队列取出一个任务完整执行，完成后才处理下一个任务</li>
+</ul>
+<h5 id="3-事件循环原理"><a href="#3-事件循环原理" class="headerlink" title="3. 事件循环原理"></a>3. 事件循环原理</h5><h6 id="1）基本概念"><a href="#1）基本概念" class="headerlink" title="1）基本概念"></a>1）基本概念</h6><ul>
+<li><strong>实现本质</strong>：通过无限循环结构持续检查并执行任务，每次循环处理一个队列任务</li>
+<li><strong>异步关系</strong>：事件循环机制是实现异步编程的基础架构</li>
+</ul>
+<h6 id="2）核心理论"><a href="#2）核心理论" class="headerlink" title="2）核心理论"></a>2）核心理论</h6><ul>
+<li><strong>产生原因</strong>：”单线程是异步产生的原因” - 由于主线程不能阻塞，必须通过异步避免卡顿</li>
+<li><strong>实现方式</strong>：”事件循环是异步的实现方式” - 通过任务队列实现非阻塞执行</li>
+</ul>
+<h5 id="4-队列优先级体系"><a href="#4-队列优先级体系" class="headerlink" title="4. 队列优先级体系"></a>4. 队列优先级体系</h5><h6 id="1）队列分类"><a href="#1）队列分类" class="headerlink" title="1）队列分类"></a>1）队列分类</h6><ul>
+<li><strong>微任务队列</strong>：包含Promise回调等任务，具有最高执行优先级</li>
+<li><strong>交互队列</strong>：处理用户交互事件，当前实现中优先级高于延时队列</li>
+<li><strong>延时队列</strong>：管理setTimeout等延时任务，当前优先级最低</li>
+</ul>
+<h6 id="2）执行规则"><a href="#2）执行规则" class="headerlink" title="2）执行规则"></a>2）执行规则</h6><ul>
+<li><strong>不变原则</strong>：微队列任务永远最先执行，这是浏览器实现的强制规范</li>
+<li><strong>可变规则</strong>：交互队列与延时队列的优先级关系可能随浏览器版本调整</li>
+<li><strong>执行流程</strong>：每次事件循环先清空微队列，再按优先级处理其他队列任务</li>
+</ul>
+<h5 id="5-机制优势"><a href="#5-机制优势" class="headerlink" title="5. 机制优势"></a>5. 机制优势</h5><ul>
+<li><strong>防阻塞特性</strong>：通过异步任务队列确保主线程永不阻塞</li>
+<li><strong>流畅体验</strong>：合理的队列优先级设计保障浏览器运行流畅性</li>
+<li><strong>复杂度控制</strong>：虽然底层实现极其复杂，但前端工程师只需掌握核心机制即可满足开发需求</li>
+</ul>
+<h4 id="四、知识小结"><a href="#四、知识小结" class="headerlink" title="四、知识小结"></a>四、知识小结</h4><table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>核心内容</th>
+<th>考试重点&#x2F;易混淆点</th>
+<th>难度系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>浏览器进程模型</strong></td>
+<td>浏览器是多进程应用程序，主要包含浏览器进程、网络进程和渲染进程，每个标签页独立渲染进程</td>
+<td>进程间内存隔离 vs 线程共享内存空间</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>渲染主线程工作机制</strong></td>
+<td>单线程执行HTML&#x2F;CSS&#x2F;JS代码，采用事件循环机制处理任务队列</td>
+<td>同步执行导致阻塞 vs 异步非阻塞特性</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>事件循环原理</strong></td>
+<td>无限循环从消息队列取任务执行，包含微队列&#x2F;交互队列&#x2F;延时队列等多队列结构</td>
+<td><strong>微队列优先级最高</strong>，与旧版宏任务概念区别</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>异步实现机制</strong></td>
+<td>通过其他线程处理耗时操作，回调函数包装成任务加入队列</td>
+<td>计时器精度问题（嵌套超5层最小4ms）</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>任务优先级规则</strong></td>
+<td>微任务 &gt; 交互任务 &gt; 延时任务，浏览器自主调度不同类型队列</td>
+<td>Promise.then vs setTimeout执行顺序</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>阻塞渲染案例</strong></td>
+<td>长时间JS执行会延迟DOM更新，React Fiber架构解决方案</td>
+<td>代码示例中setTimeout与死循环的相互影响</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>面试核心考点</strong></td>
+<td>事件循环对Promise&#x2F;计时器&#x2F;网络请求的执行顺序影响</td>
+<td><strong>W3C标准</strong>与浏览器实现差异</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/')">js-事件循环</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=js-事件循环&amp;url=http://kaiyiya.github.io/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/&amp;pic=https://bu.dusays.com/2025/09/02/68b6d8dc56c4c.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/JS/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>JS<span class="tagsPageCount">29</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%87%BD%E6%95%B0/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">js-函数</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-promise%E7%AC%AC%E4%B8%80%E8%AE%B2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">js-promise第一讲</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-promise%E7%AC%AC%E4%B8%80%E8%AE%B2/" title="js-promise第一讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-27</div><div class="title">js-promise第一讲</div></div></a></div><div><a href="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%B0%8F%E6%A0%97%E5%AD%90%E7%BB%83%E6%89%8B/js-%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/" title="js-文字滚动效果"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-19</div><div class="title">js-文字滚动效果</div></div></a></div><div><a href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%AF%B9%E8%B1%A1/" title="js-对象"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d934229.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-26</div><div class="title">js-对象</div></div></a></div><div><a href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%87%BD%E6%95%B0/" title="js-函数"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-26</div><div class="title">js-函数</div></div></a></div><div><a href="/2025/07/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5%E5%B0%8F%E6%97%B6%E5%AD%A6%E4%B9%A0js%E9%87%8D%E9%9A%BE%E7%82%B9/" title="5小时学习js重难点"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68537d0f023a9.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-03</div><div class="title">5小时学习js重难点</div></div></a></div><div><a href="/2025/06/30/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JS-%E9%9B%86%E5%90%88%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="JS-集合引用类型"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/30/6861d52d7bef7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-30</div><div class="title">JS-集合引用类型</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.</span> <span class="toc-text">一、事件循环</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">1. 浏览器的进程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E4%BD%95%E4%B8%BA%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">1）何为进程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E4%BD%95%E4%B8%BA%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">2）何为线程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">3）浏览器有哪些进程和线程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89%E6%B8%B2%E6%9F%93%E4%B8%BB%E7%BA%BF%E7%A8%8B%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-number">1.1.4.</span> <span class="toc-text">4）渲染主线程是如何工作的</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%EF%BC%89%E8%8B%A5%E5%B9%B2%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.5.</span> <span class="toc-text">5）若干解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-number">2.</span> <span class="toc-text">二、事件循环</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%BE%8B%E9%A2%98%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%BA%94%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">1. 例题：事件循环应用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-number">2.1.1.</span> <span class="toc-text">1）事件循环执行顺序分析</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3"><span class="toc-number">2.1.2.</span> <span class="toc-text">2）代码执行过程详解</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E4%BE%8B%E9%A2%98%EF%BC%9A%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%BA%94%E7%94%A8%E5%8F%98%E4%BD%93"><span class="toc-number">2.2.</span> <span class="toc-text">2. 例题：事件循环应用变体</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E6%89%A7%E8%A1%8C%E5%B7%AE%E5%BC%82"><span class="toc-number">2.2.1.</span> <span class="toc-text">1）代码修改后的执行差异</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%BE%8B%E9%A2%98%EF%BC%9A%E9%98%90%E8%BF%B0%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-number">2.3.</span> <span class="toc-text">3. 例题：阐述事件循环</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%AC%E8%B4%A8"><span class="toc-number">2.3.1.</span> <span class="toc-text">1）事件循环本质</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E9%98%9F%E5%88%97%E6%9C%BA%E5%88%B6"><span class="toc-number">2.3.2.</span> <span class="toc-text">2）现代浏览器队列机制</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E4%BA%A4%E4%BA%92%E9%98%9F%E5%88%97%E5%AE%9E%E9%AA%8C"><span class="toc-number">2.3.3.</span> <span class="toc-text">3）交互队列实验</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E4%BE%8B%E9%A2%98%EF%BC%9A%E8%AE%A1%E6%97%B6%E5%99%A8%E6%98%AF%E5%90%A6%E7%B2%BE%E7%A1%AE"><span class="toc-number">2.4.</span> <span class="toc-text">4. 例题：计时器是否精确</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E4%B8%8D%E7%B2%BE%E7%A1%AE%E7%9A%84%E5%9B%9B%E5%A4%A7%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.4.1.</span> <span class="toc-text">1）不精确的四大原因</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E6%B5%8F%E8%A7%88%E5%99%A8%E6%BA%90%E7%A0%81%E9%AA%8C%E8%AF%81"><span class="toc-number">2.4.2.</span> <span class="toc-text">2）浏览器源码验证</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="toc-number">3.</span> <span class="toc-text">三、浏览器进程模型与事件循环</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">1. 浏览器进程架构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.2.</span> <span class="toc-text">2. 渲染进程详解</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%B8%B2%E6%9F%93%E4%B8%BB%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.2.1.</span> <span class="toc-text">1）渲染主线程</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6"><span class="toc-number">3.2.2.</span> <span class="toc-text">2）任务管理机制</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%8E%9F%E7%90%86"><span class="toc-number">3.3.</span> <span class="toc-text">3. 事件循环原理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">3.3.1.</span> <span class="toc-text">1）基本概念</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E6%A0%B8%E5%BF%83%E7%90%86%E8%AE%BA"><span class="toc-number">3.3.2.</span> <span class="toc-text">2）核心理论</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E9%98%9F%E5%88%97%E4%BC%98%E5%85%88%E7%BA%A7%E4%BD%93%E7%B3%BB"><span class="toc-number">3.4.</span> <span class="toc-text">4. 队列优先级体系</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E9%98%9F%E5%88%97%E5%88%86%E7%B1%BB"><span class="toc-number">3.4.1.</span> <span class="toc-text">1）队列分类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E6%89%A7%E8%A1%8C%E8%A7%84%E5%88%99"><span class="toc-number">3.4.2.</span> <span class="toc-text">2）执行规则</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E6%9C%BA%E5%88%B6%E4%BC%98%E5%8A%BF"><span class="toc-number">3.5.</span> <span class="toc-text">5. 机制优势</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">四、知识小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-promise%E7%AC%AC%E4%B8%80%E8%AE%B2/" title="js-promise第一讲"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-promise第一讲"/></a><div class="content"><a class="title" href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-promise%E7%AC%AC%E4%B8%80%E8%AE%B2/" title="js-promise第一讲">js-promise第一讲</a><time datetime="2025-11-27T01:26:33.000Z" title="发表于 2025-11-27 09:26:33">2025-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" title="js-事件循环"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8dc56c4c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-事件循环"/></a><div class="content"><a class="title" href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" title="js-事件循环">js-事件循环</a><time datetime="2025-11-26T23:26:05.000Z" title="发表于 2025-11-27 07:26:05">2025-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%87%BD%E6%95%B0/" title="js-函数"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-函数"/></a><div class="content"><a class="title" href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%87%BD%E6%95%B0/" title="js-函数">js-函数</a><time datetime="2025-11-26T00:41:23.000Z" title="发表于 2025-11-26 08:41:23">2025-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%AF%B9%E8%B1%A1/" title="js-对象"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d934229.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-对象"/></a><div class="content"><a class="title" href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%AF%B9%E8%B1%A1/" title="js-对象">js-对象</a><time datetime="2025-11-25T23:44:10.000Z" title="发表于 2025-11-26 07:44:10">2025-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/24/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/html_css/%E5%9F%BA%E7%A1%80/hc-%E5%85%B6%E5%AE%83css3%E5%B0%8F%E7%9F%A5%E8%AF%86/" title="hc-其它css3小知识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c962b76.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hc-其它css3小知识"/></a><div class="content"><a class="title" href="/2025/11/24/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/html_css/%E5%9F%BA%E7%A1%80/hc-%E5%85%B6%E5%AE%83css3%E5%B0%8F%E7%9F%A5%E8%AF%86/" title="hc-其它css3小知识">hc-其它css3小知识</a><time datetime="2025-11-24T00:47:24.000Z" title="发表于 2025-11-24 08:47:24">2025-11-24</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">86</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>29</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>9</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>7</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>6</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

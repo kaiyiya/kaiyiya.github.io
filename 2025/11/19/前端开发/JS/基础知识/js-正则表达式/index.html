@@ -1,0 +1,1217 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>js-正则表达式 | 飞向月球的猫</title><meta name="keywords" content="js-正则表达式"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="js-正则表达式"><meta name="application-name" content="js-正则表达式"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="js-正则表达式"><meta property="og:url" content="http://kaiyiya.github.io/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="js-正则表达式"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg"><meta name="description" content="js-正则表达式"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: 'js-正则表达式',
+  postAI: '',
+  pageFillDescription: '一、标准库, 1. 正则表达式, 1）正则常用方法, 2）字符匹配规则, 3）连续的规则, 4）规则的重复, 5）应用案例, 二、替换空白字符, 三、内容总结, 四、知识小结一标准库正则表达式正则常用方法创建正则对象构造函数创建语法规则标识第一个参数是字符串形式的匹配规则第二个参数是可选的标识符如表示不区分大小写示例表示创建匹配字母且不区分大小写的正则对象字面量创建语法规则标识更简洁的创建方式规则写在两个斜杠之间标识符跟在最后一个斜杠后示例效果与构造函数方式相同正则对象常用方法方法语法字符串功能验证字符串是否满足正则规则返回布尔值示例检查字符串是否包含返回方法语法替换目标或替换目标功能将字符串中匹配正则的部分替换为目标内容回调函数形式可以将匹配内容传入函数处理后再替换示例将字符串中所有替换为正则标识符常用标识符不区分大小写匹配全局匹配匹配所有符合条件的内容而非仅第一个可以组合使用如表示不区分大小写且全局匹配标识符效果带标识时可以匹配字符串中的或不带标识时匹配严格区分大小写注意事项方法兼容性方法在某些环境下可能不可用建议使用带标识的方法替代示例错误可能报错应改为规则书写构造函数方式中规则参数必须是字符串形式字面量方式中规则直接写在斜杠之间不需要引号字符匹配规则正则表达式基础创建正则对象构造函数方式使用规则标识创建正则对象如字面量方式使用规则标识语法创建如本质上是构造函数的语法糖标识符作用控制匹配细节如是否区分大小写等常用方法方法字符串验证字符串是否满足规则返回布尔值方法基本形式替换目标将匹配部分替换为固定字符串回调形式替换目标可动态生成替换内容全局匹配添加标识可匹配所有符合规则的位置否则只匹配第一个标识规则标识忽略大小写匹配如可匹配和标识全局匹配匹配所有符合规则的位置标识多行匹配较少使用字符匹配规则普通字符直接书写匹配对应字符如匹配字母字符集合匹配或中任意一个字符匹配除外的任意字符特殊字符匹配数字等价于匹配非数字匹配空白字符空格回车换行制表符等匹配非空白字符匹配单词字符字母数字下划线等价于匹配非单词字符匹配任意字符除换行符外位置匹配匹配字符串开始位置匹配字符串结束位置开发工具推荐插件可实时测试正则表达式匹配效果调试技巧插件会高亮显示匹配结果方便检查正则表达式是否正确直接书写字符匹配基本规则直接书写字符即可匹配对应字符例如写就匹配匹配匹配匹配特点每次只匹配一个字符不是匹配多个相同字符示例正则表达式匹配字符串中的第一个正则表达式匹配字符串中的第一个中括号内的字符规则基本规则中括号内的字符表示或关系匹配其中任意一个字符匹配特点仍然只匹配一个字符不是匹配连续的多个字符示例匹配或或匹配任意小写字母匹配任意大写字母匹配任意数字可简写为匹配任意字母匹配任意字母或数字取反规则在中括号内使用表示不匹配指定字符匹配非小写字母的任意字符匹配非数字的任意字符量词规则匹配次匹配到次至少匹配次匹配次或多次等价于匹配次或次等价于匹配次或多次等价于正则表达式常用方法方法语法字符串功能验证字符串是否满足正则规则示例返回方法基本替换替换目标回调函数替换替换目标示例将每个数字左右加上尖括号结果为标志参数不区分大小写全局匹配匹配所有符合条件的结果正则表达式创建方式字面量方式语法示例构造函数方式语法示例两种方式区别字面量方式更简洁构造函数方式可以在运行时动态构建正则表达式匹配任意字符点号匹配规则在正则表达式中使用可以匹配任意字符包括空格字母汉字等所有字符特殊含义说明点号在正则中有特殊含义若要匹配实际的点号字符需要转义示例对比匹配任意字符若要匹配字面量点号需使用特殊字符的匹配与转义转义规则匹配点号需使用否则会被识别为通配符匹配斜杠需使用因为单个斜杠在正则中表示转义符左斜杠同样需要转义否则会导致格式错误原理说明转义符会取消字符的特殊含义使其表示字面量与字符串中的转义规则原理相同常见错误直接使用匹配斜杠会导致语法错误未转义的点号会错误匹配任意字符匹配数字与非数字数字匹配等价于专门用于匹配数字字符记忆口诀非数字匹配等价于匹配所有非数字字符记忆方法大写表示非数字符号对应关系尖号在中括号内表示取反与功能完全相同应用提示不需要死记硬背理解中括号和反义符号的用法即可实际使用时选择更简洁的表达方式匹配空白字符与非空白字符空白字符匹配的含义匹配所有空白字符包括空格回车换行制表符等实际应用在全局匹配模式下使用标志可以匹配字符串中所有符合的空白字符匹配范围不仅能匹配可见空格还能匹配换行符等不可见空白字符虽然部分编辑器可能无法直观显示非空白字符匹配的含义匹配所有非空白字符与的功能正好相反字符互补相当于即匹配不在空白字符集合中的任何字符实际区别当需要排除空格换行等空白字符时使用需要包含时使用相关字符匹配规则匹配匹配单词字符等价于包括大小写字母数字和下划线匹配匹配数字字符等价于匹配匹配任意单个字符除换行符外用法匹配方括号中出现的任意一个字符用法匹配不在方括号中出现的任意字符匹配单词字符与非单词字符匹配规则匹配单词字符等价于即小写字母到大写字母到数字到下划线匹配规则匹配非单词字符是的取反等价于注意事项匹配的是单个字符而非整个单词不加全局标志时只会匹配第一个符合的字符例如匹配时不加只会匹配第一个字母字符集匹配字符规则匹配中括号内出现的任意字符字符规则匹配中括号内未出现的任意字符其他常用字符规则匹配数字等价于匹配非数字匹配空白字符空格回车换行制表符匹配非空白字符边界匹配匹配字符串开始位置匹配字符串结束位置匹配反斜杠本身示例代码解析代码功能将字符串中所有数字替换为形式关键点使用全局匹配所有数字方法的回调函数对匹配项进行包装输出结果匹配原理正则表达式会匹配字符串中所有的每次匹配到时回调函数将其替换为匹配字符串的开始与结束字符串开始匹配规则位置要求必须写在正则表达式规则开始的位置符号表示使用符号表示匹配字符串开始匹配原理表示必须从字符串的第一个字符开始匹配示例说明如正则表达式表示字符串必须以数字开头若第一个字符不是数字则匹配失败字符串结束匹配规则符号表示使用符号表示匹配字符串结束匹配原理表示匹配的字符必须是字符串的最后一个字符示例说明可以匹配中的但不能匹配因为数字不在字符串末尾组合使用示例完整匹配同时使用和可以精确匹配整个字符串典型应用用于验证输入格式如手机号验证注意事项开始符号必须写在规则最前面结束符号必须写在规则最后面两者位置错误会导致匹配失败常见错误分析错误类型将写在规则中间位置例如无法匹配任何字符串错误类型忽略字符串中间内容例如只能匹配不能匹配错误类型错误理解量词作用范围例如表示必须且只能是个小写字母连续的规则连续书写规则介绍连续匹配原理正则表达式中单个字符规则可以连续书写用于匹配多个连续字符如邮箱验证等场景需要按顺序匹配多个规则示例匹配数字后紧跟字母基础示例表示匹配个数字后紧跟个字母如匹配这样的组合边界控制添加和可限定字符串开始和结束如表示数字字母数字的完整匹配规则的组合与匹配组合逻辑通过连续书写实现与逻辑如要求严格按数字小写字母数字顺序匹配匹配验证当字符串为时可匹配成功若为则因结束符限制匹配失败多种规则的表达方式或运算语法使用符号分隔不同规则如可匹配数字字母或字母数字两种模式示例或运算符的使用实际应用在字符串中规则可匹配成功在字符串中规则可匹配成功全局匹配添加标志可实现多次匹配如同时匹配字符串中的和等组合规则的重复量词基本概念量词定义表示前面规则出现次数的修饰符如表示前面规则精确出现次量词具体用法精确次数匹配个字母后跟个数字如范围次数表示出现次表示至少次特殊符号等价于零次或多次等价于零次或一次等价于一次或多次分组量词应用分组匹配用将规则分组后加量词如匹配组字母数字组合如作用范围量词仅作用于紧邻的前一个规则或分组需注意括号的使用范围应用案例例题表单验证邮箱库存价格格式验证框架使用函数封装验证逻辑通过回调函数返回错误信息邮箱验证空值检查请输入邮箱正则表达式匹配规则任意字符开头非空白字符域名级域名后缀测试方法邮箱格式错误库存验证空值检查请填写库存正则表达式匹配规则非零数字开头任意数字结尾测试技巧可直接将正则表达式放入方法价格验证空值检查请输入价格正则表达式匹配规则非零整数或小数点两位小数严格格式必须包含两位小数如例题文章段落包裹段落识别特征分析以多个空白字符开始到下一个空白字符结束正则表达式匹配规则空白字符任意字符处理流程获取容器内容正则匹配段落包裹段落标签移除空白字符实现技巧使用全局匹配标志处理多个段落通过方法同时完成匹配和替换注意处理最后一个段落可能缺少结束空白符的情况二替换空白字符方法使用正则表达式方法替换字符串中的所有空白字符操作步骤先找到每个字符串中的空白字符再将其替换为空字符或空格示例代码将所有连续空白替换为空补充处理替换后给字符串两端添加标签形成处理后的文本结构应用场景常用于清理文本格式使段落显示更规范处理后需要将新文本重新赋值给元素的属性最终效果使文章段落结构更清晰每个段落都被标签包裹三内容总结技术要点正则表达式是文本处理的强大工具但使用频率不高容易遗忘实际开发中遇到复杂匹配需求时建议查阅文档或参考示例学习建议掌握基础正则语法即可特殊用法使用时再查阅通过实际项目练习比死记硬背更有效重要技巧处理文本时注意保留原有标签结构扩展学习更复杂的正则表达式应用可参考高级教程常见使用场景表单验证文本搜索替换数据清洗等四知识小结知识点核心内容考试重点易混淆点难度系数正则表达式基础概念用于验证或匹配字符串是否满足特定规则如邮箱格式数字格式等独立于编程语言规则描述与语言实现的区分正则表达式创建方式规则标识字面量写法规则标识如标识符忽略大小写全局匹配的作用字符匹配规则直接字符如匹配字符集或特殊符号任意字符数字空白符边界符开始结束转义字符如匹配点号与字符集取反量词与重复规则次到次次或多次次或多次或次贪婪匹配与非贪婪匹配的区别分组与或逻辑使用分组表示或逻辑如匹配或分组捕获与反向引用实际应用案例邮箱验证整数验证价格验证邮箱规则的灵活性与严格性平衡字符串替换与函数回调方法支持正则匹配可通过函数动态处理匹配结果如批量添加标签全局替换需加标识符调试工具推荐插件实时测试正则表达式匹配结果工具使用与手动调试的结合',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-27 09:56:52',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">20</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/JS/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>JS</span></a></span></div></div><h1 class="post-title" itemprop="name headline">js-正则表达式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-18T23:25:49.000Z" title="发表于 2025-11-19 07:25:49">2025-11-19</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-27T01:56:52.000Z" title="更新于 2025-11-27 09:56:52">2025-11-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="js-正则表达式"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><header><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a><a href="/tags/JS/" tabindex="-1" itemprop="url">JS</a><h1 id="CrawlerTitle" itemprop="name headline">js-正则表达式</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-11-18T23:25:49.000Z" title="发表于 2025-11-19 07:25:49">2025-11-19</time><time itemprop="dateCreated datePublished" datetime="2025-11-27T01:56:52.000Z" title="更新于 2025-11-27 09:56:52">2025-11-27</time></header><h4 id="一、标准库"><a href="#一、标准库" class="headerlink" title="一、标准库"></a>一、标准库</h4><h5 id="1-正则表达式"><a href="#1-正则表达式" class="headerlink" title="1. 正则表达式"></a>1. 正则表达式</h5><h6 id="1）正则常用方法"><a href="#1）正则常用方法" class="headerlink" title="1）正则常用方法"></a>1）正则常用方法</h6><ul>
+<li><p>创建正则对象</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509390715.png"></p>
+<ul>
+<li><strong>构造函数创建</strong>：<ul>
+<li>语法：new RegExp(‘规则’,’标识’)</li>
+<li>第一个参数是字符串形式的匹配规则，第二个参数是可选的标识符（如’i’表示不区分大小写）</li>
+<li>示例：var reg &#x3D; new RegExp(‘a’, ‘i’) 表示创建匹配字母a且不区分大小写的正则对象</li>
+</ul>
+</li>
+<li><strong>字面量创建</strong>：<ul>
+<li>语法：&#x2F;规则&#x2F;标识</li>
+<li>更简洁的创建方式，规则写在两个斜杠之间，标识符跟在最后一个斜杠后</li>
+<li>示例：var reg &#x3D; &#x2F;a&#x2F;i 效果与构造函数方式相同</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>正则对象常用方法</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509399925.png"></p>
+<ul>
+<li><strong>test方法</strong>：<ul>
+<li>语法：reg.test(‘字符串’)</li>
+<li>功能：验证字符串是否满足正则规则，返回布尔值</li>
+<li>示例：reg.test(‘234234324a234234234’) 检查字符串是否包含a，返回true</li>
+</ul>
+</li>
+<li><strong>replace方法</strong>：<ul>
+<li>语法：str.replace(reg,’替换目标’) 或 str.replace(reg, function(s){return’替换目标’})</li>
+<li>功能：将字符串中匹配正则的部分替换为目标内容</li>
+<li>回调函数形式可以将匹配内容传入函数处理后再替换</li>
+<li>示例：将字符串中所有1替换为a：str.replace(&#x2F;1&#x2F;g, ‘a’)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>正则标识符</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510651728.png"></p>
+<ul>
+<li><strong>常用标识符</strong>：<ul>
+<li>i：不区分大小写匹配</li>
+<li>g：全局匹配（匹配所有符合条件的内容，而非仅第一个）</li>
+<li>可以组合使用，如ig表示不区分大小写且全局匹配</li>
+</ul>
+</li>
+<li><strong>标识符效果</strong>：<ul>
+<li>带i标识时，&#x2F;a&#x2F;i可以匹配字符串中的A或a</li>
+<li>不带i标识时，匹配严格区分大小写</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注意事项</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509417622.png"></p>
+<ul>
+<li><strong>方法兼容性</strong>：<ul>
+<li>replaceAll方法在某些环境下可能不可用，建议使用带g标识的replace方法替代</li>
+<li>示例错误：str.replaceAll(‘1’, ‘a’)可能报错，应改为str.replace(&#x2F;1&#x2F;g, ‘a’)</li>
+</ul>
+</li>
+<li><strong>规则书写</strong>：<ul>
+<li>构造函数方式中，规则参数必须是字符串形式</li>
+<li>字面量方式中，规则直接写在斜杠之间，不需要引号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）字符匹配规则"><a href="#2）字符匹配规则" class="headerlink" title="2）字符匹配规则"></a>2）字符匹配规则</h6><ul>
+<li><p>正则表达式基础</p>
+<ul>
+<li>创建正则对象<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509435108.png"><ul>
+<li><strong>构造函数方式</strong>：使用new RegExp(‘规则’,’标识’)创建正则对象，如new RegExp(‘a’,’i’)</li>
+<li><strong>字面量方式</strong>：使用&#x2F;规则&#x2F;标识语法创建，如&#x2F;a&#x2F;i，本质上是构造函数的语法糖</li>
+<li><strong>标识符作用</strong>：控制匹配细节，如是否区分大小写等</li>
+</ul>
+</li>
+<li>常用方法<ul>
+<li><strong>test方法</strong>：reg.test(‘字符串’)验证字符串是否满足规则，返回布尔值</li>
+<li><strong>replace方法</strong>：<ul>
+<li>基本形式：str.replace(reg,’替换目标’)将匹配部分替换为固定字符串</li>
+<li>回调形式：str.replace(reg,function(s){return ‘替换目标’})可动态生成替换内容</li>
+</ul>
+</li>
+<li><strong>全局匹配</strong>：添加g标识可匹配所有符合规则的位置，否则只匹配第一个</li>
+</ul>
+</li>
+<li>标识规则<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509441079.png"><ul>
+<li><strong>i标识</strong>：忽略大小写匹配，如&#x2F;a&#x2F;i可匹配”A”和”a”</li>
+<li><strong>g标识</strong>：全局匹配，匹配所有符合规则的位置</li>
+<li><strong>m标识</strong>：多行匹配（较少使用）</li>
+</ul>
+</li>
+<li>字符匹配规则<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509448121.png"><ul>
+<li><strong>普通字符</strong>：直接书写匹配对应字符，如&#x2F;a&#x2F;匹配字母”a”</li>
+<li><strong>字符集合</strong>：<ul>
+<li>[abc]：匹配a、b或c中任意一个字符</li>
+<li>[^abc]：匹配除a、b、c外的任意字符</li>
+</ul>
+</li>
+<li><strong>特殊字符</strong>：<ul>
+<li>\d：匹配数字，等价于[0-9]</li>
+<li>\D：匹配非数字</li>
+<li>\s：匹配空白字符（空格、回车、换行、制表符等）</li>
+<li>\S：匹配非空白字符</li>
+<li>\w：匹配单词字符（字母、数字、下划线），等价于[A-Za-z0-9_]</li>
+<li>\W：匹配非单词字符</li>
+<li>.：匹配任意字符（除换行符外）</li>
+</ul>
+</li>
+<li><strong>位置匹配</strong>：<ul>
+<li>^：匹配字符串开始位置</li>
+<li>$：匹配字符串结束位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>开发工具推荐<ul>
+<li><strong>VS Code插件</strong>：Regex Previewer可实时测试正则表达式匹配效果</li>
+<li><strong>调试技巧</strong>：插件会高亮显示匹配结果，方便检查正则表达式是否正确</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>直接书写字符匹配</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509457282.png"></p>
+<ul>
+<li><strong>基本规则</strong>：直接书写字符即可匹配对应字符，例如写”a”就匹配a，”b”匹配b，”1”匹配1。</li>
+<li><strong>匹配特点</strong>：每次只匹配一个字符，不是匹配多个相同字符。</li>
+<li><strong>示例</strong>：<ul>
+<li>正则表达式&#x2F;a&#x2F;匹配字符串中的第一个a</li>
+<li>正则表达式&#x2F;1&#x2F;匹配字符串中的第一个1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>中括号内的字符规则</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509463455.png"></p>
+<ul>
+<li><strong>基本规则</strong>：中括号[]内的字符表示”或”关系，匹配其中任意一个字符。</li>
+<li><strong>匹配特点</strong>：仍然只匹配一个字符，不是匹配连续的多个字符。</li>
+<li><strong>示例</strong>：<ul>
+<li>[123]匹配1或2或3</li>
+<li>[a-z]匹配任意小写字母</li>
+<li>[A-Z]匹配任意大写字母</li>
+<li>[0-9]匹配任意数字（可简写为\d）</li>
+<li>[a-zA-Z]匹配任意字母</li>
+<li>[a-zA-Z0-9]匹配任意字母或数字</li>
+</ul>
+</li>
+<li><strong>取反规则</strong>：在中括号内使用^表示不匹配指定字符<ul>
+<li>[^a-z]匹配非小写字母的任意字符</li>
+<li>[^0-9]匹配非数字的任意字符</li>
+</ul>
+</li>
+<li><strong>量词规则</strong>：<ul>
+<li>{n}：匹配n次</li>
+<li>{n,m}：匹配n到m次</li>
+<li>{n,}：至少匹配n次</li>
+<li>*：匹配0次或多次（等价于{0,}）</li>
+<li>?：匹配0次或1次（等价于{0,1}）</li>
+<li>+：匹配1次或多次（等价于{1,}）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>正则表达式常用方法</p>
+<ul>
+<li><strong>test方法</strong>：<ul>
+<li>语法：reg.test(‘字符串’)</li>
+<li>功能：验证字符串是否满足正则规则</li>
+<li>示例：&#x2F;a&#x2F;.test(‘abc’)返回true</li>
+</ul>
+</li>
+<li><strong>replace方法</strong>：<ul>
+<li>基本替换：str.replace(reg,’替换目标’)</li>
+<li>回调函数替换：str.replace(reg, function(s){return ‘替换目标’})</li>
+<li>示例：将每个数字左右加上尖括号</li>
+</ul>
+</li>
+<li>结果为”&lt;1&gt;&lt;2&gt;&lt;3&gt;”</li>
+<li><strong>标志参数</strong>：<ul>
+<li>i：不区分大小写</li>
+<li>g：全局匹配（匹配所有符合条件的结果）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>正则表达式创建方式</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509469471.png"></p>
+<ul>
+<li><strong>字面量方式</strong>：<ul>
+<li>语法：&#x2F;pattern&#x2F;flags</li>
+<li>示例：var reg &#x3D; &#x2F;a&#x2F;i</li>
+</ul>
+</li>
+<li><strong>构造函数方式</strong>：<ul>
+<li>语法：new RegExp(‘pattern’, ‘flags’)</li>
+<li>示例：var reg &#x3D; new RegExp(‘a’, ‘i’)</li>
+</ul>
+</li>
+<li><strong>两种方式区别</strong>：<ul>
+<li>字面量方式更简洁</li>
+<li>构造函数方式可以在运行时动态构建正则表达式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>匹配任意字符</p>
+<ul>
+<li><strong>点号匹配规则</strong>: 在正则表达式中使用.可以匹配任意字符，包括空格、字母、汉字等所有字符</li>
+<li><strong>特殊含义说明</strong>: 点号在正则中有特殊含义，若要匹配实际的点号字符需要转义</li>
+<li><strong>示例对比</strong>:<ul>
+<li>d2 匹配任意字符</li>
+<li>若要匹配字面量点号需使用.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>特殊字符的匹配与转义</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509475298.png"></p>
+<ul>
+<li><strong>转义规则</strong>:<ul>
+<li>匹配点号需使用.，否则会被识别为通配符</li>
+<li>匹配斜杠需使用\，因为单个斜杠\在正则中表示转义符</li>
+<li>左斜杠同样需要转义，否则会导致格式错误</li>
+</ul>
+</li>
+<li><strong>原理说明</strong>:<ul>
+<li>转义符会取消字符的特殊含义，使其表示字面量</li>
+<li>与字符串中的转义规则原理相同</li>
+</ul>
+</li>
+<li><strong>常见错误</strong>:<ul>
+<li>直接使用&#x2F;匹配斜杠会导致语法错误</li>
+<li>未转义的点号会错误匹配任意字符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>匹配数字与非数字</p>
+<ul>
+<li><strong>数字匹配</strong>:<ul>
+<li>\d 等价于 [0-9]，专门用于匹配数字字符</li>
+<li>记忆口诀：”d for digit”</li>
+</ul>
+</li>
+<li><strong>非数字匹配</strong>:<ul>
+<li>\D 等价于 [^0-9]，匹配所有非数字字符</li>
+<li>记忆方法：大写D表示”非”数字</li>
+</ul>
+</li>
+<li><strong>符号对应关系</strong>:<ul>
+<li>尖号^在中括号内表示取反</li>
+<li>[^0-9]与\D功能完全相同</li>
+</ul>
+</li>
+<li><strong>应用提示</strong>:<ul>
+<li>不需要死记硬背，理解中括号和反义符号的用法即可</li>
+<li>实际使用时选择更简洁的表达方式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>匹配空白字符与非空白字符</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509481469.png"></p>
+<ul>
+<li>空白字符匹配<ul>
+<li><strong>\s的含义</strong>：匹配所有空白字符，包括空格、回车（\r）、换行（\n）、制表符（\t）等</li>
+<li><strong>实际应用</strong>：在全局匹配模式下（使用g标志），可以匹配字符串中所有符合的空白字符</li>
+<li><strong>匹配范围</strong>：不仅能匹配可见空格，还能匹配换行符等不可见空白字符（虽然部分编辑器可能无法直观显示）<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509487817.png"></li>
+</ul>
+</li>
+<li>非空白字符匹配<ul>
+<li><strong>\S的含义</strong>：匹配所有非空白字符，与\s的功能正好相反</li>
+<li><strong>字符互补</strong>：\S相当于[^\s]，即匹配不在空白字符集合中的任何字符</li>
+<li><strong>实际区别</strong>：当需要排除空格、换行等空白字符时使用\S，需要包含时使用\s</li>
+</ul>
+</li>
+<li>相关字符匹配规则<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763509500634.png"><ul>
+<li><strong>\w匹配</strong>：匹配单词字符，等价于<br>[A−Za−z0−9][A-Za-z0-9_]<strong>[<strong>A</strong>−<strong>Z</strong>a</strong>−<strong>z</strong>0**−<strong>9</strong>]**<br>，包括大小写字母、数字和下划线</li>
+<li><strong>\d匹配</strong>：匹配数字字符，等价于[0-9]</li>
+<li><strong>.匹配</strong>：匹配任意单个字符（除换行符外）</li>
+<li><strong>[]用法</strong>：匹配方括号中出现的任意一个字符</li>
+<li><strong>[^]用法</strong>：匹配不在方括号中出现的任意字符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>匹配单词字符与非单词字符</p>
+<ul>
+<li><strong>\w匹配规则</strong>：匹配单词字符，等价于<br>[A−Za−z0−9][A-Za-z0-9_]<strong>[<strong>A</strong>−<strong>Z</strong>a</strong>−<strong>z</strong>0**−<strong>9</strong>]**<br>，即：* 小写字母a到z<ul>
+<li>大写字母A到Z</li>
+<li>数字0到9</li>
+<li>下划线_</li>
+</ul>
+</li>
+<li><strong>\W匹配规则</strong>：匹配非单词字符，是\w的取反，等价于<br>[A−Za−z0−9][^A-Za-z0-9_]<strong>[<strong>A</strong>−<strong>Z</strong>a</strong>−<strong>z</strong>0**−<strong>9</strong>]**</li>
+<li><strong>注意事项</strong>：<ul>
+<li>匹配的是单个字符而非整个单词</li>
+<li>不加全局标志g时，只会匹配第一个符合的字符</li>
+<li>例如匹配”word”时，不加g只会匹配第一个字母’w’<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510673703.png"></li>
+</ul>
+</li>
+<li><strong>字符集匹配</strong>：<ul>
+<li>[字符规则]：匹配中括号内出现的任意字符</li>
+<li>[^字符规则]：匹配中括号内未出现的任意字符</li>
+</ul>
+</li>
+<li><strong>其他常用字符规则</strong>：<ul>
+<li>\d\d**\d**<br>：匹配数字，等价于[0-9]</li>
+<li>\D\D**\D**<br>：匹配非数字</li>
+<li>\s\s**\s**<br>：匹配空白字符（空格&#x2F;回车&#x2F;换行&#x2F;制表符）</li>
+<li>§\S**§**<br>：匹配非空白字符</li>
+</ul>
+</li>
+<li><strong>边界匹配</strong>：<ul>
+<li>^：匹配字符串开始位置</li>
+<li>$：匹配字符串结束位置</li>
+<li>\：匹配反斜杠本身</li>
+</ul>
+</li>
+<li>示例代码解析<br>* <ul>
+<li><strong>代码功能</strong>：将字符串中所有数字1替换为&lt;1&gt;形式</li>
+<li><strong>关键点</strong>：<ul>
+<li>使用&#x2F;1&#x2F;g全局匹配所有数字1</li>
+<li>replace方法的回调函数对匹配项进行包装</li>
+<li>输出结果：’21365aBa462aca31453qa&lt;1&gt;23&lt;1&gt;’</li>
+</ul>
+</li>
+<li><strong>匹配原理</strong>：<ul>
+<li>正则表达式&#x2F;1&#x2F;g会匹配字符串中所有的’1’</li>
+<li>每次匹配到’1’时，回调函数将其替换为&lt;1&gt;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>匹配字符串的开始与结束</p>
+<ul>
+<li>字符串开始匹配规则<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510684367.png"><ul>
+<li><strong>位置要求</strong>：必须写在正则表达式规则开始的位置</li>
+<li><strong>符号表示</strong>：使用 ^ 符号表示匹配字符串开始</li>
+<li><strong>匹配原理</strong>：表示必须从字符串的第一个字符开始匹配</li>
+<li><strong>示例说明</strong>：如正则表达式 &#x2F;^d&#x2F; 表示字符串必须以数字开头，若第一个字符不是数字则匹配失败</li>
+</ul>
+</li>
+<li>字符串结束匹配规则<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510689506.png"><ul>
+<li><strong>符号表示</strong>：使用 $ 符号表示匹配字符串结束</li>
+<li><strong>匹配原理</strong>：表示匹配的字符必须是字符串的最后一个字符</li>
+<li><strong>示例说明</strong>：<ul>
+<li>&#96;&#x2F;d$&#x2F; 可以匹配 “abc123” 中的 “3”</li>
+<li>但不能匹配 “123abc” 因为数字不在字符串末尾</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>组合使用示例<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510700451.png"><ul>
+<li><strong>完整匹配</strong>：同时使用 ^ 和 $ 可以精确匹配整个字符串</li>
+<li><strong>典型应用</strong>：用于验证输入格式，如手机号验证 &#x2F;^1\d{10}$&#x2F;</li>
+<li><strong>注意事项</strong>：<ul>
+<li>开始符号必须写在规则最前面</li>
+<li>结束符号必须写在规则最后面</li>
+<li>两者位置错误会导致匹配失败</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常见错误分析<ul>
+<li><strong>错误类型1</strong>：将 ^ 写在规则中间位置<ul>
+<li>例如 &#x2F;a^b&#x2F; 无法匹配任何字符串</li>
+</ul>
+</li>
+<li><strong>错误类型2</strong>：忽略字符串中间内容<ul>
+<li>例如 &#x2F;^abc$&#x2F; 只能匹配 “abc” 不能匹配 “abc123abc”</li>
+</ul>
+</li>
+<li><strong>错误类型3</strong>：错误理解量词作用范围<ul>
+<li>例如 &#x2F;^[a-z]{3}$&#x2F; 表示必须且只能是3个小写字母</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）连续的规则"><a href="#3）连续的规则" class="headerlink" title="3）连续的规则"></a>3）连续的规则</h6><ul>
+<li><p>连续书写规则介绍</p>
+<ul>
+<li><strong>连续匹配原理</strong>：正则表达式中单个字符规则可以连续书写，用于匹配多个连续字符，如邮箱验证等场景需要按顺序匹配多个规则。</li>
+</ul>
+</li>
+<li><p>示例：匹配数字后紧跟字母</p>
+<ul>
+<li><strong>基础示例</strong>：\d[a-zA-Z]表示匹配1个数字后紧跟1个字母，如匹配”3a”这样的组合。</li>
+<li><strong>边界控制</strong>：添加^和$可限定字符串开始和结束，如^\d[a-zA-Z]\d$表示”数字+字母+数字”的完整匹配。</li>
+</ul>
+</li>
+<li><p>规则的组合与匹配</p>
+<ul>
+<li><strong>组合逻辑</strong>：通过连续书写实现”与”逻辑，如^\d[a-z]\d$要求严格按”数字+小写字母+数字”顺序匹配。</li>
+<li><strong>匹配验证</strong>：当字符串为”1a2”时可匹配成功，若为”1a23”则因结束符限制匹配失败。</li>
+</ul>
+</li>
+<li><p>多种规则的表达方式<br><strong>30:15<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510718688.png"></strong></p>
+<ul>
+<li><strong>或运算语法</strong>：使用|符号分隔不同规则，如\d[a-zA-Z]|[a-zA-Z]\d可匹配”数字+字母”或”字母+数字”两种模式。</li>
+</ul>
+</li>
+<li><p>示例：或运算符（|）的使用</p>
+<ul>
+<li><strong>实际应用</strong>：在字符串”g1”中，[a-zA-Z]\d规则可匹配成功；在字符串”1g”中，\d[a-zA-Z]规则可匹配成功。</li>
+<li><strong>全局匹配</strong>：添加g标志可实现多次匹配，如同时匹配字符串中的”a1”和”1b”等组合。</li>
+</ul>
+</li>
+</ul>
+<h6 id="4）规则的重复"><a href="#4）规则的重复" class="headerlink" title="4）规则的重复"></a>4）规则的重复</h6><ul>
+<li>量词基本概念<ul>
+<li><strong>量词定义</strong>：表示前面规则出现次数的修饰符，如{3}表示前面规则精确出现3次。</li>
+<li></li>
+</ul>
+</li>
+<li>量词具体用法<ul>
+<li><strong>精确次数</strong>：[a-zA-Z]\d{3}匹配1个字母后跟3个数字（如”a123”）</li>
+<li><strong>范围次数</strong>：{2,3}表示出现2-3次，{2,}表示至少2次</li>
+<li><strong>特殊符号</strong>：<ul>
+<li>*等价于{0,}（零次或多次）</li>
+<li>?等价于{0,1}（零次或一次）</li>
+<li>+等价于{1,}（一次或多次）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分组量词应用<ul>
+<li><strong>分组匹配</strong>：用()将规则分组后加量词，如([a-zA-Z]\d){3}匹配3组”字母+数字”组合（如”a1b2c3”）</li>
+<li><strong>作用范围</strong>：量词仅作用于紧邻的前一个规则或分组，需注意括号的使用范围。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510731008.png"></li>
+</ul>
+</li>
+</ul>
+<h6 id="5）应用案例"><a href="#5）应用案例" class="headerlink" title="5）应用案例"></a>5）应用案例</h6><ul>
+<li><p>例题:表单验证邮箱、库存、价格格式</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510746134.png"></p>
+<ul>
+<li><strong>验证框架</strong>：使用validateHelper函数封装验证逻辑，通过回调函数返回错误信息</li>
+<li><strong>邮箱验证</strong>：<ul>
+<li><strong>空值检查</strong>：if(!value) return ‘请输入邮箱’</li>
+<li><strong>正则表达式</strong>：&#x2F;^.+@[^\s.]+(.[^\s.]+){1,2}$&#x2F;<ul>
+<li>匹配规则：任意字符开头 + @ + 非空白字符域名 + 1-2级域名后缀</li>
+</ul>
+</li>
+<li><strong>测试方法</strong>：if(!mailReg.test(value)) return ‘邮箱格式错误’<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510752032.png"></li>
+</ul>
+</li>
+<li><strong>库存验证</strong>：<ul>
+<li><strong>空值检查</strong>：if(!value) return ‘请填写库存’</li>
+<li><strong>正则表达式</strong>：&#x2F;^[1-9]\d*$&#x2F;<ul>
+<li>匹配规则：非零数字开头 + 任意数字结尾</li>
+</ul>
+</li>
+<li><strong>测试技巧</strong>：可直接将正则表达式放入test方法</li>
+<li></li>
+</ul>
+</li>
+<li><strong>价格验证</strong>：<ul>
+<li><strong>空值检查</strong>：if(!value) return ‘请输入价格’</li>
+<li><strong>正则表达式</strong>：&#x2F;^([1-9]\d*|0).\d{2}$&#x2F;<ul>
+<li>匹配规则：(非零整数或0) + 小数点 + 两位小数</li>
+</ul>
+</li>
+<li><strong>严格格式</strong>：必须包含两位小数，如19.00</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>例题:文章段落包裹</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510764044.png"></p>
+<ul>
+<li><strong>段落识别</strong>：<ul>
+<li><strong>特征分析</strong>：以多个空白字符开始，到下一个空白字符结束</li>
+<li><strong>正则表达式</strong>：&#x2F;\s+.+&#x2F;g<ul>
+<li>匹配规则：1+空白字符 + 任意字符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>处理流程</strong>：<ul>
+<li>获取容器内容：container.innerHTML</li>
+<li>正则匹配段落：text.match(&#x2F;\s+.+&#x2F;g)</li>
+<li>包裹段落标签：s &#x3D; ‘<code>&lt;p&gt;</code>‘ + s + ‘<code>&lt;/p&gt;</code>‘</li>
+<li>移除空白字符：s.replace(&#x2F;\s+&#x2F;g,’’)</li>
+<li></li>
+</ul>
+</li>
+<li><strong>实现技巧</strong>：<ul>
+<li>使用全局匹配标志g处理多个段落</li>
+<li>通过replace方法同时完成匹配和替换</li>
+<li>注意处理最后一个段落可能缺少结束空白符的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、替换空白字符"><a href="#二、替换空白字符" class="headerlink" title="二、替换空白字符"></a>二、替换空白字符</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510778622.png"></p>
+<ul>
+<li><strong>方法</strong>：使用正则表达式s.replace()方法替换字符串中的所有空白字符<ul>
+<li>操作步骤：先找到每个字符串中的空白字符，再将其替换为空字符或空格</li>
+<li>示例代码：s &#x3D; s.replace(&#x2F;\s+&#x2F;g, ‘’) 将所有连续空白替换为空</li>
+<li>补充处理：替换后给字符串两端添加 <code>&lt;p&gt;</code>标签，形成 <code>&lt;p&gt;</code>处理后的文本 <code>&lt;/p&gt;</code>结构</li>
+</ul>
+</li>
+<li><strong>应用场景</strong>：常用于清理HTML文本格式，使段落显示更规范<ul>
+<li>处理后需要将新文本重新赋值给元素的innerHTML属性</li>
+<li>最终效果：使文章段落结构更清晰，每个段落都被 <code>&lt;p&gt;</code>标签包裹</li>
+</ul>
+</li>
+</ul>
+<h4 id="三、内容总结"><a href="#三、内容总结" class="headerlink" title="三、内容总结"></a>三、内容总结</h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1763510790141.png"></p>
+<ul>
+<li><strong>技术要点</strong>：<ul>
+<li>正则表达式是文本处理的强大工具，但使用频率不高容易遗忘</li>
+<li>实际开发中遇到复杂匹配需求时，建议查阅文档或参考示例</li>
+</ul>
+</li>
+<li><strong>学习建议</strong>：<ul>
+<li>掌握基础正则语法即可，特殊用法使用时再查阅</li>
+<li>通过实际项目练习比死记硬背更有效</li>
+<li>重要技巧：处理HTML文本时注意保留原有标签结构</li>
+</ul>
+</li>
+<li><strong>扩展学习</strong>：<ul>
+<li>更复杂的正则表达式应用可参考JavaScript高级教程</li>
+<li>常见使用场景：表单验证、文本搜索替换、数据清洗等</li>
+</ul>
+</li>
+</ul>
+<h4 id="四、知识小结"><a href="#四、知识小结" class="headerlink" title="四、知识小结"></a>四、知识小结</h4><table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>核心内容</th>
+<th>考试重点&#x2F;易混淆点</th>
+<th>难度系数</th>
+<th>&#96;&#96;</th>
+<th>&#96;&#96;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>正则表达式基础概念</strong></td>
+<td>用于验证或匹配字符串是否满足特定规则（如邮箱格式、数字格式等），独立于编程语言</td>
+<td>规则描述与语言实现的区分</td>
+<td>⭐⭐</td>
+<td>&#96;&#96;</td>
+<td>&#96;&#96;</td>
+</tr>
+<tr>
+<td><strong>正则表达式创建方式</strong></td>
+<td>1.new RegExp(“规则”, “标识”)2. 字面量写法&#x2F;规则&#x2F;标识（如&#x2F;a&#x2F;g）</td>
+<td>标识符i（忽略大小写）、g（全局匹配）的作用</td>
+<td>⭐⭐</td>
+<td>&#96;&#96;</td>
+<td>&#96;&#96;</td>
+</tr>
+<tr>
+<td><strong>字符匹配规则</strong></td>
+<td>- 直接字符（如a匹配”a”）- 字符集[0-9]或[a-z]- 特殊符号：.（任意字符）、\d（数字）、\s（空白符）- 边界符^（开始）、$（结束）</td>
+<td>转义字符（如.匹配点号）与字符集取反（[^a-z]）</td>
+<td>⭐⭐⭐</td>
+<td>&#96;&#96;</td>
+<td>&#96;&#96;</td>
+</tr>
+<tr>
+<td><strong>量词与重复规则</strong></td>
+<td>-{n}（n次）、{n,m}（n到m次）-*（0次或多次）、+（1次或多次）、?（0或1次）</td>
+<td>贪婪匹配与非贪婪匹配的区别</td>
+<td>⭐⭐⭐⭐</td>
+<td>&#96;&#96;</td>
+<td>&#96;&#96;</td>
+</tr>
+<tr>
+<td><strong>分组与或逻辑</strong></td>
+<td>使用()分组，&#96;</td>
+<td>表示或逻辑（如(a</td>
+<td>b)匹配”a”或”b”&#96;）</td>
+<td>分组捕获与反向引用</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>实际应用案例</strong></td>
+<td>1. 邮箱验证：&#x2F;^[^\s@]+@[^\s@.]+.[^\s@.]+$&#x2F;2. 整数验证：&#x2F;^[1-9]\d*$&#x2F;3. 价格验证：&#96;&#x2F;^(\d+</td>
+<td>0).\d{2}$&#x2F;&#96;</td>
+<td><strong>邮箱规则</strong>的灵活性与严格性平衡</td>
+<td>⭐⭐⭐⭐</td>
+<td>&#96;&#96;</td>
+</tr>
+<tr>
+<td><strong>字符串替换与函数回调</strong></td>
+<td>replace方法支持正则匹配，可通过函数动态处理匹配结果（如批量添加 <code>&lt;p&gt;</code>标签）</td>
+<td>全局替换需加g标识符</td>
+<td>⭐⭐⭐</td>
+<td>&#96;&#96;</td>
+<td>&#96;&#96;</td>
+</tr>
+<tr>
+<td><strong>调试工具推荐</strong></td>
+<td>VS Code 插件RegExp Previewer实时测试正则表达式匹配结果</td>
+<td>工具使用与手动调试的结合</td>
+<td>⭐⭐</td>
+<td>&#96;&#96;</td>
+<td>&#96;&#96;</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/')">js-正则表达式</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=js-正则表达式&amp;url=http://kaiyiya.github.io/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/&amp;pic=https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/JS/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>JS<span class="tagsPageCount">29</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/11/18/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d124574.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">js-函数防抖</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c72630f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">js-浏览器的渲染流程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-promise%E7%AC%AC%E4%B8%80%E8%AE%B2/" title="js-promise第一讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-27</div><div class="title">js-promise第一讲</div></div></a></div><div><a href="/2025/11/19/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%B0%8F%E6%A0%97%E5%AD%90%E7%BB%83%E6%89%8B/js-%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/" title="js-文字滚动效果"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-19</div><div class="title">js-文字滚动效果</div></div></a></div><div><a href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" title="js-事件循环"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8dc56c4c.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-27</div><div class="title">js-事件循环</div></div></a></div><div><a href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%AF%B9%E8%B1%A1/" title="js-对象"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d934229.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-26</div><div class="title">js-对象</div></div></a></div><div><a href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%87%BD%E6%95%B0/" title="js-函数"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-26</div><div class="title">js-函数</div></div></a></div><div><a href="/2025/07/03/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5%E5%B0%8F%E6%97%B6%E5%AD%A6%E4%B9%A0js%E9%87%8D%E9%9A%BE%E7%82%B9/" title="5小时学习js重难点"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68537d0f023a9.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-03</div><div class="title">5小时学习js重难点</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%87%E5%87%86%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">一、标准库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1. 正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%AD%A3%E5%88%99%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">1）正则常用方法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E5%AD%97%E7%AC%A6%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99"><span class="toc-number">1.1.2.</span> <span class="toc-text">2）字符匹配规则</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E8%BF%9E%E7%BB%AD%E7%9A%84%E8%A7%84%E5%88%99"><span class="toc-number">1.1.3.</span> <span class="toc-text">3）连续的规则</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89%E8%A7%84%E5%88%99%E7%9A%84%E9%87%8D%E5%A4%8D"><span class="toc-number">1.1.4.</span> <span class="toc-text">4）规则的重复</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%EF%BC%89%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.1.5.</span> <span class="toc-text">5）应用案例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9B%BF%E6%8D%A2%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text">二、替换空白字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%86%85%E5%AE%B9%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">三、内容总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">四、知识小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-promise%E7%AC%AC%E4%B8%80%E8%AE%B2/" title="js-promise第一讲"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-promise第一讲"/></a><div class="content"><a class="title" href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-promise%E7%AC%AC%E4%B8%80%E8%AE%B2/" title="js-promise第一讲">js-promise第一讲</a><time datetime="2025-11-27T01:26:33.000Z" title="发表于 2025-11-27 09:26:33">2025-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" title="js-事件循环"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8dc56c4c.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-事件循环"/></a><div class="content"><a class="title" href="/2025/11/27/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" title="js-事件循环">js-事件循环</a><time datetime="2025-11-26T23:26:05.000Z" title="发表于 2025-11-27 07:26:05">2025-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%87%BD%E6%95%B0/" title="js-函数"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-函数"/></a><div class="content"><a class="title" href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%87%BD%E6%95%B0/" title="js-函数">js-函数</a><time datetime="2025-11-26T00:41:23.000Z" title="发表于 2025-11-26 08:41:23">2025-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%AF%B9%E8%B1%A1/" title="js-对象"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d934229.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="js-对象"/></a><div class="content"><a class="title" href="/2025/11/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/es6/js-%E5%AF%B9%E8%B1%A1/" title="js-对象">js-对象</a><time datetime="2025-11-25T23:44:10.000Z" title="发表于 2025-11-26 07:44:10">2025-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/24/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/html_css/%E5%9F%BA%E7%A1%80/hc-%E5%85%B6%E5%AE%83css3%E5%B0%8F%E7%9F%A5%E8%AF%86/" title="hc-其它css3小知识"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c962b76.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hc-其它css3小知识"/></a><div class="content"><a class="title" href="/2025/11/24/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/html_css/%E5%9F%BA%E7%A1%80/hc-%E5%85%B6%E5%AE%83css3%E5%B0%8F%E7%9F%A5%E8%AF%86/" title="hc-其它css3小知识">hc-其它css3小知识</a><time datetime="2025-11-24T00:47:24.000Z" title="发表于 2025-11-24 08:47:24">2025-11-24</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">86</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>29</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>9</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>7</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>6</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
