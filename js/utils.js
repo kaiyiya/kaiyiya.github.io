@@ -369,7 +369,7 @@ const anzhiyu = {
           canvas.height = image.height;
           let context = canvas.getContext("2d");
           context.drawImage(image, 0, 0, image.width, image.height);
-          let url = canvas.toDataURL("image/png"); //得到图片的base64编码数据
+          let url = canvas.toDataURL("得到图片的base64编码数据
           let a = document.createElement("a"); // 生成一个a元素
           let event = new MouseEvent("click"); // 创建一个单击事件
           a.download = name || "photo"; // 设置图片名称

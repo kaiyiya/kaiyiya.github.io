@@ -1,0 +1,925 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>工程化-webpack | 飞向月球的猫</title><meta name="keywords" content="vue"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="工程化-webpack"><meta name="application-name" content="工程化-webpack"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="工程化-webpack"><meta property="og:url" content="http://kaiyiya.github.io/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="工程化-webpack"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/12/01/692cfcf43a8c7.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/12/01/692cfcf43a8c7.jpg"><meta name="description" content="工程化-webpack"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: '工程化-webpack',
+  postAI: '',
+  pageFillDescription: '一、构建工具, 1. 工程化, 1）构建工具, 2）构建工具的作用, 2. webpack介绍, 1）webpack工程搭建体验, 2）webpack打包体验, 3）构建工具的好处, 3. 构建工具的使用, 1）应用案例, 2）开发服务器, 3）文件缓存, 4）资源路径一构建工具工程化本质目的工程化不是让开发变复杂而是为了解决复杂应用中的问题当应用简单时如写一个页面引用问题被掩盖当应用复杂时这些问题就会暴露适用场景开发简单功能如轮播图不需要工程化但复杂项目必须使用工程化方案构建工具核心定位是前端工程化的集大成者用于搭建完整的前端工程体系运行环境基于运行环境主要功能是对项目资源进行打包处理工作流程入口分析以指定模块如为起点依赖收集自动分析所有模块依赖关系资源处理对图片音频等各类资源进行合并压缩输出结果生成优化后的最终打包文件构建工具的作用问题解决者暴露并解决前端开发中长期被忽视的问题如模块依赖资源优化等开发提效提供开发服务器支持文件缓存和热更新自动处理路径别名和文件后缀质量保障生成便于调试自动处理兼容性厂商前缀支持等现代方案学习建议课程为简化理解会牺牲部分表述准确性完整掌握需要系统学习约个月周期基础工程习惯所有模块应放置在目录介绍工程搭建体验工程结构说明工程特点提供已搭建好的前端工程模板使用打开后可见完整项目结构文件说明工程中包含多种配置文件这些文件的作用会在后续课程中逐步解释学习重点重点在于学会使用已有工程而非从零搭建工程基本概念运行环境运行在环境中具有文件读写能力核心功能将工程中大量文件进行压缩合并形成少量优化后的文件打包过程这个过程称为打包是的核心价值所在模块处理能够处理图片音视频等各种资源文件打包体验打包流程演示第一步安装依赖通过命令安装项目所需的所有依赖包第二步编写模块在目录下创建多个模块图片样式等第三步运行打包执行命令启动打包过程第四步查看结果打包生成的文件会输出到目录中工程目录结构目录存放所有源代码的目录包含图片等各种资源入口文件默认以作为打包入口文件依赖关系会从入口文件开始分析所有模块的依赖关系打包结果分析输出目录打包结果默认生成在目录中文件变化原始多个文件会被合并为少量优化后的文件代码转换模块化语句会被移除转换为浏览器可直接运行的代码优势总结模块化支持可以自由使用任意模块化标准无需担心兼容性问题资源统一处理将非代码图片等也视为模块进行管理集成支持直接使用安装的第三方模块单页应用特别适合开发用户体验良好的单页应用实际打包演示样式文件处理通过导入文件演示资源的打包过程图片资源处理演示图片文件的导入和打包结果最终效果打包后会生成可直接在浏览器中运行的和文件开发工作流开发阶段专注于在目录中编写源代码使用现代语法和模块化构建阶段通过将源代码转换为生产环境可用的优化版本部署阶段只需部署目录中的内容到服务器即可构建工具的好处模块化标准的使用标准兼容性可以同时使用模块化和模块化打包处理机制会将所有模块化语句在打包过程中移除最终生成传统代码兼容性优势由于打包后代码不包含任何模块化语法因此无需考虑浏览器对模块化的支持情况推荐标准虽然支持多种标准但建议优先使用模块化因为这是官方标准非代码作为模块资源类型扩展可以将图片等非文件视为模块导入开发优势允许对样式文件进行细粒度划分如按组件拆分打包时会自动合并多个文件避免因文件过多导致的请求次数增加示例创建文件并在中导入打包后会合并到最终中构建过程会处理这些非资源的依赖关系最终生成优化后的打包结果前端使用使用方法通过安装依赖如使用语句导入模块像使用普通模块一样使用包优势特点不再需要手动下载文件并在中引用所有第三方库都会被视为依赖并合并到最终打包结果中示例安装后创建并添加元素到页面打包机制会将依赖的第三方库代码与项目代码合并生成一个包含所有依赖的文件适合开发单页应用单页应用特点整个应用只有一个页面所有内容通过动态生成和更新页面切换时不刷新仅更新内容开发优势与前端框架如完美配合提供更好的用户体验无页面刷新示例通过动态创建并添加元素到页面趋势说明单页应用已成为现代前端开发的主流模式构建工具的使用应用案例例题构建工具的使用打包流程导入模块导入模块图片和第三方库如使用第三方库使用创建并插入元素到中打包结果会生成一个包含所有依赖的打包文件并可以将其复制到任何地方运行页面模板单页应用对于单页应用只有一个空白的页面所有内容都靠代码创建自动生成页面会自动生成一个页面并在页面中自动加入对和的引用页面模板生成页面时参考的是称之为页面模板复制文件会将目录中的所有文件除页面模板外复制到打包结果中开发阶段体验开发服务器在开发阶段可以运行命令获得更好的打包体验内存打包不会形成打包结果文件而是把打包的内容放到内存中自动刷新当源码发生变动时会自动重新打包并刷新页面以访问到最新的打包结果目录目录特点目录中的所有文件除页面模板外会被原封不动地复制到打包结果中文件处理例如图标文件和其他文件都会被复制无需改动通常不需要改动目录它里面保留一个即可页面自动生成与引用自动生成页面会自动生成一个页面页面内容靠代码创建自动引用会在页面中自动加入对和的引用延迟执行文件通过属性实现延迟执行即等页面加载完后再运行开发服务器开发服务器简介作用解决传统开发流程中修改代码手动打包运行查看的繁琐过程提供更高效的开发体验特点在开发阶段使用通过命令启动实现代码修改后自动刷新页面源码目录与打包过程目录结构源代码存放在目录下包含各种资源文件图片等传统流程问题每次修改都需要手动运行打包再将目录作为根目录打开查看效果命令命令作用启动开发服务器提供更好的开发体验使用方式在中配置好命令后直接在终端运行访问方式命令运行后会提示访问地址通常是按住键点击即可在浏览器打开开发服务器自动刷新实时更新修改代码并保存后浏览器页面会自动刷新显示最新效果优势无需手动打包和刷新提高开发效率停止服务在终端按可停止开发服务器开发服务器原理核心机制启动一个本地开发服务器监听端口默认监听端口通过该端口提供打包结果请求流程浏览器访问请求开发服务器服务器响应打包结果开发服务器与内存打包内存打包开发模式下不会生成实际打包文件而是将打包结果保存在内存中性能优势内存操作比磁盘更快提升开发效率资源获取服务器直接从内存中读取打包结果响应给浏览器开发服务器请求响应流程完整流程浏览器请求页面资源开发服务器从内存打包结果中取出对应资源服务器响应资源给浏览器页面加载后请求等附加资源服务器再次从内存响应这些资源开发服务器对开发的影响开发体验大幅简化开发流程实现修改即见效果使用要点仅适用于开发阶段生产环境仍需使用生成实际打包文件打包结果需作为根目录部署作业使用开发服务器实践内容运行启动开发服务器在浏览器中查看效果修改代码体验自动刷新使用停止服务文件缓存哈希值作用解决浏览器缓存导致代码更新不生效的问题实现原理打包时根据文件内容生成唯一哈希值作为文件名部分内容不变则哈希值不变利用浏览器缓存内容变化则哈希值变化强制浏览器重新请求开发影响完全由自动处理开发者无需手动干预资源路径资源模块与代码样式模块的区别模块分类在中所有内容都被视为模块其中代码模块和样式模块是特殊模块其他如图片文本等都被归类为资源模块特殊处理代码和样式模块会经过特殊编译处理而资源模块会保持原始格式但路径会被修改资源模块路径问题路径差异资源模块在源代码中的路径如和打包后的路径如完全不同开发影响这种差异导致开发时无法预知最终路径例如源代码写但打包后实际路径会变成哈希值文件名中背景图片路径处理自动转换在中使用的资源路径如会智能识别并自动转换为打包后的正确路径验证方式通过开发服务器运行可以看到实际生效的路径已被替换为类似的形式无需干预开发者不需要手动处理中的资源路径转换会完成这项工作动态使用路径问题识别限制无法识别中动态拼接的字符串路径如问题表现这种写法打包后路径不会自动转换导致错误因为实际文件已被重命名错误示例直接设置会导致图片无法加载正确导入资源方式模块化导入需要通过模块语法导入资源文件如路径获取导入后会得到资源打包后的真实路径可以赋值给元素的属性',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-12-26 16:19:48',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">30</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/vue/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>vue</span></a></span></div></div><h1 class="post-title" itemprop="name headline">工程化-webpack</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-12-02T08:04:33.000Z" title="发表于 2025-12-02 16:04:33">2025-12-02</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-12-26T08:19:48.000Z" title="更新于 2025-12-26 16:19:48">2025-12-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="工程化-webpack"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/12/01/692cfcf43a8c7.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/"><header><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">前端开发</a><a href="/tags/vue/" tabindex="-1" itemprop="url">vue</a><h1 id="CrawlerTitle" itemprop="name headline">工程化-webpack</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-12-02T08:04:33.000Z" title="发表于 2025-12-02 16:04:33">2025-12-02</time><time itemprop="dateCreated datePublished" datetime="2025-12-26T08:19:48.000Z" title="更新于 2025-12-26 16:19:48">2025-12-26</time></header><h4 id="一、构建工具"><a href="#一、构建工具" class="headerlink" title="一、构建工具"></a>一、构建工具</h4><h5 id="1-工程化"><a href="#1-工程化" class="headerlink" title="1. 工程化"></a>1. 工程化</h5><p><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/1764674268051.png"></p>
+<ul>
+<li><strong>本质目的</strong>: 工程化不是让开发变复杂，而是为了解决复杂应用中的问题。当应用简单时（如写一个HTML页面引用CSS&#x2F;JS），问题被掩盖；当应用复杂时，这些问题就会暴露。</li>
+<li><strong>适用场景</strong>: 开发简单功能（如轮播图、Hello World）不需要工程化，但复杂项目必须使用工程化方案。</li>
+</ul>
+<h6 id="1）构建工具"><a href="#1）构建工具" class="headerlink" title="1）构建工具"></a>1）构建工具</h6><p><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/1764674278591.png"></p>
+<ul>
+<li><strong>核心定位</strong>: webpack是前端工程化的集大成者，用于搭建完整的前端工程体系。</li>
+<li><strong>运行环境</strong>: 基于Node.js运行环境，主要功能是对项目资源进行打包处理。</li>
+<li><strong>工作流程</strong>:<ul>
+<li><strong>入口分析</strong>: 以指定模块（如src&#x2F;main.js）为起点</li>
+<li><strong>依赖收集</strong>: 自动分析所有模块依赖关系</li>
+<li><strong>资源处理</strong>: 对CSS、图片、音频等各类资源进行合并压缩</li>
+<li><strong>输出结果</strong>: 生成优化后的最终打包文件</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）构建工具的作用"><a href="#2）构建工具的作用" class="headerlink" title="2）构建工具的作用"></a>2）构建工具的作用</h6><p><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/1764674285909.png"></p>
+<ul>
+<li><strong>问题解决者</strong>: 暴露并解决前端开发中长期被忽视的问题（如模块依赖、资源优化等）</li>
+<li><strong>开发提效</strong>:<ul>
+<li>提供开发服务器（Dev Server）</li>
+<li>支持文件缓存和热更新</li>
+<li>自动处理路径别名和文件后缀</li>
+</ul>
+</li>
+<li><strong>质量保障</strong>:<ul>
+<li>生成source map便于调试</li>
+<li>自动处理CSS兼容性（厂商前缀）</li>
+<li>支持CSS Modules等现代方案</li>
+</ul>
+</li>
+<li><strong>学习建议</strong>:<ul>
+<li>课程为简化理解会牺牲部分表述准确性</li>
+<li>完整掌握需要系统学习（约1个月周期）</li>
+<li>基础工程习惯：所有模块应放置在src目录</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-webpack介绍"><a href="#2-webpack介绍" class="headerlink" title="2. webpack介绍"></a>2. webpack介绍</h5><h6 id="1）webpack工程搭建体验"><a href="#1）webpack工程搭建体验" class="headerlink" title="1）webpack工程搭建体验"></a>1）webpack工程搭建体验</h6><ul>
+<li><p>工程结构说明</p>
+<ul>
+<li><strong>工程特点</strong>：提供已搭建好的前端工程模板，使用VS Code打开后可见完整项目结构</li>
+<li><strong>文件说明</strong>：工程中包含多种配置文件，这些文件的作用会在后续课程中逐步解释</li>
+<li><strong>学习重点</strong>：重点在于学会使用已有工程，而非从零搭建工程</li>
+</ul>
+</li>
+<li><p>webpack基本概念</p>
+<p><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/1764674317122.png"></p>
+<ul>
+<li><strong>运行环境</strong>：webpack运行在Node.js环境中，具有文件读写能力</li>
+<li><strong>核心功能</strong>：将工程中大量文件进行压缩合并，形成少量优化后的文件</li>
+<li><strong>打包过程</strong>：这个过程称为”打包”，是webpack的核心价值所在</li>
+<li><strong>模块处理</strong>：能够处理JS、图片、音视频、CSS、HTML等各种资源文件</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）webpack打包体验"><a href="#2）webpack打包体验" class="headerlink" title="2）webpack打包体验"></a>2）webpack打包体验</h6><ul>
+<li><p>打包流程演示</p>
+<ul>
+<li><strong>第一步：安装依赖</strong>：通过npm i命令安装项目所需的所有依赖包</li>
+<li><strong>第二步：编写模块</strong>：在src目录下创建多个模块（JS、图片、样式等）</li>
+<li><strong>第三步：运行打包</strong>：执行npm run build命令启动webpack打包过程</li>
+<li><strong>第四步：查看结果</strong>：打包生成的文件会输出到dist目录中</li>
+</ul>
+</li>
+<li><p>工程目录结构</p>
+<ul>
+<li><strong>src目录</strong>：存放所有源代码的目录，包含JS、CSS、图片等各种资源</li>
+<li><strong>入口文件</strong>：默认以src&#x2F;main.js作为打包入口文件</li>
+<li><strong>依赖关系</strong>：webpack会从入口文件开始分析所有模块的依赖关系</li>
+</ul>
+</li>
+<li><p>打包结果分析</p>
+<ul>
+<li><strong>输出目录</strong>：打包结果默认生成在dist目录中</li>
+<li><strong>文件变化</strong>：原始多个文件会被合并为少量优化后的文件</li>
+<li><strong>代码转换</strong>：模块化语句会被移除，转换为浏览器可直接运行的代码</li>
+</ul>
+</li>
+<li><p>webpack优势总结</p>
+<ul>
+<li><strong>模块化支持</strong>：可以自由使用任意模块化标准，无需担心兼容性问题</li>
+<li><strong>资源统一处理</strong>：将非JS代码（CSS、图片等）也视为模块进行管理</li>
+<li><strong>npm集成</strong>：支持直接使用npm安装的第三方模块</li>
+<li><strong>单页应用</strong>：特别适合开发用户体验良好的单页应用(SPA)</li>
+</ul>
+</li>
+<li><p>实际打包演示</p>
+<ul>
+<li><strong>样式文件处理</strong>：通过导入Less文件演示CSS资源的打包过程</li>
+<li><strong>图片资源处理</strong>：演示图片文件的导入和打包结果</li>
+<li><strong>最终效果</strong>：打包后会生成可直接在浏览器中运行的HTML、CSS和JS文件</li>
+</ul>
+</li>
+<li><p>开发工作流</p>
+<ul>
+<li><strong>开发阶段</strong>：专注于在src目录中编写源代码，使用现代语法和模块化</li>
+<li><strong>构建阶段</strong>：通过webpack将源代码转换为生产环境可用的优化版本</li>
+<li><strong>部署阶段</strong>：只需部署dist目录中的内容到服务器即可</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）构建工具的好处"><a href="#3）构建工具的好处" class="headerlink" title="3）构建工具的好处"></a>3）构建工具的好处</h6><ul>
+<li><p>模块化标准的使用</p>
+<ul>
+<li><strong>标准兼容性</strong>：可以同时使用ES6模块化(import&#x2F;export)和CommonJS模块化(require&#x2F;module.exports)</li>
+<li><strong>打包处理机制</strong>：webpack会将所有模块化语句在打包过程中移除，最终生成传统JS代码</li>
+<li><strong>兼容性优势</strong>：由于打包后代码不包含任何模块化语法，因此无需考虑浏览器对模块化的支持情况</li>
+<li><strong>推荐标准</strong>：虽然支持多种标准，但建议优先使用ES6模块化，因为这是官方标准</li>
+</ul>
+</li>
+<li><p>非JS代码作为模块</p>
+<ul>
+<li><strong>资源类型扩展</strong>：可以将CSS、LESS、图片等非JS文件视为模块导入</li>
+<li><strong>开发优势</strong>：<ul>
+<li>允许对样式文件进行细粒度划分（如按组件拆分CSS）</li>
+<li>打包时会自动合并多个CSS文件，避免因文件过多导致的请求次数增加</li>
+<li>示例：创建a.less文件并在JS中导入，打包后会合并到最终CSS中</li>
+</ul>
+</li>
+<li><strong>构建过程</strong>：webpack会处理这些非JS资源的依赖关系，最终生成优化后的打包结果</li>
+</ul>
+</li>
+<li><p>前端使用npm</p>
+<ul>
+<li><strong>使用方法</strong>：<ul>
+<li>通过npm安装依赖（如jquery）</li>
+<li>使用import语句导入模块</li>
+<li>像使用普通模块一样使用npm包</li>
+</ul>
+</li>
+<li><strong>优势特点</strong>：<ul>
+<li>不再需要手动下载JS文件并在HTML中引用</li>
+<li>所有第三方库都会被webpack视为依赖并合并到最终打包结果中</li>
+<li>示例：安装jquery后创建并添加h1元素到页面</li>
+</ul>
+</li>
+<li><strong>打包机制</strong>：webpack会将依赖的第三方库代码与项目代码合并，生成一个包含所有依赖的JS文件</li>
+</ul>
+</li>
+<li><p>适合开发单页应用</p>
+<ul>
+<li><strong>单页应用特点</strong>：<ul>
+<li>整个应用只有一个HTML页面</li>
+<li>所有内容通过JS动态生成和更新</li>
+<li>页面切换时不刷新，仅更新DOM内容</li>
+</ul>
+</li>
+<li><strong>开发优势</strong>：<ul>
+<li>与前端框架（如Vue、React）完美配合</li>
+<li>提供更好的用户体验（无页面刷新）</li>
+<li>示例：通过JS动态创建并添加h1元素到页面</li>
+</ul>
+</li>
+<li><strong>趋势说明</strong>：单页应用已成为现代前端开发的主流模式</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-构建工具的使用"><a href="#3-构建工具的使用" class="headerlink" title="3. 构建工具的使用"></a>3. 构建工具的使用</h5><h6 id="1）应用案例"><a href="#1）应用案例" class="headerlink" title="1）应用案例"></a>1）应用案例</h6><ul>
+<li>例题:构建工具的使用<ul>
+<li><p>Webpack打包流程</p>
+<ul>
+<li><strong>导入模块</strong>: 导入JS模块、CSS、图片和第三方库（如jQuery）。</li>
+<li><strong>使用第三方库</strong>: 使用jQuery创建并插入元素到DOM中。</li>
+<li><strong>打包结果</strong>: Webpack会生成一个包含所有依赖的打包文件，并可以将其复制到任何地方运行。</li>
+</ul>
+</li>
+<li><p>页面模板</p>
+<ul>
+<li><strong>单页应用</strong>: 对于单页应用，只有一个空白的页面，所有内容都靠JS代码创建。</li>
+<li><strong>自动生成页面</strong>: Webpack会自动生成一个页面，并在页面中自动加入对JS和CSS的引用。</li>
+<li><strong>页面模板</strong>: 生成页面时，参考的是public&#x2F;index.html，称之为页面模板。</li>
+<li><strong>复制文件</strong>: Webpack会将public目录中的所有文件（除页面模板外）复制到打包结果中。</li>
+</ul>
+</li>
+<li><p>开发阶段体验</p>
+<ul>
+<li><strong>开发服务器</strong>: 在开发阶段，可以运行npm run serve命令获得更好的打包体验。</li>
+<li><strong>内存打包</strong>: Webpack不会形成打包结果文件，而是把打包的内容放到内存中。</li>
+<li><strong>自动刷新</strong>: 当源码发生变动时，Webpack会自动重新打包，并刷新页面以访问到最新的打包结果。</li>
+</ul>
+</li>
+<li><p>Public目录</p>
+<ul>
+<li><strong>目录特点</strong>: public目录中的所有文件（除页面模板外）会被原封不动地复制到打包结果中。</li>
+<li><strong>文件处理</strong>: 例如，图标文件（favicon.ico）和其他文件都会被复制。</li>
+<li><strong>无需改动</strong>: 通常不需要改动public目录，它里面保留一个index.html即可。</li>
+</ul>
+</li>
+<li><p>页面自动生成与引用</p>
+<ul>
+<li><strong>自动生成页面</strong>: Webpack会自动生成一个页面，页面内容靠JS代码创建。</li>
+<li><strong>自动引用</strong>: Webpack会在页面中自动加入对JS和CSS的引用。</li>
+<li><strong>延迟执行</strong>: JS文件通过defer属性实现延迟执行，即等页面加载完后再运行JS。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）开发服务器"><a href="#2）开发服务器" class="headerlink" title="2）开发服务器"></a>2）开发服务器</h6><ul>
+<li><p>开发服务器简介</p>
+<ul>
+<li><strong>作用</strong>：解决传统开发流程中”修改代码-&gt;手动打包-&gt;运行查看”的繁琐过程，提供更高效的开发体验</li>
+<li><strong>特点</strong>：在开发阶段使用，通过npm run serve命令启动，实现代码修改后自动刷新页面</li>
+</ul>
+</li>
+<li><p>源码目录与打包过程</p>
+<ul>
+<li><strong>目录结构</strong>：源代码存放在src目录下，包含各种资源文件（JS、CSS、图片等）</li>
+<li><strong>传统流程问题</strong>：每次修改都需要手动运行npm run build打包，再将dist目录作为根目录打开查看效果</li>
+</ul>
+</li>
+<li><p>npm run serve命令</p>
+<ul>
+<li><strong>命令作用</strong>：启动开发服务器，提供更好的开发体验</li>
+<li><strong>使用方式</strong>：在package.json中配置好serve命令后，直接在终端运行npm run serve</li>
+<li><strong>访问方式</strong>：命令运行后会提示访问地址（通常是<a href="http://localhost:8080），按住ctrl键点击即可在浏览器打开">http://localhost:8080），按住ctrl键点击即可在浏览器打开</a></li>
+</ul>
+</li>
+<li><p>开发服务器自动刷新</p>
+<ul>
+<li><strong>实时更新</strong>：修改代码并保存后，浏览器页面会自动刷新显示最新效果</li>
+<li><strong>优势</strong>：无需手动打包和刷新，提高开发效率</li>
+<li><strong>停止服务</strong>：在终端按ctrl+c可停止开发服务器</li>
+</ul>
+</li>
+<li><p>开发服务器原理</p>
+<ul>
+<li><strong>核心机制</strong>：webpack启动一个本地开发服务器（dev server）</li>
+<li><strong>监听端口</strong>：默认监听8080端口，通过该端口提供打包结果</li>
+<li><strong>请求流程</strong>：浏览器访问localhost:8080 -&gt; 请求开发服务器 -&gt; 服务器响应打包结果</li>
+</ul>
+</li>
+<li><p>开发服务器与内存打包</p>
+<ul>
+<li><strong>内存打包</strong>：开发模式下webpack不会生成实际打包文件，而是将打包结果保存在内存中</li>
+<li><strong>性能优势</strong>：内存操作比磁盘IO更快，提升开发效率</li>
+<li><strong>资源获取</strong>：服务器直接从内存中读取打包结果响应给浏览器</li>
+</ul>
+</li>
+<li><p>开发服务器请求响应流程</p>
+<ul>
+<li><strong>完整流程</strong>：<ul>
+<li>浏览器请求页面资源</li>
+<li>开发服务器从内存打包结果中取出对应资源</li>
+<li>服务器响应资源给浏览器</li>
+<li>页面加载后请求JS&#x2F;CSS等附加资源</li>
+<li>服务器再次从内存响应这些资源</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发服务器对开发的影响</p>
+<ul>
+<li><strong>开发体验</strong>：大幅简化开发流程，实现”修改即见效果”</li>
+<li><strong>使用要点</strong>：<ul>
+<li>仅适用于开发阶段</li>
+<li>生产环境仍需使用npm run build生成实际打包文件</li>
+<li>打包结果需作为根目录部署</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>作业：使用开发服务器</p>
+<ul>
+<li><strong>实践内容</strong>：<ul>
+<li>运行npm run serve启动开发服务器</li>
+<li>在浏览器中查看效果</li>
+<li>修改代码体验自动刷新</li>
+<li>使用ctrl+c停止服务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）文件缓存"><a href="#3）文件缓存" class="headerlink" title="3）文件缓存"></a>3）文件缓存</h6><ul>
+<li><strong>哈希值作用</strong>：解决浏览器缓存导致代码更新不生效的问题</li>
+<li><strong>实现原理</strong>：<ul>
+<li>打包时根据文件内容生成唯一哈希值作为文件名部分</li>
+<li>内容不变则哈希值不变，利用浏览器缓存</li>
+<li>内容变化则哈希值变化，强制浏览器重新请求</li>
+</ul>
+</li>
+<li><strong>开发影响</strong>：完全由webpack自动处理，开发者无需手动干预</li>
+</ul>
+<h6 id="4）资源路径"><a href="#4）资源路径" class="headerlink" title="4）资源路径"></a>4）资源路径</h6><ul>
+<li><p>资源模块与代码、样式模块的区别</p>
+<ul>
+<li><strong>模块分类</strong>：在webpack中所有内容都被视为模块，其中代码模块（JS）和样式模块（CSS&#x2F;LESS）是特殊模块，其他如图片、文本等都被归类为资源模块</li>
+<li><strong>特殊处理</strong>：代码和样式模块会经过特殊编译处理，而资源模块会保持原始格式但路径会被修改</li>
+</ul>
+</li>
+<li><p>资源模块路径问题</p>
+<ul>
+<li><strong>路径差异</strong>：资源模块在源代码中的路径（如.&#x2F;src&#x2F;a.png）和打包后的路径（如.&#x2F;dist&#x2F;assets&#x2F;f3ad7.png）完全不同</li>
+<li><strong>开发影响</strong>：这种差异导致开发时无法预知最终路径，例如源代码写.&#x2F;a.png但打包后实际路径会变成哈希值文件名</li>
+</ul>
+</li>
+<li><p>CSS中背景图片路径处理</p>
+<ul>
+<li><strong>自动转换</strong>：在CSS中使用的资源路径（如background: url(.&#x2F;a.png)），webpack会智能识别并自动转换为打包后的正确路径</li>
+<li><strong>验证方式</strong>：通过开发服务器运行可以看到实际生效的路径已被替换为类似&#x2F;assets&#x2F;f3ad7.png的形式</li>
+<li><strong>无需干预</strong>：开发者不需要手动处理CSS中的资源路径转换，webpack会完成这项工作</li>
+</ul>
+</li>
+<li><p>JS动态使用路径问题</p>
+<ul>
+<li><strong>识别限制</strong>：webpack无法识别JS中动态拼接的字符串路径（如img.src &#x3D; ‘.&#x2F;a.png’）</li>
+<li><strong>问题表现</strong>：这种写法打包后路径不会自动转换，导致404错误，因为实际文件已被重命名</li>
+<li><strong>错误示例</strong>：直接设置$(‘<code>&lt;img&gt;</code>‘).prop(‘src’,’.&#x2F;a.png’)会导致图片无法加载</li>
+</ul>
+</li>
+<li><p>正确导入资源方式</p>
+<ul>
+<li><strong>模块化导入</strong>：需要通过ES模块语法导入资源文件（如import url from ‘.&#x2F;a.png’）</li>
+<li><strong>路径获取</strong>：导入后会得到资源打包后的真实路径，可以赋值给DOM元素的src属性</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/')">工程化-webpack</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=工程化-webpack&amp;url=http://kaiyiya.github.io/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/&amp;pic=https://bu.dusays.com/2025/12/01/692cfcf43a8c7.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/vue/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>vue<span class="tagsPageCount">9</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-less/"><img class="prev-cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf41ef35.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">工程化-less</div></div></a></div><div class="next-post pull-right"><a href="/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/vue-%E7%BB%84%E4%BB%B6/"><img class="next-cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf4a04b0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">vue-组件</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/12/15/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/vue-%E5%BC%B9%E5%87%BA%E6%B6%88%E6%81%AF/" title="vue-弹出消息"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce944838.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-15</div><div class="title">vue-弹出消息</div></div></a></div><div><a href="/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/vue-%E7%BB%84%E4%BB%B6/" title="vue-组件"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf4a04b0.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-02</div><div class="title">vue-组件</div></div></a></div><div><a href="/2025/12/04/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/vue-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/" title="vue-计算属性"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf47c71f.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-04</div><div class="title">vue-计算属性</div></div></a></div><div><a href="/2025/12/09/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/vue-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/" title="vue-组件事件"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf45acec.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-09</div><div class="title">vue-组件事件</div></div></a></div><div><a href="/2025/12/12/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/vue-%E8%B7%AF%E7%94%B1/" title="vue-路由"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf3f02be.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-12</div><div class="title">vue-路由</div></div></a></div><div><a href="/2025/12/02/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/vue/%E5%9F%BA%E7%A1%80/%E5%B7%A5%E7%A8%8B%E5%8C%96-commonjs/" title="工程化-commonjs"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce949bb8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-02</div><div class="title">工程化-commonjs</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">一、构建工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">1. 工程化</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="toc-number">1.1.1.</span> <span class="toc-text">1）构建工具</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">2）构建工具的作用</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-webpack%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.</span> <span class="toc-text">2. webpack介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89webpack%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA%E4%BD%93%E9%AA%8C"><span class="toc-number">1.2.1.</span> <span class="toc-text">1）webpack工程搭建体验</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89webpack%E6%89%93%E5%8C%85%E4%BD%93%E9%AA%8C"><span class="toc-number">1.2.2.</span> <span class="toc-text">2）webpack打包体验</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.2.3.</span> <span class="toc-text">3）构建工具的好处</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">3. 构建工具的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">1）应用案例</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">2）开发服务器</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E6%96%87%E4%BB%B6%E7%BC%93%E5%AD%98"><span class="toc-number">1.3.3.</span> <span class="toc-text">3）文件缓存</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89%E8%B5%84%E6%BA%90%E8%B7%AF%E5%BE%84"><span class="toc-number">1.3.4.</span> <span class="toc-text">4）资源路径</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ts/ts-mediumomit/" title="ts-mediumomit"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf247ada.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ts-mediumomit"/></a><div class="content"><a class="title" href="/2025/12/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ts/ts-mediumomit/" title="ts-mediumomit">ts-mediumomit</a><time datetime="2025-12-26T08:18:00.000Z" title="发表于 2025-12-26 16:18:00">2025-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ts/ts-GetReturnTypes/" title="ts-GetReturnTypes"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce9503fc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ts-GetReturnTypes"/></a><div class="content"><a class="title" href="/2025/12/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ts/ts-GetReturnTypes/" title="ts-GetReturnTypes">ts-GetReturnTypes</a><time datetime="2025-12-26T07:35:41.000Z" title="发表于 2025-12-26 15:35:41">2025-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/25/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf1de1cd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node-图片水印"/></a><div class="content"><a class="title" href="/2025/12/25/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印">node-图片水印</a><time datetime="2025-12-25T02:41:13.000Z" title="发表于 2025-12-25 10:41:13">2025-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf1de1cd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node-图片水印"/></a><div class="content"><a class="title" href="/2025/12/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印">node-图片水印</a><time datetime="2025-12-25T02:41:13.000Z" title="发表于 2025-12-25 10:41:13">2025-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="node-文件上传"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf229168.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node-文件上传"/></a><div class="content"><a class="title" href="/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="node-文件上传">node-文件上传</a><time datetime="2025-12-23T01:36:35.000Z" title="发表于 2025-12-23 09:36:35">2025-12-23</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">118</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>33</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>9</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>24</sup></a><a href="/tags/ts/" style="font-size: 0.88rem;">ts<sup>2</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>9</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>6</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

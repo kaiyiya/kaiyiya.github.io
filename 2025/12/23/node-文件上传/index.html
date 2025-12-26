@@ -1,0 +1,1127 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>node-文件上传 | 飞向月球的猫</title><meta name="keywords" content="node"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="node-文件上传"><meta name="application-name" content="node-文件上传"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="node-文件上传"><meta property="og:url" content="http://kaiyiya.github.io/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="node-文件上传"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/12/01/692cfcf229168.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/12/01/692cfcf229168.jpg"><meta name="description" content="node-文件上传"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="http://kaiyiya.github.io/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: 'node-文件上传',
+  postAI: '',
+  pageFillDescription: '一、文件上传, 1. 文件上传原理, 1）百度图片上传接口, 2）传统表单图片上传实现, 3）Ajax方式图片上传, 4）文件上传服务器解析处理请求体, 二、文件上传, 1. 客户端文件上传, 1）文件上传与后缀名问题, 2）客户端文件上传代码示例, 3）文件上传路径问题, 4）文件上传路径被修改的原因, 5）磁盘存储引擎配置, 2. 服务器文件上传, 1）upload.js源码：配置storage, 2）磁盘存储引擎：destination和filename, 3）upload.js源码：destination设置, 4）upload.js源码：构建绝对路径, 5）文件信息, 6）upload.js源码：filename设置, 7）文件名构建：时间戳+随机字符, 3. 文件上传配置, 1）文件大小限制配置, 2）文件类型过滤, 3）错误处理机制, 三、知识小结一文件上传文件上传原理百度图片上传接口消息体格式选择特殊格式说明图片上传需要使用格式而非或格式服务器兼容性虽然理论上请求也可以上传图片带有消息体但大多数服务器不会处理请求中的文件数据实际应用演示中使用请求向百度服务器上传图片虽然百度不会处理但数据确实已发送格式详解必须设置为并包含参数作用作为分隔符标记表单中不同数据段的边界格式为加随机字符串数据格式示例文件上传实践参数设置文本参数键值对形式如文件参数需要指定字段名和选择本地文件多文件上传可以同时添加多个文件字段每个字段对应一个文件文件大小说明图片文件通常较大至少相当于个英文字符的数据量服务器文件名处理客户端文件名作用主要供服务器参考文件后缀名实际存储不应直接使用重名问题不同用户上传同名文件会导致覆盖示例说明客户端和客户端都上传吃瓜的冲突情况解决方案服务器应生成唯一文件名保存避免不同用户的文件相互覆盖请求响应处理响应要求服务器处理完成后需要返回文件存储路径供客户端访问代码生成可自动生成各种语言的请求代码如实现实际应用虽然演示中百度返回页面不存在但验证了请求格式的正确性和数据完整性传统表单图片上传实现表单基础结构基本元素使用标签创建表单必须设置三个关键属性指定提交到服务器的接口地址使用请求方式设置表单编码类型为多部分表单数据表单内容服务器端处理路由创建在中创建处理路由使用的处理请求基础响应路由注册请求过程分析请求头特征标识表单数据类型自动生成分隔符如传统方式特点页面会刷新跳转服务器响应直接显示在页面上适合简单的文件上传场景注意事项必须正确设置表单的属性服务器路由需要正确导出和注册文件字段需要使用与传统方式的对比主要区别传统表单会刷新页面可以实现无刷新上传可以更灵活地处理响应结果传统方式浏览器会自动处理请求体构造需要手动处理适用场景传统方式适合简单的表单提交方式适合需要动态交互的现代应用方式图片上传前端实现原理表单元素包含文本输入框和文件上传框通过属性标识事件绑定通过获取按钮元素设置事件调用函数操作使用获取表单元素值如对象使用作用自动构建格式的消息体避免手动处理分隔符方法添加键值对支持三种参数字段名字段值文件名可选示例添加文本字段文件处理通过属性获取文件列表对象支持多文件上传添加属性循环添加多个文件上传实现请求配置必须设置为直接传入对象响应处理使用将响应解析为文本通过输出响应结果网络观察自动设置为消息体包含分隔符和文件二进制数据后端处理注意事项中间件限制和无法解析格式需要专门的文件上传中间件如或自定义解析逻辑解析原理按分隔符分段读取请求体识别头获取字段名和文件名处理二进制文件数据时需要特殊处理开发调试技巧浏览器工具使用面板查看实际请求头和消息体通过面板调试文件选择结果文件对象属性文件名文件大小字节类型最后修改时间戳文件上传服务器解析处理请求体介绍核心功能是中间件专门处理类型的表单数据主要用于文件上传底层实现基于构建具有高效的文件处理能力限制条件只能处理类型的表单其他类型表单会被忽略安装方式通过安装命令为请求对象扩展添加对象存储表单文本域信息如添加对象存储上传的文件信息文件存储方式默认将文件保存在内存中可通过配置指定磁盘存储路径安全建议不应作为全局中间件使用只应在需要处理文件上传的路由中使用配置与使用三种处理方式处理单个文件文件信息保存在处理多个文件同名字段文件信息保存在数组处理多个文件不同名字段文件信息保存在对象文本域处理仅处理文本域若收到文件会报错接受所有上传文件慎用文件对象属性表单指定的字段名用户原始文件名文件编码文件类型文件大小字节存储路径存储文件名完整文件路径文件配置文件存储路径配置最基本配置项指定文件存储目录示例目录不存在时会自动创建注意事项未配置时文件保存在内存中上传文件会被重命名以避免冲突生产环境应配置忽略上传目录其他配置项替代的更高级存储配置文件类型过滤器限制上传数据大小保留完整文件路径二文件上传客户端文件上传文件上传与后缀名问题默认处理机制服务器默认不保存文件后缀名这是为了安全考虑因为需要处理各种类型的文件图片处理场景在图片上传场景中需要保留后缀名否则会导致浏览器无法正确识别文件类型解决方案可以通过配置存储引擎来解决后缀名问题确保文件能正确显示客户端文件上传代码示例构建使用构建表单数据通过方法添加文本字段和文件字段文件字段需要循环处理数组请求设置请求方法为请求体直接传入对象处理响应结果时使用方法获取文本响应文件上传路径问题路径引用问题上传后的文件存储在目录下通过标签的属性引用上传文件无后缀名文件会导致浏览器无法正确识别文件类型验证方法直接在页面中通过图片元素引用上传文件观察浏览器是否能正确显示图片内容文件上传路径被修改的原因中间件影响无后缀名文件请求会被重定向到这是中间件的默认行为临时解决方案是注释掉中间件根本解决方案必须保留文件后缀名确保浏览器能正确识别文件类型避免请求被错误重定向磁盘存储引擎配置存储引擎类型磁盘存储文件保存到服务器磁盘内存存储文件保存在内存中第三方存储需要自行实现磁盘存储配置通过配置设置存储目录设置文件名生成规则安全警告不要将作为全局中间件使用只在需要处理文件上传的路由中使用防止恶意用户上传文件到未受保护的路由服务器文件上传源码配置基本结构使用方法创建存储引擎包含和两个关键配置项简写方式当变量名相同时可采用属性简写如存储控制相比直接使用参数配置能更精细控制文件存储位置和命名规则磁盘存储引擎和函数作用确定文件存储目录接收三个参数创建责任使用函数形式时需要手动创建目录字符串形式则由自动创建默认值未设置时使用系统临时文件夹函数命名规则需返回完整文件名含扩展名不会自动添加扩展名默认行为未设置时生成随机无扩展名文件名参数说明可能未完全填充需注意字段顺序影响源码设置路径构建方法使用构建绝对路径层级关系通过返回上级目录再定位到子目录回调规范错误处理第一个参数传表示无错误路径返回第二个参数传递最终存储路径字符串注意事项需确保目标目录存在否则需手动创建源码构建绝对路径路径解析表示当前模块目录方法将相对路径解析为绝对路径目录结构示例中采用跨越两级目录最终定位到项目根目录下的文件夹文件信息核心字段表单中定义的字段名客户端原始文件名文件类型如文件字节大小存储相关磁盘存储目录仅存储后的文件名文件完整存储路径源码设置基础方案组合和生成文件名示例扩展信息可通过获取客户端原始文件名使用提取文件扩展名文件名构建时间戳随机字符命名策略时间戳使用获取毫秒级时间戳随机串生成位随机字符扩展名从提取原始扩展名完整示例响应处理返回格式响应包含文件访问路径路径格式生成的文件名文件上传配置文件大小限制配置配置项用于限制上传文件的各项参数包括文件名长度字段值长度等设置默认值为无限制需设置为整数单位是字节示例限制为可设置为错误处理超过限制会抛出错误消息为建议在服务器端和客户端都进行验证文件类型过滤配置接收和对象作为参数通过判断获取文件扩展名白名单机制可设置允许的后缀名数组如不在白名单则抛出错误信息客户端验证可通过元素的属性限制如但服务器端验证是必须的客户端验证仅用于提升用户体验错误处理机制错误类型判断使用识别上传错误可获取获取具体错误信息响应处理建议返回状态码配合错误信息错误信息格式示例中间件处理可在中间件中专门处理错误灵活处理不同错误类型的响应方式三知识小结知识点核心内容考试重点易混淆点难度系数文件上传原理协议中文件数据作为二进制数据放在消息体中传输格式与普通表单提交的区别前端文件上传实现使用对象构建上传数据通过发送多文件上传处理与文件对象属性解析文件处理使用中间件处理上传文件配置存储路径和文件名配置与引擎的选择文件安全限制通过限制文件大小控制文件类型客户端验证与服务器端验证的双重必要性文件存储策略时间戳随机数生成唯一文件名保持原始扩展名绝对路径处理与忽略规则设置错误处理机制专门捕获错误类型文件过大与类型错误的差异化处理客户端交互设计通过属性限制可选文件类型上传进度显示与结果反馈的实现生产环境考量避免全局使用中间件的安全风险第三方存储如七牛云的集成方案',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-12-26 16:26:34',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">30</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">后端开发</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/nodejs/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>nodejs</span></a></span></div></div><h1 class="post-title" itemprop="name headline">node-文件上传</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-12-23T01:36:35.000Z" title="发表于 2025-12-23 09:36:35">2025-12-23</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-12-26T08:26:34.000Z" title="更新于 2025-12-26 16:26:34">2025-12-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="node-文件上传"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/12/01/692cfcf229168.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://kaiyiya.github.io/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><header><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url">后端开发</a><a href="/tags/nodejs/" tabindex="-1" itemprop="url">nodejs</a><h1 id="CrawlerTitle" itemprop="name headline">node-文件上传</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-12-23T01:36:35.000Z" title="发表于 2025-12-23 09:36:35">2025-12-23</time><time itemprop="dateCreated datePublished" datetime="2025-12-26T08:26:34.000Z" title="更新于 2025-12-26 16:26:34">2025-12-26</time></header><h4 id="一、文件上传"><a href="#一、文件上传" class="headerlink" title="一、文件上传"></a>一、文件上传</h4><h5 id="1-文件上传原理"><a href="#1-文件上传原理" class="headerlink" title="1. 文件上传原理"></a>1. 文件上传原理</h5><h6 id="1）百度图片上传接口"><a href="#1）百度图片上传接口" class="headerlink" title="1）百度图片上传接口"></a>1）百度图片上传接口</h6><p><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1766630739570.png"></p>
+<ul>
+<li><p>消息体格式选择</p>
+<ul>
+<li><strong>特殊格式说明</strong>：图片上传需要使用form-data格式而非JSON或x-www-form-urlencoded格式</li>
+<li><strong>服务器兼容性</strong>：虽然理论上GET请求也可以上传图片（带有消息体），但大多数服务器不会处理GET请求中的文件数据</li>
+<li><strong>实际应用</strong>：演示中使用POST请求向百度服务器上传图片，虽然百度不会处理但数据确实已发送</li>
+</ul>
+</li>
+<li><p>multipart&#x2F;form-data格式详解</p>
+<ul>
+<li><strong>Content-Type</strong>：必须设置为multipart&#x2F;form-data并包含boundary参数</li>
+<li><strong>boundary作用</strong>：作为分隔符标记表单中不同数据段的边界，格式为”–WebKitFormBoundary”加随机字符串</li>
+<li><strong>数据格式示例</strong>：</li>
+</ul>
+</li>
+<li><p>文件上传实践<br><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1766630747490.png"></p>
+<ul>
+<li><strong>参数设置</strong>：<ul>
+<li>文本参数：键值对形式（如a&#x3D;1，b&#x3D;2）</li>
+<li>文件参数：需要指定字段名和选择本地文件</li>
+</ul>
+</li>
+<li><strong>多文件上传</strong>：可以同时添加多个文件字段，每个字段对应一个文件</li>
+<li><strong>文件大小说明</strong>：图片文件通常较大（至少1-2KB），1KB相当于1024个英文字符的数据量</li>
+</ul>
+</li>
+<li><p>服务器文件名处理</p>
+<ul>
+<li><strong>客户端文件名作用</strong>：主要供服务器参考文件后缀名，实际存储不应直接使用</li>
+<li><strong>重名问题</strong>：不同用户上传同名文件会导致覆盖，示例说明客户端1和客户端2都上传”吃瓜.gif”的冲突情况</li>
+<li><strong>解决方案</strong>：服务器应生成唯一文件名保存，避免不同用户的文件相互覆盖</li>
+</ul>
+</li>
+<li><p>请求响应处理</p>
+<ul>
+<li><strong>响应要求</strong>：服务器处理完成后需要返回文件存储路径供客户端访问</li>
+<li><strong>代码生成</strong>：Postman可自动生成各种语言的请求代码（如JavaScript Fetch API实现）</li>
+<li><strong>实际应用</strong>：虽然演示中百度返回”页面不存在”，但验证了请求格式的正确性和数据完整性</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）传统表单图片上传实现"><a href="#2）传统表单图片上传实现" class="headerlink" title="2）传统表单图片上传实现"></a>2）传统表单图片上传实现</h6><ul>
+<li><p>表单基础结构</p>
+<ul>
+<li><strong>基本元素</strong>：使用 <code>&lt;form&gt;</code>标签创建表单，必须设置三个关键属性：<ul>
+<li>action&#x3D;”&#x2F;api&#x2F;upload”：指定提交到服务器的接口地址</li>
+<li>method&#x3D;”POST”：使用POST请求方式</li>
+<li>enctype&#x3D;”multipart&#x2F;form-data”：设置表单编码类型为多部分表单数据</li>
+</ul>
+</li>
+<li><strong>表单内容</strong>：</li>
+</ul>
+</li>
+<li><p>服务器端处理</p>
+<ul>
+<li><strong>路由创建</strong>：<ul>
+<li>在routes&#x2F;api&#x2F;upload.js中创建处理路由</li>
+<li>使用Express的Router处理POST请求</li>
+</ul>
+</li>
+<li><strong>基础响应</strong>：</li>
+<li><strong>路由注册</strong>：</li>
+</ul>
+</li>
+<li><p>请求过程分析</p>
+<ul>
+<li><strong>请求头特征</strong>：<ul>
+<li>Content-Type: multipart&#x2F;form-data：标识表单数据类型</li>
+<li>自动生成boundary分隔符（如WebKitFormBoundary4bCPwrNuzEHmAN75）</li>
+</ul>
+</li>
+<li><strong>传统方式特点</strong>：<ul>
+<li>页面会刷新跳转</li>
+<li>服务器响应直接显示在页面上</li>
+<li>适合简单的文件上传场景</li>
+</ul>
+</li>
+<li><strong>注意事项</strong>：<ul>
+<li>必须正确设置表单的enctype属性</li>
+<li>服务器路由需要正确导出和注册</li>
+<li>文件字段需要使用 <code>&lt;input type=&quot;file&quot;&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>与传统AJAX方式的对比</p>
+<ul>
+<li><strong>主要区别</strong>：<ul>
+<li>传统表单会刷新页面，AJAX可以实现无刷新上传</li>
+<li>AJAX可以更灵活地处理响应结果</li>
+<li>传统方式浏览器会自动处理请求体构造，AJAX需要手动处理</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li>传统方式适合简单的表单提交</li>
+<li>AJAX方式适合需要动态交互的现代Web应用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）Ajax方式图片上传"><a href="#3）Ajax方式图片上传" class="headerlink" title="3）Ajax方式图片上传"></a>3）Ajax方式图片上传</h6><ul>
+<li><p>前端实现原理</p>
+<ul>
+<li><strong>表单元素</strong>：包含文本输入框(input type&#x3D;”text”)和文件上传框(input type&#x3D;”file”)，通过name属性标识</li>
+<li><strong>事件绑定</strong>：通过document.querySelector获取按钮元素，设置onclick事件调用upload函数</li>
+<li><strong>DOM操作</strong>：使用querySelector获取表单元素值，如document.querySelector(“[name&#x3D;a]”)</li>
+</ul>
+</li>
+<li><p>FormData对象使用</p>
+<ul>
+<li><strong>作用</strong>：自动构建form-data格式的消息体，避免手动处理分隔符</li>
+<li><strong>API方法</strong>：<ul>
+<li>append()：添加键值对，支持三种参数：字段名、字段值、文件名(可选)</li>
+<li>示例：formData.append(“a”, inpA.value)添加文本字段</li>
+</ul>
+</li>
+<li><strong>文件处理</strong>：<ul>
+<li>通过files属性获取文件列表(FileList对象)</li>
+<li>支持多文件上传：添加multiple属性 <code>&lt;input type=&quot;file&quot; multiple&gt;</code></li>
+<li>循环添加多个文件：for (const file of inpFile.files)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Fetch API上传实现<br><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1766630781706.png"></p>
+<ul>
+<li><strong>请求配置</strong>：<ul>
+<li>method必须设置为”POST”</li>
+<li>body直接传入FormData对象</li>
+</ul>
+</li>
+<li><strong>响应处理</strong>：<ul>
+<li>使用.then(resp &#x3D;&gt; resp.text())将响应解析为文本</li>
+<li>通过console.log输出响应结果</li>
+</ul>
+</li>
+<li><strong>网络观察</strong>：<ul>
+<li>Content-Type自动设置为multipart&#x2F;form-data</li>
+<li>消息体包含分隔符和文件二进制数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>后端处理注意事项</p>
+<ul>
+<li><strong>中间件限制</strong>：<ul>
+<li>express.urlencoded和express.json无法解析multipart&#x2F;form-data格式</li>
+<li>需要专门的文件上传中间件(如multer)或自定义解析逻辑</li>
+</ul>
+</li>
+<li><strong>解析原理</strong>：<ul>
+<li>按分隔符(–WebKitFormBoundary…)分段读取请求体</li>
+<li>识别Content-Disposition头获取字段名和文件名</li>
+<li>处理二进制文件数据时需要特殊处理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>开发调试技巧</p>
+<ul>
+<li><strong>浏览器工具</strong>：<ul>
+<li>使用Network面板查看实际请求头和消息体</li>
+<li>通过Console面板调试文件选择结果</li>
+</ul>
+</li>
+<li><strong>文件对象属性</strong>：<ul>
+<li>name：文件名</li>
+<li>size：文件大小(字节)</li>
+<li>type：MIME类型</li>
+<li>lastModified：最后修改时间戳</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="4）文件上传服务器解析处理请求体"><a href="#4）文件上传服务器解析处理请求体" class="headerlink" title="4）文件上传服务器解析处理请求体"></a>4）文件上传服务器解析处理请求体</h6><ul>
+<li><p>Multer介绍 </p>
+<p><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1766630787172.png"></p>
+<ul>
+<li><p><strong>核心功能</strong>：Multer是Node.js中间件，专门处理multipart&#x2F;form-data类型的表单数据，主要用于文件上传</p>
+</li>
+<li><p><strong>底层实现</strong>：基于busboy构建，具有高效的文件处理能力</p>
+</li>
+<li><p><strong>限制条件</strong>：只能处理multipart&#x2F;form-data类型的表单，其他类型表单会被忽略</p>
+</li>
+<li><p><strong>安装方式</strong>：通过npm安装，命令为$npm install –save multer</p>
+</li>
+<li><p><strong>请求对象扩展</strong>：</p>
+<ul>
+<li>添加body对象：存储表单文本域信息（如a&#x3D;1,b&#x3D;2）</li>
+<li>添加file&#x2F;files对象：存储上传的文件信息</li>
+</ul>
+</li>
+<li><p><strong>文件存储方式</strong>：</p>
+<ul>
+<li>默认将文件保存在内存中</li>
+<li>可通过dest配置指定磁盘存储路径</li>
+</ul>
+</li>
+<li><p><strong>安全建议</strong>：不应作为全局中间件使用，只应在需要处理文件上传的路由中使用</p>
+</li>
+</ul>
+</li>
+<li><p>Multer配置与使用</p>
+<ul>
+<li><p><strong>三种处理方式</strong>：</p>
+<ul>
+<li>.single(fieldname)：处理单个文件，文件信息保存在req.file</li>
+<li>.array(fieldname[, maxCount])：处理多个文件（同名字段），文件信息保存在req.files数组</li>
+<li>.fields(fields)：处理多个文件（不同名字段），文件信息保存在req.files对象</li>
+</ul>
+</li>
+<li><p><strong>文本域处理</strong>：</p>
+<ul>
+<li>.none()：仅处理文本域，若收到文件会报错</li>
+<li>.any()：接受所有上传文件（慎用）</li>
+</ul>
+</li>
+<li><p><strong>文件对象属性</strong>：</p>
+<ul>
+<li>fieldname：表单指定的字段名</li>
+<li>originalname：用户原始文件名</li>
+<li>encoding：文件编码</li>
+<li>mimetype：文件MIME类型</li>
+<li>size：文件大小（字节）</li>
+<li>destination：存储路径（DiskStorage）</li>
+<li>filename：存储文件名（DiskStorage）</li>
+<li>path：完整文件路径（DiskStorage）</li>
+<li>buffer：文件Buffer（MemoryStorage）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>配置文件存储路径 </p>
+<ul>
+<li><p><strong>dest配置</strong>：</p>
+<ul>
+<li>最基本配置项，指定文件存储目录</li>
+<li>示例：dest: path.resolve(__dirname, “..&#x2F;..&#x2F;public&#x2F;upload”)</li>
+<li>目录不存在时会自动创建</li>
+</ul>
+</li>
+<li><p><strong>注意事项</strong>：</p>
+<ul>
+<li>未配置dest时文件保存在内存中</li>
+<li>上传文件会被重命名以避免冲突</li>
+<li>生产环境应配置.gitignore忽略上传目录</li>
+</ul>
+</li>
+<li><p><strong>其他配置项</strong>：</p>
+<ul>
+<li>storage：替代dest的更高级存储配置</li>
+<li>fileFilter：文件类型过滤器</li>
+<li>limits：限制上传数据大小</li>
+<li>preservePath：保留完整文件路径</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="二、文件上传"><a href="#二、文件上传" class="headerlink" title="二、文件上传"></a>二、文件上传</h4><h5 id="1-客户端文件上传"><a href="#1-客户端文件上传" class="headerlink" title="1. 客户端文件上传"></a>1. 客户端文件上传</h5><h6 id="1）文件上传与后缀名问题"><a href="#1）文件上传与后缀名问题" class="headerlink" title="1）文件上传与后缀名问题"></a>1）文件上传与后缀名问题</h6><ul>
+<li><strong>默认处理机制</strong>：服务器默认不保存文件后缀名，这是为了安全考虑，因为需要处理各种类型的文件</li>
+<li><strong>图片处理场景</strong>：在图片上传场景中需要保留后缀名，否则会导致浏览器无法正确识别文件类型</li>
+<li><strong>解决方案</strong>：可以通过配置存储引擎来解决后缀名问题，确保文件能正确显示</li>
+</ul>
+<h6 id="2）客户端文件上传代码示例"><a href="#2）客户端文件上传代码示例" class="headerlink" title="2）客户端文件上传代码示例"></a>2）客户端文件上传代码示例</h6><ul>
+<li><strong>FormData构建</strong>：<ul>
+<li>使用new FormData()构建表单数据</li>
+<li>通过append()方法添加文本字段和文件字段</li>
+<li>文件字段需要循环处理inpFile.files数组</li>
+</ul>
+</li>
+<li><strong>fetch请求</strong>：<ul>
+<li>设置请求方法为POST</li>
+<li>请求体直接传入FormData对象</li>
+<li>处理响应结果时使用.text()方法获取文本响应</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）文件上传路径问题"><a href="#3）文件上传路径问题" class="headerlink" title="3）文件上传路径问题"></a>3）文件上传路径问题</h6><ul>
+<li><strong>路径引用问题</strong>：<ul>
+<li>上传后的文件存储在public&#x2F;upload目录下</li>
+<li>通过 <code>&lt;img&gt;</code>标签的src属性引用上传文件</li>
+<li>无后缀名文件会导致浏览器无法正确识别文件类型</li>
+</ul>
+</li>
+<li><strong>验证方法</strong>：<ul>
+<li>直接在页面中通过图片元素引用上传文件</li>
+<li>观察浏览器是否能正确显示图片内容</li>
+</ul>
+</li>
+</ul>
+<h6 id="4）文件上传路径被修改的原因"><a href="#4）文件上传路径被修改的原因" class="headerlink" title="4）文件上传路径被修改的原因"></a>4）文件上传路径被修改的原因</h6><ul>
+<li><strong>history中间件影响</strong>：<ul>
+<li>无后缀名文件请求会被重定向到index.html</li>
+<li>这是history中间件的默认行为</li>
+<li>临时解决方案是注释掉history中间件</li>
+</ul>
+</li>
+<li><strong>根本解决方案</strong>：<ul>
+<li>必须保留文件后缀名</li>
+<li>确保浏览器能正确识别文件类型</li>
+<li>避免请求被错误重定向</li>
+</ul>
+</li>
+</ul>
+<h6 id="5）磁盘存储引擎配置"><a href="#5）磁盘存储引擎配置" class="headerlink" title="5）磁盘存储引擎配置"></a>5）磁盘存储引擎配置</h6><ul>
+<li><strong>存储引擎类型</strong>：<ul>
+<li>磁盘存储(DiskStorage)：文件保存到服务器磁盘</li>
+<li>内存存储：文件保存在内存中</li>
+<li>第三方存储：需要自行实现</li>
+</ul>
+</li>
+<li><strong>磁盘存储配置</strong>：<ul>
+<li>通过multer.diskStorage()配置</li>
+<li>destination设置存储目录</li>
+<li>filename设置文件名生成规则</li>
+</ul>
+</li>
+<li><strong>安全警告</strong>：<ul>
+<li>不要将multer作为全局中间件使用</li>
+<li>只在需要处理文件上传的路由中使用</li>
+<li>防止恶意用户上传文件到未受保护的路由</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-服务器文件上传"><a href="#2-服务器文件上传" class="headerlink" title="2. 服务器文件上传"></a>2. 服务器文件上传</h5><h6 id="1）upload-js源码：配置storage"><a href="#1）upload-js源码：配置storage" class="headerlink" title="1）upload.js源码：配置storage"></a>1）upload.js源码：配置storage</h6><ul>
+<li><strong>基本结构</strong>：使用multer.diskStorage()方法创建存储引擎，包含destination和filename两个关键配置项</li>
+<li><strong>简写方式</strong>：当变量名相同时可采用ES6属性简写，如multer({ storage })</li>
+<li><strong>存储控制</strong>：相比直接使用dest参数，storage配置能更精细控制文件存储位置和命名规则</li>
+</ul>
+<h6 id="2）磁盘存储引擎：destination和filename"><a href="#2）磁盘存储引擎：destination和filename" class="headerlink" title="2）磁盘存储引擎：destination和filename"></a>2）磁盘存储引擎：destination和filename</h6><p><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1766630811152.png"></p>
+<ul>
+<li><strong>destination函数</strong>：<ul>
+<li><strong>作用</strong>：确定文件存储目录，接收req, file, cb三个参数</li>
+<li><strong>创建责任</strong>：使用函数形式时需要手动创建目录，字符串形式则由multer自动创建</li>
+<li><strong>默认值</strong>：未设置时使用系统临时文件夹</li>
+</ul>
+</li>
+<li><strong>filename函数</strong>：<ul>
+<li><strong>命名规则</strong>：需返回完整文件名（含扩展名），multer不会自动添加扩展名</li>
+<li><strong>默认行为</strong>：未设置时生成随机无扩展名文件名</li>
+<li><strong>参数说明</strong>：req.body可能未完全填充，需注意字段顺序影响</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）upload-js源码：destination设置"><a href="#3）upload-js源码：destination设置" class="headerlink" title="3）upload.js源码：destination设置"></a>3）upload.js源码：destination设置</h6><ul>
+<li><strong>路径构建</strong>：<ul>
+<li><strong>方法</strong>：使用path.resolve(__dirname, “..&#x2F;public&#x2F;upload”)构建绝对路径</li>
+<li><strong>层级关系</strong>：通过..&#x2F;返回上级目录，再定位到public&#x2F;upload子目录</li>
+</ul>
+</li>
+<li><strong>回调规范</strong>：<ul>
+<li><strong>错误处理</strong>：第一个参数传null表示无错误</li>
+<li><strong>路径返回</strong>：第二个参数传递最终存储路径字符串</li>
+</ul>
+</li>
+<li><strong>注意事项</strong>：需确保目标目录存在，否则需手动创建</li>
+</ul>
+<h6 id="4）upload-js源码：构建绝对路径"><a href="#4）upload-js源码：构建绝对路径" class="headerlink" title="4）upload.js源码：构建绝对路径"></a>4）upload.js源码：构建绝对路径</h6><ul>
+<li><strong>路径解析</strong>：<ul>
+<li>__dirname表示当前模块目录</li>
+<li>path.resolve()方法将相对路径解析为绝对路径</li>
+</ul>
+</li>
+<li><strong>目录结构</strong>：<ul>
+<li>示例中采用”..&#x2F;..&#x2F;“跨越两级目录</li>
+<li>最终定位到项目根目录下的public&#x2F;upload文件夹</li>
+</ul>
+</li>
+</ul>
+<h6 id="5）文件信息"><a href="#5）文件信息" class="headerlink" title="5）文件信息"></a>5）文件信息</h6><p><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/1766630851856.png"></p>
+<ul>
+<li><strong>核心字段</strong>：<ul>
+<li>fieldname：表单中定义的字段名</li>
+<li>originalname：客户端原始文件名</li>
+<li>mimetype：文件MIME类型（如image&#x2F;jpeg）</li>
+<li>size：文件字节大小</li>
+</ul>
+</li>
+<li><strong>存储相关</strong>：<ul>
+<li>destination：磁盘存储目录（仅DiskStorage）</li>
+<li>filename：存储后的文件名</li>
+<li>path：文件完整存储路径</li>
+</ul>
+</li>
+</ul>
+<h6 id="6）upload-js源码：filename设置"><a href="#6）upload-js源码：filename设置" class="headerlink" title="6）upload.js源码：filename设置"></a>6）upload.js源码：filename设置</h6><ul>
+<li><strong>基础方案</strong>：<ul>
+<li>组合file.fieldname和Date.now()生成文件名</li>
+<li>示例：file.fieldname + “-“ + Date.now()</li>
+</ul>
+</li>
+<li><strong>扩展信息</strong>：<ul>
+<li>可通过file.originalname获取客户端原始文件名</li>
+<li>使用path.extname()提取文件扩展名</li>
+</ul>
+</li>
+</ul>
+<h6 id="7）文件名构建：时间戳-随机字符"><a href="#7）文件名构建：时间戳-随机字符" class="headerlink" title="7）文件名构建：时间戳+随机字符"></a>7）文件名构建：时间戳+随机字符</h6><ul>
+<li><strong>命名策略</strong>：<ul>
+<li><strong>时间戳</strong>：使用Date.now()获取毫秒级时间戳</li>
+<li><strong>随机串</strong>：Math.random().toString(36).slice(-6)生成6位随机字符</li>
+<li><strong>扩展名</strong>：从file.originalname提取原始扩展名</li>
+</ul>
+</li>
+<li><strong>完整示例</strong>：</li>
+<li><strong>响应处理</strong>：<ul>
+<li>返回JSON格式响应包含文件访问路径</li>
+<li>路径格式：&#x2F;upload&#x2F;生成的文件名</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-文件上传配置"><a href="#3-文件上传配置" class="headerlink" title="3. 文件上传配置"></a>3. 文件上传配置</h5><h6 id="1）文件大小限制配置"><a href="#1）文件大小限制配置" class="headerlink" title="1）文件大小限制配置"></a>1）文件大小限制配置</h6><ul>
+<li><strong>limits配置项</strong>：用于限制上传文件的各项参数，包括文件名长度、字段值长度等</li>
+<li><strong>fileSize设置</strong>：<ul>
+<li>默认值为infinity（无限制）</li>
+<li>需设置为整数，单位是字节</li>
+<li>示例：限制为10KB可设置为10*1024</li>
+</ul>
+</li>
+<li><strong>错误处理</strong>：<ul>
+<li>超过限制会抛出MulterError</li>
+<li>错误消息为”file too large”</li>
+<li>建议在服务器端和客户端都进行验证</li>
+</ul>
+</li>
+</ul>
+<h6 id="2）文件类型过滤"><a href="#2）文件类型过滤" class="headerlink" title="2）文件类型过滤"></a>2）文件类型过滤</h6><ul>
+<li><strong>fileFilter配置</strong>：<ul>
+<li>接收req和file对象作为参数</li>
+<li>通过判断file.originalname获取文件扩展名</li>
+</ul>
+</li>
+<li><strong>白名单机制</strong>：<ul>
+<li>可设置允许的后缀名数组（如[“.jpg”, “.gif”, “.png”]）</li>
+<li>不在白名单则抛出错误信息”your extname is not support”</li>
+</ul>
+</li>
+<li><strong>客户端验证</strong>：<ul>
+<li>可通过input元素的accept属性限制（如accept&#x3D;”image&#x2F;*”）</li>
+<li>但服务器端验证是必须的，客户端验证仅用于提升用户体验</li>
+</ul>
+</li>
+</ul>
+<h6 id="3）错误处理机制"><a href="#3）错误处理机制" class="headerlink" title="3）错误处理机制"></a>3）错误处理机制</h6><ul>
+<li><strong>错误类型判断</strong>：<ul>
+<li>使用err instanceof MulterError识别上传错误</li>
+<li>可获取err.message获取具体错误信息</li>
+</ul>
+</li>
+<li><strong>响应处理</strong>：<ul>
+<li>建议返回200状态码配合错误信息</li>
+<li>错误信息格式示例：{code:500, message:”file too large”}</li>
+</ul>
+</li>
+<li><strong>中间件处理</strong>：<ul>
+<li>可在Express中间件中专门处理Multer错误</li>
+<li>灵活处理不同错误类型的响应方式</li>
+</ul>
+</li>
+</ul>
+<h4 id="三、知识小结"><a href="#三、知识小结" class="headerlink" title="三、知识小结"></a>三、知识小结</h4><table>
+<thead>
+<tr>
+<th>知识点</th>
+<th>核心内容</th>
+<th>考试重点&#x2F;易混淆点</th>
+<th>难度系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件上传原理</td>
+<td>HTTP协议中文件数据作为二进制数据放在消息体中传输</td>
+<td><strong>multipart&#x2F;form-data格式</strong>与普通表单提交的区别</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>前端文件上传实现</td>
+<td>使用FormData对象构建上传数据，通过fetch&#x2F;XHR发送</td>
+<td>多文件上传处理与文件对象属性解析</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>Node.js文件处理</td>
+<td>使用multer中间件处理上传文件，配置存储路径和文件名</td>
+<td><strong>dest配置</strong>与<strong>storage引擎</strong>的选择</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>文件安全限制</td>
+<td>通过limits限制文件大小，fileFilter控制文件类型</td>
+<td>客户端验证与服务器端验证的<strong>双重必要性</strong></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>文件存储策略</td>
+<td>时间戳+随机数生成唯一文件名，保持原始扩展名</td>
+<td>绝对路径处理与<strong>git忽略规则</strong>设置</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>错误处理机制</td>
+<td>专门捕获multer错误类型(MulterError)</td>
+<td>文件过大与类型错误的<strong>差异化处理</strong></td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>客户端交互设计</td>
+<td>通过accept属性限制可选文件类型</td>
+<td>上传进度显示与结果反馈的UI实现</td>
+<td>⭐⭐</td>
+</tr>
+<tr>
+<td>生产环境考量</td>
+<td>避免全局使用multer中间件的安全风险</td>
+<td>第三方存储(如七牛云)的集成方案</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://kaiyiya.github.io/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://kaiyiya.github.io/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/')">node-文件上传</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://kaiyiya.github.io/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=node-文件上传&amp;url=http://kaiyiya.github.io/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/&amp;pic=https://bu.dusays.com/2025/12/01/692cfcf229168.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/nodejs/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>nodejs<span class="tagsPageCount">24</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/12/23/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"><img class="prev-cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf229168.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">node-文件上传</div></div></a></div><div class="next-post pull-right"><a href="/2025/12/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/"><img class="next-cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf1de1cd.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">node-图片水印</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/12/25/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf1de1cd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-25</div><div class="title">node-图片水印</div></div></a></div><div><a href="/2025/12/23/node-%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/" title="node-日志记录"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf1de1cd.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-23</div><div class="title">node-日志记录</div></div></a></div><div><a href="/2025/12/23/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-JWT/" title="node-JWT"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf28b1ee.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-23</div><div class="title">node-JWT</div></div></a></div><div><a href="/2025/12/22/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-cookie/" title="node-cookie"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf315137.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-22</div><div class="title">node-cookie</div></div></a></div><div><a href="/2025/12/22/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-https%E5%8D%8F%E8%AE%AE/" title="node-https协议"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf2a6c03.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-22</div><div class="title">node-https协议</div></div></a></div><div><a href="/2025/12/22/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-https%E6%A8%A1%E5%9D%97/" title="node-https模块"><img class="cover" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf2c7146.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-22</div><div class="title">node-https模块</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.</span> <span class="toc-text">一、文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1. 文件上传原理</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.1.1.</span> <span class="toc-text">1）百度图片上传接口</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E4%BC%A0%E7%BB%9F%E8%A1%A8%E5%8D%95%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.2.</span> <span class="toc-text">2）传统表单图片上传实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89Ajax%E6%96%B9%E5%BC%8F%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.1.3.</span> <span class="toc-text">3）Ajax方式图片上传</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A7%A3%E6%9E%90%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E4%BD%93"><span class="toc-number">1.1.4.</span> <span class="toc-text">4）文件上传服务器解析处理请求体</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">2.</span> <span class="toc-text">二、文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">2.1.</span> <span class="toc-text">1. 客户端文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%B8%8E%E5%90%8E%E7%BC%80%E5%90%8D%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.1.</span> <span class="toc-text">1）文件上传与后缀名问题</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.1.2.</span> <span class="toc-text">2）客户端文件上传代码示例</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.3.</span> <span class="toc-text">3）文件上传路径问题</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E8%B7%AF%E5%BE%84%E8%A2%AB%E4%BF%AE%E6%94%B9%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.1.4.</span> <span class="toc-text">4）文件上传路径被修改的原因</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%EF%BC%89%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.5.</span> <span class="toc-text">5）磁盘存储引擎配置</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">2.2.</span> <span class="toc-text">2. 服务器文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89upload-js%E6%BA%90%E7%A0%81%EF%BC%9A%E9%85%8D%E7%BD%AEstorage"><span class="toc-number">2.2.1.</span> <span class="toc-text">1）upload.js源码：配置storage</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%EF%BC%9Adestination%E5%92%8Cfilename"><span class="toc-number">2.2.2.</span> <span class="toc-text">2）磁盘存储引擎：destination和filename</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89upload-js%E6%BA%90%E7%A0%81%EF%BC%9Adestination%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.2.3.</span> <span class="toc-text">3）upload.js源码：destination设置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%89upload-js%E6%BA%90%E7%A0%81%EF%BC%9A%E6%9E%84%E5%BB%BA%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">2.2.4.</span> <span class="toc-text">4）upload.js源码：构建绝对路径</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%EF%BC%89%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">2.2.5.</span> <span class="toc-text">5）文件信息</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6%EF%BC%89upload-js%E6%BA%90%E7%A0%81%EF%BC%9Afilename%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.2.6.</span> <span class="toc-text">6）upload.js源码：filename设置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7%EF%BC%89%E6%96%87%E4%BB%B6%E5%90%8D%E6%9E%84%E5%BB%BA%EF%BC%9A%E6%97%B6%E9%97%B4%E6%88%B3-%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6"><span class="toc-number">2.2.7.</span> <span class="toc-text">7）文件名构建：时间戳+随机字符</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E9%85%8D%E7%BD%AE"><span class="toc-number">2.3.</span> <span class="toc-text">3. 文件上传配置</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%89%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">2.3.1.</span> <span class="toc-text">1）文件大小限制配置</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%89%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E8%BF%87%E6%BB%A4"><span class="toc-number">2.3.2.</span> <span class="toc-text">2）文件类型过滤</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%89%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6"><span class="toc-number">2.3.3.</span> <span class="toc-text">3）错误处理机制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%9F%A5%E8%AF%86%E5%B0%8F%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">三、知识小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ts/ts-mediumomit/" title="ts-mediumomit"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf247ada.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ts-mediumomit"/></a><div class="content"><a class="title" href="/2025/12/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ts/ts-mediumomit/" title="ts-mediumomit">ts-mediumomit</a><time datetime="2025-12-26T08:18:00.000Z" title="发表于 2025-12-26 16:18:00">2025-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ts/ts-GetReturnTypes/" title="ts-GetReturnTypes"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce9503fc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ts-GetReturnTypes"/></a><div class="content"><a class="title" href="/2025/12/26/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/ts/ts-GetReturnTypes/" title="ts-GetReturnTypes">ts-GetReturnTypes</a><time datetime="2025-12-26T07:35:41.000Z" title="发表于 2025-12-26 15:35:41">2025-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/25/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf1de1cd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node-图片水印"/></a><div class="content"><a class="title" href="/2025/12/25/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印">node-图片水印</a><time datetime="2025-12-25T02:41:13.000Z" title="发表于 2025-12-25 10:41:13">2025-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf1de1cd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node-图片水印"/></a><div class="content"><a class="title" href="/2025/12/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/nodejs/node-%E5%9B%BE%E7%89%87%E6%B0%B4%E5%8D%B0/" title="node-图片水印">node-图片水印</a><time datetime="2025-12-25T02:41:13.000Z" title="发表于 2025-12-25 10:41:13">2025-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="node-文件上传"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcf229168.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="node-文件上传"/></a><div class="content"><a class="title" href="/2025/12/23/node-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" title="node-文件上传">node-文件上传</a><time datetime="2025-12-23T01:36:35.000Z" title="发表于 2025-12-23 09:36:35">2025-12-23</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">118</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>33</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>9</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>24</sup></a><a href="/tags/ts/" style="font-size: 0.88rem;">ts<sup>2</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>9</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>6</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>10</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
