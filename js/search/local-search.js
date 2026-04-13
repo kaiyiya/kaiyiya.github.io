@@ -1,4 +1,8 @@
 window.addEventListener("load", () => {
+  const maxAttempts = 80;
+  const delayMs = 50;
+
+  function run(anzhiyu) {
   let loadFlag = false;
   let dataObj = [];
   const $searchMask = document.getElementById("search-mask");
@@ -267,4 +271,22 @@ window.addEventListener("load", () => {
     !anzhiyu.isHidden($searchMask) && closeSearch();
     searchClickFn();
   });
+  }
+
+  function tryInit(attempt) {
+    const anzhiyu = window.anzhiyu;
+    if (!anzhiyu || typeof anzhiyu.animateIn !== "function") {
+      if (attempt < maxAttempts) {
+        setTimeout(() => tryInit(attempt + 1), delayMs);
+        return;
+      }
+      console.error(
+        "[本地搜索] 未就绪：请确认 /js/utils.js 能加载；若使用审计/监控类扩展，可能拦截脚本。"
+      );
+      return;
+    }
+    run(anzhiyu);
+  }
+
+  tryInit(0);
 });

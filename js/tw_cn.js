@@ -108,11 +108,11 @@ document.addEventListener('DOMContentLoaded', function () {
         if (translateButtonObject) {
           translateButtonObject.textContent = textContent;
         }
-  
+
         if (translateRightMenuButtonObject) {
           translateRightMenuButtonObject.textContent = textContent;
         }
-  
+
         setLang();
         setTimeout(translateBody, translateDelay);
       }

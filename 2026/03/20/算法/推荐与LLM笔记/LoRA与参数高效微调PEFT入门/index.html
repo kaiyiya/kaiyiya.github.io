@@ -1,0 +1,698 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>推荐与 LLM 入门（三）：PEFT 与 LoRA 原理 | 飞向月球的猫</title><meta name="keywords" content="LoRA PEFT 低秩微调 参数高效 大模型 推荐"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理"><meta name="application-name" content="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理"><meta property="og:url" content="https://kaiyiya.github.io/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="PEFT 动机、LoRA 公式 h&amp;#x3D;W0x+BAx、秩 r 的含义、训练与推理流程、多 LoRA 合并直觉；与 CV 中 ViT&amp;#x2F;SD LoRA 的对应关系。"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/12/01/692cfce94b801.jpg"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/12/01/692cfce94b801.jpg"><meta name="description" content="PEFT 动机、LoRA 公式 h&amp;#x3D;W0x+BAx、秩 r 的含义、训练与推理流程、多 LoRA 合并直觉；与 CV 中 ViT&amp;#x2F;SD LoRA 的对应关系。"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="https://kaiyiya.github.io/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: '推荐与 LLM 入门（三）：PEFT 与 LoRA 原理',
+  postAI: '',
+  pageFillDescription: '1. PEFT 在解决什么问题？, 2. LoRA 核心公式, 2.1 为什么低秩够用？, 2.2 超小数值例子（感受秩）, 3. 训练与推理流程（实现视角）, 3.1 训练, 3.2 推理, 4. LoRA vs 全量微调（论文里怎么选）, 5. 与 CV 的衔接（一句话 + 对照）, 6. 本篇小结读推荐多适配器融合类论文时往往是整篇的骨架创新点多半在怎么挂怎么在测试时融多个怎么用熵等本篇把与一次说清并配数值小例子帮助直觉在解决什么问题全量微调大模型更新所有权重显存与时间成本极高且小数据易过拟合参数高效微调的共性思路冻结预训练权重或绝大部分层只增加并训练很少量新参数或的使在下游任务上足够好和的关系里微调也大量使用数学形式一致只是作用在图像或扩散模块上而不是文本自注意力层核心公式对某一层原来的线性变换写成其中秩训练时冻结只更新有时也对做极小学习率视实现而定参数量从降到为什么低秩够用直观上下游任务对权重的改动往往落在较低维的子空间里用去逼近是一种结构化约束类似矩阵分解里的低秩近似超小数值例子感受秩设则是秩矩阵只训练个标量外加可能有的缩放因子而不是个全矩阵元素全动训练与推理流程实现视角训练选定要插的层常见注意力里的或投影初始化常随机小高斯常置零使初始起步接近原模型反向传播梯度只穿过或主要更新损失函数与任务一致指令微调多为级交叉熵若接推荐排序可能再加排序损失视论文而定推理方式显式计算合并成一次矩阵乘适合部署合并权重方式保持两次小矩阵乘便于热插拔去掉即回到可插拔性不同业务训出推理时只加载其中一个或论文里在参数空间线性合并多个鸡尾酒类方法常依赖合并后仍近似有效这一经验前提具体会配合正则或测试时校正全量微调论文里怎么选维度全量微调显存算力高低数据量需求大任务也常需要较多数据更易在中等规模指令数据上收敛多任务多域每任务一套全量权重存储爆炸每任务一套小易切换与合并极限性能数据够时可能略高足够好时接近全量看秩与数据为何论文爱用推荐常要多场景多域多适配器在效率与模块化上最合拍与的衔接一句话对照里如仍是公式不变差别只在是特征还是特征挂在哪一层你已会预训练小头微调只是把小头换成了低秩乘积插在原有线性层旁本篇小结冻大参数训小参数秩控制容量与成本训练更推理可合并或分步算易插拔易多份并存下一篇香农熵测试时适配对接论文里用熵引导融合权重的动机',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-04-13 15:26:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">17</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">40</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url">算法</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>算法</span></a><a class="article-meta__tags" href="/tags/LLM/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>LLM</span></a><a class="article-meta__tags" href="/tags/LoRA/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>LoRA</span></a><a class="article-meta__tags" href="/tags/%E5%85%A5%E9%97%A8/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>入门</span></a></span></div></div><h1 class="post-title" itemprop="name headline">推荐与 LLM 入门（三）：PEFT 与 LoRA 原理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-03-20T04:00:00.000Z" title="发表于 2026-03-20 12:00:00">2026-03-20</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-04-13T07:26:41.781Z" title="更新于 2026-04-13 15:26:41">2026-04-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/12/01/692cfce94b801.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://kaiyiya.github.io/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/"><header><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url">算法</a><a href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1" itemprop="url">算法</a><a href="/tags/LLM/" tabindex="-1" itemprop="url">LLM</a><a href="/tags/LoRA/" tabindex="-1" itemprop="url">LoRA</a><a href="/tags/%E5%85%A5%E9%97%A8/" tabindex="-1" itemprop="url">入门</a><h1 id="CrawlerTitle" itemprop="name headline">推荐与 LLM 入门（三）：PEFT 与 LoRA 原理</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2026-03-20T04:00:00.000Z" title="发表于 2026-03-20 12:00:00">2026-03-20</time><time itemprop="dateCreated datePublished" datetime="2026-04-13T07:26:41.781Z" title="更新于 2026-04-13 15:26:41">2026-04-13</time></header><p>读「LLM + 推荐 + 多适配器融合」类论文时，<strong>LoRA 往往是整篇的骨架</strong>：创新点多半在<strong>怎么挂 LoRA、怎么在测试时融多个 LoRA、怎么用熵</strong>等。本篇把 <strong>PEFT</strong> 与 <strong>LoRA</strong> 一次说清，并配<strong>数值小例子</strong>帮助直觉。</p>
+<hr>
+<h2 id="1-PEFT-在解决什么问题？"><a href="#1-PEFT-在解决什么问题？" class="headerlink" title="1. PEFT 在解决什么问题？"></a>1. PEFT 在解决什么问题？</h2><p><strong>全量微调</strong>大模型：更新所有权重，显存与时间成本极高，且小数据易<strong>过拟合</strong>。</p>
+<p><strong>参数高效微调（PEFT）</strong> 的共性思路：</p>
+<ul>
+<li><strong>冻结</strong>预训练权重 $W_0$（或绝大部分层）；  </li>
+<li>只增加并训练<strong>很少量</strong>新参数 $\Delta W$（或 Adapter、LoRA 的 $A,B$），使</li>
+</ul>
+<p>$$<br>W &#x3D; W_0 + \Delta W<br>$$</p>
+<p>在下游任务上足够好。</p>
+<p><strong>和 CV 的关系</strong>：CV 里微调 ViT、Stable Diffusion 也大量使用 <strong>LoRA &#x2F; Adapter</strong>，<strong>数学形式一致</strong>，只是 $W_0$ 作用在<strong>图像 patch 或扩散模块</strong>上，而不是文本自注意力层。</p>
+<hr>
+<h2 id="2-LoRA-核心公式"><a href="#2-LoRA-核心公式" class="headerlink" title="2. LoRA 核心公式"></a>2. LoRA 核心公式</h2><p>对某一层原来的线性变换 $h &#x3D; W_0 x$（$W_0 \in \mathbb{R}^{d_{\mathrm{out}} \times d_{\mathrm{in}}}$），LoRA 写成：</p>
+<p>$$<br>h &#x3D; W_0 x + \Delta W, x &#x3D; W_0 x + B A x<br>$$</p>
+<p>其中：</p>
+<ul>
+<li>$A \in \mathbb{R}^{r \times d_{\mathrm{in}}}$，$B \in \mathbb{R}^{d_{\mathrm{out}} \times r}$，<strong>秩</strong> $r \ll \min(d_{\mathrm{in}}, d_{\mathrm{out}})$；  </li>
+<li><strong>训练时</strong>：$W_0$ <strong>冻结</strong>，只更新 $A, B$（有时也对 $W_0$ 做极小学习率，视实现而定）；  </li>
+<li><strong>参数量</strong>：从 $d_{\mathrm{out}} d_{\mathrm{in}}$ 降到 <strong>$r(d_{\mathrm{in}} + d_{\mathrm{out}})$</strong>。</li>
+</ul>
+<h3 id="2-1-为什么低秩够用？"><a href="#2-1-为什么低秩够用？" class="headerlink" title="2.1 为什么低秩够用？"></a>2.1 为什么低秩够用？</h3><p>直观上：下游任务对权重的<strong>改动</strong>往往落在<strong>较低维的子空间</strong>里；用 $BA$ 去逼近 $\Delta W$ 是一种<strong>结构化约束</strong>，类似矩阵分解里的低秩近似。</p>
+<h3 id="2-2-超小数值例子（感受秩）"><a href="#2-2-超小数值例子（感受秩）" class="headerlink" title="2.2 超小数值例子（感受秩）"></a>2.2 超小数值例子（感受秩）</h3><p>设 $d_{\mathrm{in}}&#x3D;4, d_{\mathrm{out}}&#x3D;3, r&#x3D;1$：</p>
+<p>$$<br>A &#x3D; \begin{bmatrix}1&amp;0&amp;0&amp;0\end{bmatrix},\quad<br>B &#x3D; \begin{bmatrix}2\-1\0\end{bmatrix}<br>$$</p>
+<p>则 $BA$ 是 $3\times 4$ 秩 1 矩阵；<strong>只训练 4+3&#x3D;7 个标量</strong>（外加可能有的缩放因子），而不是 12 个全矩阵元素全动。</p>
+<hr>
+<h2 id="3-训练与推理流程（实现视角）"><a href="#3-训练与推理流程（实现视角）" class="headerlink" title="3. 训练与推理流程（实现视角）"></a>3. 训练与推理流程（实现视角）</h2><h3 id="3-1-训练"><a href="#3-1-训练" class="headerlink" title="3.1 训练"></a>3.1 训练</h3><ol>
+<li>选定要插 LoRA 的层（常见：<strong>注意力里的 $W_q, W_k, W_v, W_o$</strong> 或 MLP 投影）。  </li>
+<li>初始化：$A$ 常随机小高斯，$B$ 常置零，使初始 $\Delta W \approx 0$，<strong>起步接近原模型</strong>。  </li>
+<li>反向传播梯度<strong>只穿过 $A,B$</strong>（或主要更新 $A,B$）。  </li>
+<li>损失函数与任务一致：指令微调多为 <strong>token 级交叉熵</strong>；若接推荐排序，可能再加<strong>排序损失</strong>（视论文而定）。</li>
+</ol>
+<h3 id="3-2-推理"><a href="#3-2-推理" class="headerlink" title="3.2 推理"></a>3.2 推理</h3><ul>
+<li><strong>方式 A</strong>：显式计算 $W &#x3D; W_0 + BA$，合并成一次矩阵乘（适合部署合并权重）。  </li>
+<li><strong>方式 B</strong>：保持 $h &#x3D; W_0 x + B(Ax)$，两次小矩阵乘，<strong>便于热插拔</strong>：去掉 LoRA 即回到 $W_0$。</li>
+</ul>
+<p><strong>可插拔性</strong>：不同业务训出 <strong>LoRA-A、LoRA-B</strong>，推理时只加载其中一个，或论文里在<strong>参数空间线性合并</strong>多个 LoRA（「鸡尾酒」类方法常依赖「合并后仍近似有效」这一经验前提，具体会配合正则或测试时校正）。</p>
+<hr>
+<h2 id="4-LoRA-vs-全量微调（论文里怎么选）"><a href="#4-LoRA-vs-全量微调（论文里怎么选）" class="headerlink" title="4. LoRA vs 全量微调（论文里怎么选）"></a>4. LoRA vs 全量微调（论文里怎么选）</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>全量微调</th>
+<th>LoRA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>显存 &#x2F; 算力</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>数据量需求</td>
+<td>大任务也常需要较多数据</td>
+<td>更易在<strong>中等规模指令数据</strong>上收敛</td>
+</tr>
+<tr>
+<td>多任务 &#x2F; 多域</td>
+<td>每任务一套全量权重，存储爆炸</td>
+<td><strong>每任务一套小 LoRA</strong>，易切换与合并</td>
+</tr>
+<tr>
+<td>极限性能</td>
+<td>数据够时可能略高</td>
+<td>足够好时接近全量，<strong>看秩 r 与数据</strong></td>
+</tr>
+</tbody></table>
+<p><strong>为何论文爱用 LoRA</strong>：推荐 + LLM 常要<strong>多场景、多域、多适配器</strong>，LoRA 在<strong>效率与模块化</strong>上最合拍。</p>
+<hr>
+<h2 id="5-与-CV-的衔接（一句话-对照）"><a href="#5-与-CV-的衔接（一句话-对照）" class="headerlink" title="5. 与 CV 的衔接（一句话 + 对照）"></a>5. 与 CV 的衔接（一句话 + 对照）</h2><ul>
+<li><strong>CV 里 LoRA</strong>（如 SD、ViT）：仍是 $h \approx W_0 x + BAx$，<strong>公式不变</strong>。  </li>
+<li><strong>差别</strong>只在 $x$ 是 patch 特征还是 token 特征、$W_0$ 挂在哪一层。  </li>
+<li>你已会「预训练 backbone + 小头微调」，LoRA 只是把「小头」换成了<strong>低秩乘积 $BA$</strong>，插在原有线性层旁。</li>
+</ul>
+<hr>
+<h2 id="6-本篇小结"><a href="#6-本篇小结" class="headerlink" title="6. 本篇小结"></a>6. 本篇小结</h2><ul>
+<li><strong>PEFT</strong> &#x3D; 冻大参数、训小参数。  </li>
+<li><strong>LoRA</strong> &#x3D; $\Delta W &#x3D; BA$，秩 $r$ 控制容量与成本。  </li>
+<li><strong>训练</strong>更 $A,B$；<strong>推理</strong>可合并或分步算，<strong>易插拔、易多份并存</strong>。</li>
+</ul>
+<p>下一篇：<strong>香农熵 + 测试时适配（TTA）</strong>，对接论文里「用熵引导融合权重 $\lambda_1,\lambda_2$」的动机。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://kaiyiya.github.io/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://kaiyiya.github.io/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/')">推荐与 LLM 入门（三）：PEFT 与 LoRA 原理</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://kaiyiya.github.io/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=推荐与 LLM 入门（三）：PEFT 与 LoRA 原理&amp;url=https://kaiyiya.github.io/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/&amp;pic=https://bu.dusays.com/2025/12/01/692cfce94b801.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>算法<span class="tagsPageCount">15</span></a><a class="post-meta__box__tags" href="/tags/LLM/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>LLM<span class="tagsPageCount">4</span></a><a class="post-meta__box__tags" href="/tags/LoRA/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>LoRA<span class="tagsPageCount">2</span></a><a class="post-meta__box__tags" href="/tags/%E5%85%A5%E9%97%A8/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>入门<span class="tagsPageCount">4</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8-%E6%8C%87%E4%BB%A4%E5%BE%AE%E8%B0%83%E4%B8%8E%E6%8E%A8%E8%8D%90%E4%B8%AD%E7%9A%84LLM/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcec23c7f.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">推荐与 LLM 入门（二）：指令微调与推荐任务对齐</div></div></a></div><div class="next-post pull-right"><a href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E7%86%B5%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%97%B6%E9%80%82%E9%85%8DTTA%E5%85%A5%E9%97%A8/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcebc4fde.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LLM%E8%BF%81%E7%A7%BB%E6%8E%A8%E8%8D%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB-%E5%88%9B%E6%96%B0%E7%82%B9%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%B8%85%E5%8D%95/" title="LLM迁移推荐论文精读：创新点20%+复现清单"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce9491df.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-20</div><div class="title">LLM迁移推荐论文精读：创新点20%+复现清单</div></div></a></div><div><a href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E7%86%B5%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%97%B6%E9%80%82%E9%85%8DTTA%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcebc4fde.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-20</div><div class="title">推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）</div></div></a></div><div><a href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8-%E6%8C%87%E4%BB%A4%E5%BE%AE%E8%B0%83%E4%B8%8E%E6%8E%A8%E8%8D%90%E4%B8%AD%E7%9A%84LLM/" title="推荐与 LLM 入门（二）：指令微调与推荐任务对齐"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcec23c7f.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-20</div><div class="title">推荐与 LLM 入门（二）：指令微调与推荐任务对齐</div></div></a></div><div><a href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8-%E5%BA%8F%E5%88%97%E6%8E%A8%E8%8D%90Top-K%E4%B8%8ENDCG/" title="推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcea5e4f2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-20</div><div class="title">推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k</div></div></a></div><div><a href="/2025/06/20/%E7%AE%97%E6%B3%95/%E9%9A%BE%E5%BA%A6I/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E6%A0%91/" title="中序遍历树"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/19/68537d0d842a8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-20</div><div class="title">中序遍历树</div></div></a></div><div><a href="/2025/06/11/%E7%AE%97%E6%B3%95/%E9%9A%BE%E5%BA%A6I/%E5%8A%A0%E4%B8%80/" title="66.加一"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/06/11/6848dbdc3843b.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-11</div><div class="title">66.加一</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-PEFT-%E5%9C%A8%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">1. PEFT 在解决什么问题？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-LoRA-%E6%A0%B8%E5%BF%83%E5%85%AC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">2. LoRA 核心公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%8E%E7%A7%A9%E5%A4%9F%E7%94%A8%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 为什么低秩够用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%B6%85%E5%B0%8F%E6%95%B0%E5%80%BC%E4%BE%8B%E5%AD%90%EF%BC%88%E6%84%9F%E5%8F%97%E7%A7%A9%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 超小数值例子（感受秩）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%AE%AD%E7%BB%83%E4%B8%8E%E6%8E%A8%E7%90%86%E6%B5%81%E7%A8%8B%EF%BC%88%E5%AE%9E%E7%8E%B0%E8%A7%86%E8%A7%92%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">3. 训练与推理流程（实现视角）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%AE%AD%E7%BB%83"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%8E%A8%E7%90%86"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 推理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-LoRA-vs-%E5%85%A8%E9%87%8F%E5%BE%AE%E8%B0%83%EF%BC%88%E8%AE%BA%E6%96%87%E9%87%8C%E6%80%8E%E4%B9%88%E9%80%89%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">4. LoRA vs 全量微调（论文里怎么选）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%8E-CV-%E7%9A%84%E8%A1%94%E6%8E%A5%EF%BC%88%E4%B8%80%E5%8F%A5%E8%AF%9D-%E5%AF%B9%E7%85%A7%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">5. 与 CV 的衔接（一句话 + 对照）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9C%AC%E7%AF%87%E5%B0%8F%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">6. 本篇小结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LLM%E8%BF%81%E7%A7%BB%E6%8E%A8%E8%8D%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB-%E5%88%9B%E6%96%B0%E7%82%B9%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%B8%85%E5%8D%95/" title="LLM迁移推荐论文精读：创新点20%+复现清单"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce9491df.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LLM迁移推荐论文精读：创新点20%+复现清单"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LLM%E8%BF%81%E7%A7%BB%E6%8E%A8%E8%8D%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB-%E5%88%9B%E6%96%B0%E7%82%B9%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%B8%85%E5%8D%95/" title="LLM迁移推荐论文精读：创新点20%+复现清单">LLM迁移推荐论文精读：创新点20%+复现清单</a><time datetime="2026-03-20T06:30:00.000Z" title="发表于 2026-03-20 14:30:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E7%86%B5%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%97%B6%E9%80%82%E9%85%8DTTA%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcebc4fde.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E7%86%B5%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%97%B6%E9%80%82%E9%85%8DTTA%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）">推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）</a><time datetime="2026-03-20T05:00:00.000Z" title="发表于 2026-03-20 13:00:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce94b801.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理">推荐与 LLM 入门（三）：PEFT 与 LoRA 原理</a><time datetime="2026-03-20T04:00:00.000Z" title="发表于 2026-03-20 12:00:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8-%E6%8C%87%E4%BB%A4%E5%BE%AE%E8%B0%83%E4%B8%8E%E6%8E%A8%E8%8D%90%E4%B8%AD%E7%9A%84LLM/" title="推荐与 LLM 入门（二）：指令微调与推荐任务对齐"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcec23c7f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐与 LLM 入门（二）：指令微调与推荐任务对齐"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8-%E6%8C%87%E4%BB%A4%E5%BE%AE%E8%B0%83%E4%B8%8E%E6%8E%A8%E8%8D%90%E4%B8%AD%E7%9A%84LLM/" title="推荐与 LLM 入门（二）：指令微调与推荐任务对齐">推荐与 LLM 入门（二）：指令微调与推荐任务对齐</a><time datetime="2026-03-20T03:00:00.000Z" title="发表于 2026-03-20 11:00:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8-%E5%BA%8F%E5%88%97%E6%8E%A8%E8%8D%90Top-K%E4%B8%8ENDCG/" title="推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcea5e4f2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8-%E5%BA%8F%E5%88%97%E6%8E%A8%E8%8D%90Top-K%E4%B8%8ENDCG/" title="推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k">推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k</a><time datetime="2026-03-20T02:00:00.000Z" title="发表于 2026-03-20 10:00:00">2026-03-20</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 - 2026 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">150</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>33</sup></a><a href="/tags/LLM/" style="font-size: 0.88rem;">LLM<sup>4</sup></a><a href="/tags/LoRA/" style="font-size: 0.88rem;">LoRA<sup>2</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/TTA/" style="font-size: 0.88rem;">TTA<sup>1</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>9</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>21</sup></a><a href="/tags/react%E6%BA%90%E7%A0%81/" style="font-size: 0.88rem;">react源码<sup>3</sup></a><a href="/tags/ts/" style="font-size: 0.88rem;">ts<sup>4</sup></a><a href="/tags/uniapp/" style="font-size: 0.88rem;">uniapp<sup>3</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>9</sup></a><a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 0.88rem;">入门<sup>4</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" style="font-size: 0.88rem;">推荐系统<sup>3</sup></a><a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 0.88rem;">每日一题<sup>22</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E6%97%B6%E9%80%82%E9%85%8D/" style="font-size: 0.88rem;">测试时适配<sup>1</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>6</sup></a><a href="/tags/%E7%86%B5/" style="font-size: 0.88rem;">熵<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>15</sup></a><a href="/tags/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" style="font-size: 0.88rem;">论文精读<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

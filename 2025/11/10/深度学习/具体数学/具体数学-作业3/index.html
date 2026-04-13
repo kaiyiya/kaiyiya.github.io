@@ -1,0 +1,782 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>具体数学-作业3 | 飞向月球的猫</title><meta name="keywords" content="深度学习"><meta name="author" content="飞向月球的猫"><meta name="copyright" content="飞向月球的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#18171d"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="具体数学-作业3"><meta name="application-name" content="具体数学-作业3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#18171d"><meta property="og:type" content="article"><meta property="og:title" content="具体数学-作业3"><meta property="og:url" content="https://kaiyiya.github.io/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/index.html"><meta property="og:site_name" content="飞向月球的猫"><meta property="og:description" content="深度学习"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png"><meta property="article:author" content="飞向月球的猫"><meta property="article:tag" content="深度学习 算法 全栈开发 移动端开发 js python java go c++ c"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png"><meta name="description" content="深度学习"><link rel="shortcut icon" href="/img/icon_man.png"><link rel="canonical" href="https://kaiyiya.github.io/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机"]},
+  algolia: {"appId":"Z7A3XW4R2I","apiKey":"12db1ad54372045549ef465881c17e743","indexName":"my-hexo-blog","hits":{"per_page":6},"languages":{"input_placeholder":"输入关键词后按下回车查找","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":800,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飞向月球的猫","link":"链接: ","source":"来源: 飞向月球的猫","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飞向月球的猫',
+  title: '具体数学-作业3',
+  postAI: '',
+  pageFillDescription: '1. 仿照取整函数的经典结论, (1) 证明 $\left\lceil \sqrt{\lceil x \rceil} \right\rceil x3D \left\lceil \sqrt{x} \right\rceil$, (2) 证明 $\lceil f(x) \rceil x3D \lceil f(\lceil x \rceil) \rceil$, 2. 一般 Josephus 问题（步长 $q$）, 推导, 迭代求解程序（Python 示例）, 3., 4. 函数 $f(n)x3D\displaystyle\sum_{kx3D1}^{n} \left\lceil \lg k \right\rceil$, (1) 封闭形式, (2) 递推恒等式, 5. 取整求和恒等式, 6. , 7, 8, 10, 14, 22, 31, 36, (选做), 4, 20, 50, 2, 3, 25仿照取整函数的经典结论证明设则有从而因为是不小于的最小整数上式推出对不等式左右两端取平方根再取上取整得到反向包含显然成立因此等式得证证明此结论对任意函数并不成立需要假设单调不减令则由单调性可得对两端取上取整利用以及再注意到与至多相差便只能是三者相等即一般问题步长推导假设个人围成一圈按顺时针每次数个淘汰记幸存者编号从开始为标准递推为推导思路第一次淘汰编号把剩余人重新编号为原编号与新编号的差为模意义下因此幸存者的原编号等于在新编号体系中的位置再偏移迭代求解程序示例返回约瑟夫问题的编号使用初值对应时间复杂度空间对达到千万级仍可数秒内完成若需应对极大规模可配合分块或数论公式如的进一步优化证明和构成正整数集的划分选做记若正无理数满足则定理表明与正好划分正整数集下面验证的条件成立并给出证明思路首先计算于是满足定理的条件为自洽起见可给出证明概要任取正整数存在唯一的使得由可推出利用与均为无理数可证明区间与互不重叠且覆盖一切正实数因此每个正整数恰好属于或中的某一个而不会同时出现或缺失综上与构成正整数集的一次划分函数封闭形式令对有在区间内恒为于是检验可知公式成立递推恒等式利用封闭形式直接验证设则代入得证明完毕取整求和恒等式证明记则左侧恰有项等于其余等于故和为右侧其中项等于项等于和亦为两边相等另一种写法利用恒等式将左侧转化为右侧对偶性立现利用反证法如果每个盒子的物品数量注意到物品数量为整数这等价于每个盒子的物品数量那么物品总数这就产生了矛盾如果每个盒子的物品数量注意到物品数量为整数这等价于每个盒子的物品数量那么物品总数这就产生了矛盾不是整数是整数注意到所以该命题等价于假设的二进制表示为那么对于我们有这样是很难的计算的下面从递归的角度考虑假设即那么对于这里利用了如下事实因为对于对于因此其中注意到因此利用等价变换如果且那么如果和之间只有一项那么如果和都那么设是非负整数考虑和式令当时共有个且分母恒为故原式化为再令并设当时和式为空取值对于满足条件的有个对有个得前一项为等比级数因此闭式可写成并约定时原和式取值为选做选择第三个函数其中表示命题的示性函数复制性要求若上式为零当且仅当当时上式恒等于零所以复制性对所有正整数任意实数均成立若取任意即违背条件故所给函数复制性的充要条件为将用调和数表示出来记一阶调和数拆分奇偶两类项因此求出的封闭形式设二阶调和数交换求和顺序故所求闭式为对所有正整数用递归式定义对什么样的是偶数给定递推与二项式序列一致若额外约定可与经典定义完全匹配令则我们将证明当且仅当基础情形直接检查成立设结论对所有小于的正整数成立讨论的奇偶性若则因为当且仅当由归纳假设于是若则若则由归纳假设故反之若则恰有一个被整除归纳假设给出与的和模为从而综上当且仅当也就是说为偶数在上述推理中用到的归纳起点仅为方便讨论模原递推在正整数范围内依然得出完全相同的结论一副随机洗好的牌上下两张都是的概率是多少所有个排列均有概率牌堆的顶部和底部可视为固定位置相当于无放回抽取两张牌四张中任选一张放在顶部再选一张放在底部共有种所有顶与底的组合共有种因此概率年在斯坦福大学学习具体数学课的学生被要求抛掷硬币直到连续两次得到正面并报告所需抛掷次数结果为年在普林斯顿大学上课的学生做了同样的实验得到求两组样本的均值与无偏方差设斯坦福样本普林斯顿样本考虑一个博彩游戏你在其中设定一个给定量的赌注并抛掷一枚均匀骰子如果出现的点数为就用乘你的赌注特别地掷出会使赌注加倍掷出则失去全部赌注你可以在任何时候停止游戏并设定新的赌注经过次抛掷后赌注的均值和方差是多少单次掷出时赌注乘以掷骰均匀因此于是经过次掷骰后赌注为其中独立同分布故因此期望始终等于初始赌注方差为',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-04-13 15:26:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/icon_man.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">飞向月球的猫</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍" accesskey="s"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">音乐</div><span class="author-content-item-title">灵魂的碰撞💥</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">17</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">40</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">22</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url">深度学习</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>深度学习</span></a></span></div></div><h1 class="post-title" itemprop="name headline">具体数学-作业3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-10T02:40:23.000Z" title="发表于 2025-11-10 10:40:23">2025-11-10</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-04-13T07:26:41.766Z" title="更新于 2026-04-13 15:26:41">2026-04-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="具体数学-作业3"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为中国"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>中国</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://kaiyiya.github.io/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/"><header><a class="post-meta-categories" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url">深度学习</a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url">深度学习</a><h1 id="CrawlerTitle" itemprop="name headline">具体数学-作业3</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飞向月球的猫</span><time itemprop="dateCreated datePublished" datetime="2025-11-10T02:40:23.000Z" title="发表于 2025-11-10 10:40:23">2025-11-10</time><time itemprop="dateCreated datePublished" datetime="2026-04-13T07:26:41.766Z" title="更新于 2026-04-13 15:26:41">2026-04-13</time></header><h2 id="1-仿照取整函数的经典结论"><a href="#1-仿照取整函数的经典结论" class="headerlink" title="1. 仿照取整函数的经典结论"></a>1. 仿照取整函数的经典结论</h2><h3 id="1-证明-left-lceil-sqrt-lceil-x-rceil-right-rceil-left-lceil-sqrt-x-right-rceil"><a href="#1-证明-left-lceil-sqrt-lceil-x-rceil-right-rceil-left-lceil-sqrt-x-right-rceil" class="headerlink" title="(1) 证明 $\left\lceil \sqrt{\lceil x \rceil} \right\rceil &#x3D; \left\lceil \sqrt{x} \right\rceil$"></a>(1) 证明 $\left\lceil \sqrt{\lceil x \rceil} \right\rceil &#x3D; \left\lceil \sqrt{x} \right\rceil$</h3><p>设 $y &#x3D; \left\lceil \sqrt{x} \right\rceil$。则有<br>$y-1 &lt; \sqrt{x} \le y$，从而 $(y-1)^2 &lt; x \le y^2$。<br>因为 $\lceil x \rceil$ 是不小于 $x$ 的最小整数，上式推出<br>$(y-1)^2 &lt; \lceil x \rceil \le y^2$。<br>对不等式左右两端取平方根，再取上取整，得到</p>
+<p>$$<br>\left\lceil \sqrt{\lceil x \rceil} \right\rceil &#x3D; y<br>&#x3D; \left\lceil \sqrt{x} \right\rceil<br>$$</p>
+<p>反向包含显然成立，因此等式得证。</p>
+<h3 id="2-证明-lceil-f-x-rceil-lceil-f-lceil-x-rceil-rceil"><a href="#2-证明-lceil-f-x-rceil-lceil-f-lceil-x-rceil-rceil" class="headerlink" title="(2) 证明 $\lceil f(x) \rceil &#x3D; \lceil f(\lceil x \rceil) \rceil$"></a>(2) 证明 $\lceil f(x) \rceil &#x3D; \lceil f(\lceil x \rceil) \rceil$</h3><p>此结论对任意函数并不成立，需要假设<br>$f:\mathbb{R}\to\mathbb{R}$ 单调不减。<br>令 $n&#x3D;\lceil x \rceil$，则 $n-1 &lt; x \le n$。<br>由单调性可得<br>$f(n-1) \le f(x) \le f(n)$。<br>对两端取上取整，利用<br>$\lceil f(n-1) \rceil \le \lceil f(x) \rceil \le \lceil f(n) \rceil$<br>以及 $\lceil f(n) \rceil &#x3D; \lceil f(\lceil x \rceil) \rceil$，<br>再注意到 $\lceil f(n-1) \rceil$ 与 $\lceil f(n) \rceil$ 至多相差 $1$，<br>便只能是三者相等，即<br>$\lceil f(x) \rceil &#x3D; \lceil f(\lceil x \rceil) \rceil$。</p>
+<h2 id="2-一般-Josephus-问题（步长-q-）"><a href="#2-一般-Josephus-问题（步长-q-）" class="headerlink" title="2. 一般 Josephus 问题（步长 $q$）"></a>2. 一般 Josephus 问题（步长 $q$）</h2><h3 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h3><p>假设 $n$ 个人围成一圈，按顺时针每次数 $q$ 个淘汰，<br>记幸存者编号（从 $1$ 开始）为 $J(n,q)$。<br>标准递推为</p>
+<p>$$<br>\begin{cases}<br>J(1,q) &#x3D; 1,\[4pt]<br>J(n,q) &#x3D; \bigl(J(n-1,q) + q - 1\bigr) \bmod n + 1,\quad n \ge 2.<br>\end{cases}<br>$$</p>
+<p>推导思路：第一次淘汰编号 $q$，把剩余 $n-1$ 人重新编号为<br>$1,\dots,n-1$，原编号与新编号的差为 $q$（模 $n$ 意义下），<br>因此幸存者的原编号等于 $J(n-1,q)$ 在新编号体系中的位置再偏移 $q$。</p>
+<h3 id="迭代求解程序（Python-示例）"><a href="#迭代求解程序（Python-示例）" class="headerlink" title="迭代求解程序（Python 示例）"></a>迭代求解程序（Python 示例）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">josephus</span>(<span class="params">n: <span class="built_in">int</span>, q: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;返回约瑟夫问题 J(n, q) 的 1-based 编号&quot;&quot;&quot;</span></span><br><span class="line">    survivor = <span class="number">0</span>  <span class="comment"># 使用 0-based，初值对应 J(1, q) = 0</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">        survivor = (survivor + q) % k</span><br><span class="line">    <span class="keyword">return</span> survivor + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    n, q = <span class="number">10</span>, <span class="number">3</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;J(<span class="subst">&#123;n&#125;</span>, <span class="subst">&#123;q&#125;</span>) = <span class="subst">&#123;josephus(n, q)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度 $O(n)$，空间 $O(1)$，对 $n$ 达到千万级仍可数秒内完成。<br>若需应对极大规模，可配合分块或数论公式（如 $q&#x3D;2$ 的<br>$J(n,2)&#x3D;2(,n-2^{\lfloor \log_2 n \rfloor},)+1$）进一步优化。</p>
+<h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><p>$$<br>\begin{aligned}&amp;\text{证明}Spec(\sqrt{2})\textbf{和}Spec(2+\sqrt{2})\text{构成正整数集的划}\&amp;\textbf{分。(选做 )}\end{aligned}<br>$$</p>
+<p>记 $\operatorname{Spec}(\alpha)&#x3D;{\lfloor n\alpha\rfloor:n\ge 1}$。若正无理数 $\alpha,\beta$ 满足</p>
+<p>$$<br>\frac1\alpha+\frac1\beta&#x3D;1,<br>$$</p>
+<p>则 Beatty 定理表明 $\operatorname{Spec}(\alpha)$ 与 $\operatorname{Spec}(\beta)$ 正好划分正整数集。下面验证 $\alpha&#x3D;\sqrt{2},\beta&#x3D;2+\sqrt{2}$ 的条件成立，并给出证明思路。</p>
+<p>首先计算</p>
+<p>$$<br>\frac1\beta&#x3D;\frac1{2+\sqrt2}&#x3D;\frac{2-\sqrt2}{(2+\sqrt2)(2-\sqrt2)}&#x3D;\frac{2-\sqrt2}{2}&#x3D;1-\frac1{\sqrt2}.<br>$$</p>
+<p>于是 $\dfrac1{\sqrt2}+\dfrac1{2+\sqrt2}&#x3D;1$，满足 Beatty 定理的条件。为自洽起见可给出证明概要：</p>
+<ul>
+<li>任取正整数 $m$，存在唯一的 $n\ge1$ 使得 $\lfloor n\sqrt2\rfloor&lt;m\le\lfloor (n+1)\sqrt2\rfloor$。</li>
+<li>由 $\dfrac1{\sqrt2}+\dfrac1{2+\sqrt2}&#x3D;1$ 可推出 $\frac{n}{\sqrt2}+\frac{n}{2+\sqrt2}&#x3D;n$。利用 $\sqrt2$ 与 $2+\sqrt2$ 均为无理数，可证明区间<br>$$\left(\frac{n}{\sqrt2},\frac{n+1}{\sqrt2}\right)$$<br>与<br>$$\left(\frac{m}{2+\sqrt2},\frac{m+1}{2+\sqrt2}\right)$$<br>互不重叠且覆盖一切正实数。</li>
+<li>因此每个正整数恰好属于 $\lfloor n\sqrt2\rfloor$ 或 $\lfloor n(2+\sqrt2)\rfloor$ 中的某一个，而不会同时出现或缺失。</li>
+</ul>
+<p>综上，$Spec(\sqrt{2})$ 与 $Spec(2+\sqrt{2})$ 构成正整数集的一次划分。</p>
+<h2 id="4-函数-f-n-displaystyle-sum-k-1-n-left-lceil-lg-k-right-rceil"><a href="#4-函数-f-n-displaystyle-sum-k-1-n-left-lceil-lg-k-right-rceil" class="headerlink" title="4. 函数 $f(n)&#x3D;\displaystyle\sum_{k&#x3D;1}^{n} \left\lceil \lg k \right\rceil$"></a>4. 函数 $f(n)&#x3D;\displaystyle\sum_{k&#x3D;1}^{n} \left\lceil \lg k \right\rceil$</h2><h3 id="1-封闭形式"><a href="#1-封闭形式" class="headerlink" title="(1) 封闭形式"></a>(1) 封闭形式</h3><p>令 $m&#x3D;\lceil \lg n \rceil$（对 $n&#x3D;1$ 有 $m&#x3D;0$），<br>$\left\lceil \lg k \right\rceil$ 在区间 $(2^{m-1},2^{m}]$ 内恒为 $m$。<br>于是</p>
+<p>$$<br>\begin{aligned}<br>f(n)<br>&amp;&#x3D;\sum_{i&#x3D;1}^{m-1} i\cdot 2^{i-1} + m\bigl(n-2^{m-1}\bigr)\<br>&amp;&#x3D;(m-2)2^{m-1}+1 + mn - m2^{m-1}\<br>&amp;&#x3D; mn - 2^{m} + 1.<br>\end{aligned}<br>$$</p>
+<p>检验 $n&#x3D;1,2,3,\dots$ 可知公式成立。</p>
+<h3 id="2-递推恒等式"><a href="#2-递推恒等式" class="headerlink" title="(2) 递推恒等式"></a>(2) 递推恒等式</h3><p>利用封闭形式直接验证。<br>设 $m&#x3D;\lceil \lg n \rceil$，则<br>$\lceil \lg \lceil n&#x2F;2 \rceil \rceil &#x3D; m-1$，<br>$\lceil \lg \lfloor n&#x2F;2 \rfloor \rceil &#x3D; m-1$。<br>代入得</p>
+<p>$$<br>\begin{aligned}<br>&amp;f(\lceil n&#x2F;2 \rceil) + f(\lfloor n&#x2F;2 \rfloor) + n - 1\<br>&#x3D;&amp; (m-1)\lceil n&#x2F;2 \rceil - 2^{m-1} + 1</p>
+<ul>
+<li>(m-1)\lfloor n&#x2F;2 \rfloor - 2^{m-1} + 1</li>
+<li>n - 1\<br>&#x3D;&amp; m n - 2^{m} + 1 &#x3D; f(n),<br>\end{aligned}<br>$$</li>
+</ul>
+<p>证明完毕。</p>
+<h2 id="5-取整求和恒等式"><a href="#5-取整求和恒等式" class="headerlink" title="5. 取整求和恒等式"></a>5. 取整求和恒等式</h2><p>证明</p>
+<p>$$<br>\sum_{i&#x3D;0}^{m-1} \Big\lceil \frac{n-i}{m} \Big\rceil<br>&#x3D;\sum_{i&#x3D;0}^{m-1} \Big\lfloor \frac{n+i}{m} \Big\rfloor.<br>$$</p>
+<p>记 $n&#x3D;qm+r$，$0\le r&lt;m$，则左侧恰有 $r$ 项等于 $q+1$，其余等于 $q$，故和为 $mq + r &#x3D; n$。<br>右侧其中 $m-r$ 项等于 $q$，$r$ 项等于 $q+1$，和亦为 $n$。<br>两边相等。<br>另一种写法利用恒等式<br>$\lceil x \rceil &#x3D; -\lfloor -x \rfloor$，<br>将左侧转化为右侧，对偶性立现。</p>
+<h2 id="6"><a href="#6" class="headerlink" title="6. "></a>6. <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/1762912777816.png"></h2><p>$$<br>\begin{aligned}<br>\lfloor n x\rfloor&amp;&#x3D;n\lfloor x\rfloor &amp;&amp; \Leftrightarrow \<br>\lfloor n (\lfloor x\rfloor + {x})\rfloor &amp;&#x3D; n\lfloor x\rfloor &amp;&amp; \Leftrightarrow\<br>\lfloor n \lfloor x\rfloor +n {x}\rfloor&amp;&#x3D; n\lfloor x\rfloor &amp;&amp; \Leftrightarrow\<br>n \lfloor x\rfloor +\lfloor n {x}\rfloor &amp;&#x3D; n\lfloor x\rfloor &amp;&amp; \Leftrightarrow\<br>\lfloor n {x}\rfloor  &amp;&#x3D; 0&amp;&amp; \Leftrightarrow\<br> n {x} &amp; &lt; 1&amp;&amp; \Leftrightarrow\<br> {x} &amp; &lt;\frac 1 n<br>\end{aligned}<br>$$</p>
+<h2 id="7"><a href="#7" class="headerlink" title="7"></a>7</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/1762912791641.png"></p>
+<p>$$<br>\begin{aligned}<br>X_{n}&amp;&#x3D;X_{n-m}+1\<br>&amp;&#x3D; X_{n- m\lfloor n&#x2F;m \rfloor} +  \lfloor n&#x2F;m \rfloor \<br>&amp;&#x3D; n- m\lfloor n&#x2F;m \rfloor +  \lfloor n&#x2F;m \rfloor\<br>&amp;&#x3D; (n\text{ mod }m) +  \lfloor n&#x2F;m \rfloor<br>\end{aligned}<br>$$</p>
+<h2 id="8"><a href="#8" class="headerlink" title="8"></a>8</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/1762912970030.png"></p>
+<p>$$<br>利用反证法。</p>
+<p>如果每个盒子的物品数量$&lt; \lceil n &#x2F; m\rceil$，注意到物品数量为整数，这等价于每个盒子的物品数量$\le  \lceil n &#x2F; m\rceil - 1$，那么物品总数<br>$$</p>
+<p>$$<br>\le  m \times (\lceil n &#x2F; m\rceil-1) &lt;m \times n &#x2F; m &#x3D; n<br>$$</p>
+<p>$$<br>这就产生了矛盾。</p>
+<p>如果每个盒子的物品数量$&gt; \lfloor n &#x2F; m\rfloor$，注意到物品数量为整数，这等价于每个盒子的物品数量$\ge  \lfloor n &#x2F; m\rfloor + 1$，那么物品总数<br>$$</p>
+<p>$$<br>\ge m\times (\lfloor n &#x2F; m\rfloor + 1) &gt; m \times (n&#x2F;m)&#x3D;n<br>$$</p>
+<p>$$<br>这就产生了矛盾。<br>$$</p>
+<h2 id="10"><a href="#10" class="headerlink" title="10"></a>10</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/1762912994033.png"></p>
+<p>$$<br>\left\lceil \frac{2 x+1}{4}\right \rceil-\left\lfloor\frac{2 x+1}{4}\right\rfloor&#x3D;\begin{cases}<br>1 &amp; \frac{2 x+1}{4}不是整数\<br>0 &amp; \frac{2 x+1}{4}是整数<br>\end{cases}<br>$$</p>
+<h2 id="14"><a href="#14" class="headerlink" title="14"></a>14</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/1762913017653.png"></p>
+<p>注意到</p>
+<p>$$<br>x \bmod y &#x3D; z \bmod y \Leftrightarrow x-z &#x3D; ky, k\in\mathbb Z<br>$$</p>
+<p>所以该命题等价于</p>
+<p>$$<br>\begin{aligned}<br>(x \bmod ny) - x &amp;&#x3D; ky, k\in \mathbb Z\<br>x- ny\lfloor x&#x2F; (ny)\rfloor - x &amp; &#x3D; ky , k\in \mathbb Z\<br>ny\lfloor x&#x2F; (ny)\rfloor &amp; &#x3D; ky, k\in \mathbb Z\<br>-n\lfloor x&#x2F; (ny)\rfloor &amp; &#x3D; k,k\in \mathbb Z<br>\end{aligned}<br>$$</p>
+<h2 id="22"><a href="#22" class="headerlink" title="22"></a>22</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/1762913033035.png"></p>
+<p>假设$n$的二进制表示为</p>
+<p>$$<br>n&#x3D;\sum_{i&#x3D;0}^{l-1} n_i \times 2^i, l &#x3D; \lfloor \log_{2}n\rfloor + 1<br>$$</p>
+<p>那么</p>
+<p>$$<br>\begin{aligned}<br>S_n<br>&amp;&#x3D;\sum_{k \ge 1}\left\lfloor n &#x2F; 2^{k}+\frac{1}{2}\right\rfloor\<br>&amp;&#x3D; \sum_{k \ge 1}\left\lfloor \left(\sum_{i&#x3D;0}^{l-1} n_i \times 2^i\right) &#x2F;2^k+\frac{1}{2}\right\rfloor\<br>&amp;&#x3D;\sum_{k &#x3D;1}^{l}\left\lfloor \left(\sum_{i&#x3D;0}^{l-1} n_i \times 2^i\right) &#x2F;2^k+\frac{1}{2}\right\rfloor\<br>&amp;&#x3D;\sum_{k &#x3D;1}^{l}\left\lfloor \left(\sum_{i&#x3D;k}^{l-1} n_i \times 2^{i-k}\right) +\frac{n_{k-1}+1}{2} + \left(\sum_{i&#x3D;1}^{k-2} n_i \times 2^{i-k}\right)\right\rfloor \<br>&amp;&#x3D; \sum_{k &#x3D;1}^{l} \left(\sum_{i&#x3D;k}^{l-1} n_i \times 2^{i-k}\right)  + \sum_{k &#x3D;1}^{l}<br>\left\lfloor \frac{n_{k-1}+1}{2} \right\rfloor\<br>&amp;&#x3D;\sum_{i&#x3D;1}^{l-1}n_i \sum_{k&#x3D;1}^{i}2^{i-k}+\sum_{i&#x3D;0}^{l-1} n_i\<br>&amp;&#x3D;\sum_{i&#x3D;1}^{l-1}n_i (2^i-1)+\sum_{i&#x3D;0}^{l-1} n_i\<br>&amp;&#x3D;\sum_{i&#x3D;0}^{l-1}n_i 2^i\<br>&amp;&#x3D; n<br>\end{aligned}<br>$$</p>
+<p>对于$T_n$，我们有</p>
+<p>$$<br>\begin{aligned}<br>T_n<br>&amp;&#x3D;\sum_{k \ge 1}2^k\left\lfloor n &#x2F; 2^{k}+\frac{1}{2}\right\rfloor^2\<br>&amp;&#x3D; \sum_{k \ge 1}2^k\left\lfloor \left(\sum_{i&#x3D;0}^{l-1} n_i \times 2^i\right) &#x2F;2^k+\frac{1}{2}\right\rfloor^2\<br>&amp;&#x3D;\sum_{k &#x3D;1}^{l}2^k\left\lfloor \left(\sum_{i&#x3D;0}^{l-1} n_i \times 2^i\right) &#x2F;2^k+\frac{1}{2}\right\rfloor^2\<br>&amp;&#x3D;\sum_{k &#x3D;1}^{l}2^k\left\lfloor \left(\sum_{i&#x3D;k}^{l-1} n_i \times 2^{i-k}\right) +\frac{n_{k-1}+1}{2} + \left(\sum_{i&#x3D;1}^{k-2} n_i \times 2^{i-k}\right)\right\rfloor^2 \<br>&amp;&#x3D;\sum_{k &#x3D;1}^{l}2^k\left(\left(\sum_{i&#x3D;k}^{l-1} n_i \times 2^{i-k}\right) +n_{k-1} \right)^2 \<br>&amp;&#x3D; \sum_{k &#x3D;1}^{l}2^k\left(\left(\sum_{i&#x3D;k}^{l-1} n_i \times 2^{i-k}\right) ^2+2\left(\sum_{i&#x3D;k}^{l-1} n_i \times 2^{i-k}\right)n_{k-1} + n_{k-1}^2 \right)<br>\end{aligned}<br>$$</p>
+<p>这样是很难的计算的，下面从递归的角度考虑。</p>
+<p>假设$n&#x3D;2^m(2l+1)$，即</p>
+<p>$$<br>n&#x3D;\sum_{i&#x3D;m}^{l-1} n_i 2^i&#x3D;2^m + \sum_{i&#x3D;m+1}^{l-1} n_i 2^i<br>$$</p>
+<p>那么</p>
+<p>$$<br>n-1&#x3D;2^m  -1+ \sum_{i&#x3D;m+1}^{l-1} n_i 2^i<br>$$</p>
+<p>对于$k&gt; m +1$，</p>
+<p>$$<br>\begin{aligned}<br>\left\lfloor n &#x2F; 2^{k}+\frac{1}{2}\right\rfloor<br>&amp;&#x3D;\left\lfloor  \sum_{i&#x3D;m+1}^{l-1} n_i 2^{i-k} + 2^{m-k}  +\frac 1 2\right\rfloor\<br>&amp;&#x3D; \left\lfloor  \sum_{i&#x3D;m+1}^{k-2}n_i 2^{i-k} +\sum_{i&#x3D;k}^{l-1} n_i 2^{i-k} +\frac{n_{k-1}}{2}  +\frac 1 2\right\rfloor\<br>&amp;&#x3D; \sum_{i&#x3D;k}^{l-1} n_i 2^{i-k} + n_{k-1} \</p>
+<p>\left\lfloor (n-1) &#x2F; 2^{k}+\frac{1}{2}\right\rfloor<br>&amp;&#x3D;\left\lfloor  \sum_{i&#x3D;m+1}^{l-1} n_i 2^{i-k} + 2^{m-k}-\frac 1 {2^k}  +\frac 1 2\right\rfloor\<br>&amp;&#x3D; \left\lfloor  \sum_{i&#x3D;m+1}^{k-2}n_i 2^{i-k} +\sum_{i&#x3D;k}^{l-1} n_i 2^{i-k} -\frac 1 {2^k}+\frac{n_{k-1}}{2}  +\frac 1 2\right\rfloor\<br>&amp;&#x3D; \sum_{i&#x3D;k}^{l-1} n_i 2^{i-k} + n_{k-1}</p>
+<p>\end{aligned}<br>$$</p>
+<p>这里利用了如下事实：</p>
+<p>$$<br>\begin{aligned}<br>\sum_{i&#x3D;m+1}^{k-2}n_i 2^{i-k}<br>&amp;\le \sum_{i&#x3D;m+1}^{k-2}2^{i-k}\<br>&amp;&lt; 2^{m+1-k}\<br>&amp;\le \frac 1 4 (因为m+1 \le k -2)\<br>\sum_{i&#x3D;m}^{k-2}n_i 2^{i-k}&amp;\ge n_m 2^{m-k}\<br>&amp;\ge 2^{m-k}\</p>
+<p>\sum_{i&#x3D;m}^{k-2}n_i 2^{i-k} -\frac 1 {2^k}<br>&amp;\ge  2^{m-k} -\frac 1 {2^k}\<br>&amp;\ge 0   \</p>
+<p>\sum_{i&#x3D;m}^{k-2}n_i 2^{i-k} -\frac 1 {2^k}<br>&amp;&lt; \frac 1 4<br>\end{aligned}<br>$$</p>
+<p>对于$k&lt; m + 1$，</p>
+<p>$$<br>\begin{aligned}<br>\left\lfloor n &#x2F; 2^{k}+\frac{1}{2}\right\rfloor<br>&amp;&#x3D;\left\lfloor  2^{m-k} + \sum_{i&#x3D;m+1}^{l-1} n_i 2^{i-k}+\frac{1}{2}\right\rfloor\<br>&amp;&#x3D; 2^{m-k} + \sum_{i&#x3D;m+1}^{l-1} n_i 2^{i-k}\</p>
+<p>\left\lfloor (n-1) &#x2F; 2^{k}+\frac{1}{2}\right\rfloor<br>&amp;&#x3D;\left\lfloor  2^{m-k} -1&#x2F;2^k + \sum_{i&#x3D;m+1}^{l-1} n_i 2^{i-k}+\frac{1}{2}\right\rfloor\<br>&amp;&#x3D; 2^{m-k} + \sum_{i&#x3D;m+1}^{l-1} n_i 2^{i-k}<br>\end{aligned}<br>$$</p>
+<p>对于$k&#x3D;m+1$，</p>
+<p>$$<br>\begin{aligned}<br>\left\lfloor n &#x2F; 2^{k}+\frac{1}{2}\right\rfloor<br>&amp;&#x3D;\left\lfloor  (2^m(2l+1)) &#x2F; 2^{k}+\frac{1}{2}\right\rfloor\<br>&amp;&#x3D; \left\lfloor (2^{m}(2l+1)) &#x2F; 2^{m+1}+\frac{1}{2}   \right\rfloor\<br>&amp;&#x3D;\left\lfloor (2l+1) &#x2F; 2+\frac{1}{2}   \right\rfloor\<br>&amp;&#x3D; l+1 \</p>
+<p>\left\lfloor (n-1) &#x2F; 2^{k}+\frac{1}{2}\right\rfloor<br>&amp;&#x3D;\left\lfloor  (2^m(2l+1) -1) &#x2F; 2^{k}+\frac{1}{2}\right\rfloor\<br>&amp;&#x3D; \left\lfloor (2^{m}(2l+1)) &#x2F; 2^{m+1}-\frac 1 {2^k}+\frac{1}{2}   \right\rfloor\<br>&amp;&#x3D;\left\lfloor l+ 1 -\frac 1 {2^k}   \right\rfloor\<br>&amp;&#x3D; l\</p>
+<p>\end{aligned}<br>$$</p>
+<p>因此</p>
+<p>$$<br>\begin{aligned}<br>T_n<br>&amp;&#x3D; T_{n-1}+ 2^{m+1}\left( l+1\right)^2 - 2^{m+1}l^2\<br>&amp;&#x3D;  T_{n-1}+2^{m+1} (2l+1)\<br>&amp;&#x3D;T_{n-1}+ 2n</p>
+<p>\end{aligned}<br>$$</p>
+<p>其中</p>
+<p>$$<br>n&#x3D; 2^m (2l+1)<br>$$</p>
+<p>注意到</p>
+<p>$$<br>T_0 &#x3D; 0<br>$$</p>
+<p>因此</p>
+<p>$$<br>T_n &#x3D; n(n+1)<br>$$</p>
+<h2 id="31"><a href="#31" class="headerlink" title="31"></a>31</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/1762913052963.png"></p>
+<p>利用等价变换：</p>
+<p>$$<br>\begin{aligned}<br>&amp;\lfloor x\rfloor+\lfloor y\rfloor+\lfloor x+y\rfloor \le \lfloor 2 x\rfloor+\lfloor 2 y\rfloor  \<br>\Leftrightarrow&amp;\lfloor x\rfloor+\lfloor y\rfloor+\lfloor \lfloor x\rfloor+{x} +\lfloor y\rfloor+{y} \rfloor \le \lfloor 2 (\lfloor x\rfloor+{x})\rfloor+\lfloor 2 (\lfloor y\rfloor+{y})\rfloor  \</p>
+<p>\Leftrightarrow&amp;\lfloor x\rfloor+\lfloor y\rfloor+\lfloor x\rfloor+\lfloor y\rfloor+\lfloor {x} +{y} \rfloor \le 2 \lfloor x\rfloor +\lfloor 2{x}\rfloor+2 \lfloor y\rfloor +\lfloor 2{y}\rfloor \<br>\Leftrightarrow&amp; \lfloor {x} +{y} \rfloor \le \lfloor 2{x}\rfloor + \lfloor 2{y}\rfloor<br>\end{aligned}<br>$$</p>
+<p>如果${x}\ge 0.5$且${y}\ge 0.5$，那么</p>
+<p>$$<br>\lfloor {x} +{y} \rfloor &#x3D;1\le 2&#x3D;\lfloor 2{x}\rfloor + \lfloor 2{y}\rfloor<br>$$</p>
+<p>如果${x}$和${y}$之间只有一项$\ge 0.5$，那么</p>
+<p>$$<br>\lfloor {x} +{y} \rfloor &#x3D;0\le 1&#x3D;\lfloor 2{x}\rfloor + \lfloor 2{y}\rfloor<br>$$</p>
+<p>如果${x}$和${y}$都$&lt; 0.5$，那么</p>
+<p>$$<br>\lfloor {x} +{y} \rfloor &#x3D;0\le 0&#x3D;\lfloor 2{x}\rfloor + \lfloor 2{y}\rfloor<br>$$</p>
+<h2 id="36"><a href="#36" class="headerlink" title="36"></a>36</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/1762913067185.png"></p>
+<p>设 $n$ 是非负整数，考虑和式</p>
+<p>$$<br>\sum_{1&lt;k&lt;2^{n}}\frac{1}{2^{\lfloor\lg k\rfloor}4^{\lfloor\lg\lg k\rfloor}}.<br>$$</p>
+<p>令 $t&#x3D;\lfloor\lg k\rfloor$。当 $2^{t}\le k&lt;2^{t+1}$ 时共有 $2^{t}$ 个 $k$，且分母恒为 $2^{t}4^{\lfloor\lg t\rfloor}$，故原式化为</p>
+<p>$$<br>\sum_{t&#x3D;1}^{n-1}\frac{2^{t}}{2^{t}4^{\lfloor\lg t\rfloor}}<br>&#x3D;\sum_{t&#x3D;1}^{n-1}\frac{1}{4^{\lfloor\lg t\rfloor}}.<br>$$</p>
+<p>再令 $s&#x3D;\lfloor\lg t\rfloor$ 并设 $m&#x3D;\lfloor\lg(n-1)\rfloor$（当 $n\le 1$ 时和式为空，取值 $0$）。对于 $0\le s&lt;m$，满足条件的 $t$ 有 $2^{s}$ 个；对 $s&#x3D;m$，有 $n-2^{m}$ 个，得</p>
+<p>$$<br>\sum_{t&#x3D;1}^{n-1}\frac{1}{4^{\lfloor\lg t\rfloor}}<br>&#x3D;\sum_{s&#x3D;0}^{m-1}\frac{2^{s}}{4^{s}}+\frac{n-2^{m}}{4^{m}}<br>&#x3D;\sum_{s&#x3D;0}^{m-1}\frac{1}{2^{s}}+\frac{n-2^{m}}{2^{2m}}.<br>$$</p>
+<p>前一项为等比级数 $\sum_{s&#x3D;0}^{m-1}2^{-s}&#x3D;2(1-2^{-m})$，因此闭式可写成</p>
+<p>$$<br>2-\frac{3}{2^{m}}+\frac{n}{2^{2m}},\qquad<br>m&#x3D;\bigl\lfloor \lg (n-1)\bigr\rfloor,\ n\ge 2,<br>$$</p>
+<p>并约定 $n\le 1$ 时原和式取值为 $0$。</p>
+<h2 id="选做"><a href="#选做" class="headerlink" title="(选做)"></a>(选做)</h2><p>The function f(x) is said to be replicative if it satisfies  f(mx) &#x3D; f(x) + f(x+1&#x2F;m) + … + f(x+(m-1)&#x2F;m) for every positive integer m. Try to find necessary and sufficient conditions<br>on the real number c, for the following functions to be replicative. And show how it works if ok, or why if failed. You could choose any one function to finish.</p>
+<p>$$<br>\begin{array}{l}f\left(x\right)&#x3D;\max \left( \left\lceil x\right\rceil ,c \right)\ f\left(x\right)&#x3D;\min \left( \left\lfloor x\right\rfloor ,c\right)\ f\left(x\right)&#x3D; 5x+ 4c \left\lceil x\right\rceil - \dfrac{1}{3}\left[ x \mathrm{is not an integer}\right]\end{array}<br>$$</p>
+<p>选择第三个函数。</p>
+<p>$$<br>f(x)&#x3D;5x+4c\lceil x\rceil-\frac{1}{3}[x\notin\mathbb{Z}],<br>$$</p>
+<p>其中 $[P]$ 表示命题 $P$ 的示性函数。复制性要求</p>
+<p>$$<br>f(mx)-\sum_{k&#x3D;0}^{m-1}f!\left(x+\frac{k}{m}\right)<br>&#x3D;(1-m)\left(4c-\frac{1}{3}+\frac{5}{2}\right).<br>$$</p>
+<p>若 $m&gt;1$，上式为零当且仅当</p>
+<p>$$<br>4c-\frac{1}{3}+\frac{5}{2}&#x3D;0\quad\Longleftrightarrow\quad c&#x3D;-\frac{13}{24}.<br>$$</p>
+<p>当 $c&#x3D;-13&#x2F;24$ 时，上式恒等于零，所以复制性对所有正整数 $m$、任意实数 $x$ 均成立；若 $c\neq-13&#x2F;24$，取任意 $m&gt;1$ 即违背条件。故所给函数复制性的充要条件为 $c&#x3D;-\dfrac{13}{24}$。</p>
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><p>$$<br>\text{将 }1&#x2F;1+1&#x2F;3+\cdots+1&#x2F;\left(2n+1\right)\text{用调和数表示出来}.<br>$$</p>
+<p>记一阶调和数 $H_m&#x3D;\sum_{k&#x3D;1}^{m}\frac{1}{k}$。拆分奇、偶两类项：</p>
+<p>$$<br>\begin{aligned}<br>H_{2n+1}<br>&amp;&#x3D;\sum_{k&#x3D;1}^{2n+1}\frac{1}{k}<br>&#x3D;\sum_{k&#x3D;0}^{n}\frac{1}{2k+1}+\sum_{k&#x3D;1}^{n}\frac{1}{2k}\<br>&amp;&#x3D;\left(\sum_{k&#x3D;0}^{n}\frac{1}{2k+1}\right)+\frac{1}{2}\sum_{k&#x3D;1}^{n}\frac{1}{k}<br>&#x3D;\left(\sum_{k&#x3D;0}^{n}\frac{1}{2k+1}\right)+\frac{1}{2}H_{n}.<br>\end{aligned}<br>$$</p>
+<p>因此</p>
+<p>$$<br>\boxed{\sum_{k&#x3D;0}^{n}\frac{1}{2k+1}&#x3D;H_{2n+1}-\frac{1}{2}H_{n}.}<br>$$</p>
+<h2 id="20"><a href="#20" class="headerlink" title="20"></a>20</h2><p>$$<br>\quad\text{求出}\sum_{k&#x3D;1}^nH_k^{(2)}\text{的封闭形式}.<br>$$</p>
+<p>设二阶调和数 $H_k^{(2)}&#x3D;\sum_{j&#x3D;1}^{k}\frac{1}{j^{2}}$。交换求和顺序：</p>
+<p>$$<br>\begin{aligned}<br>\sum_{k&#x3D;1}^{n}H_k^{(2)}<br>&amp;&#x3D;\sum_{k&#x3D;1}^{n}\sum_{j&#x3D;1}^{k}\frac{1}{j^{2}}<br>&#x3D;\sum_{j&#x3D;1}^{n}\frac{1}{j^{2}}\sum_{k&#x3D;j}^{n}1<br>&#x3D;\sum_{j&#x3D;1}^{n}\frac{n-j+1}{j^{2}}\<br>&amp;&#x3D;(n+1)\sum_{j&#x3D;1}^{n}\frac{1}{j^{2}}-\sum_{j&#x3D;1}^{n}\frac{1}{j}<br>&#x3D;(n+1)H_n^{(2)}-H_{n}.<br>\end{aligned}<br>$$</p>
+<p>故所求闭式为</p>
+<p>$$<br>\boxed{\sum_{k&#x3D;1}^{n}H_k^{(2)}&#x3D;(n+1)H_n^{(2)}-H_{n}.}<br>$$</p>
+<h2 id="50"><a href="#50" class="headerlink" title="50"></a>50</h2><p>$$<br>\begin{aligned}&amp;\text{对所有正整数 }n\text{ 用递归式}\&amp;f(1)&#x3D;1:;\&amp;f(2n)&#x3D;f(n):;\&amp;f(2n)&#x3D;f(n):;\&amp;f(2n+1)&#x3D;f(n)+f(n+1):.\&amp;\text{定义 }f(n):.\&amp;\text{a 对什么样的 }n:,:f(n):\text{是偶数}?\end{aligned}<br>$$</p>
+<p>给定递推与 Stern 二项式序列一致（若额外约定 $f(0)&#x3D;0$，可与经典定义完全匹配）。令<br>$g(n)&#x3D;f(n)\pmod{2}$，则</p>
+<p>$$<br>g(1)&#x3D;1,\quad g(2n)&#x3D;g(n),\quad g(2n+1)&#x3D;g(n)+g(n+1)\pmod{2}.<br>$$</p>
+<p>我们将证明：$g(n)&#x3D;0$ 当且仅当 $3\mid n$。基础情形 $n&#x3D;1,2,3$ 直接检查成立。<br>设结论对所有小于 $n$ 的正整数成立，讨论 $n$ 的奇偶性：</p>
+<ul>
+<li>若 $n&#x3D;2m$，则 $g(n)&#x3D;g(m)$。因为 $\gcd(2,3)&#x3D;1$，$3\mid 2m$ 当且仅当 $3\mid m$。<br>由归纳假设 $g(m)&#x3D;0\Leftrightarrow 3\mid m$，于是 $g(2m)&#x3D;0\Leftrightarrow 3\mid 2m$。</li>
+<li>若 $n&#x3D;2m+1$，则 $g(n)&#x3D;g(m)+g(m+1)$。<br>若 $3\mid (2m+1)$，则 $m\equiv 1\pmod{3}$，$m+1\equiv 2\pmod{3}$，<br>由归纳假设 $g(m)&#x3D;g(m+1)&#x3D;1$，故 $g(2m+1)&#x3D;0$。<br>反之若 $3\nmid (2m+1)$，则 ${m,m+1}$ 恰有一个被 $3$ 整除，<br>归纳假设给出 $g(m)$ 与 $g(m+1)$ 的和模 2 为 1，从而 $g(2m+1)&#x3D;1$。</li>
+</ul>
+<p>综上，$g(n)&#x3D;0$ 当且仅当 $3\mid n$。也就是说，</p>
+<p>$$<br>\boxed{f(n)\text{ 为偶数 }\Longleftrightarrow 3\mid n.}<br>$$</p>
+<p>（在上述推理中用到的归纳起点 $f(0)&#x3D;0$ 仅为方便讨论模 2，原递推在正整数范围内依然得出完全相同的结论。）</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>$$<br>\quad\text{一副随机洗好的牌上下两张都是A的概率是多少?(所有 52! 个排列均有概率1&#x2F;52!.}\quad)<br>$$</p>
+<p>牌堆的顶部和底部可视为固定位置，相当于无放回抽取两张牌。四张 A 中任选一张放在顶部再选一张放在底部共有 $4\cdot 3$ 种，所有顶与底的组合共有 $52\cdot 51$ 种，因此概率</p>
+<p>$$<br>\boxed{\frac{4\cdot 3}{52\cdot 51}&#x3D;\frac{1}{221}}.<br>$$</p>
+<h2 id="3-1"><a href="#3-1" class="headerlink" title="3"></a>3</h2><p>1979 年在斯坦福大学学习具体数学课的学生，被要求抛掷硬币直到连续两次得到正面，并报告所需抛掷次数，结果为</p>
+<p>$$<br>3,2,3,5,10,2,6,6,9,2.<br>$$</p>
+<p>1987 年在普林斯顿大学上课的学生做了同样的实验，得到</p>
+<p>$$<br>10,2,10,7,5,2,10,6,10,2.<br>$$</p>
+<p>求两组样本的均值与无偏方差。设</p>
+<p>$$<br>\bar{x}&#x3D;\frac{1}{n}\sum_{i&#x3D;1}^{n}x_i,\qquad s^2&#x3D;\frac{1}{n-1}\sum_{i&#x3D;1}^{n}(x_i-\bar{x})^2.<br>$$</p>
+<p>斯坦福样本 ($n&#x3D;10$)：</p>
+<p>$$<br>\bar{x}<em>\mathrm{Stanford}&#x3D;4.8,\quad s^2</em>\mathrm{Stanford}&#x3D;\frac{68.4}{9}\approx7.60.<br>$$</p>
+<p>普林斯顿样本 ($n&#x3D;10$)：</p>
+<p>$$<br>\bar{x}<em>\mathrm{Princeton}&#x3D;6.4,\quad s^2</em>\mathrm{Princeton}&#x3D;\frac{78.4}{9}\approx8.71.<br>$$</p>
+<h2 id="25"><a href="#25" class="headerlink" title="25"></a>25</h2><p>$$<br>\text{考虑一个博彩游戏，你在其中设定一个给定量的赌注 }A\text{ 并抛掷一枚均匀骰子。如果出现的点数为 }k,\text{ 就用 }\frac{2(k-1)}{5}\text{ 乘你的赌注。}<br>\text{（特别地，掷出 6 会使赌注加倍，掷出 1 则失去全部赌注。）你可以在任何时候停止游戏并设定新的赌注。经过 }n\text{ 次抛掷后，赌注的均值和方差是多少？}<br>$$</p>
+<p>单次掷出 $k$ 时赌注乘以</p>
+<p>$$<br>M&#x3D;\frac{2(k-1)}{5},\qquad k&#x3D;1,\ldots,6.<br>$$</p>
+<p>掷骰均匀，因此</p>
+<p>$$<br>\mathbb{E}[M]&#x3D;\frac{1}{6}\sum_{k&#x3D;1}^{6}\frac{2(k-1)}{5}&#x3D;1,\qquad<br>\mathbb{E}[M^2]&#x3D;\frac{1}{6}\sum_{k&#x3D;1}^{6}\left(\frac{2(k-1)}{5}\right)^2&#x3D;\frac{14}{15}.<br>$$</p>
+<p>于是 $\operatorname{Var}(M)&#x3D;\frac{14}{15}-1&#x3D;\frac{1}{15}$。经过 $n$ 次掷骰后赌注为</p>
+<p>$$<br>A\prod_{i&#x3D;1}^{n}M_i,<br>$$</p>
+<p>其中 $M_i$ 独立同分布，故</p>
+<p>$$<br>\mathbb{E}!\left[A\prod_{i&#x3D;1}^{n}M_i\right]&#x3D;A,<br>$$</p>
+<p>$$<br>\operatorname{Var}!\left(A\prod_{i&#x3D;1}^{n}M_i\right)&#x3D;A^2\left((\mathbb{E}[M^2])^{n}-(\mathbb{E}[M])^{2n}\right)&#x3D;A^2\left(\left(\frac{14}{15}\right)^n-1\right).<br>$$</p>
+<p>因此期望始终等于初始赌注 $A$，方差为 $A^2\left((14&#x2F;15)^n-1\right)$。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">飞向月球的猫</div><div class="post-copyright__author_desc">个人博客</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://kaiyiya.github.io/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://kaiyiya.github.io/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/')">具体数学-作业3</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wx.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wx.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/zfb.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://kaiyiya.github.io/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=具体数学-作业3&amp;url=https://kaiyiya.github.io/2025/11/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A3/&amp;pic=https://bu.dusays.com/2025/09/02/68b6d8c5e093d.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kaiyiya.github.io" target="_blank">飞向月球的猫</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>深度学习<span class="tagsPageCount">6</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2025/09/02/68b6d8ce7ce83.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/11/10/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-dom%E7%9A%84%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d1b7ece.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">js-dom的尺寸和位置</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/11/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/JS/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/js-web%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c6e7a0c.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">js-web的事件传播机制</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/02/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/" title="反向传播算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c4f374f.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-02</div><div class="title">反向传播算法</div></div></a></div><div><a href="/2025/10/12/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E8%B0%83%E8%AF%95context-encoder/" title="调试context_encoder"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8d77c6c3.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-12</div><div class="title">调试context_encoder</div></div></a></div><div><a href="/2025/10/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A1/" title="具体数学-作业1"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c0649e8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-07</div><div class="title">具体数学-作业1</div></div></a></div><div><a href="/2025/10/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E4%BD%9C%E4%B8%9A2/" title="具体数学-作业2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c0649e8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-28</div><div class="title">具体数学-作业2</div></div></a></div><div><a href="/2025/11/13/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6/%E5%85%B7%E4%BD%93%E6%95%B0%E5%AD%A6-%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" title="具体数学-期末复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/09/02/68b6d8c2775fe.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-13</div><div class="title">具体数学-期末复习</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">专注于深度学习、算法、全栈开发、移动端开发、js、python、java、go、c++、c</div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飞向月球的猫</h1><div class="author-info__desc">个人博客</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/kaiyiya" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%BF%E7%85%A7%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0%E7%9A%84%E7%BB%8F%E5%85%B8%E7%BB%93%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">1. 仿照取整函数的经典结论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AF%81%E6%98%8E-left-lceil-sqrt-lceil-x-rceil-right-rceil-left-lceil-sqrt-x-right-rceil"><span class="toc-number">1.1.</span> <span class="toc-text">(1) 证明 $\left\lceil \sqrt{\lceil x \rceil} \right\rceil &#x3D; \left\lceil \sqrt{x} \right\rceil$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%81%E6%98%8E-lceil-f-x-rceil-lceil-f-lceil-x-rceil-rceil"><span class="toc-number">1.2.</span> <span class="toc-text">(2) 证明 $\lceil f(x) \rceil &#x3D; \lceil f(\lceil x \rceil) \rceil$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%80%E8%88%AC-Josephus-%E9%97%AE%E9%A2%98%EF%BC%88%E6%AD%A5%E9%95%BF-q-%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">2. 一般 Josephus 问题（步长 $q$）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC"><span class="toc-number">2.1.</span> <span class="toc-text">推导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E6%B1%82%E8%A7%A3%E7%A8%8B%E5%BA%8F%EF%BC%88Python-%E7%A4%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">迭代求解程序（Python 示例）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">3.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%87%BD%E6%95%B0-f-n-displaystyle-sum-k-1-n-left-lceil-lg-k-right-rceil"><span class="toc-number">4.</span> <span class="toc-text">4. 函数 $f(n)&#x3D;\displaystyle\sum_{k&#x3D;1}^{n} \left\lceil \lg k \right\rceil$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B0%81%E9%97%AD%E5%BD%A2%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">(1) 封闭形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%92%E6%8E%A8%E6%81%92%E7%AD%89%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">(2) 递推恒等式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8F%96%E6%95%B4%E6%B1%82%E5%92%8C%E6%81%92%E7%AD%89%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">5. 取整求和恒等式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-number">6.</span> <span class="toc-text">6. </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7"><span class="toc-number">7.</span> <span class="toc-text">7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8"><span class="toc-number">8.</span> <span class="toc-text">8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10"><span class="toc-number">9.</span> <span class="toc-text">10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14"><span class="toc-number">10.</span> <span class="toc-text">14</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22"><span class="toc-number">11.</span> <span class="toc-text">22</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#31"><span class="toc-number">12.</span> <span class="toc-text">31</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#36"><span class="toc-number">13.</span> <span class="toc-text">36</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E5%81%9A"><span class="toc-number">14.</span> <span class="toc-text">(选做)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">15.</span> <span class="toc-text">4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20"><span class="toc-number">16.</span> <span class="toc-text">20</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#50"><span class="toc-number">17.</span> <span class="toc-text">50</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">18.</span> <span class="toc-text">2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1"><span class="toc-number">19.</span> <span class="toc-text">3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25"><span class="toc-number">20.</span> <span class="toc-text">25</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LLM%E8%BF%81%E7%A7%BB%E6%8E%A8%E8%8D%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB-%E5%88%9B%E6%96%B0%E7%82%B9%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%B8%85%E5%8D%95/" title="LLM迁移推荐论文精读：创新点20%+复现清单"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce9491df.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LLM迁移推荐论文精读：创新点20%+复现清单"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LLM%E8%BF%81%E7%A7%BB%E6%8E%A8%E8%8D%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB-%E5%88%9B%E6%96%B0%E7%82%B9%E4%B8%8E%E5%A4%8D%E7%8E%B0%E6%B8%85%E5%8D%95/" title="LLM迁移推荐论文精读：创新点20%+复现清单">LLM迁移推荐论文精读：创新点20%+复现清单</a><time datetime="2026-03-20T06:30:00.000Z" title="发表于 2026-03-20 14:30:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E7%86%B5%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%97%B6%E9%80%82%E9%85%8DTTA%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcebc4fde.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E7%86%B5%E4%B8%8E%E6%B5%8B%E8%AF%95%E6%97%B6%E9%80%82%E9%85%8DTTA%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）">推荐与 LLM 入门（四）：香农熵与测试时适配（TTA）</a><time datetime="2026-03-20T05:00:00.000Z" title="发表于 2026-03-20 13:00:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfce94b801.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/LoRA%E4%B8%8E%E5%8F%82%E6%95%B0%E9%AB%98%E6%95%88%E5%BE%AE%E8%B0%83PEFT%E5%85%A5%E9%97%A8/" title="推荐与 LLM 入门（三）：PEFT 与 LoRA 原理">推荐与 LLM 入门（三）：PEFT 与 LoRA 原理</a><time datetime="2026-03-20T04:00:00.000Z" title="发表于 2026-03-20 12:00:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8-%E6%8C%87%E4%BB%A4%E5%BE%AE%E8%B0%83%E4%B8%8E%E6%8E%A8%E8%8D%90%E4%B8%AD%E7%9A%84LLM/" title="推荐与 LLM 入门（二）：指令微调与推荐任务对齐"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcec23c7f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐与 LLM 入门（二）：指令微调与推荐任务对齐"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8-%E6%8C%87%E4%BB%A4%E5%BE%AE%E8%B0%83%E4%B8%8E%E6%8E%A8%E8%8D%90%E4%B8%AD%E7%9A%84LLM/" title="推荐与 LLM 入门（二）：指令微调与推荐任务对齐">推荐与 LLM 入门（二）：指令微调与推荐任务对齐</a><time datetime="2026-03-20T03:00:00.000Z" title="发表于 2026-03-20 11:00:00">2026-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8-%E5%BA%8F%E5%88%97%E6%8E%A8%E8%8D%90Top-K%E4%B8%8ENDCG/" title="推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2025/12/01/692cfcea5e4f2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k"/></a><div class="content"><a class="title" href="/2026/03/20/%E7%AE%97%E6%B3%95/%E6%8E%A8%E8%8D%90%E4%B8%8ELLM%E7%AC%94%E8%AE%B0/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8-%E5%BA%8F%E5%88%97%E6%8E%A8%E8%8D%90Top-K%E4%B8%8ENDCG/" title="推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k">推荐系统入门（一）：序列推荐、Top-K 与 NDCG@k</a><time datetime="2026-03-20T02:00:00.000Z" title="发表于 2026-03-20 10:00:00">2026-03-20</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" target="_blank" rel="noopener" href="https://user.qzone.qq.com/2194785560/infocenter" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/icon_man.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://leetcode.cn/u/zhong-9t9/" title="LeetCode"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-leetcode"></use></svg></a></div><div class="copyright">&copy;2025 - 2026 By 飞向月球的猫</div><div id="workboard"><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://www.dogecloud.com/" style="margin-inline:5px" data-title="本站使用多吉云为静态资源提供CDN加速" title="本站使用多吉云为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/CDN-多吉云-3693F3.svg" alt="本站使用多吉云为静态资源提供CDN加速"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">150</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/ELK/" style="font-size: 0.88rem;">ELK<sup>1</sup></a><a href="/tags/JS/" style="font-size: 0.88rem;">JS<sup>33</sup></a><a href="/tags/LLM/" style="font-size: 0.88rem;">LLM<sup>4</sup></a><a href="/tags/LoRA/" style="font-size: 0.88rem;">LoRA<sup>2</sup></a><a href="/tags/React/" style="font-size: 0.88rem;">React<sup>10</sup></a><a href="/tags/TTA/" style="font-size: 0.88rem;">TTA<sup>1</sup></a><a href="/tags/centos7/" style="font-size: 0.88rem;">centos7<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>9</sup></a><a href="/tags/docker/" style="font-size: 0.88rem;">docker<sup>3</sup></a><a href="/tags/go/" style="font-size: 0.88rem;">go<sup>2</sup></a><a href="/tags/k8s/" style="font-size: 0.88rem;">k8s<sup>4</sup></a><a href="/tags/linux/" style="font-size: 0.88rem;">linux<sup>4</sup></a><a href="/tags/nodejs/" style="font-size: 0.88rem;">nodejs<sup>21</sup></a><a href="/tags/react%E6%BA%90%E7%A0%81/" style="font-size: 0.88rem;">react源码<sup>3</sup></a><a href="/tags/ts/" style="font-size: 0.88rem;">ts<sup>4</sup></a><a href="/tags/uniapp/" style="font-size: 0.88rem;">uniapp<sup>3</sup></a><a href="/tags/vue/" style="font-size: 0.88rem;">vue<sup>9</sup></a><a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 0.88rem;">入门<sup>4</sup></a><a href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" style="font-size: 0.88rem;">推荐系统<sup>3</sup></a><a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 0.88rem;">每日一题<sup>22</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E6%97%B6%E9%80%82%E9%85%8D/" style="font-size: 0.88rem;">测试时适配<sup>1</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">深度学习<sup>6</sup></a><a href="/tags/%E7%86%B5/" style="font-size: 0.88rem;">熵<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>15</sup></a><a href="/tags/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" style="font-size: 0.88rem;">论文精读<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="anzhiyufont anzhiyu-icon-comment-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/01/2025 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `生活明朗, 万物可爱`,
+    `
+
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2025 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飞向月球的猫 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/01/2025 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "";
+        img.title = "";
+        img.alt = "";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://cdn.cbd.int/algoliasearch@4.18.0/dist/algoliasearch-lite.umd.js"></script><script src="https://cdn.cbd.int/instantsearch.js@4.60.0/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+
+  const script = document.createElement('script')
+  script.src = 'https://cdn.cbd.int/mathjax@3.2.2/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+      appKey: 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+      avatar: 'mp',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.cbd.int/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script src="https://cdn.cbd.int/blueimp-md5@2.19.0/js/md5.min.js"></script><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getIcon = (icon, mail) => {
+    if (icon) return icon
+    let defaultIcon = '?d=mp'
+    let iconUrl = `https://gravatar.loli.net/avatar/${md5(mail.toLowerCase()) + defaultIcon}`
+    return iconUrl
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = () => {
+    const serverURL = 'https://9cdEFDSh.api.lncldglobal.com'
+
+    var settings = {
+      "method": "GET",
+      "headers": {
+        "X-LC-Id": '9cdEFDShTeEeLXIzDivO7iel-gzGzoHsz',
+        "X-LC-Key": 'MrAc9UGI8JwDxY4TJjkOqQ2w',
+        "Content-Type": "application/json"
+      },
+    }
+
+    fetch(`${serverURL}/1.1/classes/Comment?limit=6&order=-createdAt`,settings)
+      .then(response => response.json())
+      .then(data => {
+        const valineArray = data.results.map(function (e) {
+          return {
+            'avatar': getIcon(e.QQAvatar, e.mail),
+            'content': changeContent(e.comment),
+            'nick': e.nick,
+            'url': e.url + '#' + e.objectId,
+            'date': e.updatedAt,
+          }
+        })
+        saveToLocal.set('valine-newest-comments', JSON.stringify(valineArray), 10/(60*24))
+        generateHtml(valineArray)
+      }).catch(e => {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      }) 
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('valine-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async src="https://at.alicdn.com/t/c/font_4942227_qgbgf4yxr5m.js?spm=a313x.manage_type_myprojects.i1.10.3e7e3a81jTvspY&amp;file=font_4942227_qgbgf4yxr5m.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const close = () => {
+      Chatra('minimizeWidget')
+      Chatra('hide')
+    }
+
+    const open = () => {
+      Chatra('openChat', true)
+      Chatra('show')
+    }
+
+    window.ChatraSetup = {
+      startHidden: true
+    }
+
+    window.chatBtnFn = () => {
+      const isShow = document.getElementById('chatra').classList.contains('chatra--expanded')
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        Chatra('hide')
+      },
+      show: () => {
+        Chatra('show')
+      }
+    }
+  }
+
+  (function(d, w, c) {
+    w.ChatraID = 'rBSEkY5Qjp4fmNXzZ'
+    var s = d.createElement('script')
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments)
+    }
+    s.async = true
+    s.src = 'https://call.chatra.io/chatra.js'
+    if (d.head) d.head.appendChild(s)
+  })(document, window, 'Chatra')
+
+})()</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
