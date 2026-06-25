@@ -1,4 +1,8 @@
 window.addEventListener("load", () => {
+  const maxAttempts = 80;
+  const delayMs = 50;
+
+  function run(anzhiyu) {
   const $searchMask = document.getElementById("search-mask");
   const $searchDialog = document.querySelector("#algolia-search .search-dialog");
 
@@ -189,4 +193,22 @@ window.addEventListener("load", () => {
     search.on("render", () => {
       window.pjax.refresh(document.getElementById("algolia-hits"));
     });
+  }
+
+  function tryInit(attempt) {
+    const anzhiyu = window.anzhiyu;
+    if (!anzhiyu || typeof anzhiyu.addEventListenerPjax !== "function") {
+      if (attempt < maxAttempts) {
+        setTimeout(() => tryInit(attempt + 1), delayMs);
+        return;
+      }
+      console.error(
+        "[Algolia 搜索] 未就绪：请确认 /js/utils.js 能加载；若使用审计/监控浏览器扩展，可能拦截脚本导致此问题。"
+      );
+      return;
+    }
+    run(anzhiyu);
+  }
+
+  tryInit(0);
 });

@@ -157,6 +157,27 @@ var defaultPlayMusicList = [];
 var themeColorMeta, pageHeaderEl, navMusicEl, consoleEl;
 
 document.addEventListener("DOMContentLoaded", function () {
+  // 须先于 anzhiyu 校验：若此处 return，轮播封面等仍依赖 vanilla-lazyload 把 data-lazy-src 写回 src
+  const lazyloadImg = () => {
+    if (!GLOBAL_CONFIG.islazyload || typeof LazyLoad === "undefined" || window.lazyLoadInstance) return;
+    try {
+      window.lazyLoadInstance = new LazyLoad({
+        elements_selector: "img",
+        threshold: 0,
+        data_src: "lazy-src",
+      });
+    } catch (e) {
+      console.warn("[lazyload] LazyLoad 初始化失败:", e);
+    }
+  };
+  lazyloadImg();
+
+  const anzhiyu = window.anzhiyu;
+  if (!anzhiyu || typeof anzhiyu.diffDate !== "function") {
+    console.error("[主题 main.js] window.anzhiyu 未就绪，请确认 /js/utils.js 先于 main.js 加载且未被拦截。");
+    return;
+  }
+
   let headerContentWidth, $nav, $rightMenu;
   let mobileSidebarOpen = false;
 
@@ -1110,14 +1131,6 @@ document.addEventListener("DOMContentLoaded", function () {
         $targetEle.appendChild(ele);
       }
     }
-  };
-
-  const lazyloadImg = () => {
-    window.lazyLoadInstance = new LazyLoad({
-      elements_selector: "img",
-      threshold: 0,
-      data_src: "lazy-src",
-    });
   };
 
   const relativeDate = function (selector) {

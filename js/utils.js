@@ -1,4 +1,4 @@
-const anzhiyu = {
+const anzhiyu = (window.anzhiyu = {
   debounce: (func, wait = 0, immediate = false) => {
     let timeout;
     return (...args) => {
@@ -1437,4 +1437,4 @@ const anzhiyuPopupManager = {
       this.processQueue();
     }, duration);
   },
-};
+});
