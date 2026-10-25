@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html data-page-node-id="gom1bY440kDhmQkkP8swXW" lang="zh-CN">
+<head data-page-node-id="F4CszT4XIMU5O1XQisAaoZ">
+<meta data-page-node-id="J0Y6GD706gpfUE2tx8xIp2" charset="UTF-8">
+<meta data-page-node-id="YhTNK1ubjJiZArJ1Z2yDtv" content="width=device-width, initial-scale=1" name="viewport">
+<title data-page-node-id="r2Yf5Ix66z9ROkDwMnF0Ko" data-pnid-children="pD7TOKb7IlWJILT5YqQFb7">12.1 探究影响动能大小的因素 · 虚拟实验（苏科版九上 图12-4）</title>
+<style data-page-node-id="NDWDbkDxim4aOekj5Y98uO" data-pnid-children="uEz1V3cEhdcTr64Z0qz4AR">
+  :root{
+    --bg:#f1f5f9; --panel:#ffffff; --ink:#0f172a; --sub:#475569; --mute:#94a3b8;
+    --line:#e2e8f0; --line2:#cbd5e1;
+    --warm:#f97316; --warm-d:#ea580c; --warm-l:#fff1e6;
+    --cool:#2563eb; --cool-l:#e8f0fe;
+    --hl:#fde047; --ok:#16a34a; --warn:#dc2626; --warn-l:#fef2f2;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+    font-size:14px; line-height:1.6;
+  }
+  header{
+    background:linear-gradient(100deg,#ffffff 0%,#fff7ed 55%,#eff6ff 100%);
+    border-bottom:1px solid var(--line); padding:14px 20px;
+  }
+  header h1{margin:0;font-size:19px;letter-spacing:.3px}
+  header p{margin:4px 0 0;font-size:12.5px;color:var(--sub)}
+  .badge-src{display:inline-block;background:#fff;border:1px solid var(--line2);border-radius:999px;
+    padding:1px 10px;font-size:11.5px;color:var(--sub);margin-left:6px}
+  .app{
+    display:grid; grid-template-columns:300px minmax(430px,1fr) 320px;
+    gap:14px; padding:14px 18px 26px; align-items:start;
+  }
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 13px;
+    box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .card + .card{margin-top:12px}
+  .card h2{margin:0 0 9px;font-size:13.5px;display:flex;align-items:center;gap:6px;
+    border-left:3px solid var(--warm);padding-left:8px;line-height:1.2}
+  .card h2 small{font-weight:400;color:var(--mute);font-size:11px}
+
+  /* 实验组标签 */
+  .laneRow{display:flex;flex-wrap:wrap;gap:6px}
+  .lt{border:1.5px solid var(--line2);background:#fff;border-radius:8px;padding:5px 9px;font-size:12.5px;
+    cursor:pointer;display:flex;align-items:center;gap:5px;color:var(--sub);font-family:inherit}
+  .lt i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .lt.on{border-color:var(--warm);background:var(--warm-l);color:var(--warm-d);font-weight:600}
+  .lt .del{opacity:.4;font-size:14px;line-height:1;padding:0 1px}
+  .lt .del:hover{opacity:1;color:var(--warn)}
+  .lt.add{padding:5px 11px;font-weight:700;color:var(--warm-d)}
+
+  /* 模式切换 */
+  .modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .mode{border:1.5px solid var(--line2);background:#fff;border-radius:9px;padding:7px 6px;
+    text-align:center;cursor:pointer;font-size:12.5px;color:var(--sub);transition:.15s}
+  .mode b{display:block;font-size:13px;color:var(--ink)}
+  .mode:hover{border-color:var(--warm)}
+  .mode.on{border-color:var(--warm);background:var(--warm-l);color:var(--warm-d)}
+  .mode.on b{color:var(--warm-d)}
+
+  /* 器材盒 */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.none-blk{border-style:dashed;background:#f8fafc}
+  .eq{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:7px 6px 6px;
+    cursor:pointer;text-align:center;position:relative;transition:.15s;user-select:none}
+  .eq:hover{border-color:var(--line2);transform:translateY(-1px)}
+  .eq svg{display:block;margin:0 auto 3px}
+  .eq .nm{font-size:11.5px;color:var(--sub);line-height:1.3}
+  .eq.on{border-color:var(--warm);background:var(--warm-l)}
+  .eq.on .nm{color:var(--warm-d);font-weight:600}
+  .eq.off{opacity:.42;filter:grayscale(.7)}
+  .eq .tick{position:absolute;top:-6px;right:-6px;width:17px;height:17px;border-radius:50%;
+    background:var(--warm);color:#fff;font-size:11px;line-height:17px;display:none}
+  .eq.on .tick{display:block}
+  .eq .grp{position:absolute;top:3px;left:5px;font-size:10px;color:var(--mute)}
+  .qty{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:3px}
+  .qty b{width:18px;height:18px;line-height:16px;border:1px solid var(--line2);border-radius:5px;
+    font-size:12px;color:var(--sub);cursor:pointer;background:#fff;font-weight:700}
+  .qty b:hover{border-color:var(--warm);color:var(--warm-d)}
+  .qty .n{font-size:12px;font-weight:700;color:var(--ink);min-width:13px;text-align:center}
+  .hint{font-size:11.5px;color:var(--mute);margin-top:8px;line-height:1.5}
+
+  /* 舞台 */
+  .stage{padding:12px 13px 13px}
+  .plan{font-size:12.5px;color:var(--sub);background:#f8fafc;border:1px dashed var(--line2);
+    border-radius:8px;padding:7px 10px;margin-bottom:9px}
+  .plan b{color:var(--ink)}
+  #cvWrap{width:100%;border-radius:10px;overflow:hidden;background:linear-gradient(#ffffff,#f8fafc);
+    border:1px solid var(--line)}
+  canvas{display:block}
+  .ctrls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:11px}
+  .slider{display:flex;align-items:center;gap:8px;background:#f8fafc;border:1px solid var(--line);
+    border-radius:9px;padding:5px 10px;font-size:12.5px}
+  .slider input[type=range]{width:150px;accent-color:var(--warm)}
+  .slider .val{font-variant-numeric:tabular-nums;font-weight:700;color:var(--warm-d);min-width:56px;text-align:right}
+  button{border:1px solid var(--line2);background:#fff;color:var(--ink);border-radius:9px;
+    padding:7px 14px;font-size:13px;cursor:pointer;font-family:inherit;transition:.15s}
+  button:hover{border-color:var(--warm);color:var(--warm-d)}
+  button.pri{background:var(--warm);border-color:var(--warm);color:#fff;font-weight:600}
+  button.pri:hover{background:var(--warm-d);color:#fff}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  select{border:1px solid var(--line2);border-radius:8px;padding:5px 8px;font-size:12.5px;
+    background:#fff;font-family:inherit;color:var(--ink)}
+  .note{font-size:11.5px;color:var(--mute);margin-top:9px;line-height:1.55}
+
+  .asm{font-size:12px;color:var(--sub);margin-top:9px;line-height:1.7}
+  .asm .ok{color:#15803d;font-weight:600}
+  .asm .no{color:#dc2626;font-weight:600}
+  .asm .opt{color:#0369a1;font-weight:600}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13px;align-items:baseline}
+  .kv dt{color:var(--sub)}
+  .kv dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+  .bigs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:2px 0 8px}
+  .big{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:8px 4px;text-align:center}
+  .big .v{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.2}
+  .big .k{font-size:11px;color:var(--mute)}
+  .big.w .v{color:var(--warm-d)} .big.e .v{color:var(--warm-d)} .big.c .v{color:var(--cool)}
+  .chain{font-size:12px;color:var(--sub);background:#f8fafc;border-radius:8px;padding:7px 9px;margin-top:8px}
+  .chain span{color:var(--warm-d);font-weight:600}
+  .chain i{color:var(--cool);font-style:normal;font-weight:600}
+  details{border-top:1px solid var(--line);padding-top:8px;margin-top:10px}
+  summary{cursor:pointer;font-size:12.5px;color:var(--sub);outline:none}
+  details p{font-size:12px;color:var(--sub);margin:7px 0 0}
+  details p b{color:var(--ink)}
+  @media (max-width:1180px){
+    .app{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body data-page-node-id="ZlHguCXokPYeYLPD2SuuKr">
+
+<header data-page-node-id="IgPWFlsE593bwS02eWEqfY">
+  <h1 data-page-node-id="jRilHmHMqraLr10f8JilUS"><!--pnid:3cQnuFsXcNIAKRFTf43VQ5-->12.1 探究影响动能大小的因素 · 虚拟实验<span data-page-node-id="IgEN0TRtgKoez3jaBkOqBr" class="badge-src"><!--pnid:Bamz8XMZVOEFKwXi1G2kmt-->苏科版《物理》九年级上册 · 第31页 活动12.1 / 图12-4</span></h1>
+  <p data-page-node-id="IZ7x4v9ErPn7HWU4q2daD9"><!--pnid:G6el36mDYJb9xM3F0iDSIA-->可同时摆放多组器材，一次释放、同屏对比木块移动的距离 S。本页为纯前端单文件，可离线打开。</p>
+</header>
+
+<div data-page-node-id="EFuKaGVTFbl16H2WS22ayQ" class="app">
+
+  <!--pnid:EQpaqAXdi7VIwuqr6CEVnE--><!-- 左：实验组 / 模式 / 器材盒 -->
+  <div data-page-node-id="lynhpDjnKK9Cx3Yzvoy3Z7">
+    <div data-page-node-id="rVhNFjIeMS3GJ82s2fdzwh" class="card">
+      <h2 data-page-node-id="4ccLeMPse4FwkkoVptMOy0"><!--pnid:yZNYHYZ4aitnfFhQDNJG1y-->实验组 <small data-page-node-id="60r8LbeST4KMgCUlk3jMYg"><!--pnid:Zvp9qITGCOjGDMU1hr3kke-->最多 4 组同屏对比</small></h2>
+      <div data-page-node-id="e4Z3ZjlxZoUBp1k6UZrPXC" class="laneRow" id="laneRow"></div>
+      <div data-page-node-id="n1pn0TqwhGyTnUwXQfpDPD" class="hint"><!--pnid:jJaTgoDCyjTItxWajfmPwN-->点「＋」再添一组（会复制当前组的配置），只改变其中一个条件，就能一次做完对比实验。</div>
+    </div>
+
+    <div data-page-node-id="LUe1gNZ4PTBILJo4yq4sDv" class="card">
+      <h2 data-page-node-id="Rnekfd1EN7OYM4NPTuFrHP"><!--pnid:5qpR6RYXe5Mq7TOnSkosU5-->实验模式 <small data-page-node-id="Hhcur6gHrpbMFKPzteuuq3"><!--pnid:6cPiIMAeEv7RQtybxHAWJr-->全部实验组共用</small></h2>
+      <div data-page-node-id="yJ0F85DZXzqhgcghq72ror" class="modes">
+        <div data-page-node-id="FyDWpWYxWTJ058yjcEeZMT" class="mode" data-mode="ramp"><b data-page-node-id="0EKaoUhk5tUmBY3znT7Tgx"><!--pnid:hnilA3l4GdxmyhnEEgNmHu-->① 斜面下滑</b><!--pnid:tK40KIlwaq2wLKsl8GSAZK-->重力势能→动能</div>
+        <div data-page-node-id="85P5MI3ojc69EQKO7BgS3D" class="mode" data-mode="spring"><b data-page-node-id="kdC1MbBPXfw6RAmPa2cMFR"><!--pnid:43FOyZRVYXnGyTy7eYdqsq-->② 弹簧弹射</b><!--pnid:clSsD0a3XOK9iNfw3dkI7K-->弹性势能→动能</div>
+      </div>
+    </div>
+
+    <div data-page-node-id="J47qc3V0QWLiC5Mqs5kMEY" class="card">
+      <h2 data-page-node-id="vChQTuRhVon9qFbCGIWQnK"><!--pnid:u2DDZXv5JFDD7syta1nCib-->器材盒 <small data-page-node-id="YJ6cPWbaBivQb2mWR3De1b"><!--pnid:8lBfnTOnmWrBoBC0DHIFV8-->当前：<span data-page-node-id="Cz1MPgOoEPaUSEmnGXPfZ9" id="curLane"><!--pnid:AJdTsrfI0OMejDyUCC8fcE-->第①组</span></small></h2>
+      <div data-page-node-id="vhpRes7eWar3kM3lPw1xme" class="grid2" style="margin-bottom:8px">
+        <div data-page-node-id="bXOwYLWBEi9OJUPnQuC8L2" class="eq on" data-cart="1N">
+          <span data-page-node-id="qpd317tGf7pT5BAl0iiool" class="tick"><!--pnid:mOsT7le1zQOWkX47CAzmuN-->✓</span><span data-page-node-id="ToGw8Wn7pueQr28TrR7Rzj" class="grp"><!--pnid:D5ZLTGOU2QbjV52dshAg7k-->小车</span>
+          <svg data-page-node-id="c4Cn0hRnhcVcSD4OE8TBFq" height="30" viewBox="0 0 62 30" width="62"><rect data-page-node-id="W0vr20DcFLfSnR6CKbmiYi" fill="#fb923c" height="13" rx="2.5" stroke="#ea580c" width="40" x="10" y="6"/><circle data-page-node-id="tMccjoFGudi1S9nXwyGXIe" cx="18" cy="23" fill="#475569" r="4"/><circle data-page-node-id="7PPPcqz1e6MytrVSSnS6fY" cx="42" cy="23" fill="#475569" r="4"/></svg>
+          <div data-page-node-id="lt0vKea9NEE0gp9yeFaZXm" class="nm"><!--pnid:vXAKIuV0QRnQSxaiGU3G8f-->1N 小车</div>
+        </div>
+        <div data-page-node-id="4JISDRHO7lxmwKpGMEGIzu" class="eq" data-cart="2N">
+          <span data-page-node-id="IaMuLFIeutKxUyHiQrQaq9" class="tick"><!--pnid:jJv7hhr5ciWMLM4TE0CZBI-->✓</span><span data-page-node-id="i9UKt5tdoPKrwn3RLmKO0T" class="grp"><!--pnid:YlaCbGdIiAjlebis1ah5rc-->小车</span>
+          <svg data-page-node-id="WppBBSIo2Aojw6paI7ZMzJ" height="30" viewBox="0 0 62 30" width="62"><rect data-page-node-id="s4tdWjcIddrJV6KSytgba7" fill="#ef4444" height="15" rx="2.5" stroke="#b91c1c" width="44" x="8" y="4"/><circle data-page-node-id="SXh9rLnGXo2r7cj45BgSvz" cx="17" cy="23" fill="#475569" r="4"/><circle data-page-node-id="5JVijee1dQuNTIUCY4qFjR" cx="43" cy="23" fill="#475569" r="4"/></svg>
+          <div data-page-node-id="DF3XD1PuUyhyo9Phzxa8ct" class="nm"><!--pnid:xE7EgxeYmNXQqmLqkrpVAM-->2N 小车</div>
+        </div>
+      </div>
+
+      <div data-page-node-id="iebCDngtxGdqrUudtuqQyR" class="grid2" style="margin-bottom:8px; grid-template-columns:1fr">
+        <div data-page-node-id="eabKiUOMM3N947KIsa9kkA" class="eq" data-weight="w50">
+          <span data-page-node-id="tgIC6OD322iw3v97vzeL6V" class="tick"><!--pnid:jZ0TXGPnnNvWci1BovdSsB-->✓</span><span data-page-node-id="nni5uCzUbuNYrPabQ8yazw" class="grp"><!--pnid:xcLdttXNzwsdlzmk4LtyK9-->配重</span>
+          <svg data-page-node-id="2icfjz76fZaypiJSnxavs7" height="30" viewBox="0 0 62 30" width="62"><rect data-page-node-id="ncdYB08axtYY4giuLNHXGE" fill="#64748b" height="10" rx="2" width="26" x="18" y="10"/><text data-page-node-id="KzAosWHK4i5B29jFc6oGqA" fill="#fff" font-size="8.5" text-anchor="middle" x="31" y="17.6"><!--pnid:wkXeIG2La5JgDeYcAeuTP2-->50g</text></svg>
+          <div data-page-node-id="QTbrgVOQWascvnaL2Vcjxl" class="nm"><!--pnid:nKiVu9CQ2MC8NSHXjKMsB2-->50g 重物</div>
+          <div data-page-node-id="1VQ2PwMQaPmV6rpRSNvQVF" class="qty"><b data-page-node-id="8VxdKdDJZmxe0G6W0ZpBdq" data-minus="w50"><!--pnid:mvrgCxpJy07ugoiHXFnbMd-->−</b><span data-page-node-id="oecuhq1BIgVOl3k9EgGbVO" class="n" id="qn_w50"><!--pnid:zyzxzkMwOGnMcFBWLLYu77-->0</span><b data-page-node-id="RbMT9EWocybnjnozx0Lrdg" data-plus="w50"><!--pnid:0DJKQYHaE3MjaJMciNt3I7-->＋</b></div>
+        </div>
+      </div>
+
+      <div data-page-node-id="Pt5EcrF0XIbYpSW7U0125V" class="grid3">
+        <div data-page-node-id="0XFwZpmqqyMaZsgjZPN89h" class="eq none-blk" data-block="none">
+          <span data-page-node-id="3pVCr3FaXuDdvit4dSUSie" class="tick"><!--pnid:cyRQEPu0dfquOvCOPiXwHS-->✓</span><span data-page-node-id="bNxTr3GvXLViGQtwFwPTy0" class="grp"><!--pnid:wjRucmMSHmyAHAFDWhIJV9-->被撞</span>
+          <svg data-page-node-id="spFkFrWoCp11ZcpbaWnNWa" height="30" viewBox="0 0 62 30" width="62"><rect data-page-node-id="vNybA29p3imS3nGzTdM1B2" fill="none" height="11" rx="2" stroke="#94a3b8" stroke-dasharray="3 2" stroke-width="1.6" width="22" x="20" y="10"/><text data-page-node-id="CLSFdLT4UEOMcJMMZEHW7s" fill="#94a3b8" font-size="8.5" text-anchor="middle" x="31" y="18"><!--pnid:FFWSCFEq3m6rr57PEesmgc-->—</text></svg>
+          <div data-page-node-id="MPi2XwgdLpBb8SZyqFugUd" class="nm"><!--pnid:OL607wHo0BTfCrt1vibysT-->不放木块<br data-page-node-id="ZA1nwMXEjKlI3p8l075Ryo"><span data-page-node-id="oizF2aLW6d3QM8KteHonGq" style="color:#94a3b8; font-size:10px"><!--pnid:WQlZIkUNBQEkxspTS0aDc5-->只测小车滑行</span></div>
+        </div>
+        <div data-page-node-id="i5HlXZ5PimDjKmK8vxNMMT" class="eq" data-block="small">
+          <span data-page-node-id="DuHl8qtNEHUvHYnzLrnMmt" class="tick"><!--pnid:bmRaxXjNVyqiOZGMaK6cpJ-->✓</span><span data-page-node-id="psSKWJYbUEXy5sGos3cquS" class="grp"><!--pnid:vVtH7GhVMEMnxUas6uj0iL-->被撞</span>
+          <svg data-page-node-id="j9lP1v78KmASAqSlcSPvtr" height="30" viewBox="0 0 62 30" width="62"><rect data-page-node-id="o37mb0SmajQGexfsSujmGV" fill="#3b82f6" height="15" rx="2" width="24" x="19" y="7"/><text data-page-node-id="zLEB7VObmSGAWMwOQhCcj6" fill="#fff" font-size="8.5" text-anchor="middle" x="31" y="17.6"><!--pnid:xC7GtUIiUP3FjtoebRwpGE-->50g</text></svg>
+          <div data-page-node-id="T3FXPBkG6LerZvAMW1yVr5" class="nm"><!--pnid:dMOURY1mTfwZlrJ0OQ9iDR-->50g 小木块</div>
+        </div>
+        <div data-page-node-id="jJHGLwnqDtS0XscUvrYODa" class="eq" data-block="big">
+          <span data-page-node-id="V03qHjYn1uzDns37qJDMCQ" class="tick"><!--pnid:prHCiBxqJ1u6W0yTqG31SL-->✓</span><span data-page-node-id="qztYVs7dz7XQjufxey1V54" class="grp"><!--pnid:YwTNIgBmRSlW93bBOe3ptn-->被撞</span>
+          <svg data-page-node-id="LdG46aQaI5Tn5HCUbVww6p" height="30" viewBox="0 0 62 30" width="62"><rect data-page-node-id="ntNcUgVPdGa9VGLDVnqmIg" fill="#1d4ed8" height="18" rx="2" width="34" x="14" y="4"/><text data-page-node-id="qOISa1q7kzByYBpSdmnSvH" fill="#fff" font-size="9.5" text-anchor="middle" x="31" y="16.6"><!--pnid:1hBV8yAAyCtScfkgSlpSZN-->100g</text></svg>
+          <div data-page-node-id="Y2nMrdmlx8vPIIbBrGpSVa" class="nm"><!--pnid:726zO1U96ZA1gQ4sZBRQee-->100g 大木块</div>
+        </div>
+      </div>
+      <div data-page-node-id="dHzVH5jq8aKLGeAfrGphTq" class="hint"><!--pnid:q2WZ5xYgufw9osK82Db4eS-->每组 = 一辆小车 + 配重（50g，可重复加，最多 3 件）+ <b data-page-node-id="2Y5ItbPY5ieBl2D8JUMqxf"><!--pnid:v9UEpOViTrt4zX9ceR4gCe-->可选的木块</b><!--pnid:v114nqA5lVHTA24bCEy4hv-->。不放木块时，测的是小车自己克服摩擦阻力滑行的距离。</div>
+    </div>
+  </div>
+
+  <!--pnid:H8iM9DLf3nQ1TstBGzhiyw--><!-- 中：实验台 -->
+  <div data-page-node-id="0I6LVgVxSyf9r38HeV3Wxm" class="card stage">
+    <div data-page-node-id="IEfO0rNkdRmu6P9Vrtpg64" class="plan" id="plan"></div>
+    <div data-page-node-id="sSFpR6wpWZL3FCdrVtKdTU" id="cvWrap"><canvas data-page-node-id="F5YAuhTyJCHRKRmYqtzrpk" id="cv"></canvas></div>
+    <div data-page-node-id="svAn7jaUNiUw0jk1NXC1i0" class="ctrls">
+      <div data-page-node-id="ceal4FiVufnyMyKArbfA1O" class="slider" id="sliderBox">
+        <span data-page-node-id="rczZxaJrXgwC8pF3YfEKap" id="sLabel"><!--pnid:3uHo3AxkZUTwchvYlaDDzL-->释放高度</span>
+        <input data-page-node-id="0L9bnqpnUrTqOemkde484Y" id="sRange" max="15" min="2" step="1" type="range" value="10">
+        <span data-page-node-id="GBBnaSn5VA7YnB6I1D1keS" class="val" id="sVal"><!--pnid:Hv0IXJxJNkhRKEcLEUtv6Y-->10 cm</span>
+      </div>
+      <select data-page-node-id="vhRjHa5IFQ80QHwEsYcMqn" id="speed">
+        <option data-page-node-id="bCPEfsBFgpDZVmjYXckjDW" value="0.25"><!--pnid:2jM1x2amTD79y9JnAwDvFx-->慢放 0.25×</option>
+        <option data-page-node-id="TcBQB88p2Ssr0Msh4WOY7C" selected value="0.5"><!--pnid:I4w88ZZpFoeTXDiKKy8tuH-->慢放 0.5×</option>
+        <option data-page-node-id="ZckFcVqu8IIwZwgPT1myCd" value="1"><!--pnid:N8kkvTb1hFP8YSrUCZx9bW-->实时 1×</option>
+      </select>
+      <button data-page-node-id="o8QlZ3c4DQPG3KErV3YVZs" class="pri" id="btnStart"><!--pnid:12YZUqWoY0RMnSR9TgAVGX-->▶ 开始</button>
+      <button data-page-node-id="ulRFxrmd1Pgnp3j1HRzKQO" id="btnReset"><!--pnid:QieqPsHkGHP4cDaXQrQt0e-->↺ 复位</button>
+      <button data-page-node-id="o7MHG9Q3FiHLZ23BWgFUP2" id="btnUndo"><!--pnid:H43kaLwGVBxFzWq9t3MMan-->↩ 撤回</button>
+      <button data-page-node-id="FN0GQiYqZ1RkYxdrmeaGnp" id="btnClear"><!--pnid:a2xs6qbijYdlRb1XKWJpxp-->✕ 一键清空</button>
+    </div>
+    <div data-page-node-id="TBxskTUiO5gWSMRQNGjNpB" class="asm" id="asm"></div>
+    <div data-page-node-id="hHTYF3iwpInHJ6R6M3sq5Q" class="note"><!--pnid:vf5C0o5EqPm6uxtqsoVYO0-->
+      操作：切换实验组 → 为它选器材、定高度（或压缩量）→ 点<b data-page-node-id="4uGzqN76lbOzOEE2RON6Id"><!--pnid:l9Pel29pr69ObHwPC4hplM-->开始</b><!--pnid:akV7pq0YiXQbm4zbdcCnhy-->，所有实验组同时释放；每块木板下方会留下与木块移动距离<b data-page-node-id="ielHNaeluRwxJ4lmWDiGwj"><!--pnid:Ten59cKmUigPjxiscWBDWl-->等长</b><!--pnid:qw95JfVIW5AG29eX5L4Fsc-->的彩色标记条。空格键 = 开始/复位。
+    </div>
+  </div>
+
+  <!--pnid:4l06hK8qnYL809ksIXlFTX--><!-- 右：数据 -->
+  <div data-page-node-id="jopUvF8oTkQpS9eiDKL7Wi">
+    <div data-page-node-id="GKOCZVm4I9rxHsM6L7iGYd" class="card">
+      <h2 data-page-node-id="EOIJZzmUZWfhGE81HLx6c6"><!--pnid:k7GMRRikm6d8e5UqGLpXEZ-->实时数据 <small data-page-node-id="64xTlriCsddCowQY9C5Yg3" id="dataLane"><!--pnid:Sjyp5hO7BTfGYhmD6o5SwB-->第①组</small></h2>
+      <div data-page-node-id="5KDP7SBziNZ3zMYS6SDvZn" class="bigs">
+        <div data-page-node-id="2HlCewxRsYCXLvmKUXfcb3" class="big w"><div data-page-node-id="Qh0jbar6x2z4dHXyd9TFS6" class="v" id="v0"><!--pnid:cgnhUUN8YrzSrdOKOH9rXs-->—</div><div data-page-node-id="ahpv0KQ0q0NWbyZ7P02dee" class="k"><!--pnid:uuyIMtpuQwtv8RdbkA8C7u-->撞击前速度 v₀<br data-page-node-id="Vaaxb26oLYYqXB4myo6c4e"><!--pnid:r4GsFjhryvvWFGMBK5S23l-->(m/s)</div></div>
+        <div data-page-node-id="Gf0z6Tk6d5UPqZbnwE8aIT" class="big e"><div data-page-node-id="diyTuOPlur67mkcz43U26u" class="v" id="ek"><!--pnid:yV3ECP7l6KnKO844jV3ixJ-->—</div><div data-page-node-id="yzp5XuFIKb2bQYF9PxHOHN" class="k"><!--pnid:wMcL8swsMeDCYzFw3BOuVW-->动能 E<sub data-page-node-id="Qb6LsJikcaugHBtJFywOgw"><!--pnid:mZBI6dze0KV72muOnsj3Ym-->k</sub><br data-page-node-id="wULPOv7IodTg0gWFBYM212"><!--pnid:yNDRyCAriIx95gir375pRZ-->(J)</div></div>
+        <div data-page-node-id="qi4kDDT1dNGoUAnHTSDoWv" class="big c"><div data-page-node-id="PfJQ32vrXa3N7EAiffXnjd" class="v" id="ss"><!--pnid:yPTccOXiuKM2o9SN3FBFBj-->—</div><div data-page-node-id="HfAVnn75KWXRPWhC7g0K2Q" class="k"><!--pnid:2e8MQxaHMPf7JaE7mve3oz-->木块移动 S<br data-page-node-id="2wpeeEWjiMNYHhWTddBMdH"><!--pnid:tYQHajAlcFfM1gjkWjqOPN-->(cm)</div></div>
+      </div>
+      <dl data-page-node-id="yQlc7qYZXHnF4ilYOgNSNz" class="kv">
+        <dt data-page-node-id="BRls8KaFuWhfcPb5nNmaNt"><!--pnid:84CTuQoCwlKZF1sYAlyTbi-->小车（含配重）总重</dt><dd data-page-node-id="GgOaleUTLZU2soHs5T2VL6" id="kW"><!--pnid:HsFygD2PS7oznEfkl70TO8-->—</dd>
+        <dt data-page-node-id="JPKUNItp2HfsFdpiVpWSTk"><!--pnid:UGAPRsCsNyR7GdKdO1JRkJ-->小车（含配重）质量</dt><dd data-page-node-id="ZWnzTQaC0cxOzHEH4kE2DN" id="kM"><!--pnid:ic8HqrYPmm6xDSVIZo3ojk-->—</dd>
+        <dt data-page-node-id="M8HO3sEc3Qtnb7oaJg5dWV"><!--pnid:BHQWYrYJhAuKjHuFUYutXv-->被撞木块重力</dt><dd data-page-node-id="Vtll8x7ney6414IxeZTZcZ" id="kB"><!--pnid:4OBbI9teuMcRQ76HoSt6FW-->—</dd>
+        <dt data-page-node-id="AclOglkV8JmFex6k2hAez2"><!--pnid:WA81NiPxZs6SZxbk0IqeNW-->碰撞后共同速度</dt><dd data-page-node-id="QhKEehDVaOuG8qVEwSPZUB" id="kV"><!--pnid:v9ATgTkgsgnYhDVjxWup33-->—</dd>
+        <dt data-page-node-id="o8cQmUXhkWHIHpqmjxf3UO"><!--pnid:k5U0AHWiOOxCAr5yp9ZNgD-->减速时加速度</dt><dd data-page-node-id="4bw0ZNZBdmvAqPF0HFXZZM" id="kA"><!--pnid:nq1nq9UbgTcjdGioEdhO3o-->—</dd>
+      </dl>
+      <div data-page-node-id="Sl6VEin8LutLc4FTBTPB7h" class="chain" id="chain"></div>
+      <details data-page-node-id="RAjMAsIH9YveFA5MrtNRmp">
+        <summary data-page-node-id="xgdW5V82zrKKftyTtubWQH"><!--pnid:kpKiES2UGikA2fFdYd7Wop-->物理模型与参数说明</summary>
+        <p data-page-node-id="48GgLKnVJzg78lAv1ZnI9Q"><!--pnid:HNbwfp6Nf8TryUJWtREuJP-->
+          ① g = 10 N/kg；② <b data-page-node-id="hglLTkMJ4VTHZR66kWyJWy"><!--pnid:9maspapqw4KeJ2p11bOAUH-->放了木块时</b><!--pnid:qX4cRkSF0y8Bk03NlliNRo-->忽略小车摩擦，只计木块与木板间滑动摩擦 μ = 0.8；<b data-page-node-id="Qi4V2pf9gMmbaRqF19Ogbm"><!--pnid:BJqWwnclRsWG4NrlTtj6B5-->不放木块时</b><!--pnid:8IjSg8vLQjhvWomyVtSs5y-->，小车进入水平长木板后受等效滚动阻力 f = μ<sub data-page-node-id="T4zvjua3KxfibUrwAsf0yc"><!--pnid:ALP7ZXv0EZyZzemI5YIFHM-->车</sub><!--pnid:rhp2NpqBukUHvnbE23yqp8-->·G<sub data-page-node-id="doQP3H4AxWd3SFi9TUL81E"><!--pnid:bV8vvUtmYH6EUX61gTCjHb-->车</sub><!--pnid:Zpr7ACPllZKPOhlVogFSQJ-->（μ<sub data-page-node-id="9oesraW0LZSRjabKDnGOdZ"><!--pnid:uGLF0iDHJ14GBxL2jT1nzo-->车</sub><!--pnid:9x7XRD2E7Vx0lnavanEFAn--> = 0.2，斜面上仍按教材约定忽略摩擦）；<br data-page-node-id="qOiAZA4vcYWABTa3m2IHae"><!--pnid:qorlBcFt55Lo5Mdjtf7mTb-->
+          ③ 斜面：E<sub data-page-node-id="sRMxZFFVgEnaVLNIAHygM9"><!--pnid:r2YY0CBaP0ifmw76P1hTsU-->k</sub><!--pnid:5GM85N9A29Dgi9iltnkEHS--> = G<sub data-page-node-id="fpv9G2BlQmbCsDDGz1z9Vu"><!--pnid:YzufFucvvfiEanTzCfqkTs-->车</sub><!--pnid:s8KDUDVQpWsTs9MNpJHTmS-->·h，v₀ = √(2gh)；④ 弹簧：k = 20 N/m，E<sub data-page-node-id="DEl1Fsp1qbSirojDmbRJpu"><!--pnid:kxOysVQeeTTJlQCOBqZRVW-->k</sub><!--pnid:87AIIPDroarOFRPPEJZ6zs--> = ½kΔx²；<br data-page-node-id="RGsTpzsCayMq9716JcDnyB"><!--pnid:6T8fnGoWixTMGmorJBRBXz-->
+          ⑤ 碰撞按教材理想化处理：忽略碰撞中的能量损失，小车动能全部成为"小车+木块"共同运动的动能，随后全部用于克服木块所受摩擦做功，故 S = E<sub data-page-node-id="TinRy3sacAzao5ScKMynpV"><!--pnid:awXtr6nDVJNv9Y9WGEvVND-->k</sub><!--pnid:Ik3chRQJCNhO39pBWj7UFh--> / (μ·G<sub data-page-node-id="VfLMsbXSSBiPulUXmRbHKW"><!--pnid:BsPY7N8c3c0Jpx54feDYsP-->木块</sub><!--pnid:dNzUywgg7AIKHFL0ytIKMY-->)，同一木块时 S 与 E<sub data-page-node-id="uIrSr16CpvKZtc6pQUucPf"><!--pnid:Xoja7kurbbNvIkVVd77vBS-->k</sub><!--pnid:DQTDi5ryP5aiiQ8wU4wzYM--> 严格成正比。<br data-page-node-id="8MvrV7YRl9O1lC5LkD0EIr"><!--pnid:I19FIFDgfPxcE4WyVvkwDE-->
+          ⑥ 课标依据：《义务教育物理课程标准（2022年版）》能量主题 3.2.1"知道动能、势能和机械能；通过实验，了解动能和势能的相互转化"（条目号系网络检索所得，2025年修订版具体条目号未逐一核对，供参考）。
+        </p>
+      </details>
+    </div>
+  </div>
+</div>
+
+<script data-page-node-id="bU40apX7EBU0DWc60jijea" data-pnid-children="YZHaXPzZA1aE88ptHlnXjB">
+(function(){
+'use strict';
+
+/* ================= 常量（世界坐标：米，y 向上，0 = 木板面） ================= */
+const G = 10, MU = 0.8, MUC = 0.2, K = 20;
+const RUN = 0.75, RISE = 0.22;
+const RLEN = Math.hypot(RUN, RISE);
+const SIN = RISE/RLEN, COS = RUN/RLEN, TH = Math.atan2(RISE, RUN);
+const X0 = 0.75, X1 = 3.60, WORLDW = 3.85;   // 水平长木板（含左右留白的世界宽度）
+const WALL_W = 0.06, SPRING_FREE = 1.06; // 弹簧原长末端
+const CART_L = 0.24, CART_H = 0.075, WHEEL_R = 0.030;
+const BX0R = X0 + CART_L;                // 斜面模式：木块初始左边缘 = 距斜面底端一个车长
+const BX0S = 1.50;                       // 弹簧模式：木块初始左边缘（须在弹簧原长末端右侧）
+function bx0(){ return app.mode==='spring' ? BX0S : BX0R; }
+const LANE_H = 0.50, TOPPAD = 0.50, BOTPAD = 0.20, MAX_LANES = 4;
+const BLK = { small:{len:0.13,h:0.090,w:0.5,name:'50g小木块'},
+              big  :{len:0.18,h:0.115,w:1.0,name:'100g大木块'} };
+const WT  = { w50:{w:0.5,len:0.105,h:0.040,name:'50g'} };
+const LANE_COLORS = ['#0ea5e9','#8b5cf6','#10b981','#f43f5e'];
+const CN = ['①','②','③','④'];
+
+/* ================= 状态 ================= */
+const app = { mode:null, active:0, running:false, scale:0.5 };
+let lanes = [];
+
+function mkLane(i, from){
+  const b = from || {};
+  return {
+    i, color: LANE_COLORS[i], cart: (b.cart===undefined?null:b.cart),
+    weights: { w50: (b.weights&&b.weights.w50)||0 },
+    block: (b.block===undefined?null:b.block),
+    h: b.h!==undefined?b.h:0.10, dx: b.dx!==undefined?b.dx:0.10, ready:false,
+    phase:'idle', t:0, t1:0, t2:0, cartX:0, cartY:0, ang:0, startX:0,
+    blockX:BX0R, springEnd:SPRING_FREE, done:false, d:null
+  };
+}
+function cartWeight(l){
+  return (l.cart==='1N'?1:2) + (l.weights.w50||0)*WT.w50.w;
+}
+function cartLabel(l){
+  const p=[];
+  if(l.weights.w50)  p.push('50g'  + (l.weights.w50 >1 ? '×'+l.weights.w50  : ''));
+  return (l.cart==='1N'?'1N':'2N')+'小车'+(p.length?'+'+p.join('+'):'');
+}
+function derive(l){
+  const Wc = cartWeight(l);
+  const hasB = !!l.block;
+  const Wb = hasB ? BLK[l.block].w : 0;
+  const Mc = Wc/G, Mb = Wb/G;
+  let Ek, v0;
+  if(app.mode==='ramp'){ Ek = Wc*l.h; v0 = Math.sqrt(2*G*l.h); }
+  else { Ek = 0.5*K*l.dx*l.dx; v0 = Math.sqrt(2*Ek/Mc); }
+  let V, a, S, markStart;
+  if(hasB){
+    markStart = bx0();                                // 从木块起点量起
+    V = Math.sqrt(2*Ek/(Mc+Mb));
+    a = MU*Wb/(Mc+Mb);
+    S = Ek/(MU*Wb);
+  }else{
+    markStart = (app.mode==='ramp') ? X0 : (SPRING_FREE+CART_L);  // 从进木板/离弹簧处量起
+    V = v0;
+    a = MUC*G;
+    S = Ek/(MUC*Wc);
+  }
+  return {Wc,Wb,Mc,Mb,Ek,v0,V,a,S,markStart,tStop:V/a};
+}
+function resetLane(l){
+  l.phase='idle'; l.t=0; l.t1=0; l.t2=0; l.done=false; l.blockX=bx0();
+  l.springEnd = SPRING_FREE;
+  if(app.mode==='ramp'){
+    const dd = l.h/SIN;
+    l.cartX = X0 - dd*COS; l.cartY = dd*SIN; l.ang = TH;
+  }else if(app.mode==='spring'){
+    l.springEnd = SPRING_FREE - l.dx;
+    l.cartX = l.springEnd + CART_L; l.cartY = 0; l.ang = 0;
+  }else{
+    l.cartX = X0 + 0.12 + CART_L; l.cartY = 0; l.ang = 0;
+  }
+  l.startX = l.cartX;
+  l.d = (l.cart && app.mode) ? derive(l) : null;
+  l.ready = !!l.d;
+}
+
+/* ================= 画布与坐标 ================= */
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d'), wrap = document.getElementById('cvWrap');
+let VW=800, VH=200, S=240, OX=24, OY=110, DPR=1;
+const PX = x => OX + x*S;
+const PY = (y, base) => OY - (base + y)*S;
+
+function resize(){
+  const W = wrap.clientWidth || 800;
+  S = Math.max(105, (W-24)/WORLDW);
+  const worldH = TOPPAD + (Math.max(1,lanes.length)-1)*LANE_H + BOTPAD;
+  const H = Math.round(worldH*S)+18;
+  DPR = window.devicePixelRatio || 1;
+  cv.style.width = W+'px'; cv.style.height = H+'px';
+  cv.width = Math.round(W*DPR); cv.height = Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  VW=W; VH=H;
+  OX = 12 + 0.05*S;
+  OY = 9 + TOPPAD*S;
+}
+function rr(c,x,y,w,h,r){
+  r = Math.max(0, Math.min(r, Math.abs(w)/2, Math.abs(h)/2));
+  c.beginPath(); c.moveTo(x+r,y);
+  c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r);
+  c.arcTo(x,y+h,x,y,r);     c.arcTo(x,y,x+w,y,r); c.closePath();
+}
+function chip(c,text,x,y,fg,bg,bd,font){
+  c.font = font || '600 11px system-ui,"Microsoft YaHei",sans-serif';
+  const w = c.measureText(text).width + 12, h = 17;
+  c.fillStyle=bg; c.strokeStyle=bd; c.lineWidth=1;
+  rr(c,x-w/2,y-h/2,w,h,5); c.fill(); c.stroke();
+  c.fillStyle=fg; c.textAlign='center'; c.textBaseline='middle';
+  c.fillText(text,x,y);
+}
+function arrowH(c,x1,x2,y,base,col){
+  c.strokeStyle=col; c.fillStyle=col; c.lineWidth=1.6;
+  c.beginPath(); c.moveTo(PX(x1),PY(y,base)); c.lineTo(PX(x2),PY(y,base)); c.stroke();
+  const a=4.5;
+  c.beginPath(); c.moveTo(PX(x1),PY(y,base)); c.lineTo(PX(x1)+a,PY(y,base)-3.2); c.lineTo(PX(x1)+a,PY(y,base)+3.2); c.fill();
+  c.beginPath(); c.moveTo(PX(x2),PY(y,base)); c.lineTo(PX(x2)-a,PY(y,base)-3.2); c.lineTo(PX(x2)-a,PY(y,base)+3.2); c.fill();
+  c.beginPath(); c.moveTo(PX(x1),PY(y,base)-6); c.lineTo(PX(x1),PY(y,base)+6); c.stroke();
+  c.beginPath(); c.moveTo(PX(x2),PY(y,base)-6); c.lineTo(PX(x2),PY(y,base)+6); c.stroke();
+}
+
+/* ================= 各部件 ================= */
+function drawBoard(l, base){
+  const g = ctx.createLinearGradient(0,PY(0,base),0,PY(-0.045,base));
+  g.addColorStop(0,'#e3b17d'); g.addColorStop(1,'#c0854a');
+  ctx.fillStyle=g; ctx.fillRect(PX(X0),PY(0,base),(X1-X0)*S,0.045*S+0.5);
+  ctx.fillStyle='#a9702f'; ctx.fillRect(PX(X0),PY(0,base),(X1-X0)*S,1.6);
+}
+function drawRamp(l, base){
+  ctx.beginPath();
+  ctx.moveTo(PX(X0),PY(0,base)); ctx.lineTo(PX(0),PY(RISE,base)); ctx.lineTo(PX(0),PY(0,base));
+  ctx.closePath();
+  const g=ctx.createLinearGradient(PX(0),PY(RISE,base),PX(X0),PY(0,base));
+  g.addColorStop(0,'#e7d3b8'); g.addColorStop(1,'#d9a066');
+  ctx.fillStyle=g; ctx.fill();
+  ctx.strokeStyle='#b9793f'; ctx.lineWidth=1.6;
+  ctx.beginPath(); ctx.moveTo(PX(0),PY(RISE,base)); ctx.lineTo(PX(X0),PY(0,base)); ctx.stroke();
+}
+function drawWall(l, base){
+  ctx.fillStyle='#94a3b8'; ctx.fillRect(PX(X0),PY(0.16,base),WALL_W*S,0.16*S);
+  ctx.strokeStyle='#64748b'; ctx.lineWidth=1;
+  for(let i=0;i<5;i++){
+    ctx.beginPath();
+    ctx.moveTo(PX(X0)+i*WALL_W*S/5, PY(0.16,base));
+    ctx.lineTo(PX(X0)+(i+1)*WALL_W*S/5, PY(0,base));
+    ctx.stroke();
+  }
+  ctx.fillStyle='#64748b'; ctx.font='9.5px system-ui,sans-serif';
+  ctx.textAlign='center'; ctx.textBaseline='bottom';
+  ctx.fillText('固定', PX(X0+WALL_W/2), PY(0.175,base));
+}
+function drawSpring(l, base){
+  const xa = X0+WALL_W, xb = l.springEnd, y = 0.055, n = 9, amp = 0.022;
+  ctx.strokeStyle='#64748b'; ctx.lineWidth=2; ctx.beginPath();
+  ctx.moveTo(PX(xa),PY(y,base));
+  const seg=(xb-xa)/(n+1);
+  for(let i=1;i<=n;i++) ctx.lineTo(PX(xa+seg*i), PY(y + (i%2?amp:-amp), base));
+  ctx.lineTo(PX(xb),PY(y,base)); ctx.stroke();
+}
+function drawBlock(l, base){
+  if(!l.block) return;
+  const b = BLK[l.block], x = l.blockX;
+  const w = b.len*S, h = b.h*S;
+  const xp = PX(x), yp = PY(b.h, base);
+  ctx.fillStyle = l.block==='small' ? '#3b82f6' : '#1d4ed8';
+  ctx.strokeStyle = l.block==='small' ? '#1d4ed8' : '#172554'; ctx.lineWidth=1.3;
+  rr(ctx,xp,yp,w,h,3); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle='rgba(255,255,255,.35)'; ctx.lineWidth=1;
+  for(let i=1;i<=2;i++){
+    ctx.beginPath(); ctx.moveTo(xp+w*0.12, yp+h*(0.3*i));
+    ctx.lineTo(xp+w*0.88, yp+h*(0.3*i)); ctx.stroke();
+  }
+  ctx.fillStyle='#fff'; ctx.font='700 10px system-ui,sans-serif';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(l.block==='small'?'50g':'100g', xp+w/2, yp+h/2);
+}
+function drawCart(l, base){
+  if(!l.cart) return;
+  const c=ctx;
+  c.save(); c.translate(PX(l.cartX), PY(l.cartY, base)); c.rotate(l.ang);
+  const L=CART_L*S, Hh=CART_H*S, r=WHEEL_R*S;
+  c.fillStyle='#475569';
+  [-L+0.045*S, -0.045*S].forEach(wx=>{
+    c.beginPath(); c.arc(wx,-r,r,0,Math.PI*2); c.fill();
+    c.fillStyle='#e2e8f0'; c.beginPath(); c.arc(wx,-r,r*0.38,0,Math.PI*2); c.fill(); c.fillStyle='#475569';
+  });
+  const body = l.cart==='1N' ? '#fb923c' : '#ef4444';
+  const edge = l.cart==='1N' ? '#ea580c' : '#b91c1c';
+  c.fillStyle=body; c.strokeStyle=edge; c.lineWidth=1.4;
+  rr(c,-L,-2*r-Hh,L,Hh,5); c.fill(); c.stroke();
+  c.strokeStyle='rgba(255,255,255,.55)'; c.lineWidth=1.4;
+  c.beginPath(); c.moveTo(-L+0.03*S,-2*r-Hh+0.016*S); c.lineTo(-0.03*S,-2*r-Hh+0.016*S); c.stroke();
+  let top = -2*r-Hh;
+  ['w50'].forEach(k=>{
+    const n = l.weights[k]||0;
+    if(!n) return;
+    const w = WT[k], wl = w.len*S, wh = (0.024 + 0.010*(n-1))*S;
+    c.fillStyle = k==='w50' ? '#64748b' : '#475569';
+    c.strokeStyle='#334155'; c.lineWidth=1.2;
+    rr(c,-L/2-wl/2, top-wh, wl, wh, 2); c.fill(); c.stroke();
+    c.fillStyle='#fff'; c.font='700 9px system-ui,sans-serif';
+    c.textAlign='center'; c.textBaseline='middle';
+    c.fillText(n>1 ? (w.name+'×'+n) : w.name, -L/2, top-wh/2);
+    top -= wh;
+  });
+  c.restore();
+}
+/* 木板下方的标记条：长度 = 木块移动距离 S */
+function drawBar(l, base){
+  if(!l.done) return;
+  const yTop = -0.050, hgt = 0.020, w = l.d.S*S, xs = l.d.markStart;
+  ctx.fillStyle = l.color+'2e'; ctx.strokeStyle = l.color; ctx.lineWidth=1.6;
+  rr(ctx, PX(xs), PY(yTop, base), w, hgt*S, 3); ctx.fill(); ctx.stroke();
+  ctx.fillStyle=l.color; ctx.font='700 11px system-ui,sans-serif';
+  ctx.textAlign='right'; ctx.textBaseline='middle';
+  ctx.fillText(CN[l.i], PX(xs)-5, PY(yTop-hgt/2, base));
+  ctx.textAlign='left'; ctx.fillStyle='#334155'; ctx.font='700 10.5px system-ui,sans-serif';
+  ctx.fillText((l.block?'木块 S = ':'小车 S = ')+(l.d.S*100).toFixed(1)+' cm', PX(xs)+w+6, PY(yTop-hgt/2, base));
+}
+/* h / Δx 标注：固定在小车起始位置，不随小车移动 */
+function drawSetting(l, base){
+  if(!app.mode) return;
+  if(app.mode==='ramp'){
+    const x = l.startX, h = l.h;
+    ctx.setLineDash([4,3]); ctx.strokeStyle='#0ea5e9'; ctx.lineWidth=1.2;
+    ctx.beginPath(); ctx.moveTo(PX(x),PY(h,base)); ctx.lineTo(PX(x),PY(0,base)); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.strokeStyle='#0ea5e9'; ctx.fillStyle='#0ea5e9'; ctx.lineWidth=1.4;
+    const a=4;
+    ctx.beginPath(); ctx.moveTo(PX(x),PY(h,base)); ctx.lineTo(PX(x)-3,PY(h,base)+a); ctx.lineTo(PX(x)+3,PY(h,base)+a); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(PX(x),PY(0,base)); ctx.lineTo(PX(x)-3,PY(0,base)-a); ctx.lineTo(PX(x)+3,PY(0,base)-a); ctx.fill();
+    chip(ctx,'h = '+Math.round(h*100)+' cm', PX(x)+0.10*S+30, PY(Math.max(h*0.5,0.075),base), '#075985','#e0f2fe','#7dd3fc','600 10px system-ui,sans-serif');
+  }else{
+    const x1 = X0+WALL_W, x2 = SPRING_FREE - l.dx;
+    ctx.setLineDash([4,3]); ctx.strokeStyle='#0ea5e9'; ctx.lineWidth=1.2;
+    ctx.beginPath(); ctx.moveTo(PX(x1),PY(0,base)); ctx.lineTo(PX(x2),PY(0,base)); ctx.stroke();
+    ctx.setLineDash([]);
+    arrowH(ctx,x1,x2,0.012,base,'#0ea5e9');
+    chip(ctx,'Δx = '+Math.round(l.dx*100)+' cm', PX((x1+x2)/2), PY(0.215,base), '#075985','#e0f2fe','#7dd3fc','600 10px system-ui,sans-serif');
+  }
+}
+function drawSArrow(l, base){
+  if(!l.done) return;
+  const x1 = l.d.markStart, x2 = x1 + l.d.S;
+  arrowH(ctx,x1,x2,0.145,base,'#ca8a04');
+  chip(ctx,(l.block?'木块移动 S = ':'小车移动 S = ')+(l.d.S*100).toFixed(1)+' cm', PX((x1+x2)/2), PY(0.235,base),
+       '#713f12','#fde047','#eab308','700 10.5px system-ui,sans-serif');
+}
+function drawVLabel(l, base){
+  if(!l.d) return;
+  ctx.font='600 10.5px system-ui,sans-serif'; ctx.textAlign='center'; ctx.textBaseline='bottom';
+  if(l.phase==='ramp'){
+    ctx.fillStyle='#ea580c';
+    ctx.fillText('v='+(G*SIN*l.t).toFixed(2)+' m/s', PX(l.cartX)-0.05*S, PY(l.cartY+0.255,base));
+  }else if(l.phase==='spring'){
+    const w=Math.sqrt(K/l.d.Mc);
+    ctx.fillStyle='#ea580c';
+    ctx.fillText('v='+(l.dx*w*Math.sin(w*l.t)).toFixed(2)+' m/s', PX(l.cartX)-0.05*S, PY(0.255,base));
+  }else if(l.phase==='coast'){
+    ctx.fillStyle='#ea580c';
+    ctx.fillText('v='+l.d.v0.toFixed(2)+' m/s', PX(l.cartX)-0.05*S, PY(l.cartY+0.255,base));
+  }else if(l.phase==='push'){
+    const ts=l.t-l.t2, v=Math.max(0,l.d.V-l.d.a*ts);
+    ctx.fillStyle='#1d4ed8';
+    ctx.fillText('v='+v.toFixed(2)+' m/s', PX(l.blockX+BLK[l.block].len/2), PY(BLK[l.block].h+0.03,base));
+  }else if(l.phase==='slide'){
+    const ts=l.t-l.t2, v=Math.max(0,l.d.v0-l.d.a*ts);
+    ctx.fillStyle='#ea580c';
+    ctx.fillText('v='+v.toFixed(2)+' m/s', PX(l.cartX)-0.05*S, PY(0.255,base));
+  }
+}
+function drawTag(l, base){
+  if(!l.cart) return;
+  const txt = cartLabel(l)+' · '+(app.mode==='ramp'?('h='+Math.round(l.h*100)+'cm'):('Δx='+Math.round(l.dx*100)+'cm'));
+  ctx.font='700 10px system-ui,sans-serif';
+  const w = ctx.measureText(txt).width+14;
+  const x = PX(0.55) - w/2, y = PY(RISE+0.030, base) - 8;
+  ctx.fillStyle=l.color+'1f'; ctx.strokeStyle=l.color+'88'; ctx.lineWidth=1;
+  rr(ctx,x,y,w,16,8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle=l.color; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText(txt, x+w/2, y+8);
+}
+function drawRuler(botBase){
+  const y0 = -0.095;
+  ctx.fillStyle='#fffbeb'; ctx.strokeStyle='#fcd34d'; ctx.lineWidth=1;
+  rr(ctx,PX(X0-0.03),PY(y0,botBase),((X1-X0)+0.06)*S,0.048*S,3); ctx.fill(); ctx.stroke();
+  for(let cm=0; cm<=Math.round((X1-X0)*100); cm+=10){
+    const x = X0 + cm/100, maj = (cm%20===0);
+    ctx.strokeStyle = maj?'#92400e':'#d6b26a'; ctx.lineWidth = maj?1.3:1;
+    ctx.beginPath(); ctx.moveTo(PX(x),PY(y0,botBase)); ctx.lineTo(PX(x),PY(y0-(maj?0.022:0.013),botBase)); ctx.stroke();
+    if(maj){
+      ctx.fillStyle='#92400e'; ctx.font='9.5px system-ui,sans-serif';
+      ctx.textAlign='center'; ctx.textBaseline='top';
+      ctx.fillText(String(cm), PX(x), PY(y0-0.024,botBase));
+    }
+  }
+  ctx.fillStyle='#a16207'; ctx.font='9.5px system-ui,sans-serif';
+  ctx.textAlign='right'; ctx.textBaseline='middle';
+  ctx.fillText('cm', PX(X0-0.05), PY(y0-0.02,botBase));
+}
+
+/* ================= 总绘制 ================= */
+function drawEmpty(){
+  const cx = PX((X0+X1)/2);
+  ctx.setLineDash([7,6]); ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=5; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(PX(X0),PY(0,0)); ctx.lineTo(PX(X1),PY(0,0)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillStyle='#94a3b8'; ctx.font='600 14px system-ui,"Microsoft YaHei",sans-serif';
+  ctx.fillText('画布是空的 —— 请从左侧器材盒自选器材，组装实验装置', cx, PY(0.215,0));
+  ctx.fillStyle='#b8c2ce'; ctx.font='12.5px system-ui,"Microsoft YaHei",sans-serif';
+  ctx.fillText('① 选驱动方式：斜面下滑 / 弹簧弹射', cx, PY(0.125,0));
+  ctx.fillText('② 选小车（可加 50g 配重，最多 3 件）　③ 选木块　④ 点「开始」', cx, PY(0.055,0));
+}
+function draw(){
+  ctx.clearRect(0,0,VW,VH);
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,VW,VH);
+  if(!lanes.length){ drawEmpty(); return; }
+  const n = lanes.length, botBase = -(n-1)*LANE_H;
+  ctx.setLineDash([3,5]); ctx.strokeStyle='#eef2f7'; ctx.lineWidth=1;
+  for(let cm=0; cm<=Math.round((X1-X0)*100); cm+=20){
+    const x = PX(X0+cm/100);
+    ctx.beginPath(); ctx.moveTo(x, PY(0.44,0)); ctx.lineTo(x, PY(-0.090,botBase)); ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  drawRuler(botBase);
+  lanes.forEach((l,i)=>{
+    const base = -i*LANE_H;
+    if(app.mode==='ramp'){ drawRamp(l,base); } else { drawWall(l,base); drawSpring(l,base); }
+    drawBoard(l,base);
+    drawBar(l,base);
+    drawSetting(l,base);
+    drawTag(l,base);
+    drawBlock(l,base);
+    drawCart(l,base);
+    drawSArrow(l,base);
+    drawVLabel(l,base);
+  });
+}
+
+/* ================= 动画 ================= */
+let raf=null, last=0;
+function stepLane(l, dt){
+  const d = l.d, b0 = bx0();
+  if(l.phase==='ramp'){
+    const dd0=l.h/SIN, a=G*SIN;
+    l.t += dt;
+    const dd = dd0 - 0.5*a*l.t*l.t;
+    if(dd<=0){
+      l.t1=Math.sqrt(2*dd0/a); l.cartX=X0; l.cartY=0;
+      l.phase = l.block ? 'coast' : 'slide';
+      if(!l.block){ l.t2=l.t1; l.cartX=d.markStart; }
+    }
+    else { l.cartX = X0 - dd*COS; l.cartY = dd*SIN; l.ang = TH; }
+  } else if(l.phase==='spring'){
+    l.t += dt;
+    const w=Math.sqrt(K/d.Mc), tR=Math.PI/(2*w);
+    if(l.t>=tR){
+      l.phase = l.block ? 'coast' : 'slide'; l.t1=tR;
+      l.springEnd=SPRING_FREE; l.cartX=SPRING_FREE+CART_L;
+      if(!l.block){ l.t2=tR; l.cartX=d.markStart; }
+    }
+    else { l.springEnd = SPRING_FREE - l.dx*Math.cos(w*l.t); l.cartX = l.springEnd + CART_L; }
+  } else if(l.phase==='coast'){
+    l.t += dt;
+    l.cartX = (app.mode==='ramp' ? X0 : SPRING_FREE+CART_L) + d.v0*(l.t-l.t1);
+    if(app.mode==='ramp') l.ang = TH*Math.max(0, 1-(l.cartX-X0)/CART_L);
+    if(l.cartX>=b0){ l.phase='push'; l.t2=l.t; l.cartX=b0; }
+  }
+  if(l.phase==='push'){
+    l.t += dt;
+    const ts = l.t - l.t2;
+    if(ts >= d.tStop){ l.blockX=b0+d.S; l.cartX=b0+d.S; l.phase='done'; l.done=true; }
+    else { l.blockX = b0 + d.V*ts - 0.5*d.a*ts*ts; l.cartX = l.blockX; }
+  } else if(l.phase==='slide'){
+    l.t += dt;
+    const ts = l.t - l.t2;
+    if(ts >= d.tStop){ l.cartX = d.markStart + d.S; l.phase='done'; l.done=true; }
+    else { l.cartX = d.markStart + d.v0*ts - 0.5*d.a*ts*ts; }
+    // 车尾完全驶出斜面后车身回正（一个车长内由 TH 线性归零），避免斜着悬空
+    if(app.mode==='ramp') l.ang = TH*Math.max(0, 1-(l.cartX-X0)/CART_L);
+  }
+}
+function tick(ts){
+  raf=null;
+  if(!app.running) return;
+  if(!last) last=ts;
+  let dt=(ts-last)/1000; last=ts;
+  dt=Math.min(dt,0.05);
+  const sdt = dt*app.scale;
+  lanes.forEach(l=>{ if(l.phase!=='idle' && l.phase!=='done') stepLane(l,sdt); });
+  draw();
+  if(lanes.some(l=>l.phase!=='idle' && l.phase!=='done')){
+    raf=requestAnimationFrame(tick);
+  }else{
+    app.running=false; last=0;
+    document.getElementById('sRange').disabled=false;
+    updateBtns(); renderData();
+  }
+}
+function startAll(){
+  if(app.running) return;
+  if(!lanes.length || !lanes.every(l=>l.ready)) return;
+  lanes.forEach(resetLane);
+  lanes.forEach(l=>{ l.phase = (app.mode==='ramp') ? 'ramp' : 'spring'; });
+  app.running=true; last=0;
+  document.getElementById('sRange').disabled=true;
+  updateBtns();
+  draw();
+  raf=requestAnimationFrame(tick);
+}
+
+/* ================= 面板渲染 ================= */
+function renderTabs(){
+  const row=document.getElementById('laneRow');
+  row.innerHTML='';
+  lanes.forEach((l,i)=>{
+    const b=document.createElement('button');
+    b.className='lt'+(i===app.active?' on':'');
+    b.dataset.i=i;
+    b.innerHTML='<i style="background:'+l.color+'"></i>组'+CN[i];
+    if(lanes.length>1){
+      const x=document.createElement('span');
+      x.className='del'; x.textContent='×'; x.dataset.del=i;
+      b.appendChild(x);
+    }
+    row.appendChild(b);
+  });
+  if(lanes.length<MAX_LANES){
+    const a=document.createElement('button');
+    a.className='lt add'; a.id='addLane'; a.textContent='＋';
+    row.appendChild(a);
+  }
+  const nm = lanes.length ? ('第'+CN[app.active]+'组') : '未组装';
+  document.getElementById('curLane').textContent=nm;
+  document.getElementById('dataLane').textContent=nm;
+}
+function syncEq(){
+  const l=lanes[app.active];
+  document.querySelectorAll('[data-cart]').forEach(o=>o.classList.toggle('on', !!l && o.dataset.cart===l.cart));
+  document.querySelectorAll('[data-weight]').forEach(o=>o.classList.toggle('on', !!l && !!l.weights[o.dataset.weight]));
+  document.querySelectorAll('[data-block]').forEach(o=>{
+    const k=o.dataset.block;
+    o.classList.toggle('on', !!l && (k==='none' ? !l.block : l.block===k));
+  });
+  document.querySelectorAll('[data-eq]').forEach(o=>{
+    o.classList.toggle('on', o.dataset.eq===app.mode);
+    o.classList.toggle('off', o.dataset.eq!==app.mode);
+  });
+  document.querySelectorAll('.mode').forEach(o=>o.classList.toggle('on', o.dataset.mode===app.mode));
+  ['w50'].forEach(k=>{
+    const e=document.getElementById('qn_'+k);
+    if(e) e.textContent = l ? (l.weights[k]||0) : 0;
+  });
+  const sl=document.getElementById('sLabel'), r=document.getElementById('sRange');
+  if(app.mode==='ramp'){ sl.textContent='释放高度'; r.min=2; r.max=15; if(l) r.value=Math.round(l.h*100); }
+  else if(app.mode==='spring'){ sl.textContent='弹簧压缩量'; r.min=4; r.max=18; if(l) r.value=Math.round(l.dx*100); }
+  else { sl.textContent='释放高度'; r.min=2; r.max=15; r.value=10; }
+  document.getElementById('sVal').textContent=r.value+' cm';
+}
+function renderPlan(){
+  const l=lanes[app.active], P=document.getElementById('plan');
+  if(!l){ P.innerHTML='当前方案：<b>尚未组装</b> —— 请在左侧器材盒依次选择驱动方式、小车（木块可选）。'; return; }
+  if(!l.d){
+    const miss=[];
+    if(!app.mode) miss.push('驱动方式');
+    if(!l.cart)   miss.push('小车');
+    P.innerHTML='第'+CN[app.active]+'组：还缺 <b>'+miss.join('、')+'</b>，补齐后才能开始实验。'+
+      (l.block?'':'<span style="color:#94a3b8">（木块可放可不放：不放时只测小车自身滑行距离）</span>');
+    return;
+  }
+  const d=l.d;
+  const tail = l.block
+    ? ('撞击 <b>'+BLK[l.block].name+'</b>，木块被推动 S。')
+    : ('不撞木块，小车克服自身摩擦阻力在水平长木板上滑行，测量小车移动的距离 S。');
+  const txt = app.mode==='ramp'
+    ? '第'+CN[app.active]+'组：用 <b>'+cartLabel(l)+'</b>从斜面高 <b>'+Math.round(l.h*100)+' cm</b> 处由静止自由下滑，'+tail
+    : '第'+CN[app.active]+'组：用 <b>'+cartLabel(l)+'</b>把弹簧压缩 <b>'+Math.round(l.dx*100)+' cm</b> 后由静止释放，'+tail;
+  document.getElementById('plan').innerHTML = txt + '　<span style="color:#94a3b8">（共 '+lanes.length+' 组同时进行）</span>';
+}
+function renderData(){
+  const l=lanes[app.active];
+  if(!l || !l.d){
+    ['v0','ek','ss','kW','kM','kB','kV','kA'].forEach(k=>document.getElementById(k).textContent='—');
+    document.getElementById('chain').innerHTML='能量转化：先组装完整装置（驱动方式 + 小车 + 木块）后显示。';
+    return;
+  }
+  const d=l.d;
+  document.getElementById('v0').textContent = d.v0.toFixed(2);
+  document.getElementById('ek').textContent = d.Ek.toFixed(3);
+  document.getElementById('ss').textContent = l.done ? (d.S*100).toFixed(1) : '—';
+  document.getElementById('kW').textContent = d.Wc.toFixed(1)+' N';
+  document.getElementById('kM').textContent = d.Mc.toFixed(3)+' kg';
+  document.getElementById('kB').textContent = l.block ? d.Wb.toFixed(1)+' N' : '未放木块';
+  document.getElementById('kV').textContent = l.block ? d.V.toFixed(2)+' m/s' : '—（无碰撞）';
+  document.getElementById('kA').textContent = d.a.toFixed(2)+' m/s²';
+  const work = l.block ? '<i>推动木块做功 = μG<sub>木</sub>·S</i>'
+                       : '<i>小车克服自身阻力做功 = μ<sub>车</sub>G<sub>车</sub>·S</i>';
+  document.getElementById('chain').innerHTML = (app.mode==='ramp'
+    ? '能量转化：<span>重力势能 G·h = '+d.Ek.toFixed(2)+' J</span> → <span>小车动能</span> → '
+    : '能量转化：<span>弹性势能 ½kΔx² = '+d.Ek.toFixed(2)+' J</span> → <span>小车动能</span> → ') + work + ' → 内能（摩擦生热）';
+}
+function refresh(){
+  app.running=false;
+  lanes.forEach(resetLane);
+  renderTabs(); syncEq(); renderPlan(); renderData(); renderAsm();
+  resize(); draw(); updateBtns();
+}
+/* 仅切换查看的组，不清除已有实验结果 */
+function softRefresh(){
+  renderTabs(); syncEq(); renderPlan(); renderData(); renderAsm(); draw(); updateBtns();
+}
+
+/* ================= 组装 / 撤销 / 清空 ================= */
+function snap(){
+  return JSON.stringify({m:app.mode, a:app.active,
+    L:lanes.map(l=>({cart:l.cart, w:l.weights, block:l.block, h:l.h, dx:l.dx}))});
+}
+let undoStack=[], preSlider=null;
+function pushUndo(){
+  undoStack.push(snap());
+  if(undoStack.length>40) undoStack.shift();
+}
+function ensureLane(){ if(!lanes.length){ lanes.push(mkLane(0)); app.active=0; } }
+function updateBtns(){
+  const ok = lanes.length>0 && lanes.every(l=>l.ready);
+  document.getElementById('btnStart').disabled = !ok || app.running;
+  document.getElementById('btnUndo').disabled  = !undoStack.length || app.running;
+}
+function renderAsm(){
+  const el=document.getElementById('asm'), l=lanes[app.active];
+  if(!l){
+    el.innerHTML='<span class="no">尚未组装</span>：在器材盒依次点选 <b>驱动方式 → 小车</b>（木块可选，可选「不放木块」只测小车滑行距离），装置会一件件出现在画布上。';
+    return;
+  }
+  const p=[];
+  p.push(app.mode ? '<span class="ok">✓ 驱动：'+(app.mode==='ramp'?'斜面下滑':'弹簧弹射')+'</span>'
+                  : '<span class="no">✗ 未选驱动方式</span>');
+  p.push(l.cart ? '<span class="ok">✓ '+cartLabel(l)+'</span>' : '<span class="no">✗ 未选小车</span>');
+  p.push(l.block ? '<span class="ok">✓ '+BLK[l.block].name+'</span>'
+                 : '<span class="opt">○ 不放木块（只测小车滑行距离）</span>');
+  p.push(l.ready
+    ? '<span class="ok">✓ 已就绪：'+(app.mode==='ramp'?('释放高度 '+Math.round(l.h*100)+' cm'):('压缩量 '+Math.round(l.dx*100)+' cm'))+'</span>'
+    : '<span class="no">✗ 装置不完整，不能开始</span>');
+  el.innerHTML='第'+CN[app.active]+'组装置：'+p.join(' ｜ ')+(lanes.length>1?'　<span style="color:#94a3b8">（共 '+lanes.length+' 组）</span>':'');
+}
+function undo(){
+  if(!undoStack.length || app.running) return;
+  const o=JSON.parse(undoStack.pop());
+  app.mode = o.m;
+  lanes = o.L.map((c,i)=>mkLane(i,{cart:c.cart, weights:c.w, block:c.block, h:c.h, dx:c.dx}));
+  app.active = Math.min(Math.max(0,o.a), Math.max(0,lanes.length-1));
+  refresh();
+}
+function clearAll(){
+  if(app.running) return;
+  pushUndo();
+  if(raf){ cancelAnimationFrame(raf); raf=null; }
+  app.mode=null; app.active=0; lanes=[];
+  refresh();
+}
+
+/* ================= 事件 ================= */
+document.getElementById('laneRow').addEventListener('click',e=>{
+  if(app.running) return;
+  if(e.target.id==='addLane'){
+    if(lanes.length>=MAX_LANES) return;
+    pushUndo();
+    lanes.push(mkLane(lanes.length, lanes[app.active]||{}));
+    app.active = lanes.length-1;
+    refresh(); return;
+  }
+  if(e.target.dataset.del!==undefined){
+    const i=+e.target.dataset.del;
+    pushUndo();
+    lanes.splice(i,1);
+    lanes.forEach((l,k)=>{ l.i=k; l.color=LANE_COLORS[k]; });
+    app.active = Math.min(app.active, lanes.length-1);
+    refresh(); return;
+  }
+  const b=e.target.closest('.lt');
+  if(b && b.dataset.i!==undefined){ app.active=+b.dataset.i; softRefresh(); }
+});
+document.querySelectorAll('.mode').forEach(el=>el.addEventListener('click',()=>{
+  if(app.running) return;
+  pushUndo(); app.mode=el.dataset.mode; ensureLane(); refresh();
+}));
+document.querySelectorAll('[data-eq]').forEach(el=>el.addEventListener('click',()=>{
+  if(app.running) return;
+  pushUndo(); app.mode=el.dataset.eq; ensureLane(); refresh();
+}));
+document.querySelectorAll('[data-cart]').forEach(el=>el.addEventListener('click',()=>{
+  if(app.running) return;
+  pushUndo(); ensureLane(); lanes[app.active].cart=el.dataset.cart; refresh();
+}));
+document.querySelectorAll('[data-weight]').forEach(el=>el.addEventListener('click',e=>{
+  if(app.running) return;
+  const key = e.target.dataset.plus || e.target.dataset.minus || el.dataset.weight;
+  const dir = e.target.dataset.minus ? -1 : 1;
+  pushUndo(); ensureLane();
+  const l=lanes[app.active], total=(l.weights.w50||0);
+  if(dir>0){ if(total>=3 || (l.weights[key]||0)>=3){ updateBtns(); return; } l.weights[key]=(l.weights[key]||0)+1; }
+  else { if((l.weights[key]||0)<=0){ updateBtns(); return; } l.weights[key]--; }
+  refresh();
+}));
+document.querySelectorAll('[data-block]').forEach(el=>el.addEventListener('click',()=>{
+  if(app.running) return;
+  pushUndo(); ensureLane();
+  const l=lanes[app.active], k=el.dataset.block;
+  l.block = (k==='none') ? null : (l.block===k ? null : k);   // 再点一次＝取消；"不放木块"＝清空
+  refresh();
+}));
+const sRange=document.getElementById('sRange');
+sRange.addEventListener('pointerdown',()=>{ preSlider=snap(); });
+sRange.addEventListener('keydown',()=>{ preSlider=snap(); });
+sRange.addEventListener('input',()=>{
+  if(app.running) return;
+  const v=+sRange.value, l=lanes[app.active];
+  if(!l) return;
+  if(app.mode==='ramp') l.h=v/100; else if(app.mode==='spring') l.dx=v/100;
+  document.getElementById('sVal').textContent=v+' cm';
+  lanes.forEach(resetLane); renderPlan(); renderData(); draw(); updateBtns();
+});
+sRange.addEventListener('change',()=>{
+  if(preSlider){ undoStack.push(preSlider); preSlider=null; updateBtns(); }
+});
+document.getElementById('btnUndo').addEventListener('click',undo);
+document.getElementById('btnClear').addEventListener('click',clearAll);
+document.getElementById('speed').addEventListener('change',e=>{ app.scale=parseFloat(e.target.value); });
+document.getElementById('btnStart').addEventListener('click',startAll);
+document.getElementById('btnReset').addEventListener('click',()=>{
+  app.running=false; last=0;
+  if(raf){ cancelAnimationFrame(raf); raf=null; }
+  document.getElementById('sRange').disabled=false;
+  refresh();
+});
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'){ e.preventDefault(); if(app.running) document.getElementById('btnReset').click(); else startAll(); }
+});
+window.addEventListener('resize',()=>{ resize(); draw(); });
+
+/* ================= 启动 ================= */
+lanes=[];
+refresh();
+})();
+</script>
+</body>
+</html>
