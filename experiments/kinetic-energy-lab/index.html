@@ -28,7 +28,7 @@
   .badge-src{display:inline-block;background:#fff;border:1px solid var(--line2);border-radius:999px;
     padding:1px 10px;font-size:11.5px;color:var(--sub);margin-left:6px}
   .app{
-    display:grid; grid-template-columns:300px minmax(430px,1fr) 320px;
+    display:grid; grid-template-columns:300px minmax(430px,1fr);
     gap:14px; padding:14px 18px 26px; align-items:start;
   }
   .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 13px;
@@ -85,13 +85,14 @@
   .plan{font-size:12.5px;color:var(--sub);background:#f8fafc;border:1px dashed var(--line2);
     border-radius:8px;padding:7px 10px;margin-bottom:9px}
   .plan b{color:var(--ink)}
-  #cvWrap{width:100%;border-radius:10px;overflow:hidden;background:linear-gradient(#ffffff,#f8fafc);
-    border:1px solid var(--line)}
+  #cvWrap{width:100%;border-radius:10px;overflow-x:auto;overflow-y:hidden;
+    background:linear-gradient(#ffffff,#f8fafc);border:1px solid var(--line)}
   canvas{display:block}
   .ctrls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:11px}
   .slider{display:flex;align-items:center;gap:8px;background:#f8fafc;border:1px solid var(--line);
     border-radius:9px;padding:5px 10px;font-size:12.5px}
   .slider input[type=range]{width:150px;accent-color:var(--warm)}
+  #zRange{width:132px}
   .slider .val{font-variant-numeric:tabular-nums;font-weight:700;color:var(--warm-d);min-width:56px;text-align:right}
   button{border:1px solid var(--line2);background:#fff;color:var(--ink);border-radius:9px;
     padding:7px 14px;font-size:13px;cursor:pointer;font-family:inherit;transition:.15s}
@@ -107,14 +108,6 @@
   .asm .ok{color:#15803d;font-weight:600}
   .asm .no{color:#dc2626;font-weight:600}
   .asm .opt{color:#0369a1;font-weight:600}
-  .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:13px;align-items:baseline}
-  .kv dt{color:var(--sub)}
-  .kv dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
-  .bigs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:2px 0 8px}
-  .big{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:8px 4px;text-align:center}
-  .big .v{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.2}
-  .big .k{font-size:11px;color:var(--mute)}
-  .big.w .v{color:var(--warm-d)} .big.e .v{color:var(--warm-d)} .big.c .v{color:var(--cool)}
   .chain{font-size:12px;color:var(--sub);background:#f8fafc;border-radius:8px;padding:7px 9px;margin-top:8px}
   .chain span{color:var(--warm-d);font-weight:600}
   .chain i{color:var(--cool);font-style:normal;font-weight:600}
@@ -122,8 +115,20 @@
   summary{cursor:pointer;font-size:12.5px;color:var(--sub);outline:none}
   details p{font-size:12px;color:var(--sub);margin:7px 0 0}
   details p b{color:var(--ink)}
-  @media (max-width:1180px){
+  /* 本组读数条（右侧实时数据栏移除后移入实验台） */
+  .readout{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:11px}
+  .readout-t{grid-column:1/-1;font-size:11.5px;color:var(--mute);display:flex;align-items:center;gap:6px}
+  .readout-t b{color:var(--warm-d);font-weight:700}
+  .ro{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:7px 10px;text-align:left}
+  .ro .v{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.15}
+  .ro .v2{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.35}
+  .ro .k{font-size:11px;color:var(--mute);margin-top:2px;line-height:1.35}
+  .ro.hi{background:#fff;border-color:var(--line2)}
+  .ro.hi.w .v{color:var(--warm-d)}
+  .ro.hi.c .v{color:var(--cool)}
+  @media (max-width:900px){
     .app{grid-template-columns:1fr}
+    .readout{grid-template-columns:repeat(2,1fr)}
   }
 </style>
 </head>
@@ -207,6 +212,11 @@
         <input data-page-node-id="0L9bnqpnUrTqOemkde484Y" id="sRange" max="15" min="2" step="1" type="range" value="10">
         <span data-page-node-id="GBBnaSn5VA7YnB6I1D1keS" class="val" id="sVal"><!--pnid:Hv0IXJxJNkhRKEcLEUtv6Y-->10 cm</span>
       </div>
+      <div data-page-node-id="Zm4Kp7Nc2Vx9Bt5Qw8Sd3Lf" class="slider" id="zoomBox">
+        <span data-page-node-id="Bn6Rx3Wk9Tp2Qc7Vz5Hd8Ms" id="zLabel"><!--pnid:7O2zMgeGJP9McdJYoixkmC--><!--pnid:Qz8Vn3Wk5Xp7Ct2Bm9Rd4Hs--><!--pnid:KKSnu1FFNmUyfQF263UyvI-->画面缩放</span>
+        <input data-page-node-id="Jd4Tn8Ks2Wm9Xv3Cq6Bz7Rp" id="zRange" max="260" min="80" step="5" type="range" value="100">
+        <span data-page-node-id="Cf7Ws2Nk4Xm9Tv6Qp3Zr8Dh" class="val" id="zVal"><!--pnid:HEiqxzFV2MUd0HVAx9nfKg--><!--pnid:Mx5Rt8Np3Kv7Qw2Zc9Tb6Hd--><!--pnid:I6hIWnWPk0u2Tv5fd2zKu5-->100%</span>
+      </div>
       <select data-page-node-id="vhRjHa5IFQ80QHwEsYcMqn" id="speed">
         <option data-page-node-id="bCPEfsBFgpDZVmjYXckjDW" value="0.25"><!--pnid:2jM1x2amTD79y9JnAwDvFx-->慢放 0.25×</option>
         <option data-page-node-id="TcBQB88p2Ssr0Msh4WOY7C" selected value="0.5"><!--pnid:I4w88ZZpFoeTXDiKKy8tuH-->慢放 0.5×</option>
@@ -216,30 +226,24 @@
       <button data-page-node-id="ulRFxrmd1Pgnp3j1HRzKQO" id="btnReset"><!--pnid:QieqPsHkGHP4cDaXQrQt0e-->↺ 复位</button>
       <button data-page-node-id="o7MHG9Q3FiHLZ23BWgFUP2" id="btnUndo"><!--pnid:H43kaLwGVBxFzWq9t3MMan-->↩ 撤回</button>
       <button data-page-node-id="FN0GQiYqZ1RkYxdrmeaGnp" id="btnClear"><!--pnid:a2xs6qbijYdlRb1XKWJpxp-->✕ 一键清空</button>
+      <button data-page-node-id="Rk9Np3Wq7Zx2Tv5Bm8Cd4Hs" id="btnFit"><!--pnid:VUSOLMFA3W1xBGOol0HCvG--><!--pnid:Ws6Kt2Nm9Qv4Bx8Cp3Zr7Hd--><!--pnid:tIx10w5A5B8e7salue07DS-->⤢ 适应宽度</button>
     </div>
+    <div data-page-node-id="Rk3TmQ9wZaXv7Lb2Nc5Pf1H" class="readout" id="readout">
+      <div data-page-node-id="Vn8Ls4Db6YcRw2Kt9Qe7ZmX" class="readout-t"><!--pnid:wkyglfiydMxMMe8fjj3GNv-->本组读数 · <b data-page-node-id="Pg5Xj1Kf7Nh3Rq8Tc2Vd9Ls" id="dataLane"><!--pnid:Sjyp5hO7BTfGYhmD6o5SwB-->第①组</b><span data-page-node-id="zjiUKQ5mOme9GUcNvPNLLU" style="color:#94a3b8"><!--pnid:JVOClOgwIhgQ4dvnMsiKHK-->（跟随左侧选中的实验组联动）</span></div>
+      <div data-page-node-id="Qd4Wn7Hs2Kx9Tv5Bc8Lf3Ra" class="ro hi w"><div data-page-node-id="Yt6Zc1Pn4Mq8Kw3Xb7Hs9Df" class="v" id="v0"><!--pnid:cgnhUUN8YrzSrdOKOH9rXs-->—</div><div data-page-node-id="Wr2Lf8Tk5Pn9Qc1Xs7Bd4Zm" class="k"><!--pnid:uuyIMtpuQwtv8RdbkA8C7u-->撞击前速度 v₀ (m/s)</div></div>
+      <div data-page-node-id="Lm5Xq8Nt2Vk4Rw7Cz9Bd3Hs" class="ro hi w"><div data-page-node-id="Zp9Kd4Rc7Vn2Tx8Mw5Bq1Lf" class="v" id="ek"><!--pnid:yV3ECP7l6KnKO844jV3ixJ-->—</div><div data-page-node-id="Hf3Ws8Nt2Qm5Xc7Vr9Kd4Lp" class="k"><!--pnid:wMcL8swsMeDCYzFw3BOuVW-->动能 Eₖ (J)</div></div>
+      <div data-page-node-id="Nc7Rt4Wq2Zn9Kd8Ms5Bx1Lp" class="ro hi c"><div data-page-node-id="Vb2Nc9Kr4Wt7Qs1Zd6Hx8Lm" class="v" id="ss"><!--pnid:yPTccOXiuKM2o9SN3FBFBj-->—</div><div data-page-node-id="Jc5Xp8Tn3Wq9Rz2Km7Bd4Fs" class="k"><!--pnid:2e8MQxaHMPf7JaE7mve3oz-->木块移动 S (cm)</div></div>
+      <div data-page-node-id="Qs9Lm2Xk7Bt4Nv6Wd1Hc8Zf" class="ro"><div data-page-node-id="Td3Rk8Np2Xv5Cm9Bz7Qw1Ls" class="v2" id="kW"><!--pnid:HsFygD2PS7oznEfkl70TO8-->—</div><div data-page-node-id="Wn7Kq4Zc9Xp2Tv6Md8Bh3Jr" class="k"><!--pnid:84CTuQoCwlKZF1sYAlyTbi-->小车（含配重）总重</div></div>
+      <div data-page-node-id="Zk4Tb9Xn2Qv7Wm8Cp5Dr1Ls" class="ro"><div data-page-node-id="Rh6Yc3Np8Kd2Tv7Bx9Wq4Mz" class="v2" id="kM"><!--pnid:ic8HqrYPmm6xDSVIZo3ojk-->—</div><div data-page-node-id="Bx9Nt5Qk2Wm8Vr3Cz7Hd9Lp" class="k"><!--pnid:UGAPRsCsNyR7GdKdO1JRkJ-->小车（含配重）质量</div></div>
+      <div data-page-node-id="Mw7Xp4Zn2Kq9Bt6Vc3Hs8Df" class="ro"><div data-page-node-id="Jd8Nc3Wk6Tv2Qp9Bx5Zr7Ms" class="v2" id="kB"><!--pnid:4OBbI9teuMcRQ76HoSt6FW-->—</div><div data-page-node-id="Pt4Hb8Kd2Qn6Wm9Xr3Tv5Cz" class="k"><!--pnid:BHQWYrYJhAuKjHuFUYutXv-->被撞木块重力</div></div>
+      <div data-page-node-id="Zn5Qv8Ck3Tm9Xp2Wr6Bd7Hs" class="ro"><div data-page-node-id="Hb2Kt7Nm4Qw9Zx6Cv3Pr8Ds" class="v2" id="kV"><!--pnid:v9ATgTkgsgnYhDVjxWup33-->—</div><div data-page-node-id="Xs9Db4Nc7Wk2Qm5Tv8Zp3Hr" class="k"><!--pnid:WA81NiPxZs6SZxbk0IqeNW-->碰撞后共同速度</div></div>
+      <div data-page-node-id="Qr3Wk8Nz5Tc2Vb9Xm4Hp7Ds" class="ro"><div data-page-node-id="Ft6Yh1Km9Pq3Wn8Bc2Vz5Xc" class="v2" id="kA"><!--pnid:nq1nq9UbgTcjdGioEdhO3o-->—</div><div data-page-node-id="Lm8Nc3Wk7Tv2Qp9Bx5Zr4Ms" class="k"><!--pnid:k5U0AHWiOOxCAr5yp9ZNgD-->减速时加速度</div></div>
+    </div>
+    <div data-page-node-id="Sl6VEin8LutLc4FTBTPB7h" class="chain" id="chain"></div>
     <div data-page-node-id="TBxskTUiO5gWSMRQNGjNpB" class="asm" id="asm"></div>
     <div data-page-node-id="hHTYF3iwpInHJ6R6M3sq5Q" class="note"><!--pnid:vf5C0o5EqPm6uxtqsoVYO0-->
       操作：切换实验组 → 为它选器材、定高度（或压缩量）→ 点<b data-page-node-id="4uGzqN76lbOzOEE2RON6Id"><!--pnid:l9Pel29pr69ObHwPC4hplM-->开始</b><!--pnid:akV7pq0YiXQbm4zbdcCnhy-->，所有实验组同时释放；每块木板下方会留下与木块移动距离<b data-page-node-id="ielHNaeluRwxJ4lmWDiGwj"><!--pnid:Ten59cKmUigPjxiscWBDWl-->等长</b><!--pnid:qw95JfVIW5AG29eX5L4Fsc-->的彩色标记条。空格键 = 开始/复位。
     </div>
-  </div>
-
-  <!--pnid:4l06hK8qnYL809ksIXlFTX--><!-- 右：数据 -->
-  <div data-page-node-id="jopUvF8oTkQpS9eiDKL7Wi">
-    <div data-page-node-id="GKOCZVm4I9rxHsM6L7iGYd" class="card">
-      <h2 data-page-node-id="EOIJZzmUZWfhGE81HLx6c6"><!--pnid:k7GMRRikm6d8e5UqGLpXEZ-->实时数据 <small data-page-node-id="64xTlriCsddCowQY9C5Yg3" id="dataLane"><!--pnid:Sjyp5hO7BTfGYhmD6o5SwB-->第①组</small></h2>
-      <div data-page-node-id="5KDP7SBziNZ3zMYS6SDvZn" class="bigs">
-        <div data-page-node-id="2HlCewxRsYCXLvmKUXfcb3" class="big w"><div data-page-node-id="Qh0jbar6x2z4dHXyd9TFS6" class="v" id="v0"><!--pnid:cgnhUUN8YrzSrdOKOH9rXs-->—</div><div data-page-node-id="ahpv0KQ0q0NWbyZ7P02dee" class="k"><!--pnid:uuyIMtpuQwtv8RdbkA8C7u-->撞击前速度 v₀<br data-page-node-id="Vaaxb26oLYYqXB4myo6c4e"><!--pnid:r4GsFjhryvvWFGMBK5S23l-->(m/s)</div></div>
-        <div data-page-node-id="Gf0z6Tk6d5UPqZbnwE8aIT" class="big e"><div data-page-node-id="diyTuOPlur67mkcz43U26u" class="v" id="ek"><!--pnid:yV3ECP7l6KnKO844jV3ixJ-->—</div><div data-page-node-id="yzp5XuFIKb2bQYF9PxHOHN" class="k"><!--pnid:wMcL8swsMeDCYzFw3BOuVW-->动能 E<sub data-page-node-id="Qb6LsJikcaugHBtJFywOgw"><!--pnid:mZBI6dze0KV72muOnsj3Ym-->k</sub><br data-page-node-id="wULPOv7IodTg0gWFBYM212"><!--pnid:yNDRyCAriIx95gir375pRZ-->(J)</div></div>
-        <div data-page-node-id="qi4kDDT1dNGoUAnHTSDoWv" class="big c"><div data-page-node-id="PfJQ32vrXa3N7EAiffXnjd" class="v" id="ss"><!--pnid:yPTccOXiuKM2o9SN3FBFBj-->—</div><div data-page-node-id="HfAVnn75KWXRPWhC7g0K2Q" class="k"><!--pnid:2e8MQxaHMPf7JaE7mve3oz-->木块移动 S<br data-page-node-id="2wpeeEWjiMNYHhWTddBMdH"><!--pnid:tYQHajAlcFfM1gjkWjqOPN-->(cm)</div></div>
-      </div>
-      <dl data-page-node-id="yQlc7qYZXHnF4ilYOgNSNz" class="kv">
-        <dt data-page-node-id="BRls8KaFuWhfcPb5nNmaNt"><!--pnid:84CTuQoCwlKZF1sYAlyTbi-->小车（含配重）总重</dt><dd data-page-node-id="GgOaleUTLZU2soHs5T2VL6" id="kW"><!--pnid:HsFygD2PS7oznEfkl70TO8-->—</dd>
-        <dt data-page-node-id="JPKUNItp2HfsFdpiVpWSTk"><!--pnid:UGAPRsCsNyR7GdKdO1JRkJ-->小车（含配重）质量</dt><dd data-page-node-id="ZWnzTQaC0cxOzHEH4kE2DN" id="kM"><!--pnid:ic8HqrYPmm6xDSVIZo3ojk-->—</dd>
-        <dt data-page-node-id="M8HO3sEc3Qtnb7oaJg5dWV"><!--pnid:BHQWYrYJhAuKjHuFUYutXv-->被撞木块重力</dt><dd data-page-node-id="Vtll8x7ney6414IxeZTZcZ" id="kB"><!--pnid:4OBbI9teuMcRQ76HoSt6FW-->—</dd>
-        <dt data-page-node-id="AclOglkV8JmFex6k2hAez2"><!--pnid:WA81NiPxZs6SZxbk0IqeNW-->碰撞后共同速度</dt><dd data-page-node-id="QhKEehDVaOuG8qVEwSPZUB" id="kV"><!--pnid:v9ATgTkgsgnYhDVjxWup33-->—</dd>
-        <dt data-page-node-id="o8cQmUXhkWHIHpqmjxf3UO"><!--pnid:k5U0AHWiOOxCAr5yp9ZNgD-->减速时加速度</dt><dd data-page-node-id="4bw0ZNZBdmvAqPF0HFXZZM" id="kA"><!--pnid:nq1nq9UbgTcjdGioEdhO3o-->—</dd>
-      </dl>
-      <div data-page-node-id="Sl6VEin8LutLc4FTBTPB7h" class="chain" id="chain"></div>
       <details data-page-node-id="RAjMAsIH9YveFA5MrtNRmp">
         <summary data-page-node-id="xgdW5V82zrKKftyTtubWQH"><!--pnid:kpKiES2UGikA2fFdYd7Wop-->物理模型与参数说明</summary>
         <p data-page-node-id="48GgLKnVJzg78lAv1ZnI9Q"><!--pnid:HNbwfp6Nf8TryUJWtREuJP-->
@@ -249,8 +253,8 @@
           ⑥ 课标依据：《义务教育物理课程标准（2022年版）》能量主题 3.2.1"知道动能、势能和机械能；通过实验，了解动能和势能的相互转化"（条目号系网络检索所得，2025年修订版具体条目号未逐一核对，供参考）。
         </p>
       </details>
-    </div>
   </div>
+
 </div>
 
 <script data-page-node-id="bU40apX7EBU0DWc60jijea" data-pnid-children="YZHaXPzZA1aE88ptHlnXjB">
@@ -276,7 +280,7 @@ const LANE_COLORS = ['#0ea5e9','#8b5cf6','#10b981','#f43f5e'];
 const CN = ['①','②','③','④'];
 
 /* ================= 状态 ================= */
-const app = { mode:null, active:0, running:false, scale:0.5 };
+const app = { mode:null, active:0, running:false, scale:0.5, zoom:1 };
 let lanes = [];
 
 function mkLane(i, from){
@@ -339,13 +343,16 @@ function resetLane(l){
 
 /* ================= 画布与坐标 ================= */
 const cv = document.getElementById('cv'), ctx = cv.getContext('2d'), wrap = document.getElementById('cvWrap');
-let VW=800, VH=200, S=240, OX=24, OY=110, DPR=1;
+let VW=800, VH=200, S=240, OX=24, OY=110, DPR=1, TS=1;
+const S_REF=240;   // 参考缩放：TS = S/S_REF，图形与文字同步放大
 const PX = x => OX + x*S;
 const PY = (y, base) => OY - (base + y)*S;
 
 function resize(){
-  const W = wrap.clientWidth || 800;
+  const baseW = wrap.clientWidth || 800;
+  const W = Math.max(320, Math.round(baseW * app.zoom));   // 放大时画布超出容器，可横向滚动
   S = Math.max(105, (W-24)/WORLDW);
+  TS = S / S_REF;
   const worldH = TOPPAD + (Math.max(1,lanes.length)-1)*LANE_H + BOTPAD;
   const H = Math.round(worldH*S)+18;
   DPR = window.devicePixelRatio || 1;
@@ -362,22 +369,25 @@ function rr(c,x,y,w,h,r){
   c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r);
   c.arcTo(x,y+h,x,y,r);     c.arcTo(x,y,x+w,y,r); c.closePath();
 }
-function chip(c,text,x,y,fg,bg,bd,font){
-  c.font = font || '600 11px system-ui,"Microsoft YaHei",sans-serif';
-  const w = c.measureText(text).width + 12, h = 17;
+function fset(c,px,wgt){
+  c.font = (wgt?wgt+' ':'') + (px*TS).toFixed(2) + 'px system-ui,"Microsoft YaHei",sans-serif';
+}
+function chip(c,text,x,y,fg,bg,bd,px,wgt){
+  fset(c, px||11, wgt||600);
+  const w = c.measureText(text).width + 12*TS, h = 17*TS;
   c.fillStyle=bg; c.strokeStyle=bd; c.lineWidth=1;
-  rr(c,x-w/2,y-h/2,w,h,5); c.fill(); c.stroke();
+  rr(c,x-w/2,y-h/2,w,h,5*TS); c.fill(); c.stroke();
   c.fillStyle=fg; c.textAlign='center'; c.textBaseline='middle';
   c.fillText(text,x,y);
 }
 function arrowH(c,x1,x2,y,base,col){
   c.strokeStyle=col; c.fillStyle=col; c.lineWidth=1.6;
   c.beginPath(); c.moveTo(PX(x1),PY(y,base)); c.lineTo(PX(x2),PY(y,base)); c.stroke();
-  const a=4.5;
+  const a=4.5*TS;
   c.beginPath(); c.moveTo(PX(x1),PY(y,base)); c.lineTo(PX(x1)+a,PY(y,base)-3.2); c.lineTo(PX(x1)+a,PY(y,base)+3.2); c.fill();
   c.beginPath(); c.moveTo(PX(x2),PY(y,base)); c.lineTo(PX(x2)-a,PY(y,base)-3.2); c.lineTo(PX(x2)-a,PY(y,base)+3.2); c.fill();
-  c.beginPath(); c.moveTo(PX(x1),PY(y,base)-6); c.lineTo(PX(x1),PY(y,base)+6); c.stroke();
-  c.beginPath(); c.moveTo(PX(x2),PY(y,base)-6); c.lineTo(PX(x2),PY(y,base)+6); c.stroke();
+  c.beginPath(); c.moveTo(PX(x1),PY(y,base)-6*TS); c.lineTo(PX(x1),PY(y,base)+6*TS); c.stroke();
+  c.beginPath(); c.moveTo(PX(x2),PY(y,base)-6*TS); c.lineTo(PX(x2),PY(y,base)+6*TS); c.stroke();
 }
 
 /* ================= 各部件 ================= */
@@ -406,7 +416,7 @@ function drawWall(l, base){
     ctx.lineTo(PX(X0)+(i+1)*WALL_W*S/5, PY(0,base));
     ctx.stroke();
   }
-  ctx.fillStyle='#64748b'; ctx.font='9.5px system-ui,sans-serif';
+  ctx.fillStyle='#64748b'; fset(ctx,9.5);
   ctx.textAlign='center'; ctx.textBaseline='bottom';
   ctx.fillText('固定', PX(X0+WALL_W/2), PY(0.175,base));
 }
@@ -425,13 +435,13 @@ function drawBlock(l, base){
   const xp = PX(x), yp = PY(b.h, base);
   ctx.fillStyle = l.block==='small' ? '#3b82f6' : '#1d4ed8';
   ctx.strokeStyle = l.block==='small' ? '#1d4ed8' : '#172554'; ctx.lineWidth=1.3;
-  rr(ctx,xp,yp,w,h,3); ctx.fill(); ctx.stroke();
+  rr(ctx,xp,yp,w,h,3*TS); ctx.fill(); ctx.stroke();
   ctx.strokeStyle='rgba(255,255,255,.35)'; ctx.lineWidth=1;
   for(let i=1;i<=2;i++){
     ctx.beginPath(); ctx.moveTo(xp+w*0.12, yp+h*(0.3*i));
     ctx.lineTo(xp+w*0.88, yp+h*(0.3*i)); ctx.stroke();
   }
-  ctx.fillStyle='#fff'; ctx.font='700 10px system-ui,sans-serif';
+  ctx.fillStyle='#fff'; fset(ctx,10,700);
   ctx.textAlign='center'; ctx.textBaseline='middle';
   ctx.fillText(l.block==='small'?'50g':'100g', xp+w/2, yp+h/2);
 }
@@ -448,7 +458,7 @@ function drawCart(l, base){
   const body = l.cart==='1N' ? '#fb923c' : '#ef4444';
   const edge = l.cart==='1N' ? '#ea580c' : '#b91c1c';
   c.fillStyle=body; c.strokeStyle=edge; c.lineWidth=1.4;
-  rr(c,-L,-2*r-Hh,L,Hh,5); c.fill(); c.stroke();
+  rr(c,-L,-2*r-Hh,L,Hh,5*TS); c.fill(); c.stroke();
   c.strokeStyle='rgba(255,255,255,.55)'; c.lineWidth=1.4;
   c.beginPath(); c.moveTo(-L+0.03*S,-2*r-Hh+0.016*S); c.lineTo(-0.03*S,-2*r-Hh+0.016*S); c.stroke();
   let top = -2*r-Hh;
@@ -458,8 +468,8 @@ function drawCart(l, base){
     const w = WT[k], wl = w.len*S, wh = (0.024 + 0.010*(n-1))*S;
     c.fillStyle = k==='w50' ? '#64748b' : '#475569';
     c.strokeStyle='#334155'; c.lineWidth=1.2;
-    rr(c,-L/2-wl/2, top-wh, wl, wh, 2); c.fill(); c.stroke();
-    c.fillStyle='#fff'; c.font='700 9px system-ui,sans-serif';
+    rr(c,-L/2-wl/2, top-wh, wl, wh, 2*TS); c.fill(); c.stroke();
+    c.fillStyle='#fff'; fset(c,9,700);
     c.textAlign='center'; c.textBaseline='middle';
     c.fillText(n>1 ? (w.name+'×'+n) : w.name, -L/2, top-wh/2);
     top -= wh;
@@ -471,12 +481,12 @@ function drawBar(l, base){
   if(!l.done) return;
   const yTop = -0.050, hgt = 0.020, w = l.d.S*S, xs = l.d.markStart;
   ctx.fillStyle = l.color+'2e'; ctx.strokeStyle = l.color; ctx.lineWidth=1.6;
-  rr(ctx, PX(xs), PY(yTop, base), w, hgt*S, 3); ctx.fill(); ctx.stroke();
-  ctx.fillStyle=l.color; ctx.font='700 11px system-ui,sans-serif';
+  rr(ctx, PX(xs), PY(yTop, base), w, hgt*S, 3*TS); ctx.fill(); ctx.stroke();
+  ctx.fillStyle=l.color; fset(ctx,11,700);
   ctx.textAlign='right'; ctx.textBaseline='middle';
-  ctx.fillText(CN[l.i], PX(xs)-5, PY(yTop-hgt/2, base));
-  ctx.textAlign='left'; ctx.fillStyle='#334155'; ctx.font='700 10.5px system-ui,sans-serif';
-  ctx.fillText((l.block?'木块 S = ':'小车 S = ')+(l.d.S*100).toFixed(1)+' cm', PX(xs)+w+6, PY(yTop-hgt/2, base));
+  ctx.fillText(CN[l.i], PX(xs)-5*TS, PY(yTop-hgt/2, base));
+  ctx.textAlign='left'; ctx.fillStyle='#334155'; fset(ctx,10.5,700);
+  ctx.fillText((l.block?'木块 S = ':'小车 S = ')+(l.d.S*100).toFixed(1)+' cm', PX(xs)+w+6*TS, PY(yTop-hgt/2, base));
 }
 /* h / Δx 标注：固定在小车起始位置，不随小车移动 */
 function drawSetting(l, base){
@@ -490,14 +500,14 @@ function drawSetting(l, base){
     const a=4;
     ctx.beginPath(); ctx.moveTo(PX(x),PY(h,base)); ctx.lineTo(PX(x)-3,PY(h,base)+a); ctx.lineTo(PX(x)+3,PY(h,base)+a); ctx.fill();
     ctx.beginPath(); ctx.moveTo(PX(x),PY(0,base)); ctx.lineTo(PX(x)-3,PY(0,base)-a); ctx.lineTo(PX(x)+3,PY(0,base)-a); ctx.fill();
-    chip(ctx,'h = '+Math.round(h*100)+' cm', PX(x)+0.10*S+30, PY(Math.max(h*0.5,0.075),base), '#075985','#e0f2fe','#7dd3fc','600 10px system-ui,sans-serif');
+    chip(ctx,'h = '+Math.round(h*100)+' cm', PX(x)+0.10*S+30*TS, PY(Math.max(h*0.5,0.075),base), '#075985','#e0f2fe','#7dd3fc',10,600);
   }else{
     const x1 = X0+WALL_W, x2 = SPRING_FREE - l.dx;
     ctx.setLineDash([4,3]); ctx.strokeStyle='#0ea5e9'; ctx.lineWidth=1.2;
     ctx.beginPath(); ctx.moveTo(PX(x1),PY(0,base)); ctx.lineTo(PX(x2),PY(0,base)); ctx.stroke();
     ctx.setLineDash([]);
     arrowH(ctx,x1,x2,0.012,base,'#0ea5e9');
-    chip(ctx,'Δx = '+Math.round(l.dx*100)+' cm', PX((x1+x2)/2), PY(0.215,base), '#075985','#e0f2fe','#7dd3fc','600 10px system-ui,sans-serif');
+    chip(ctx,'Δx = '+Math.round(l.dx*100)+' cm', PX((x1+x2)/2), PY(0.215,base), '#075985','#e0f2fe','#7dd3fc',10,600);
   }
 }
 function drawSArrow(l, base){
@@ -505,11 +515,11 @@ function drawSArrow(l, base){
   const x1 = l.d.markStart, x2 = x1 + l.d.S;
   arrowH(ctx,x1,x2,0.145,base,'#ca8a04');
   chip(ctx,(l.block?'木块移动 S = ':'小车移动 S = ')+(l.d.S*100).toFixed(1)+' cm', PX((x1+x2)/2), PY(0.235,base),
-       '#713f12','#fde047','#eab308','700 10.5px system-ui,sans-serif');
+       '#713f12','#fde047','#eab308',10.5,700);
 }
 function drawVLabel(l, base){
   if(!l.d) return;
-  ctx.font='600 10.5px system-ui,sans-serif'; ctx.textAlign='center'; ctx.textBaseline='bottom';
+  fset(ctx,10.5,600); ctx.textAlign='center'; ctx.textBaseline='bottom';
   if(l.phase==='ramp'){
     ctx.fillStyle='#ea580c';
     ctx.fillText('v='+(G*SIN*l.t).toFixed(2)+' m/s', PX(l.cartX)-0.05*S, PY(l.cartY+0.255,base));
@@ -533,29 +543,29 @@ function drawVLabel(l, base){
 function drawTag(l, base){
   if(!l.cart) return;
   const txt = cartLabel(l)+' · '+(app.mode==='ramp'?('h='+Math.round(l.h*100)+'cm'):('Δx='+Math.round(l.dx*100)+'cm'));
-  ctx.font='700 10px system-ui,sans-serif';
-  const w = ctx.measureText(txt).width+14;
-  const x = PX(0.55) - w/2, y = PY(RISE+0.030, base) - 8;
+  fset(ctx,10,700);
+  const w = ctx.measureText(txt).width+14*TS;
+  const x = PX(0.55) - w/2, y = PY(RISE+0.030, base) - 8*TS;
   ctx.fillStyle=l.color+'1f'; ctx.strokeStyle=l.color+'88'; ctx.lineWidth=1;
-  rr(ctx,x,y,w,16,8); ctx.fill(); ctx.stroke();
+  rr(ctx,x,y,w,16*TS,8*TS); ctx.fill(); ctx.stroke();
   ctx.fillStyle=l.color; ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.fillText(txt, x+w/2, y+8);
+  ctx.fillText(txt, x+w/2, y+8*TS);
 }
 function drawRuler(botBase){
   const y0 = -0.095;
   ctx.fillStyle='#fffbeb'; ctx.strokeStyle='#fcd34d'; ctx.lineWidth=1;
-  rr(ctx,PX(X0-0.03),PY(y0,botBase),((X1-X0)+0.06)*S,0.048*S,3); ctx.fill(); ctx.stroke();
+  rr(ctx,PX(X0-0.03),PY(y0,botBase),((X1-X0)+0.06)*S,0.048*S,3*TS); ctx.fill(); ctx.stroke();
   for(let cm=0; cm<=Math.round((X1-X0)*100); cm+=10){
     const x = X0 + cm/100, maj = (cm%20===0);
     ctx.strokeStyle = maj?'#92400e':'#d6b26a'; ctx.lineWidth = maj?1.3:1;
     ctx.beginPath(); ctx.moveTo(PX(x),PY(y0,botBase)); ctx.lineTo(PX(x),PY(y0-(maj?0.022:0.013),botBase)); ctx.stroke();
     if(maj){
-      ctx.fillStyle='#92400e'; ctx.font='9.5px system-ui,sans-serif';
+      ctx.fillStyle='#92400e'; fset(ctx,9.5);
       ctx.textAlign='center'; ctx.textBaseline='top';
       ctx.fillText(String(cm), PX(x), PY(y0-0.024,botBase));
     }
   }
-  ctx.fillStyle='#a16207'; ctx.font='9.5px system-ui,sans-serif';
+  ctx.fillStyle='#a16207'; fset(ctx,9.5);
   ctx.textAlign='right'; ctx.textBaseline='middle';
   ctx.fillText('cm', PX(X0-0.05), PY(y0-0.02,botBase));
 }
@@ -567,9 +577,9 @@ function drawEmpty(){
   ctx.beginPath(); ctx.moveTo(PX(X0),PY(0,0)); ctx.lineTo(PX(X1),PY(0,0)); ctx.stroke();
   ctx.setLineDash([]);
   ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.fillStyle='#94a3b8'; ctx.font='600 14px system-ui,"Microsoft YaHei",sans-serif';
+  ctx.fillStyle='#94a3b8'; fset(ctx,14,600);
   ctx.fillText('画布是空的 —— 请从左侧器材盒自选器材，组装实验装置', cx, PY(0.215,0));
-  ctx.fillStyle='#b8c2ce'; ctx.font='12.5px system-ui,"Microsoft YaHei",sans-serif';
+  ctx.fillStyle='#b8c2ce'; fset(ctx,12.5);
   ctx.fillText('① 选驱动方式：斜面下滑 / 弹簧弹射', cx, PY(0.125,0));
   ctx.fillText('② 选小车（可加 50g 配重，最多 3 件）　③ 选木块　④ 点「开始」', cx, PY(0.055,0));
 }
@@ -672,14 +682,22 @@ function startAll(){
 }
 
 /* ================= 面板渲染 ================= */
+// 统一用 DOM 构造渲染（不用 innerHTML 拼接，避免注入风险）
+function mk(tag, cls, txt){
+  const e=document.createElement(tag);
+  if(cls) e.className=cls;
+  if(txt!==undefined) e.textContent=txt;
+  return e;
+}
 function renderTabs(){
   const row=document.getElementById('laneRow');
-  row.innerHTML='';
+  row.textContent='';
   lanes.forEach((l,i)=>{
     const b=document.createElement('button');
     b.className='lt'+(i===app.active?' on':'');
     b.dataset.i=i;
-    b.innerHTML='<i style="background:'+l.color+'"></i>组'+CN[i];
+    const dot=mk('i'); dot.style.background=l.color; b.appendChild(dot);
+    b.appendChild(document.createTextNode('组'+CN[i]));
     if(lanes.length>1){
       const x=document.createElement('span');
       x.className='del'; x.textContent='×'; x.dataset.del=i;
@@ -721,29 +739,38 @@ function syncEq(){
 }
 function renderPlan(){
   const l=lanes[app.active], P=document.getElementById('plan');
-  if(!l){ P.innerHTML='当前方案：<b>尚未组装</b> —— 请在左侧器材盒依次选择驱动方式、小车（木块可选）。'; return; }
+  if(!l){
+    P.textContent='';
+    P.append('当前方案：', mk('b','','尚未组装'), ' —— 请在左侧器材盒依次选择驱动方式、小车（木块可选）。');
+    return;
+  }
   if(!l.d){
     const miss=[];
     if(!app.mode) miss.push('驱动方式');
     if(!l.cart)   miss.push('小车');
-    P.innerHTML='第'+CN[app.active]+'组：还缺 <b>'+miss.join('、')+'</b>，补齐后才能开始实验。'+
-      (l.block?'':'<span style="color:#94a3b8">（木块可放可不放：不放时只测小车自身滑行距离）</span>');
+    P.textContent='';
+    P.append('第'+CN[app.active]+'组：还缺 ', mk('b','',miss.join('、')), '，补齐后才能开始实验。');
+    if(!l.block){
+      const sp=mk('span','','（木块可放可不放：不放时只测小车自身滑行距离）');
+      sp.style.color='#94a3b8'; P.appendChild(sp);
+    }
     return;
   }
   const d=l.d;
-  const tail = l.block
-    ? ('撞击 <b>'+BLK[l.block].name+'</b>，木块被推动 S。')
-    : ('不撞木块，小车克服自身摩擦阻力在水平长木板上滑行，测量小车移动的距离 S。');
-  const txt = app.mode==='ramp'
-    ? '第'+CN[app.active]+'组：用 <b>'+cartLabel(l)+'</b>从斜面高 <b>'+Math.round(l.h*100)+' cm</b> 处由静止自由下滑，'+tail
-    : '第'+CN[app.active]+'组：用 <b>'+cartLabel(l)+'</b>把弹簧压缩 <b>'+Math.round(l.dx*100)+' cm</b> 后由静止释放，'+tail;
-  document.getElementById('plan').innerHTML = txt + '　<span style="color:#94a3b8">（共 '+lanes.length+' 组同时进行）</span>';
+  P.textContent='';
+  P.append('第'+CN[app.active]+'组：用 ', mk('b','',cartLabel(l)));
+  if(app.mode==='ramp') P.append('从斜面高 ', mk('b','',Math.round(l.h*100)+' cm'), ' 处由静止自由下滑，');
+  else               P.append('把弹簧压缩 ', mk('b','',Math.round(l.dx*100)+' cm'), ' 后由静止释放，');
+  if(l.block) P.append('撞击 ', mk('b','',BLK[l.block].name), '，木块被推动 S。');
+  else        P.append('不撞木块，小车克服自身摩擦阻力在水平长木板上滑行，测量小车移动的距离 S。');
+  const sp=mk('span','','（共 '+lanes.length+' 组同时进行）');
+  sp.style.color='#94a3b8'; P.append('　', sp);
 }
 function renderData(){
   const l=lanes[app.active];
   if(!l || !l.d){
     ['v0','ek','ss','kW','kM','kB','kV','kA'].forEach(k=>document.getElementById(k).textContent='—');
-    document.getElementById('chain').innerHTML='能量转化：先组装完整装置（驱动方式 + 小车 + 木块）后显示。';
+    document.getElementById('chain').textContent='能量转化：先组装完整装置（驱动方式 + 小车 + 木块）后显示。';
     return;
   }
   const d=l.d;
@@ -755,11 +782,19 @@ function renderData(){
   document.getElementById('kB').textContent = l.block ? d.Wb.toFixed(1)+' N' : '未放木块';
   document.getElementById('kV').textContent = l.block ? d.V.toFixed(2)+' m/s' : '—（无碰撞）';
   document.getElementById('kA').textContent = d.a.toFixed(2)+' m/s²';
-  const work = l.block ? '<i>推动木块做功 = μG<sub>木</sub>·S</i>'
-                       : '<i>小车克服自身阻力做功 = μ<sub>车</sub>G<sub>车</sub>·S</i>';
-  document.getElementById('chain').innerHTML = (app.mode==='ramp'
-    ? '能量转化：<span>重力势能 G·h = '+d.Ek.toFixed(2)+' J</span> → <span>小车动能</span> → '
-    : '能量转化：<span>弹性势能 ½kΔx² = '+d.Ek.toFixed(2)+' J</span> → <span>小车动能</span> → ') + work + ' → 内能（摩擦生热）';
+  const C=document.getElementById('chain');
+  C.textContent='';
+  C.append('能量转化：');
+  C.appendChild(mk('span','', app.mode==='ramp'
+    ? ('重力势能 G·h = '+d.Ek.toFixed(2)+' J')
+    : ('弹性势能 ½kΔx² = '+d.Ek.toFixed(2)+' J')));
+  C.append(' → ', mk('span','','小车动能'), ' → ');
+  const wk=mk('i');
+  if(l.block){ wk.append('推动木块做功 = μG'); wk.appendChild(mk('sub','','木')); wk.append('·S'); }
+  else { wk.append('小车克服自身阻力做功 = μ'); wk.appendChild(mk('sub','','车'));
+         wk.append('G'); wk.appendChild(mk('sub','','车')); wk.append('·S'); }
+  C.appendChild(wk);
+  C.append(' → 内能（摩擦生热）');
 }
 function refresh(){
   app.running=false;
@@ -789,21 +824,28 @@ function updateBtns(){
   document.getElementById('btnUndo').disabled  = !undoStack.length || app.running;
 }
 function renderAsm(){
-  const el=document.getElementById('asm'), l=lanes[app.active];
+  const box=document.getElementById('asm'), l=lanes[app.active];
+  box.textContent='';
   if(!l){
-    el.innerHTML='<span class="no">尚未组装</span>：在器材盒依次点选 <b>驱动方式 → 小车</b>（木块可选，可选「不放木块」只测小车滑行距离），装置会一件件出现在画布上。';
+    box.appendChild(mk('span','no','尚未组装'));
+    box.append('：在器材盒依次点选 ', mk('b','','驱动方式 → 小车'), '（木块可选，可选「不放木块」只测小车滑行距离），装置会一件件出现在画布上。');
     return;
   }
   const p=[];
-  p.push(app.mode ? '<span class="ok">✓ 驱动：'+(app.mode==='ramp'?'斜面下滑':'弹簧弹射')+'</span>'
-                  : '<span class="no">✗ 未选驱动方式</span>');
-  p.push(l.cart ? '<span class="ok">✓ '+cartLabel(l)+'</span>' : '<span class="no">✗ 未选小车</span>');
-  p.push(l.block ? '<span class="ok">✓ '+BLK[l.block].name+'</span>'
-                 : '<span class="opt">○ 不放木块（只测小车滑行距离）</span>');
+  p.push(app.mode ? mk('span','ok','✓ 驱动：'+(app.mode==='ramp'?'斜面下滑':'弹簧弹射'))
+                  : mk('span','no','✗ 未选驱动方式'));
+  p.push(l.cart ? mk('span','ok','✓ '+cartLabel(l)) : mk('span','no','✗ 未选小车'));
+  p.push(l.block ? mk('span','ok','✓ '+BLK[l.block].name)
+                 : mk('span','opt','○ 不放木块（只测小车滑行距离）'));
   p.push(l.ready
-    ? '<span class="ok">✓ 已就绪：'+(app.mode==='ramp'?('释放高度 '+Math.round(l.h*100)+' cm'):('压缩量 '+Math.round(l.dx*100)+' cm'))+'</span>'
-    : '<span class="no">✗ 装置不完整，不能开始</span>');
-  el.innerHTML='第'+CN[app.active]+'组装置：'+p.join(' ｜ ')+(lanes.length>1?'　<span style="color:#94a3b8">（共 '+lanes.length+' 组）</span>':'');
+    ? mk('span','ok','✓ 已就绪：'+(app.mode==='ramp'?('释放高度 '+Math.round(l.h*100)+' cm'):('压缩量 '+Math.round(l.dx*100)+' cm')))
+    : mk('span','no','✗ 装置不完整，不能开始'));
+  box.append('第'+CN[app.active]+'组装置：');
+  p.forEach((e,i)=>{ if(i) box.append(' ｜ '); box.appendChild(e); });
+  if(lanes.length>1){
+    const sp=mk('span','','（共 '+lanes.length+' 组）');
+    sp.style.color='#94a3b8'; box.append('　', sp);
+  }
 }
 function undo(){
   if(!undoStack.length || app.running) return;
@@ -885,6 +927,15 @@ sRange.addEventListener('input',()=>{
 sRange.addEventListener('change',()=>{
   if(preSlider){ undoStack.push(preSlider); preSlider=null; updateBtns(); }
 });
+const zRange=document.getElementById('zRange');
+function setZoom(z){
+  app.zoom = z/100;
+  zRange.value = z;
+  document.getElementById('zVal').textContent = z+'%';
+  resize(); draw();
+}
+zRange.addEventListener('input',()=>setZoom(+zRange.value));
+document.getElementById('btnFit').addEventListener('click',()=>setZoom(100));
 document.getElementById('btnUndo').addEventListener('click',undo);
 document.getElementById('btnClear').addEventListener('click',clearAll);
 document.getElementById('speed').addEventListener('change',e=>{ app.scale=parseFloat(e.target.value); });
